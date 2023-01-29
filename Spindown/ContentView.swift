@@ -13,13 +13,11 @@ struct MenuOptionOutlined: View {
 
     var body: some View {
         Text(text)
+            .font(.system(size: 16, weight: .bold, design: .rounded))
             .frame(maxWidth: .infinity, maxHeight: 40)
             .foregroundColor(.primary)
             .padding()
-            .background(.background)
-            .cornerRadius(8)
-            .padding(5)
-            .background(Color(.systemGray5))
+            .background(Color(.systemGray6))
             .cornerRadius(12)
             .padding(5)
     }
@@ -27,13 +25,17 @@ struct MenuOptionOutlined: View {
 
 struct MenuOption: View {
     var text: String
+    var textColor: UIColor = .black
+    var background: UIColor
 
     var body: some View {
         Text(text)
+            .font(.system(size: 16, weight: .bold, design: .rounded))
+            .foregroundColor(Color(textColor))
             .frame(maxWidth: .infinity, maxHeight: 40)
             .foregroundColor(.primary)
             .padding()
-            .background(Color(.systemGray5))
+            .background(Color(background))
             .cornerRadius(12)
             .padding(5)
     }
@@ -56,26 +58,25 @@ struct PlayerSelector: View {
                         .font(.system(size: 14, design: .rounded))
                         .foregroundColor(Color(.systemGray))
                 }
-                .padding(.bottom)
 
                 HStack {
                     Button(action: {
                         setNumPlayers(1)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "1")
+                        MenuOption(text: "1", textColor: .white, background: .systemPurple)
                     }
                     Button(action: {
                         setNumPlayers(2)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "2")
+                        MenuOption(text: "2", textColor: .white, background: .systemBlue)
                     }
                     Button(action: {
                         setNumPlayers(3)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "3")
+                        MenuOption(text: "3", textColor: .white, background: .systemGreen)
                     }
                 }
                 
@@ -84,21 +85,23 @@ struct PlayerSelector: View {
                         setNumPlayers(4)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "4")
+                        MenuOption(text: "4", textColor: .white, background: .systemYellow)
                     }
                     Button(action: {
                         setNumPlayers(5)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "5")
+                        MenuOption(text: "5", textColor: .white, background: .systemOrange)
                     }
                     Button(action: {
                         setNumPlayers(6)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "6")
+                        MenuOption(text: "6", textColor: .white, background: .systemRed)
                     }
                 }
+                
+                MenuOptionOutlined(text: "Select Saved Players")
             }
             .frame(maxWidth: 400)
             .padding()
@@ -136,26 +139,25 @@ struct FormatSelector: View {
                         .font(.system(size: 14, design: .rounded))
                         .foregroundColor(Color(.systemGray))
                 }
-                .padding(.bottom)
 
                 HStack {
                     Button(action: {
                         setFormat(Format(name: "Commander", startingLifeTotal: 40))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Commander")
+                        MenuOption(text: "Commander", background: .systemGray5)
                     }
                     Button(action: {
                         setFormat(Format(name: "Standard", startingLifeTotal: 20))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Standard")
+                        MenuOption(text: "Standard", background: .systemGray5)
                     }
                     Button(action: {
                         setFormat(Format(name: "Modern", startingLifeTotal: 20))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Modern")
+                        MenuOption(text: "Modern", background: .systemGray5)
                     }
                 }
                 
@@ -164,19 +166,19 @@ struct FormatSelector: View {
                         setFormat(Format(name: "Legacy", startingLifeTotal: 20))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Legacy")
+                        MenuOption(text: "Legacy", background: .systemGray5)
                     }
                     Button(action: {
                         setFormat(Format(name: "Pioneer", startingLifeTotal: 20))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Pioneer")
+                        MenuOption(text: "Pioneer", background: .systemGray5)
                     }
                     Button(action: {
                         setFormat(Format(name: "Draft", startingLifeTotal: 20))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Draft")
+                        MenuOption(text: "Draft", background: .systemGray5)
                     }
                 }
                 
@@ -399,13 +401,14 @@ struct ContentView: View {
             if (self.setupComplete) {
                 ZStack {
                     VStack {
-                        HStack {
-                            Text("Player Count: \(playerCount)")
-                            Spacer()
-                            Text("Format: \(format?.name ?? "")")
+                        if (self.players.count > 0) {
+                            HStack {
+                                Text("Player Count: \(playerCount)")
+                                Spacer()
+                                Text("Format: \(format?.name ?? "")")
+                            }
+                            .padding()
                         }
-                        .padding()
-                        
                         GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
                     }
                     
@@ -440,12 +443,15 @@ struct ContentView: View {
             self.numPlayersRemaining = self.players.count
         }
         .onChange(of: numPlayersRemaining) { newState in
-            if (newState == 1) {
+            if (newState == 1 && players.count != 1) {
                 let winningPlayer = self.players.filter { $0.loser != true }
-
+                
                 if (winningPlayer.count > 0) {
                     self.winner = winningPlayer[0]
                 }
+            } else if (newState == 0 && players.count == 1) {
+                let winningPlayer = self.players[0]
+                self.winner = winningPlayer
             }
         }
     }
