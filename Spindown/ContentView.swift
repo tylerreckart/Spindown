@@ -196,6 +196,7 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     var uid: UUID = UUID()
     var name: String = ""
     var currentLifeTotal: Int16 = 0
+    var loser: Bool = false
     
     static func == (lhs: Participant, rhs: Participant) -> Bool {
         return lhs.uid == rhs.uid
@@ -208,28 +209,34 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
 
 struct PlayerTile: View {
     var player: Participant
+    var color: UIColor
     
-    @State private var currentLifeTotal: Int16 = 0
+    @Binding var numPlayersRemaining: Int
+    
+    @State private var currentLifeTotal: String = "0"
+    @State private var loser: Bool = false
     
     var body: some View {
         ZStack {
             VStack {
-                Button(action: {
-                    self.currentLifeTotal = self.currentLifeTotal + 1
-                }) {
-                    Rectangle()
-                        .fill(Color(.systemGray5))
-                        .frame(maxHeight: .infinity)
-                        .cornerRadius(12)
-                }
-                
-                Button(action: {
-                    self.currentLifeTotal = self.currentLifeTotal - 1
-                }) {
-                    Rectangle()
-                        .fill(Color(.systemGray5))
-                        .frame(maxHeight: .infinity)
-                        .cornerRadius(12)
+                if (self.loser == false) {
+                    Button(action: {
+                        incrementLifeTotal()
+                    }) {
+                        Rectangle()
+                            .fill(Color(color))
+                            .frame(maxHeight: .infinity)
+                            .cornerRadius(12)
+                    }
+                    
+                    Button(action: {
+                        decrementLifeTotal()
+                    }) {
+                        Rectangle()
+                            .fill(Color(color))
+                            .frame(maxHeight: .infinity)
+                            .cornerRadius(12)
+                    }
                 }
             }
             
@@ -237,43 +244,129 @@ struct PlayerTile: View {
                 Spacer()
                 Text(player.name)
                     .font(.caption)
-                Text("\(self.currentLifeTotal)")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .padding(.bottom)
+                if (self.loser == false) {
+                    Text(currentLifeTotal)
+                        .font(.system(size: 64, weight: .bold, design: .rounded))
+                } else {
+                    Text("Lost")
+                        .font(.system(size: 64, weight: .bold, design: .rounded))
+                }
                 Spacer()
             }
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .foregroundColor(.primary)
+        .foregroundColor(.white)
         .padding()
-        .background(Color(.systemGray5))
-        .cornerRadius(12)
+        .background(Color(color))
+        .overlay(player.loser ? Color.black.opacity(0.25) : nil)
+        .cornerRadius(18)
         .padding(5)
         .onAppear {
-            self.currentLifeTotal = player.currentLifeTotal
+            self.currentLifeTotal = String(player.currentLifeTotal)
         }
+    }
+    
+    func incrementLifeTotal() -> Void {
+        let currentLifeTotal = player.currentLifeTotal
+        let nextLifeTotal = currentLifeTotal + 1
+        player.currentLifeTotal = nextLifeTotal
+        print("increment life total: \(nextLifeTotal)")
+        self.currentLifeTotal = String(nextLifeTotal)
+    }
+    
+    func decrementLifeTotal() -> Void {
+        let currentLifeTotal = player.currentLifeTotal
+        let nextLifeTotal = currentLifeTotal - 1
+
+        if (nextLifeTotal == 0) {
+            player.loser = true
+            self.loser = true
+            numPlayersRemaining = numPlayersRemaining - 1
+            print("\(player.name) lost the game")
+        }
+
+        player.currentLifeTotal = nextLifeTotal
+        print("deccrement life total: \(nextLifeTotal)")
+        self.currentLifeTotal = String(nextLifeTotal)
     }
 }
 
 struct GameBoard: View {
     @Binding var players: [Participant]
+    @Binding var numPlayersRemaining: Int
+    
+    var colors: [UIColor] = [
+        .systemPurple,
+        .systemBlue,
+        .systemGreen,
+        .systemYellow,
+        .systemOrange,
+        .systemRed,
+    ]
     
     var body: some View {
         VStack {
-            ForEach(players, id: \.self) { player in
-                PlayerTile(player: player)
+            ForEach(Array(players.enumerated()), id: \.offset) { index, player in
+                PlayerTile(player: player, color: colors[index], numPlayersRemaining: $numPlayersRemaining)
             }
         }
         .padding()
     }
 }
 
+struct WinnerDialog: View {
+    var winner: Participant?
+
+    var resetBoard: () -> ()
+    var endGame: () -> ()
+
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.2)
+            
+            VStack {
+                Text("\(winner!.name) won the game!")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .padding(.bottom)
+                
+                Button(action: { resetBoard() }) {
+                    Text("Play Again")
+                        .foregroundColor(Color(.white))
+                        .frame(maxWidth: 200)
+                        .padding()
+                        .background(Color(.systemGray))
+                        .cornerRadius(8)
+                }
+                
+                Button(action: { endGame() }) {
+                    Text("End Game")
+                        .foregroundColor(Color(.white))
+                        .frame(maxWidth: 200)
+                        .padding()
+                        .background(Color(.systemRed))
+                        .cornerRadius(8)
+                }
+            }
+            .frame(maxWidth: 600)
+            .padding()
+            .background(.background)
+            .cornerRadius(18)
+            .shadow(color: Color.black.opacity(0.1), radius: 20)
+        }
+        .edgesIgnoringSafeArea(.all)
+    }
+}
+
 struct ContentView: View {
-    @State private var playerCount: Int = 1
-    @State private var format: Format?
+    @State private var playerCount: Int = 0
+    @State private var format: Format? = nil
     @State private var setupStep: Int = 0
     @State private var setupComplete: Bool = false
     @State private var players: [Participant] = []
+    @State private var numPlayersRemaining: Int = 0
+    @State private var winner: Participant? = nil
     
     var body: some View {
         ZStack {
@@ -304,15 +397,21 @@ struct ContentView: View {
             }
             
             if (self.setupComplete) {
-                VStack {
-                    HStack {
-                        Text("Player Count: \(playerCount)")
-                        Spacer()
-                        Text("Format: \(format?.name ?? "")")
+                ZStack {
+                    VStack {
+                        HStack {
+                            Text("Player Count: \(playerCount)")
+                            Spacer()
+                            Text("Format: \(format?.name ?? "")")
+                        }
+                        .padding()
+                        
+                        GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
                     }
-                    .padding()
                     
-                    GameBoard(players: $players)
+                    if (self.winner != nil) {
+                        WinnerDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
+                    }
                 }
             }
         }
@@ -337,10 +436,17 @@ struct ContentView: View {
             } else {
                 self.players = []
             }
+
+            self.numPlayersRemaining = self.players.count
         }
-        .onChange(of: players) { newState in
-            print("players change handler")
-            print(newState)
+        .onChange(of: numPlayersRemaining) { newState in
+            if (newState == 1) {
+                let winningPlayer = self.players.filter { $0.loser != true }
+
+                if (winningPlayer.count > 0) {
+                    self.winner = winningPlayer[0]
+                }
+            }
         }
     }
     
@@ -355,6 +461,29 @@ struct ContentView: View {
     
     private func selectPlayerCount(_ numPlayers: Int) {
         self.playerCount = numPlayers
+    }
+    
+    private func resetBoard() {
+        let remappedPlayers = players.map { (player: Participant) -> Participant in
+            let mutableplayer = player
+            mutableplayer.currentLifeTotal = format?.startingLifeTotal ?? 20
+            mutableplayer.loser = false
+            return mutableplayer
+        }
+
+        self.players = remappedPlayers
+        self.playerCount = remappedPlayers.count
+        self.numPlayersRemaining = remappedPlayers.count
+        self.winner = nil
+    }
+    
+    private func endGame() {
+        self.setupComplete = false
+        self.format = nil
+        self.players = []
+        self.playerCount = 0
+        self.numPlayersRemaining = 0
+        self.winner = nil
     }
 }
 
