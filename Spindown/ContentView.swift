@@ -370,6 +370,9 @@ struct ContentView: View {
     @State private var numPlayersRemaining: Int = 0
     @State private var winner: Participant? = nil
     
+    @State var timeElapsed: Int = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         ZStack {
             if (self.setupComplete == false) {
@@ -400,14 +403,33 @@ struct ContentView: View {
             
             if (self.setupComplete) {
                 ZStack {
-                    VStack {
+                    VStack(spacing: 0) {
                         if (self.players.count > 0) {
                             HStack {
-                                Text("Player Count: \(playerCount)")
+                                HStack {
+                                    Image(systemName: "person.2.fill")
+                                    Text("\(playerCount)")
+                                }
+                                HStack {
+                                    Image(systemName: "menucard.fill")
+                                    Text("\(format?.name ?? "")")
+                                }
                                 Spacer()
-                                Text("Format: \(format?.name ?? "")")
+                                HStack {
+                                    Image(systemName: "clock.fill")
+                                    Text("\(timeElapsed)")
+                                        .onReceive(timer) { input in
+                                            timeElapsed += 1
+                                        }
+                                }
+                                Spacer()
+                                HStack {
+                                    Image(systemName: "gearshape.fill")
+                                    Text("Settings")
+                                }
                             }
                             .padding()
+                            .foregroundColor(Color(.systemBlue))
                         }
                         GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
                     }
