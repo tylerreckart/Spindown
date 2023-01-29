@@ -471,10 +471,14 @@ struct ContentView: View {
             return mutableplayer
         }
 
-        self.players = remappedPlayers
-        self.playerCount = remappedPlayers.count
-        self.numPlayersRemaining = remappedPlayers.count
-        self.winner = nil
+        self.players = []
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
+            self.players = remappedPlayers
+            self.playerCount = remappedPlayers.count
+            self.numPlayersRemaining = remappedPlayers.count
+            self.winner = nil
+        }
     }
     
     private func endGame() {
