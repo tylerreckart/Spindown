@@ -25,12 +25,12 @@ struct MenuOptionOutlined: View {
 
 struct MenuOption: View {
     var text: String
-    var textColor: UIColor = .black
+    var textColor: UIColor = .white
     var background: UIColor
 
     var body: some View {
         Text(text)
-            .font(.system(size: 16, weight: .bold, design: .rounded))
+            .font(.system(size: 16, weight: .black, design: .rounded))
             .foregroundColor(Color(textColor))
             .frame(maxWidth: .infinity, maxHeight: 40)
             .foregroundColor(.primary)
@@ -105,7 +105,6 @@ struct PlayerSelector: View {
             }
             .frame(maxWidth: 400)
             .padding()
-            .background(.background)
             .cornerRadius(18)
             .shadow(color: Color.black.opacity(0.1), radius: 20)
         }
@@ -186,7 +185,6 @@ struct FormatSelector: View {
             }
             .frame(maxWidth: 600)
             .padding()
-            .background(.background)
             .cornerRadius(18)
             .shadow(color: Color.black.opacity(0.1), radius: 20)
         }
@@ -245,8 +243,7 @@ struct PlayerTile: View {
             VStack {
                 Spacer()
                 Text(player.name)
-                    .font(.caption)
-                    .padding(.bottom)
+                    .font(.system(size: 24, weight: .regular, design: .rounded))
                 if (self.loser == false) {
                     Text(currentLifeTotal)
                         .font(.system(size: 64, weight: .bold, design: .rounded))
@@ -263,7 +260,7 @@ struct PlayerTile: View {
         .padding()
         .background(Color(color))
         .overlay(player.loser ? Color.black.opacity(0.25) : nil)
-        .cornerRadius(18)
+        .cornerRadius(25)
         .padding(5)
         .onAppear {
             self.currentLifeTotal = String(player.currentLifeTotal)
@@ -314,7 +311,7 @@ struct GameBoard: View {
                 PlayerTile(player: player, color: colors[index], numPlayersRemaining: $numPlayersRemaining)
             }
         }
-        .padding()
+        .padding([.leading, .trailing, .bottom])
     }
 }
 
@@ -326,36 +323,42 @@ struct WinnerDialog: View {
 
     var body: some View {
         ZStack {
-            Color.black.opacity(0.2)
+            Color.black.opacity(0.4)
             
-            VStack {
+            VStack(spacing: 0) {
                 Text("\(winner!.name) won the game!")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .padding(.bottom)
+                    .padding(.bottom, 25)
                 
-                Button(action: { resetBoard() }) {
-                    Text("Play Again")
-                        .foregroundColor(Color(.white))
-                        .frame(maxWidth: 200)
-                        .padding()
-                        .background(Color(.systemGray))
-                        .cornerRadius(8)
-                }
-                
-                Button(action: { endGame() }) {
-                    Text("End Game")
-                        .foregroundColor(Color(.white))
-                        .frame(maxWidth: 200)
-                        .padding()
-                        .background(Color(.systemRed))
-                        .cornerRadius(8)
+                HStack {
+                    Button(action: { resetBoard() }) {
+                        Text("Play Again")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(Color(.white))
+                            .frame(maxWidth: 160)
+                            .padding()
+                            .background(Color(.systemBlue))
+                            .cornerRadius(8)
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: { endGame() }) {
+                        Text("End Game")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(Color(.white))
+                            .frame(maxWidth: 160)
+                            .padding()
+                            .background(Color(.systemRed))
+                            .cornerRadius(8)
+                    }
                 }
             }
-            .frame(maxWidth: 600)
-            .padding()
-            .background(.background)
-            .cornerRadius(18)
-            .shadow(color: Color.black.opacity(0.1), radius: 20)
+            .frame(maxWidth: 400)
+            .padding(30)
+            .background(Color(.systemGray6))
+            .cornerRadius(25)
+            .shadow(color: Color.black.opacity(0.25), radius: 20)
         }
         .edgesIgnoringSafeArea(.all)
     }
@@ -371,7 +374,24 @@ struct ContentView: View {
     @State private var winner: Participant? = nil
     
     @State var timeElapsed: Int = 0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    var timer: Timer {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+            timeElapsed += 1
+        }
+    }
+
+    var hours: Int {
+      timeElapsed / 3600
+    }
+
+    var minutes: Int {
+      (timeElapsed % 3600) / 60
+    }
+
+    var seconds: Int {
+      timeElapsed % 60
+    }
     
     var body: some View {
         ZStack {
@@ -409,28 +429,38 @@ struct ContentView: View {
                                 HStack {
                                     Image(systemName: "person.2.fill")
                                     Text("\(playerCount)")
+                                        .foregroundColor(Color(.white))
                                 }
+                                .padding(.trailing, 5)
+                            
                                 HStack {
                                     Image(systemName: "menucard.fill")
                                     Text("\(format?.name ?? "")")
+                                        .foregroundColor(Color(.white))
                                 }
-                                Spacer()
+                                .padding(.trailing, 5)
+                                
                                 HStack {
                                     Image(systemName: "clock.fill")
-                                    Text("\(timeElapsed)")
-                                        .onReceive(timer) { input in
-                                            timeElapsed += 1
-                                        }
+                                    Text("\(hours < 10 ? "0\(hours)" : "\(hours)"):\(minutes < 10 ? "0\(minutes)" : "\(minutes)"):\(seconds < 10 ? "0\(seconds)" : "\(seconds)")")
+                                        .foregroundColor(Color(.white))
                                 }
+                                
                                 Spacer()
+                                
                                 HStack {
                                     Image(systemName: "gearshape.fill")
                                     Text("Settings")
                                 }
                             }
                             .padding()
+                            .background(Color(.systemGray6))
                             .foregroundColor(Color(.systemBlue))
+                            .frame(height: 50)
+                            .cornerRadius(25)
+                            .padding()
                         }
+                        
                         GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
                     }
                     
