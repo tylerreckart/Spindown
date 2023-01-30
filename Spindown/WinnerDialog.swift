@@ -19,30 +19,33 @@ struct WinnerDialog: View {
             
             VStack(spacing: 0) {
                 Text("\(winner!.name) won the game!")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .font(.system(size: 28, weight: .bold))
                     .padding(.bottom, 25)
                 
                 HStack {
                     Button(action: { resetBoard() }) {
-                        Text("Play Again")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(Color(.white))
-                            .frame(maxWidth: 160)
-                            .padding()
-                            .background(Color(.systemBlue))
-                            .cornerRadius(8)
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text("Play Again")
+                        }
+                        .font(.system(size: 16, weight: .black))
+                        .foregroundColor(Color(.white))
+                        .frame(maxWidth: 160)
+                        .padding()
+                        .background(Color(.systemBlue))
+                        .cornerRadius(12)
                     }
                     
                     Spacer()
                     
                     Button(action: { endGame() }) {
                         Text("End Game")
-                            .font(.system(size: 16, weight: .bold))
+                            .font(.system(size: 16, weight: .black))
                             .foregroundColor(Color(.white))
                             .frame(maxWidth: 160)
                             .padding()
-                            .background(Color(.systemRed))
-                            .cornerRadius(8)
+                            .background(Color(.systemPink))
+                            .cornerRadius(12)
                     }
                 }
             }

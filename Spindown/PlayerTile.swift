@@ -18,50 +18,56 @@ struct PlayerTile: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                if (self.loser == false) {
-                    Button(action: {
-                        incrementLifeTotal()
-                    }) {
-                        Rectangle()
-                            .fill(Color(color))
-                            .frame(maxHeight: .infinity)
-                            .cornerRadius(12)
+            ZStack {
+                VStack {
+                    if (self.loser == false) {
+                        Button(action: {
+                            incrementLifeTotal()
+                        }) {
+                            Rectangle()
+                                .fill(.clear)
+                                .frame(maxHeight: .infinity)
+                        }
+                        
+                        Button(action: {
+                            decrementLifeTotal()
+                        }) {
+                            Rectangle()
+                                .fill(.clear)
+                                .frame(maxHeight: .infinity)
+                        }
                     }
+                }
+                
+                VStack {
+                    Spacer()
                     
-                    Button(action: {
-                        decrementLifeTotal()
-                    }) {
-                        Rectangle()
-                            .fill(Color(color))
-                            .frame(maxHeight: .infinity)
-                            .cornerRadius(12)
+                    Text(player.name)
+                        .font(.system(size: 20, weight: .regular))
+                    
+                    if (self.loser == false) {
+                        Text(currentLifeTotal)
+                            .font(.system(size: 64, weight: .black))
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 24))
+                    } else {
+                        Text("Lost")
+                            .font(.system(size: 64, weight: .black))
+                        Image(systemName: "heart.slash")
+                            .font(.system(size: 24))
                     }
+
+                    Spacer()
                 }
             }
-            
-            VStack {
-                Spacer()
-                Text(player.name)
-                    .font(.system(size: 24, weight: .regular, design: .rounded))
-                if (self.loser == false) {
-                    Text(currentLifeTotal)
-                        .font(.system(size: 64, weight: .bold, design: .rounded))
-                } else {
-                    Text("Lost")
-                        .font(.system(size: 64, weight: .bold, design: .rounded))
-                }
-                Spacer()
-            }
-            
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .foregroundColor(.white)
+            .padding()
+            .background(Color(color))
+            .overlay(player.loser ? Color.black.opacity(0.25) : nil)
+            .cornerRadius(25)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .foregroundColor(.white)
-        .padding()
-        .background(Color(color))
-        .overlay(player.loser ? Color.black.opacity(0.25) : nil)
-        .cornerRadius(25)
-        .padding(5)
+        .padding([.leading, .trailing, .top, .bottom], 10)
         .onAppear {
             self.currentLifeTotal = String(player.currentLifeTotal)
         }

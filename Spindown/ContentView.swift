@@ -8,6 +8,94 @@
 import SwiftUI
 import CoreData
 
+struct Toolbar: View {
+    var activePlayer: Participant?
+    var hours: Int
+    var minutes: Int
+    var seconds: Int
+
+    var body: some View {
+        HStack {
+            HStack {
+                Image(systemName: "person.crop.circle")
+                Text("\(activePlayer?.name ?? "")'s Turn")
+                    .foregroundColor(Color(.white))
+            }
+            .padding(.trailing, 10)
+    
+            HStack {
+                Image(systemName: "clock.fill")
+                Text("\(hours < 10 ? "0\(hours)" : "\(hours)"):\(minutes < 10 ? "0\(minutes)" : "\(minutes)"):\(seconds < 10 ? "0\(seconds)" : "\(seconds)")")
+                    .foregroundColor(Color(.white))
+            }
+            
+            Spacer()
+            
+            HStack {
+                Image(systemName: "gearshape.fill")
+                Text("Settings")
+            }
+        }
+        .foregroundColor(Color(.systemBlue))
+        .padding()
+        .padding([.leading, .trailing])
+    }
+}
+
+struct StartingPlayerOverlay: View {
+    @Binding var activePlayer: Participant?
+    
+    var startGame: () -> ()
+    var chooseStartingPlayer: () -> ()
+    
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.9)
+            
+            VStack {
+                Image(systemName: "person.crop.circle")
+                    .font(.system(size: 64))
+                    .padding(.bottom, 5)
+                Text("\(activePlayer?.name ?? "")")
+                    .font(.system(size: 48, weight: .black))
+                    .padding(.bottom, 5)
+                Text("Has been randomly chosen to go first.")
+                    .padding(.bottom)
+                
+                VStack {
+                    Button(action: {
+                        startGame()
+                    }) {
+                        Text("Start Game")
+                            .font(.system(size: 16, weight: .black))
+                            .foregroundColor(Color(.white))
+                            .frame(maxWidth: 250)
+                            .padding()
+                            .background(Color(.systemBlue))
+                            .cornerRadius(12)
+                    }
+                    .padding(.bottom, 5)
+
+                    Button(action: {
+                        chooseStartingPlayer()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text("Choose Another Player")
+                        }
+                        .font(.system(size: 16, weight: .black))
+                        .foregroundColor(Color(.white))
+                        .frame(maxWidth: 250)
+                        .padding()
+                        .background(Color(.systemPink))
+                        .cornerRadius(12)
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var playerCount: Int = 0
     @State private var format: Format? = nil
@@ -16,6 +104,8 @@ struct ContentView: View {
     @State private var players: [Participant] = []
     @State private var numPlayersRemaining: Int = 0
     @State private var winner: Participant? = nil
+    @State private var activePlayer: Participant?
+    @State private var showStartOverlay: Bool = false
     
     @State var timeElapsed: Int = 0
 
@@ -69,49 +159,28 @@ struct ContentView: View {
                 ZStack {
                     VStack(spacing: 0) {
                         if (self.players.count > 0) {
-                            HStack {
-                                HStack {
-                                    Image(systemName: "person.2.fill")
-                                    Text("\(playerCount)")
-                                        .foregroundColor(Color(.white))
-                                }
-                                .padding(.trailing, 5)
-                            
-                                HStack {
-                                    Image(systemName: "menucard.fill")
-                                    Text("\(format?.name ?? "")")
-                                        .foregroundColor(Color(.white))
-                                }
-                                .padding(.trailing, 5)
-                                
-                                HStack {
-                                    Image(systemName: "clock.fill")
-                                    Text("\(hours < 10 ? "0\(hours)" : "\(hours)"):\(minutes < 10 ? "0\(minutes)" : "\(minutes)"):\(seconds < 10 ? "0\(seconds)" : "\(seconds)")")
-                                        .foregroundColor(Color(.white))
-                                }
-                                
-                                Spacer()
-                                
-                                HStack {
-                                    Image(systemName: "gearshape.fill")
-                                    Text("Settings")
-                                }
-                            }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .foregroundColor(Color(.systemBlue))
-                            .frame(height: 50)
-                            .cornerRadius(25)
-                            .padding()
+                            Toolbar(
+                                activePlayer: self.activePlayer,
+                                hours: hours,
+                                minutes: minutes,
+                                seconds: seconds
+                            )
                         }
-                        
-                        GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+                        GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer)
                     }
                     
                     if (self.winner != nil) {
                         WinnerDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
                     }
                 }
+            }
+            
+            if (self.showStartOverlay == true) {
+                StartingPlayerOverlay(
+                    activePlayer: $activePlayer,
+                    startGame: startGame,
+                    chooseStartingPlayer: chooseStartingPlayer
+                )
             }
         }
         .onChange(of: setupStep) { newState in
@@ -132,6 +201,9 @@ struct ContentView: View {
                     player.currentLifeTotal = format?.startingLifeTotal ?? 20
                     self.players.append(player)
                 }
+                
+                // Select the starting player.
+                chooseStartingPlayer()
             } else {
                 self.players = []
             }
@@ -165,6 +237,22 @@ struct ContentView: View {
         self.playerCount = numPlayers
     }
     
+    private func chooseStartingPlayer() {
+        self.activePlayer = self.players.randomElement()
+        self.showStartOverlay = true
+    }
+    
+    private func startGame() {
+        self.showStartOverlay = false
+        
+        _ = timer
+    }
+    
+    private func resetTimer() {
+        timer.invalidate()
+        self.timeElapsed = 0
+    }
+    
     private func resetBoard() {
         let remappedPlayers = players.map { (player: Participant) -> Participant in
             let mutableplayer = player
@@ -180,16 +268,19 @@ struct ContentView: View {
             self.playerCount = remappedPlayers.count
             self.numPlayersRemaining = remappedPlayers.count
             self.winner = nil
+            resetTimer()
         }
     }
     
     private func endGame() {
+        // Reset game state.
         self.setupComplete = false
         self.format = nil
         self.players = []
         self.playerCount = 0
         self.numPlayersRemaining = 0
         self.winner = nil
+        resetTimer()
     }
 }
 

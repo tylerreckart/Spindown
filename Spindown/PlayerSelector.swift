@@ -19,9 +19,9 @@ struct PlayerSelector: View {
             VStack {
                 VStack {
                     Text("Players")
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                        .font(.system(size: 32, weight: .black))
                     Text("Choose the number of players")
-                        .font(.system(size: 14, design: .rounded))
+                        .font(.system(size: 14))
                         .foregroundColor(Color(.systemGray))
                 }
 
@@ -63,7 +63,7 @@ struct PlayerSelector: View {
                         setNumPlayers(6)
                         setupStep += 1
                     }) {
-                        MenuOption(text: "6", textColor: .white, background: .systemRed)
+                        MenuOption(text: "6", textColor: .white, background: .systemPink)
                     }
                 }
                 

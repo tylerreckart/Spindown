@@ -28,9 +28,9 @@ struct FormatSelector: View {
             VStack {
                 VStack {
                     Text("Format")
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                        .font(.system(size: 32, weight: .black))
                     Text("Choose a format or create your own")
-                        .font(.system(size: 14, design: .rounded))
+                        .font(.system(size: 14))
                         .foregroundColor(Color(.systemGray))
                 }
 

@@ -13,7 +13,7 @@ struct MenuOptionOutlined: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 16, weight: .bold, design: .rounded))
+            .font(.system(size: 16, weight: .black))
             .frame(maxWidth: .infinity, maxHeight: 40)
             .foregroundColor(.primary)
             .padding()
@@ -30,7 +30,7 @@ struct MenuOption: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 16, weight: .black, design: .rounded))
+            .font(.system(size: 16, weight: .black))
             .foregroundColor(Color(textColor))
             .frame(maxWidth: .infinity, maxHeight: 40)
             .foregroundColor(.primary)
