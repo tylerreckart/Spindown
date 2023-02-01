@@ -18,61 +18,74 @@ struct PlayerSelector: View {
             
             VStack {
                 VStack {
-                    Text("Players")
-                        .font(.system(size: 32, weight: .black))
-                    Text("Choose the number of players")
-                        .font(.system(size: 14))
-                        .foregroundColor(Color(.systemGray))
+                    VStack {
+                        Text("Players")
+                            .font(.system(size: 32, weight: .black))
+                        Text("Choose the number of players")
+                            .font(.system(size: 16))
+                            .foregroundColor(Color(.systemGray))
+                    }
+                    .padding(.bottom)
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            setNumPlayers(1)
+                            setupStep += 1
+                        }) {
+                            NumberMenuOption(text: "1", textColor: .white, background: .systemGray6)
+                        }.padding()
+                        
+                        Button(action: {
+                            setNumPlayers(2)
+                            setupStep += 1
+                        }) {
+                            NumberMenuOption(text: "2", textColor: .white, background: .systemGray6)
+                        }.padding()
+                        
+                        Button(action: {
+                            setNumPlayers(3)
+                            setupStep += 1
+                        }) {
+                            NumberMenuOption(text: "3", textColor: .white, background: .systemGray6)
+                        }.padding()
+                        
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            setNumPlayers(4)
+                            setupStep += 1
+                        }) {
+                            NumberMenuOption(text: "4", textColor: .white, background: .systemGray6)
+                        }.padding()
+                        
+                        Button(action: {
+                            setNumPlayers(5)
+                            setupStep += 1
+                        }) {
+                            NumberMenuOption(text: "5", textColor: .white, background: .systemGray6)
+                        }.padding()
+                        
+                        Button(action: {
+                            setNumPlayers(6)
+                            setupStep += 1
+                        }) {
+                            NumberMenuOption(text: "6", textColor: .white, background: .systemGray6)
+                        }.padding()
+                        
+                        Spacer()
+                    }
                 }
-
-                HStack {
-                    Button(action: {
-                        setNumPlayers(1)
-                        setupStep += 1
-                    }) {
-                        MenuOption(text: "1", textColor: .white, background: .systemPurple)
-                    }
-                    Button(action: {
-                        setNumPlayers(2)
-                        setupStep += 1
-                    }) {
-                        MenuOption(text: "2", textColor: .white, background: .systemBlue)
-                    }
-                    Button(action: {
-                        setNumPlayers(3)
-                        setupStep += 1
-                    }) {
-                        MenuOption(text: "3", textColor: .white, background: .systemGreen)
-                    }
-                }
+                .padding()
+                .cornerRadius(18)
+                .shadow(color: Color.black.opacity(0.1), radius: 20)
                 
-                HStack {
-                    Button(action: {
-                        setNumPlayers(4)
-                        setupStep += 1
-                    }) {
-                        MenuOption(text: "4", textColor: .white, background: .systemYellow)
-                    }
-                    Button(action: {
-                        setNumPlayers(5)
-                        setupStep += 1
-                    }) {
-                        MenuOption(text: "5", textColor: .white, background: .systemOrange)
-                    }
-                    Button(action: {
-                        setNumPlayers(6)
-                        setupStep += 1
-                    }) {
-                        MenuOption(text: "6", textColor: .white, background: .systemPink)
-                    }
-                }
-                
-                MenuOptionOutlined(text: "Select Saved Players")
+                MenuOptionOutlined(text: "Custom Players")
+                    .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: 400)
-            .padding()
-            .cornerRadius(18)
-            .shadow(color: Color.black.opacity(0.1), radius: 20)
+            .frame(maxWidth: 480)
         }
         .edgesIgnoringSafeArea(.all)
     }

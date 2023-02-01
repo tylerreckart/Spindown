@@ -19,9 +19,26 @@ struct MenuOptionOutlined: View {
             .padding()
             .background(Color(.systemGray6))
             .cornerRadius(12)
-            .padding(5)
     }
 }
+
+struct NumberMenuOption: View {
+    var text: String
+    var textColor: UIColor = .white
+    var background: UIColor
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 24, weight: .black))
+            .foregroundColor(Color(textColor))
+            .frame(width: 100, height: 100)
+            .foregroundColor(.primary)
+            .padding()
+            .background(Color(background))
+            .cornerRadius(12)
+    }
+}
+
 
 struct MenuOption: View {
     var text: String
@@ -37,6 +54,5 @@ struct MenuOption: View {
             .padding()
             .background(Color(background))
             .cornerRadius(12)
-            .padding(5)
     }
 }

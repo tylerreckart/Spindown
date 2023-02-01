@@ -8,94 +8,6 @@
 import SwiftUI
 import CoreData
 
-struct Toolbar: View {
-    var activePlayer: Participant?
-    var hours: Int
-    var minutes: Int
-    var seconds: Int
-
-    var body: some View {
-        HStack {
-            HStack {
-                Image(systemName: "person.crop.circle")
-                Text("\(activePlayer?.name ?? "")'s Turn")
-                    .foregroundColor(Color(.white))
-            }
-            .padding(.trailing, 10)
-    
-            HStack {
-                Image(systemName: "clock.fill")
-                Text("\(hours < 10 ? "0\(hours)" : "\(hours)"):\(minutes < 10 ? "0\(minutes)" : "\(minutes)"):\(seconds < 10 ? "0\(seconds)" : "\(seconds)")")
-                    .foregroundColor(Color(.white))
-            }
-            
-            Spacer()
-            
-            HStack {
-                Image(systemName: "gearshape.fill")
-                Text("Settings")
-            }
-        }
-        .foregroundColor(Color(.systemBlue))
-        .padding()
-        .padding([.leading, .trailing])
-    }
-}
-
-struct StartingPlayerOverlay: View {
-    @Binding var activePlayer: Participant?
-    
-    var startGame: () -> ()
-    var chooseStartingPlayer: () -> ()
-    
-    var body: some View {
-        ZStack {
-            Color.black.opacity(0.9)
-            
-            VStack {
-                Image(systemName: "person.crop.circle")
-                    .font(.system(size: 64))
-                    .padding(.bottom, 5)
-                Text("\(activePlayer?.name ?? "")")
-                    .font(.system(size: 48, weight: .black))
-                    .padding(.bottom, 5)
-                Text("Has been randomly chosen to go first.")
-                    .padding(.bottom)
-                
-                VStack {
-                    Button(action: {
-                        startGame()
-                    }) {
-                        Text("Start Game")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(Color(.white))
-                            .frame(maxWidth: 250)
-                            .padding()
-                            .background(Color(.systemBlue))
-                            .cornerRadius(12)
-                    }
-                    .padding(.bottom, 5)
-
-                    Button(action: {
-                        chooseStartingPlayer()
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.clockwise")
-                            Text("Choose Another Player")
-                        }
-                        .font(.system(size: 16, weight: .black))
-                        .foregroundColor(Color(.white))
-                        .frame(maxWidth: 250)
-                        .padding()
-                        .background(Color(.systemPink))
-                        .cornerRadius(12)
-                    }
-                }
-            }
-        }
-    }
-}
-
 struct ContentView: View {
     @State private var playerCount: Int = 0
     @State private var format: Format? = nil
@@ -106,26 +18,9 @@ struct ContentView: View {
     @State private var winner: Participant? = nil
     @State private var activePlayer: Participant?
     @State private var showStartOverlay: Bool = false
-    
-    @State var timeElapsed: Int = 0
-
-    var timer: Timer {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-            timeElapsed += 1
-        }
-    }
-
-    var hours: Int {
-      timeElapsed / 3600
-    }
-
-    var minutes: Int {
-      (timeElapsed % 3600) / 60
-    }
-
-    var seconds: Int {
-      timeElapsed % 60
-    }
+    // Next turn overlay.
+    @State private var turnCount: Int = 0
+    @State private var showNextTurnOverlay: Bool = false
     
     var body: some View {
         ZStack {
@@ -134,14 +29,8 @@ struct ContentView: View {
                     VStack {
                         Spacer()
                         
-                        if (self.setupStep == 0) {
-                            Button(action: {
-                                self.setupStep += 1
-                            }) {
-                                Text("Start Game")
-                            }
-                        }
-                        
+                        UIButton(text: "Setup Game", symbol: nil, color: .systemBlue, action: { self.setupStep += 1 })
+
                         Spacer()
                     }
                 }
@@ -157,17 +46,7 @@ struct ContentView: View {
             
             if (self.setupComplete) {
                 ZStack {
-                    VStack(spacing: 0) {
-                        if (self.players.count > 0) {
-                            Toolbar(
-                                activePlayer: self.activePlayer,
-                                hours: hours,
-                                minutes: minutes,
-                                seconds: seconds
-                            )
-                        }
-                        GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer)
-                    }
+                    GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer)
                     
                     if (self.winner != nil) {
                         WinnerDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
@@ -222,6 +101,18 @@ struct ContentView: View {
                 self.winner = winningPlayer
             }
         }
+        .onChange(of: activePlayer) { newState in
+            if (self.showStartOverlay != true) {
+                self.turnCount += 1
+                self.showNextTurnOverlay = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    print("NextTurnOverlay async dismiss from ContentView")
+                    self.showNextTurnOverlay = false
+                }
+            }
+        }
+        .edgesIgnoringSafeArea(.all)
     }
     
     private func selectFormat(_ selectedFormat: Format) -> Void {
@@ -244,13 +135,6 @@ struct ContentView: View {
     
     private func startGame() {
         self.showStartOverlay = false
-        
-        _ = timer
-    }
-    
-    private func resetTimer() {
-        timer.invalidate()
-        self.timeElapsed = 0
     }
     
     private func resetBoard() {
@@ -268,7 +152,6 @@ struct ContentView: View {
             self.playerCount = remappedPlayers.count
             self.numPlayersRemaining = remappedPlayers.count
             self.winner = nil
-            resetTimer()
         }
     }
     
@@ -280,7 +163,6 @@ struct ContentView: View {
         self.playerCount = 0
         self.numPlayersRemaining = 0
         self.winner = nil
-        resetTimer()
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayerTile: View {
     var player: Participant
     var color: UIColor
-    
+
     @Binding var numPlayersRemaining: Int
     
     @State private var currentLifeTotal: String = "0"
@@ -18,56 +18,44 @@ struct PlayerTile: View {
     
     var body: some View {
         ZStack {
-            ZStack {
-                VStack {
-                    if (self.loser == false) {
-                        Button(action: {
-                            incrementLifeTotal()
-                        }) {
-                            Rectangle()
-                                .fill(.clear)
-                                .frame(maxHeight: .infinity)
-                        }
-                        
-                        Button(action: {
-                            decrementLifeTotal()
-                        }) {
-                            Rectangle()
-                                .fill(.clear)
-                                .frame(maxHeight: .infinity)
-                        }
-                    }
+            VStack(spacing: 0) {
+                Button(action: {
+                    incrementLifeTotal()
+                }) {
+                    Rectangle()
+                        .fill(Color(color))
                 }
                 
-                VStack {
-                    Spacer()
-                    
-                    Text(player.name)
-                        .font(.system(size: 20, weight: .regular))
-                    
-                    if (self.loser == false) {
-                        Text(currentLifeTotal)
-                            .font(.system(size: 64, weight: .black))
-                        Image(systemName: "heart.fill")
-                            .font(.system(size: 24))
-                    } else {
-                        Text("Lost")
-                            .font(.system(size: 64, weight: .black))
-                        Image(systemName: "heart.slash")
-                            .font(.system(size: 24))
-                    }
-
-                    Spacer()
+                Button(action: {
+                    decrementLifeTotal()
+                }) {
+                    Rectangle()
+                        .fill(Color(color))
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            VStack {
+                Button(action: {}) {
+                    VStack {
+                        Text(player.name)
+                            .font(.system(size: 20, weight: .regular))
+                        
+                        if (self.loser == false) {
+                            Text(currentLifeTotal)
+                                .font(.system(size: 64, weight: .black))
+                            Image(systemName: "heart.fill")
+                                .font(.system(size: 24))
+                        } else {
+                            Text("Lost")
+                                .font(.system(size: 64, weight: .black))
+                            Image(systemName: "heart.slash")
+                                .font(.system(size: 24))
+                        }
+                    }
+                }
+            }
             .foregroundColor(.white)
-            .padding()
-            .background(Color(color))
-            .overlay(player.loser ? Color.black.opacity(0.25) : nil)
-            .cornerRadius(25)
         }
-        .padding([.leading, .trailing, .top, .bottom], 10)
         .onAppear {
             self.currentLifeTotal = String(player.currentLifeTotal)
         }
