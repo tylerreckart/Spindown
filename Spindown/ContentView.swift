@@ -8,6 +8,34 @@
 import SwiftUI
 import CoreData
 
+struct Hexagon: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let radius = min(rect.size.height, rect.size.width) / 2
+        let corners = corners(center: center, radius: radius)
+        path.move(to: corners[0])
+        corners[1...5].forEach() { point in
+            path.addLine(to: point)
+        }
+        path.closeSubpath()
+        return path
+    }
+
+    func corners(center: CGPoint, radius: CGFloat) -> [CGPoint] {
+        var points: [CGPoint] = []
+        for i in (0...5) {
+          let angle = CGFloat.pi / 3 * CGFloat(i)
+          let point = CGPoint(
+            x: center.x + radius * cos(angle),
+            y: center.y + radius * sin(angle)
+          )
+          points.append(point)
+        }
+        return points
+    }
+}
+
 struct ContentView: View {
     @State private var playerCount: Int = 0
     @State private var format: Format? = nil
@@ -18,9 +46,7 @@ struct ContentView: View {
     @State private var winner: Participant? = nil
     @State private var activePlayer: Participant?
     @State private var showStartOverlay: Bool = false
-    // Next turn overlay.
-    @State private var turnCount: Int = 0
-    @State private var showNextTurnOverlay: Bool = false
+    @State private var gameBoardOpacity: CGFloat = 0
     
     var body: some View {
         ZStack {
@@ -33,6 +59,7 @@ struct ContentView: View {
 
                         Spacer()
                     }
+                    .frame(maxWidth: 280)
                 }
                 
                 if (self.setupStep == 1) {
@@ -47,6 +74,7 @@ struct ContentView: View {
             if (self.setupComplete) {
                 ZStack {
                     GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer)
+                        .opacity(gameBoardOpacity)
                     
                     if (self.winner != nil) {
                         WinnerDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
@@ -69,6 +97,10 @@ struct ContentView: View {
                 self.setupStep = 0
                 // Set completion state for board draw.
                 self.setupComplete = true
+
+                withAnimation {
+                    self.gameBoardOpacity = 1
+                }
             }
         }
         .onChange(of: setupComplete) { newState in
@@ -78,6 +110,7 @@ struct ContentView: View {
                     let player = Participant()
                     player.name = "Player \(count)"
                     player.currentLifeTotal = format?.startingLifeTotal ?? 20
+                    player.color = colors[count - 1]
                     self.players.append(player)
                 }
                 
@@ -101,17 +134,6 @@ struct ContentView: View {
                 self.winner = winningPlayer
             }
         }
-        .onChange(of: activePlayer) { newState in
-            if (self.showStartOverlay != true) {
-                self.turnCount += 1
-                self.showNextTurnOverlay = true
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                    print("NextTurnOverlay async dismiss from ContentView")
-                    self.showNextTurnOverlay = false
-                }
-            }
-        }
         .edgesIgnoringSafeArea(.all)
     }
     
@@ -130,7 +152,10 @@ struct ContentView: View {
     
     private func chooseStartingPlayer() {
         self.activePlayer = self.players.randomElement()
-        self.showStartOverlay = true
+        
+        withAnimation(.easeIn(duration: 0.5)) {
+            self.showStartOverlay = true
+        }
     }
     
     private func startGame() {
@@ -138,31 +163,26 @@ struct ContentView: View {
     }
     
     private func resetBoard() {
-        let remappedPlayers = players.map { (player: Participant) -> Participant in
-            let mutableplayer = player
-            mutableplayer.currentLifeTotal = format?.startingLifeTotal ?? 20
-            mutableplayer.loser = false
-            return mutableplayer
+        for player in self.players {
+            player.currentLifeTotal = format?.startingLifeTotal ?? 20
+            player.loser = false
         }
-
-        self.players = []
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
-            self.players = remappedPlayers
-            self.playerCount = remappedPlayers.count
-            self.numPlayersRemaining = remappedPlayers.count
-            self.winner = nil
-        }
+        self.winner = nil
     }
     
     private func endGame() {
-        // Reset game state.
-        self.setupComplete = false
-        self.format = nil
-        self.players = []
-        self.playerCount = 0
-        self.numPlayersRemaining = 0
-        self.winner = nil
+        withAnimation {
+            self.gameBoardOpacity = 0
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.setupComplete = false
+            self.format = nil
+            self.playerCount = 0
+            self.numPlayersRemaining = 0
+            self.winner = nil
+        }
     }
 }
 

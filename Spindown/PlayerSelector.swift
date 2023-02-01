@@ -30,13 +30,6 @@ struct PlayerSelector: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            setNumPlayers(1)
-                            setupStep += 1
-                        }) {
-                            NumberMenuOption(text: "1", textColor: .white, background: .systemGray6)
-                        }.padding()
-                        
-                        Button(action: {
                             setNumPlayers(2)
                             setupStep += 1
                         }) {
@@ -51,9 +44,7 @@ struct PlayerSelector: View {
                         }.padding()
                         
                         Spacer()
-                    }
-                    HStack {
-                        Spacer()
+
                         Button(action: {
                             setNumPlayers(4)
                             setupStep += 1

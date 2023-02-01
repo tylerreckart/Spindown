@@ -26,13 +26,16 @@ struct FormatSelector: View {
             Color.black.opacity(0.2)
             
             VStack {
+                Spacer()
+
                 VStack {
                     Text("Format")
-                        .font(.system(size: 32, weight: .black))
-                    Text("Choose a format or create your own")
-                        .font(.system(size: 14))
+                        .font(.system(size: 64, weight: .black))
+                    Text("Select a format or create your own.")
+                        .font(.system(size: 20))
                         .foregroundColor(Color(.systemGray))
                 }
+                .padding(.bottom)
 
                 HStack {
                     Button(action: {
@@ -69,16 +72,14 @@ struct FormatSelector: View {
                         MenuOption(text: "Pioneer", background: .systemGray5)
                     }
                     Button(action: {
-                        setFormat(Format(name: "Draft", startingLifeTotal: 20))
                         setupStep += 1
                     }) {
-                        MenuOption(text: "Draft", background: .systemGray5)
+                        MenuOptionOutlined(text: "Custom Format")
                     }
                 }
                 
-                MenuOptionOutlined(text: "Custom Format")
+                Spacer()
             }
-            .frame(maxWidth: 600)
             .padding()
             .cornerRadius(18)
             .shadow(color: Color.black.opacity(0.1), radius: 20)

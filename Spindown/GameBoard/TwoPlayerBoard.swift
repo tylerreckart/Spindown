@@ -13,22 +13,16 @@ struct TwoPlayerGameBoard: View {
 
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(Array(players.enumerated()), id: \.offset) { index, player in
-                if (index == 0) {
-                    PlayerTile(
-                        player: player,
-                        color: colors[index],
-                        numPlayersRemaining: $numPlayersRemaining
-                    )
-                } else {
-                    PlayerTile(
-                        player: player,
-                        color: colors[index],
-                        numPlayersRemaining: $numPlayersRemaining
-                    )
-                    .rotationEffect(Angle(degrees: 180))
-                }
-            }
+            PlayerTile(
+                player: $players[0],
+                color: colors[0],
+                numPlayersRemaining: $numPlayersRemaining
+            )
+            PlayerTile(
+                player: $players[1],
+                color: colors[1],
+                numPlayersRemaining: $numPlayersRemaining
+            )
         }
         .edgesIgnoringSafeArea(.all)
     }

@@ -13,12 +13,17 @@ struct MenuOptionOutlined: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 16, weight: .black))
-            .frame(maxWidth: .infinity, maxHeight: 40)
+            .font(.system(size: 20, weight: .black))
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity, maxHeight: 80)
             .foregroundColor(.primary)
             .padding()
-            .background(Color(.systemGray6))
-            .cornerRadius(12)
+            .background(
+                Color(.systemGray6)
+                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+            )
+            .cornerRadius(8)
+            .padding()
     }
 }
 
@@ -47,12 +52,16 @@ struct MenuOption: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 16, weight: .black))
+            .font(.system(size: 20, weight: .black))
             .foregroundColor(Color(textColor))
-            .frame(maxWidth: .infinity, maxHeight: 40)
+            .frame(maxWidth: .infinity, maxHeight: 80)
             .foregroundColor(.primary)
             .padding()
-            .background(Color(background))
-            .cornerRadius(12)
+            .background(
+                Color(.systemGray3)
+                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+            )
+            .cornerRadius(8)
+            .padding()
     }
 }

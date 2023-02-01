@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		DB41B199298AC29E0000EC42 /* StartingPlayerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerOverlay.swift */; };
-		DB41B19B298AC2AB0000EC42 /* NextTurnOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19A298AC2AB0000EC42 /* NextTurnOverlay.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
 		DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */; };
 		DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A1298AD8C60000EC42 /* FourPlayerBoard.swift */; };
 		DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A3298AD9770000EC42 /* FivePlayerBoard.swift */; };
 		DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A5298ADA3C0000EC42 /* SixPlayerBoard.swift */; };
+		DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A8298AF4B00000EC42 /* Button.swift */; };
 		DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F542986E2CB0023A84B /* SpindownApp.swift */; };
 		DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F562986E2CB0023A84B /* Persistence.swift */; };
 		DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */; };
@@ -31,12 +31,12 @@
 
 /* Begin PBXFileReference section */
 		DB41B198298AC29E0000EC42 /* StartingPlayerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerOverlay.swift; sourceTree = "<group>"; };
-		DB41B19A298AC2AB0000EC42 /* NextTurnOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTurnOverlay.swift; sourceTree = "<group>"; };
 		DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreePlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B1A1298AD8C60000EC42 /* FourPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B1A3298AD9770000EC42 /* FivePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivePlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B1A5298ADA3C0000EC42 /* SixPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixPlayerBoard.swift; sourceTree = "<group>"; };
+		DB41B1A8298AF4B00000EC42 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		DB8B8F512986E2CB0023A84B /* Spindown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spindown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8B8F542986E2CB0023A84B /* SpindownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpindownApp.swift; sourceTree = "<group>"; };
 		DB8B8F562986E2CB0023A84B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -68,6 +68,9 @@
 		DB41B19C298AD7350000EC42 /* GameBoard */ = {
 			isa = PBXGroup;
 			children = (
+				DB41B198298AC29E0000EC42 /* StartingPlayerOverlay.swift */,
+				DB8B8F68298766BD0023A84B /* WinnerDialog.swift */,
+				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
 				DB8B8F6A298766DD0023A84B /* GameBoard.swift */,
 				DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */,
 				DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */,
@@ -76,6 +79,14 @@
 				DB41B1A5298ADA3C0000EC42 /* SixPlayerBoard.swift */,
 			);
 			path = GameBoard;
+			sourceTree = "<group>";
+		};
+		DB41B1A7298AF4A30000EC42 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DB41B1A8298AF4B00000EC42 /* Button.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		DB8B8F482986E2CB0023A84B = {
@@ -97,14 +108,11 @@
 		DB8B8F532986E2CB0023A84B /* Spindown */ = {
 			isa = PBXGroup;
 			children = (
+				DB41B1A7298AF4A30000EC42 /* Components */,
 				DB41B19C298AD7350000EC42 /* GameBoard */,
 				DB8B8F542986E2CB0023A84B /* SpindownApp.swift */,
 				DB8B8F562986E2CB0023A84B /* Persistence.swift */,
 				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
-				DB8B8F68298766BD0023A84B /* WinnerDialog.swift */,
-				DB41B198298AC29E0000EC42 /* StartingPlayerOverlay.swift */,
-				DB41B19A298AC2AB0000EC42 /* NextTurnOverlay.swift */,
-				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
 				DB8B8F6E298767390023A84B /* Participant.swift */,
 				DB8B8F70298767670023A84B /* FormatSelector.swift */,
 				DB8B8F72298767890023A84B /* PlayerSelector.swift */,
@@ -200,6 +208,7 @@
 				DB41B199298AC29E0000EC42 /* StartingPlayerOverlay.swift in Sources */,
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
 				DB8B8F71298767670023A84B /* FormatSelector.swift in Sources */,
+				DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */,
 				DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */,
 				DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */,
 				DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */,
@@ -210,7 +219,6 @@
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
 				DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */,
 				DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */,
-				DB41B19B298AC2AB0000EC42 /* NextTurnOverlay.swift in Sources */,
 				DB8B8F75298768010023A84B /* MenuOptions.swift in Sources */,
 				DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */,
 			);

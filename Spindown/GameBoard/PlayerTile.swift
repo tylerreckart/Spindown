@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PlayerTile: View {
-    var player: Participant
+    @Binding var player: Participant
+
     var color: UIColor
 
     @Binding var numPlayersRemaining: Int
@@ -39,18 +40,10 @@ struct PlayerTile: View {
                     VStack {
                         Text(player.name)
                             .font(.system(size: 20, weight: .regular))
-                        
-                        if (self.loser == false) {
-                            Text(currentLifeTotal)
-                                .font(.system(size: 64, weight: .black))
-                            Image(systemName: "heart.fill")
-                                .font(.system(size: 24))
-                        } else {
-                            Text("Lost")
-                                .font(.system(size: 64, weight: .black))
-                            Image(systemName: "heart.slash")
-                                .font(.system(size: 24))
-                        }
+                        Text("\(player.currentLifeTotal)")
+                            .font(.system(size: 64, weight: .black))
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 24))
                     }
                 }
             }
@@ -67,6 +60,13 @@ struct PlayerTile: View {
         player.currentLifeTotal = nextLifeTotal
         print("increment life total: \(nextLifeTotal)")
         self.currentLifeTotal = String(nextLifeTotal)
+        
+        if (currentLifeTotal == 0 && nextLifeTotal > 0) {
+            player.loser = false
+            self.loser = false
+            numPlayersRemaining = numPlayersRemaining + 1
+            print("\(player.name) re-entered the game")
+        }
     }
     
     func decrementLifeTotal() -> Void {

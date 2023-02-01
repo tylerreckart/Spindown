@@ -21,28 +21,43 @@ struct GameBoard: View {
     @Binding var numPlayersRemaining: Int
     @Binding var activePlayer: Participant?
     
+    @State private var opacity: CGFloat = 0
+    @State private var scale: CGFloat = 0.75
+    
     var body: some View {
         ZStack {
-            if (players.count > 0) {
-                if (players.count == 2) {
-                    TwoPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
-                } else if (players.count == 3) {
-                    ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
-                } else if (players.count == 4) {
-                    FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
-                } else if (players.count == 5) {
-                    FivePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
-                } else if (players.count == 6) {
-                    SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
-                }
+            if (players.count == 2) {
+                TwoPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+            } else if (players.count == 3) {
+                ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+            } else if (players.count == 4) {
+                FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+            } else if (players.count == 5) {
+                FivePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+            } else if (players.count == 6) {
+                SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
             }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+
+                    Button(action: {}) {
+                        Image(systemName: "gearshape.circle.fill")
+                            .font(.system(size: 32))
+                            .foregroundColor(.white)
+                    }
+                }
+                .padding()
+            }
+            .edgesIgnoringSafeArea(.all)
         }
-        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded({ value in chooseNextPlayer() }))
+        .opacity(opacity)
         .onAppear {
-            UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
-            AppDelegate.orientationLock = .landscapeLeft
-        }.onDisappear {
-            AppDelegate.orientationLock = .all
+            withAnimation(.easeIn(duration: 0.5)) {
+                self.opacity = 1
+            }
         }
     }
                  
