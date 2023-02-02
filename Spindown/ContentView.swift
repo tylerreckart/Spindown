@@ -8,34 +8,6 @@
 import SwiftUI
 import CoreData
 
-struct Hexagon: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        let radius = min(rect.size.height, rect.size.width) / 2
-        let corners = corners(center: center, radius: radius)
-        path.move(to: corners[0])
-        corners[1...5].forEach() { point in
-            path.addLine(to: point)
-        }
-        path.closeSubpath()
-        return path
-    }
-
-    func corners(center: CGPoint, radius: CGFloat) -> [CGPoint] {
-        var points: [CGPoint] = []
-        for i in (0...5) {
-          let angle = CGFloat.pi / 3 * CGFloat(i)
-          let point = CGPoint(
-            x: center.x + radius * cos(angle),
-            y: center.y + radius * sin(angle)
-          )
-          points.append(point)
-        }
-        return points
-    }
-}
-
 struct ContentView: View {
     @State private var playerCount: Int = 0
     @State private var format: Format? = nil
@@ -52,14 +24,7 @@ struct ContentView: View {
         ZStack {
             if (self.setupComplete == false) {
                 if (self.setupStep == 0) {
-                    VStack {
-                        Spacer()
-                        
-                        UIButton(text: "Setup Game", symbol: nil, color: .systemBlue, action: { self.setupStep += 1 })
-
-                        Spacer()
-                    }
-                    .frame(maxWidth: 280)
+                    SplashScreen(setupStep: $setupStep)
                 }
                 
                 if (self.setupStep == 1) {
@@ -83,13 +48,14 @@ struct ContentView: View {
             }
             
             if (self.showStartOverlay == true) {
-                StartingPlayerOverlay(
+                StartingPlayerDialog(
                     activePlayer: $activePlayer,
                     startGame: startGame,
                     chooseStartingPlayer: chooseStartingPlayer
                 )
             }
         }
+        .background(.black)
         .onChange(of: setupStep) { newState in
             print("setup step change handler")
             if (setupStep == 3) {

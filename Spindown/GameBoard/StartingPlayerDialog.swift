@@ -1,5 +1,5 @@
 //
-//  StartingPlayerOverlay.swift
+//  StartingPlayerDialog.swift
 //  Spindown
 //
 //  Created by Tyler Reckart on 2/1/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StartingPlayerOverlay: View {
+struct StartingPlayerDialog: View {
     @Binding var activePlayer: Participant?
     
     var startGame: () -> ()
@@ -25,6 +25,7 @@ struct StartingPlayerOverlay: View {
                 VStack(spacing: 0) {
                     Text("\(activePlayer?.name ?? "")")
                         .font(.system(size: 28, weight: .black))
+                        .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 10)
 

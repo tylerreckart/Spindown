@@ -16,7 +16,7 @@ struct MenuOptionOutlined: View {
             .font(.system(size: 20, weight: .black))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, maxHeight: 80)
-            .foregroundColor(.primary)
+            .foregroundColor(.white)
             .padding()
             .background(
                 Color(.systemGray6)
@@ -37,7 +37,7 @@ struct NumberMenuOption: View {
             .font(.system(size: 24, weight: .black))
             .foregroundColor(Color(textColor))
             .frame(width: 100, height: 100)
-            .foregroundColor(.primary)
+            .foregroundColor(.white)
             .padding()
             .background(Color(background))
             .cornerRadius(12)
@@ -55,7 +55,7 @@ struct MenuOption: View {
             .font(.system(size: 20, weight: .black))
             .foregroundColor(Color(textColor))
             .frame(maxWidth: .infinity, maxHeight: 80)
-            .foregroundColor(.primary)
+            .foregroundColor(.white)
             .padding()
             .background(
                 Color(.systemGray3)

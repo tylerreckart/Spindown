@@ -26,7 +26,13 @@ struct GameBoard: View {
     
     var body: some View {
         ZStack {
-            if (players.count == 2) {
+            if (players.count == 1) {
+                PlayerTile(
+                    player: $players[0],
+                    color: colors[0],
+                    numPlayersRemaining: $numPlayersRemaining
+                )
+            } else if (players.count == 2) {
                 TwoPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
             } else if (players.count == 3) {
                 ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
@@ -43,10 +49,13 @@ struct GameBoard: View {
                 HStack {
                     Spacer()
 
-                    Button(action: {}) {
+                    Button(action: {
+                        print("render gameboard settings modal")
+                    }) {
                         Image(systemName: "gearshape.circle.fill")
-                            .font(.system(size: 32))
+                            .font(.system(size: 48))
                             .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.1), radius: 10)
                     }
                 }
                 .padding()

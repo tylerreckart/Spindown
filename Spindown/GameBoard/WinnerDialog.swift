@@ -25,6 +25,7 @@ struct WinnerDialog: View {
                 VStack(spacing: 0) {
                     Text("\(winner!.name) won the game!")
                         .font(.system(size: 28, weight: .black))
+                        .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 5)
 

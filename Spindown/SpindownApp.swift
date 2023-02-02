@@ -14,6 +14,7 @@ struct SpindownApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
+                .background(.black)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
