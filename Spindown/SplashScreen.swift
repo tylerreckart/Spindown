@@ -34,7 +34,7 @@ struct SplashScreen: View {
                 Spacer()
                     
                 VStack(spacing: 20) {
-                    UIButton(text: "Setup Game", symbol: "dice.fill", color: .systemBlue, action: { self.setupStep += 1 })
+                    UIButton(text: "Setup Game", symbol: "dice.fill", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: { self.setupStep += 1 })
                         .frame(maxWidth: 300, maxHeight: 60)
                         .shadow(color: Color.black.opacity(0.1), radius: 10)
                         .opacity(firstButtonOpacity)

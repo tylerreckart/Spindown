@@ -39,9 +39,9 @@ struct WinnerDialog: View {
                 .frame(maxWidth: 350)
                 
                 VStack {
-                    UIButton(text: "Play Again", symbol: "arrow.clockwise", color: .systemBlue, action: reset)
+                    UIButton(text: "Play Again", symbol: "arrow.clockwise", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: reset)
                         .padding(.bottom, 5)
-                    UIButton(text: "End Game", symbol: "xmark", color: .systemPink, action: end)
+                    UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: end)
                 }
             }
             .frame(maxWidth: 400)

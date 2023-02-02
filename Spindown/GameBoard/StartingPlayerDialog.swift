@@ -38,9 +38,9 @@ struct StartingPlayerDialog: View {
                 }
                 
                 VStack {
-                    UIButton(text: "Start Game", color: .systemBlue, action: startGame)
+                    UIButton(text: "Start Game", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: startGame)
                         .padding(.bottom, 5)
-                    UIButton(text: "Choose Another Player", symbol: "arrow.clockwise", color: .systemPink, action: chooseStartingPlayer)
+                    UIButton(text: "Choose Another Player", symbol: "arrow.clockwise", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: chooseStartingPlayer)
                 }
             }
             .frame(maxWidth: 300)

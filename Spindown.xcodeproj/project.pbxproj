@@ -17,6 +17,7 @@
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
 		DB41B1AF298C03700000EC42 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AE298C03700000EC42 /* Format.swift */; };
 		DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* Dialog.swift */; };
+		DB41B1B4298C18D00000EC42 /* GameSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B3298C18D00000EC42 /* GameSettingsDialog.swift */; };
 		DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F542986E2CB0023A84B /* SpindownApp.swift */; };
 		DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F562986E2CB0023A84B /* Persistence.swift */; };
 		DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 		DB41B1AE298C03700000EC42 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		DB41B1B0298C059D0000EC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DB41B1B1298C07CF0000EC42 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		DB41B1B3298C18D00000EC42 /* GameSettingsDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsDialog.swift; sourceTree = "<group>"; };
 		DB8B8F512986E2CB0023A84B /* Spindown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spindown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8B8F542986E2CB0023A84B /* SpindownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpindownApp.swift; sourceTree = "<group>"; };
 		DB8B8F562986E2CB0023A84B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		DB41B19C298AD7350000EC42 /* GameBoard */ = {
 			isa = PBXGroup;
 			children = (
+				DB41B1B3298C18D00000EC42 /* GameSettingsDialog.swift */,
 				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
 				DB8B8F68298766BD0023A84B /* WinnerDialog.swift */,
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB41B1B4298C18D00000EC42 /* GameSettingsDialog.swift in Sources */,
 				DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */,
 				DB8B8F69298766BD0023A84B /* WinnerDialog.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
