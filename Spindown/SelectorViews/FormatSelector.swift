@@ -43,7 +43,7 @@ struct FormatSelector: View {
                     setupStep += 1
                 })
             }
-            .frame(maxWidth: 280)
+            .frame(maxWidth: 300)
             
             Spacer()
         }

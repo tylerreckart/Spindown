@@ -43,7 +43,7 @@ struct StartingPlayerDialog: View {
                     UIButton(text: "Choose Another Player", symbol: "arrow.clockwise", color: .systemPink, action: chooseStartingPlayer)
                 }
             }
-            .frame(maxWidth: 280)
+            .frame(maxWidth: 300)
             .padding(30)
             .background(
                 Color(.black)

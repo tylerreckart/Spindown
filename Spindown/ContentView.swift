@@ -38,7 +38,7 @@ struct ContentView: View {
             
             if (self.setupComplete) {
                 ZStack {
-                    GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer)
+                    GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer, endGame: endGame)
                         .opacity(gameBoardOpacity)
                     
                     if (self.winner != nil) {
@@ -142,7 +142,7 @@ struct ContentView: View {
             self.gameBoardOpacity = 0
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.setupComplete = false
             self.format = nil
             self.playerCount = 0

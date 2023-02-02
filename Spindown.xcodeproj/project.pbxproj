@@ -16,6 +16,7 @@
 		DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A8298AF4B00000EC42 /* Button.swift */; };
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
 		DB41B1AF298C03700000EC42 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AE298C03700000EC42 /* Format.swift */; };
+		DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* Dialog.swift */; };
 		DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F542986E2CB0023A84B /* SpindownApp.swift */; };
 		DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F562986E2CB0023A84B /* Persistence.swift */; };
 		DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */; };
@@ -28,7 +29,6 @@
 		DB8B8F6F298767390023A84B /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F6E298767390023A84B /* Participant.swift */; };
 		DB8B8F71298767670023A84B /* FormatSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F70298767670023A84B /* FormatSelector.swift */; };
 		DB8B8F73298767890023A84B /* PlayerSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F72298767890023A84B /* PlayerSelector.swift */; };
-		DB8B8F75298768010023A84B /* MenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F74298768010023A84B /* MenuOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +42,7 @@
 		DB41B1AA298BF3970000EC42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		DB41B1AE298C03700000EC42 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		DB41B1B0298C059D0000EC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DB41B1B1298C07CF0000EC42 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		DB8B8F512986E2CB0023A84B /* Spindown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spindown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8B8F542986E2CB0023A84B /* SpindownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpindownApp.swift; sourceTree = "<group>"; };
 		DB8B8F562986E2CB0023A84B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		DB8B8F6E298767390023A84B /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		DB8B8F70298767670023A84B /* FormatSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatSelector.swift; sourceTree = "<group>"; };
 		DB8B8F72298767890023A84B /* PlayerSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSelector.swift; sourceTree = "<group>"; };
-		DB8B8F74298768010023A84B /* MenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				DB41B1A8298AF4B00000EC42 /* Button.swift */,
+				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -134,13 +135,12 @@
 			children = (
 				DB41B1AD298C018C0000EC42 /* SelectorViews */,
 				DB41B1AC298C01810000EC42 /* Models */,
-				DB41B1AA298BF3970000EC42 /* SplashScreen.swift */,
 				DB41B1A7298AF4A30000EC42 /* Components */,
 				DB41B19C298AD7350000EC42 /* GameBoard */,
+				DB41B1AA298BF3970000EC42 /* SplashScreen.swift */,
 				DB8B8F542986E2CB0023A84B /* SpindownApp.swift */,
-				DB8B8F562986E2CB0023A84B /* Persistence.swift */,
 				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
-				DB8B8F74298768010023A84B /* MenuOptions.swift */,
+				DB8B8F562986E2CB0023A84B /* Persistence.swift */,
 				DB8B8F5D2986E2CC0023A84B /* Assets.xcassets */,
 				DB8B8F5F2986E2CC0023A84B /* Spindown.entitlements */,
 				DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */,
@@ -227,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */,
 				DB8B8F69298766BD0023A84B /* WinnerDialog.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
@@ -245,7 +246,6 @@
 				DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,
 				DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */,
-				DB8B8F75298768010023A84B /* MenuOptions.swift in Sources */,
 				DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
