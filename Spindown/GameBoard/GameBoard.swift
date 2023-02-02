@@ -28,6 +28,8 @@ struct GameBoard: View {
     
     @State private var showSettingsDialog: Bool = false
     
+    @State private var selectedLayout: BoardLayout = .tandem
+    
     var body: some View {
         ZStack {
             if (players.count == 1) {
@@ -37,7 +39,11 @@ struct GameBoard: View {
                     numPlayersRemaining: $numPlayersRemaining
                 )
             } else if (players.count == 2) {
-                TwoPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+                TwoPlayerGameBoard(
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    selectedLayout: $selectedLayout
+                )
             } else if (players.count == 3) {
                 ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
             } else if (players.count == 4) {
@@ -68,8 +74,13 @@ struct GameBoard: View {
             .edgesIgnoringSafeArea(.all)
             
             if (self.showSettingsDialog == true) {
-                GameSettingsDialog(open: $showSettingsDialog, endGame: endGame)
-                    .edgesIgnoringSafeArea(.all)
+                GameSettingsDialog(
+                    open: $showSettingsDialog,
+                    selectedLayout: $selectedLayout,
+                    endGame: endGame,
+                    playerCount: self.players.count
+                )
+                .edgesIgnoringSafeArea(.all)
             }
         }
         .opacity(opacity)

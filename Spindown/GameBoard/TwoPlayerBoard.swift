@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum TwoPlayerLayout {
+enum BoardLayout {
     case facingPortrait
     case facingLandscape
     case tandem
@@ -17,10 +17,10 @@ struct TwoPlayerGameBoard: View {
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
     
-    @State var layout: TwoPlayerLayout = .facingPortrait
+    @Binding var selectedLayout: BoardLayout
 
     var body: some View {
-        if (self.layout == .facingPortrait) {
+        if (self.selectedLayout == .facingPortrait) {
             VStack(spacing: 0) {
                 PlayerTile(
                     player: $players[0],
@@ -35,7 +35,7 @@ struct TwoPlayerGameBoard: View {
                 )
             }
             .edgesIgnoringSafeArea(.all)
-        } else if (self.layout == .facingLandscape) {
+        } else if (self.selectedLayout == .facingLandscape) {
             HStack(spacing: 0) {
                 PlayerTile(
                     player: $players[0],
@@ -50,7 +50,7 @@ struct TwoPlayerGameBoard: View {
                 .rotationEffect(Angle(degrees: 180))
             }
             .edgesIgnoringSafeArea(.all)
-        } else if (self.layout == .tandem) {
+        } else if (self.selectedLayout == .tandem) {
             HStack(spacing: 0) {
                 PlayerTile(
                     player: $players[0],
@@ -63,6 +63,7 @@ struct TwoPlayerGameBoard: View {
                     numPlayersRemaining: $numPlayersRemaining
                 )
             }
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }
