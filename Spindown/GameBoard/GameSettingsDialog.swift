@@ -26,7 +26,65 @@ struct TimerView: View {
     }
 }
 
+struct TwoPlayerLayoutCard: View {
+    var p1Rotation: CGFloat = 0
+    var p2Rotation: CGFloat = 0
+    var layout: TwoPlayerLayout
+    
+    @Binding var selectedLayout: TwoPlayerLayout
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                self.selectedLayout = layout
+            }) {
+                VStack(spacing: 6) {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
+                            .frame(width: 60, height: 40)
+                            .cornerRadius(6)
+                            .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                        Image(systemName: "person.fill")
+                            .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
+                            .font(.system(size: 20, weight: .black))
+                            .rotationEffect(Angle(degrees: p1Rotation))
+                            .shadow(color: Color.black.opacity(0.4), radius: 8)
+                    }
+                    
+                    ZStack {
+                        Rectangle()
+                            .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
+                            .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                            .frame(width: 60, height: 40)
+                            .cornerRadius(6)
+                        Image(systemName: "person.fill")
+                            .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
+                            .font(.system(size: 20, weight: .black))
+                            .rotationEffect(Angle(degrees: p2Rotation))
+                            .shadow(color: Color.black.opacity(0.4), radius: 8)
+                    }
+                }
+                .padding(11)
+                .background(
+                    Color(.systemGray)
+                        .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
+                        .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                )
+                .cornerRadius(12)
+            }
+            
+            Image(systemName: self.selectedLayout == layout ? "checkmark.circle.fill" : "circle")
+                .foregroundColor(self.selectedLayout == layout ? Color.white : Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
+                .font(.system(size: 18, weight: .black))
+                .padding(.top, 5)
+        }
+    }
+}
+
 struct LayoutSelectorView: View {
+    @State private var selectedLayout: TwoPlayerLayout = .tandem
+
     var body: some View {
         VStack {
             HStack(spacing: 0) {
@@ -37,146 +95,16 @@ struct LayoutSelectorView: View {
             }
             VStack(spacing: 20) {
                 HStack(spacing: 0) {
-                    VStack {
-                        Button(action: {}) {
-                            VStack(spacing: 6) {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                                        .frame(width: 60, height: 40)
-                                        .cornerRadius(6)
-                                        .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
-                                        .font(.system(size: 20, weight: .black))
-                                        .rotationEffect(Angle(degrees: 90))
-                                        .shadow(color: Color.black.opacity(0.4), radius: 8)
-                                }
-                                
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                                        .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                                        .frame(width: 60, height: 40)
-                                        .cornerRadius(6)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
-                                        .font(.system(size: 20, weight: .black))
-                                        .rotationEffect(Angle(degrees: 90))
-                                        .shadow(color: Color.black.opacity(0.4), radius: 8)
-                                }
-                            }
-                            .padding(12)
-                            .background(
-                                Color(.systemGray)
-                                    .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                                    .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(6))
-                            )
-                            .cornerRadius(12)
-                        }
-                        
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 18, weight: .black))
-                            .padding(.top, 5)
-                    }
-                    
+                    TwoPlayerLayoutCard(p1Rotation: 90, p2Rotation: 90, layout: .tandem, selectedLayout: $selectedLayout)
                     Spacer()
-                    
-                    VStack {
-                        Button(action: {}) {
-                            VStack(spacing: 6) {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                                        .frame(width: 60, height: 40)
-                                        .cornerRadius(6)
-                                        .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
-                                        .font(.system(size: 20, weight: .black))
-                                        .rotationEffect(Angle(degrees: 90))
-                                        .shadow(color: Color.black.opacity(0.4), radius: 8)
-                                }
-                                
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                                        .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                                        .frame(width: 60, height: 40)
-                                        .cornerRadius(6)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
-                                        .font(.system(size: 20, weight: .black))
-                                        .rotationEffect(Angle(degrees: -90))
-                                        .shadow(color: Color.black.opacity(0.4), radius: 8)
-                                }
-                            }
-                            .padding(12)
-                            .background(
-                                Color(.systemGray)
-                                    .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                                    .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(6))
-                            )
-                            .cornerRadius(12)
-                        }
-                        
-                        Image(systemName: "circle")
-                            .foregroundColor(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                            .font(.system(size: 18, weight: .black))
-                            .padding(.top, 5)
-                    }
-                    
+                    TwoPlayerLayoutCard(p1Rotation: 90, p2Rotation: -90, layout: .facingLandscape, selectedLayout: $selectedLayout)
                     Spacer()
-                    
-                    VStack {
-                        Button(action: {}) {
-                            VStack(spacing: 6) {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                                        .frame(width: 60, height: 40)
-                                        .cornerRadius(6)
-                                        .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
-                                        .font(.system(size: 20, weight: .black))
-                                        .rotationEffect(Angle(degrees: -180))
-                                        .shadow(color: Color.black.opacity(0.4), radius: 8)
-                                }
-                                
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                                        .overlay(LinearGradient(colors: [Color.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                                        .frame(width: 60, height: 40)
-                                        .cornerRadius(6)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray))
-                                        .font(.system(size: 20, weight: .black))
-                                        .rotationEffect(Angle(degrees: 0))
-                                        .shadow(color: Color.black.opacity(0.4), radius: 8)
-                                }
-                            }
-                            .padding(12)
-                            .background(
-                                Color(.systemGray)
-                                    .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                                    .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(6))
-                            )
-                            .cornerRadius(12)
-                        }
-                        
-                        Image(systemName: "circle")
-                            .foregroundColor(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                            .font(.system(size: 18, weight: .black))
-                            .padding(.top, 5)
-                    }
+                    TwoPlayerLayoutCard(p1Rotation: 180, p2Rotation: 0, layout: .facingPortrait, selectedLayout: $selectedLayout)
                 }
                 
                 VStack(spacing: 10) {
-                    UIButton(text: "Save", color: UIColor(named: "PrimaryBlue") ?? .systemBlue, action: {})
-                    UIButton(text: "Cancel", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {})
+                    UIButton(text: "Save", color: UIColor(named: "AccentGrayDarker") ?? .systemBlue, action: {})
+                    UIButtonOutlined(text: "Cancel", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {})
                 }
             }
         }
