@@ -85,9 +85,14 @@ struct GameBoard: View {
         }
         .opacity(opacity)
         .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
+
             withAnimation(.easeIn(duration: 0.5)) {
                 self.opacity = 1
             }
+        }
+        .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
                  

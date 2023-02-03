@@ -140,6 +140,115 @@ struct PlayerSelectorView: View {
     }
 }
 
+extension String {
+    func markdownToAttributed() -> AttributedString {
+        do {
+            return try AttributedString(markdown: self)
+        } catch {
+            return AttributedString("Error parsing markdown: \(error)")
+        }
+    }
+}
+
+public struct RulesResponse: Codable {
+    public let rules: [String:[RulesBody]]
+}
+
+public struct RulesNavigation: Codable {
+    public let previousRule: String?
+    public let nextRule: String?
+}
+
+public struct RulesBody: Codable {
+    public let ruleNumber: String?
+    public let examples: [String?]?
+    public let ruleText: String?
+    public let fragment: String?
+    public let navigation: RulesNavigation?
+}
+
+struct RulesSheet: View {
+    @State private var isFetchingRules: Bool = false
+    @State private var rules: [String:RulesBody] = [:]
+    
+    let letters = NSCharacterSet.letters
+
+    var body: some View {
+        VStack {
+            if (isFetchingRules == false) {
+                let keys = rules.map{ $0.key }.sorted()
+                let values = rules.map { $0.value }
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 15) {
+                        HStack {
+                            Text("Rulebook")
+                                .font(.system(size: 48, weight: .black))
+                            Spacer()
+                        }
+
+                        ForEach(keys.indices, id: \.self) {index in
+                            let target = values.firstIndex { $0.ruleNumber == keys[index] }
+                            VStack(alignment: .leading, spacing: 5) {
+                                let data = values[target!]
+                                HStack(alignment: .top, spacing: 0) {
+                                    Text(keys[index])
+                                        .font(.system(size: 18, weight: .bold))
+                                        .frame(width: 75, alignment: .leading)
+
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Text(data.ruleText ?? "")
+                                            .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray5))
+                                        if (data.examples != nil) {
+                                            VStack(alignment: .leading, spacing: 5) {
+                                                Text("Examples")
+                                                    .font(.system(size: 18, weight: .bold))
+                                                VStack(spacing: 5) {
+                                                    ForEach(data.examples!, id: \.self) { example in
+                                                        Text(example ?? "")
+                                                            .italic()
+                                                            .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray5))
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.leading, keys[index].rangeOfCharacter(from: letters) != nil ? 75 : 0)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    .padding()
+                }
+            } else {
+                Text("Fethcing Rules... Please hold.")
+            }
+        }
+        .foregroundColor(Color.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+        .onAppear {
+            getRules()
+        }
+    }
+    
+    func getRules() {
+        print("fetching rules")
+        let url = URL(string: "https://api.academyruins.com/allrules")!
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            let dRes = try! decoder.decode([String:RulesBody].self, from: data)
+            self.rules = dRes
+        }
+
+        task.resume()
+    }
+}
+
 struct GameSettingsHomeView: View {
     var endGame: () -> ()
     var dismissModal: () -> ()
@@ -147,6 +256,8 @@ struct GameSettingsHomeView: View {
     @Binding var activeView: ActiveSettingsView
     
     var playerCount: Int
+    
+    @State private var showRulesSheet: Bool = false
 
     var body: some View {
         VStack {
@@ -169,7 +280,9 @@ struct GameSettingsHomeView: View {
                             self.activeView = .roll
                         }
                     })
-                    UIButtonStacked(text: "Rules", symbol: "book", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {})
+                    UIButtonStacked(text: "Rules", symbol: "book", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
+                        self.showRulesSheet.toggle()
+                    })
                 }
                 if (self.playerCount == 2 || self.playerCount == 4 || self.playerCount == 6) {
                     UIButtonOutlined(text: "Change Layout", symbol: "uiwindow.split.2x1", fill: .black, color: UIColor(named: "AccentGray")!, action: {
@@ -196,6 +309,9 @@ struct GameSettingsHomeView: View {
                 })
             }
             .frame(maxWidth: 300)
+        }
+        .sheet(isPresented: $showRulesSheet, onDismiss: { self.showRulesSheet = false }) {
+            RulesSheet()
         }
     }
 }
@@ -257,8 +373,6 @@ struct GameSettingsDialog: View {
             .opacity(dialogOpacity)
             .scaleEffect(dialogOffset)
             .onAppear {
-                UIApplication.shared.isIdleTimerDisabled = true
-
                 withAnimation {
                     self.overlayOpacity = 0.5
                     self.dialogOpacity = 1
@@ -270,9 +384,6 @@ struct GameSettingsDialog: View {
                         }
                     }
                 }
-            }
-            .onDisappear {
-                UIApplication.shared.isIdleTimerDisabled = false
             }
         }
     }

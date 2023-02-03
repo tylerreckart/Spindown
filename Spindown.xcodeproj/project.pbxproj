@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D39FB298D60D400A741DC /* RulesSheet.swift */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
 		DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB1D39FB298D60D400A741DC /* RulesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesSheet.swift; sourceTree = "<group>"; };
 		DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerDialog.swift; sourceTree = "<group>"; };
 		DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreePlayerBoard.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */,
 				DB8A3251298CB2DF00FB7658 /* ChangeLayout.swift */,
+				DB1D39FB298D60D400A741DC /* RulesSheet.swift */,
 			);
 			path = SettingsDialog;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				DB8A3252298CB2DF00FB7658 /* ChangeLayout.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
+				DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */,
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
 				DB8B8F71298767670023A84B /* FormatSelector.swift in Sources */,
 				DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */,
@@ -415,6 +419,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Spindown/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -453,6 +458,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Spindown/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
