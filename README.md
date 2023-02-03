@@ -6,11 +6,20 @@ Magic: The Gathering Tabletop Companion App
 - [ ] Custom Players
 - [ ] Add counters (poison etc)
 - [ ] Game Settings Dialog
+    - [ ] Change Layout
+        - [x] Two Players
+        - [ ] Three Players
+        - [ ] Four Players
+        - [ ] Five Players
+        - [ ] Six Players
     - [ ] Change Format
     - [ ] View rules for current format
+      - [x] Fetch rules
+      - [ ] Cache rules
+      - [ ] `ripgrep` search
     - [ ] Roll die
     - [ ] Start timer
-    - [ ] End game
+    - [x] End game
 - [ ] Player Settings Dialog
     - [ ] Player name
     - [ ] Player color
