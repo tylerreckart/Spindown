@@ -47,11 +47,11 @@ struct GameBoard: View {
             } else if (players.count == 3) {
                 ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
             } else if (players.count == 4) {
-                FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+                FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout)
             } else if (players.count == 5) {
                 FivePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
             } else if (players.count == 6) {
-                SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+                SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout)
             }
             
             VStack {

@@ -38,17 +38,14 @@ struct StartingPlayerDialog: View {
                 }
                 
                 VStack {
-                    UIButton(text: "Start Game", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: startGame)
+                    UIButton(text: "Start Game", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: startGame)
                         .padding(.bottom, 5)
-                    UIButton(text: "Choose Another Player", symbol: "arrow.clockwise", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: chooseStartingPlayer)
+                    UIButtonOutlined(text: "Choose Another Player", symbol: "arrow.clockwise", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: chooseStartingPlayer)
                 }
             }
             .frame(maxWidth: 300)
             .padding(30)
-            .background(
-                Color(.black)
-                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-            )
+            .background(Color(.black))
             .cornerRadius(16)
             .shadow(color: Color.black.opacity(0.1), radius: 15)
             .opacity(dialogOpacity)

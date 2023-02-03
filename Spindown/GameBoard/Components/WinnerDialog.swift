@@ -24,7 +24,7 @@ struct WinnerDialog: View {
             VStack(spacing: 0) {
                 VStack(spacing: 0) {
                     Text("\(winner!.name) won the game!")
-                        .font(.system(size: 28, weight: .black))
+                        .font(.system(size: 24, weight: .black))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 5)
@@ -39,14 +39,14 @@ struct WinnerDialog: View {
                 .frame(maxWidth: 350)
                 
                 VStack {
-                    UIButton(text: "Play Again", symbol: "arrow.clockwise", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: reset)
+                    UIButton(text: "Play Again", symbol: "arrow.clockwise", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: reset)
                         .padding(.bottom, 5)
-                    UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: end)
+                    UIButtonOutlined(text: "End Game", symbol: "xmark", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: end)
                 }
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 300)
             .padding(30)
-            .background(Color(.black).overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom)))
+            .background(Color(.black))
             .cornerRadius(16)
             .shadow(color: Color.black.opacity(0.1), radius: 15)
             .opacity(dialogOpacity)
