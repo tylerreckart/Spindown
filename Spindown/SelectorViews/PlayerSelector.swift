@@ -30,38 +30,39 @@ struct PlayerSelector: View {
             .padding(.bottom)
             .frame(maxWidth: 320)
 
-            VStack {
-                HStack {
-                    UIButton(text: "1", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+            VStack(spacing: 20) {
+                HStack(spacing: 20) {
+                    UIButtonTile(text: "1", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(1)
                         setupStep += 1
                     })
-                    UIButton(text: "2", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                    UIButtonTile(text: "2", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(2)
                         setupStep += 1
                     })
-                    UIButton(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                    UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(3)
                         setupStep += 1
                     })
                 }
-                HStack {
-                    UIButton(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                HStack(spacing: 20) {
+                    UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(4)
                         setupStep += 1
                     })
-                    UIButton(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                    UIButtonTile(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(5)
                         setupStep += 1
                     })
-                    UIButton(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                    UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(6)
                         setupStep += 1
                     })
                 }
-                UIButtonOutlined(text: "Custom Players", symbol: nil, fill: .black, color: UIColor(named: "AccentGray")!, action: {
+                UIButtonOutlined(text: "Saved Players", symbol: nil, fill: .black, color: UIColor(named: "AccentGray")!, action: {
                     setupStep += 1
                 })
+                .padding(.top, 10)
             }
             .frame(maxWidth: 300)
             

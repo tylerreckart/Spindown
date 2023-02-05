@@ -10,37 +10,39 @@ import SwiftUI
 struct FivePlayerGameBoard: View {
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
+    
+    var updateLifeTotal: (Participant, Int) -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 PlayerTile(
-                    player: $players[0],
+                    player: players[0],
                     color: colors[0],
-                    numPlayersRemaining: $numPlayersRemaining
+                    updateLifeTotal: updateLifeTotal
                 )
                 PlayerTile(
-                    player: $players[1],
+                    player: players[1],
                     color: colors[1],
-                    numPlayersRemaining: $numPlayersRemaining
+                    updateLifeTotal: updateLifeTotal
                 )
             }
             HStack(spacing: 0) {
                 PlayerTile(
-                    player: $players[2],
+                    player: players[2],
                     color: colors[2],
-                    numPlayersRemaining: $numPlayersRemaining
+                    updateLifeTotal: updateLifeTotal
                 )
                 PlayerTile(
-                    player: $players[3],
+                    player: players[3],
                     color: colors[3],
-                    numPlayersRemaining: $numPlayersRemaining
+                    updateLifeTotal: updateLifeTotal
                 )
             }
             PlayerTile(
-                player: $players[4],
+                player: players[4],
                 color: colors[4],
-                numPlayersRemaining: $numPlayersRemaining
+                updateLifeTotal: updateLifeTotal
             )
         }
         .edgesIgnoringSafeArea(.all)

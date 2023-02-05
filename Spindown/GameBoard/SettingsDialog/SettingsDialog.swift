@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-struct GameSettingsScreen_Previews: PreviewProvider {
-    @State static var activeView: ActiveSettingsView = .layout
-    @State static var selectedLayout: BoardLayout = .tandem
-    
-    static var playerCount: Int = 4
-    
-    static var previews: some View {
-        HStack {
-            Spacer()
-            VStack {
-                Spacer()
-                PlayerSelectorView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                Spacer()
-            }
-            Spacer()
-        }
-        .background(.black)
-    }
-}
-
-
 struct DiceRollView: View {
     var body: some View {
         Text("Dice Roll")
@@ -47,6 +26,8 @@ struct FormatSelectorView: View {
 }
 
 struct PlayerSelectorView: View {
+    @Binding var activeView: ActiveSettingsView
+
     var body: some View {
         VStack {
             HStack(spacing: 0) {
@@ -130,7 +111,7 @@ struct PlayerSelectorView: View {
         VStack {
             UIButtonOutlined(text: "Save", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
                 withAnimation {
-//                    self.activeView = .home
+                    self.activeView = .home
                 }
                 
             })
@@ -140,112 +121,26 @@ struct PlayerSelectorView: View {
     }
 }
 
-extension String {
-    func markdownToAttributed() -> AttributedString {
-        do {
-            return try AttributedString(markdown: self)
-        } catch {
-            return AttributedString("Error parsing markdown: \(error)")
-        }
-    }
-}
-
-public struct RulesResponse: Codable {
-    public let rules: [String:[RulesBody]]
-}
-
-public struct RulesNavigation: Codable {
-    public let previousRule: String?
-    public let nextRule: String?
-}
-
-public struct RulesBody: Codable {
-    public let ruleNumber: String?
-    public let examples: [String?]?
-    public let ruleText: String?
-    public let fragment: String?
-    public let navigation: RulesNavigation?
-}
-
-struct RulesSheet: View {
-    @State private var isFetchingRules: Bool = false
-    @State private var rules: [String:RulesBody] = [:]
-    
-    let letters = NSCharacterSet.letters
+struct HorizontalControlRow: View {
+    @Binding var activeView: ActiveSettingsView
+    @Binding var showRulesSheet: Bool
 
     var body: some View {
-        VStack {
-            if (isFetchingRules == false) {
-                let keys = rules.map{ $0.key }.sorted()
-                let values = rules.map { $0.value }
-
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 15) {
-                        HStack {
-                            Text("Rulebook")
-                                .font(.system(size: 48, weight: .black))
-                            Spacer()
-                        }
-
-                        ForEach(keys.indices, id: \.self) {index in
-                            let target = values.firstIndex { $0.ruleNumber == keys[index] }
-                            VStack(alignment: .leading, spacing: 5) {
-                                let data = values[target!]
-                                HStack(alignment: .top, spacing: 0) {
-                                    Text(keys[index])
-                                        .font(.system(size: 18, weight: .bold))
-                                        .frame(width: 75, alignment: .leading)
-
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        Text(data.ruleText ?? "")
-                                            .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray5))
-                                        if (data.examples != nil) {
-                                            VStack(alignment: .leading, spacing: 5) {
-                                                Text("Examples")
-                                                    .font(.system(size: 18, weight: .bold))
-                                                VStack(spacing: 5) {
-                                                    ForEach(data.examples!, id: \.self) { example in
-                                                        Text(example ?? "")
-                                                            .italic()
-                                                            .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray5))
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    Spacer()
-                                }
-                                .padding(.leading, keys[index].rangeOfCharacter(from: letters) != nil ? 75 : 0)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                    .padding()
+        HStack(spacing: 15) {
+            UIButtonStacked(text: "Timer", symbol: "stopwatch", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
+                withAnimation {
+                    self.activeView = .timer
                 }
-            } else {
-                Text("Fethcing Rules... Please hold.")
-            }
+            })
+            UIButtonStacked(text: "Roll Dice", symbol: "dice", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
+                withAnimation {
+                    self.activeView = .roll
+                }
+            })
+            UIButtonStacked(text: "Rules", symbol: "book", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
+                self.showRulesSheet.toggle()
+            })
         }
-        .foregroundColor(Color.white)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
-        .onAppear {
-            getRules()
-        }
-    }
-    
-    func getRules() {
-        print("fetching rules")
-        let url = URL(string: "https://api.academyruins.com/allrules")!
-
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else { return }
-            let decoder = JSONDecoder()
-            let dRes = try! decoder.decode([String:RulesBody].self, from: data)
-            self.rules = dRes
-        }
-
-        task.resume()
     }
 }
 
@@ -269,38 +164,31 @@ struct GameSettingsHomeView: View {
             }
             
             VStack(spacing: 15) {
-                HStack(spacing: 15) {
-                    UIButtonStacked(text: "Timer", symbol: "stopwatch", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
-                        withAnimation {
-                            self.activeView = .timer
-                        }
-                    })
-                    UIButtonStacked(text: "Roll Dice", symbol: "dice", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
-                        withAnimation {
-                            self.activeView = .roll
-                        }
-                    })
-                    UIButtonStacked(text: "Rules", symbol: "book", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
-                        self.showRulesSheet.toggle()
-                    })
-                }
-                if (self.playerCount == 2 || self.playerCount == 4 || self.playerCount == 6) {
-                    UIButtonOutlined(text: "Change Layout", symbol: "uiwindow.split.2x1", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-                        withAnimation {
-                            self.activeView = .layout
-                        }
-                    })
-                }
-                UIButtonOutlined(text: "Change Format", symbol: "text.book.closed", fill: .black, color: UIColor(named: "AccentGray")!, action: {
+//                HorizontalControlRow(activeView: $activeView, showRulesSheet: $showRulesSheet)
+                
+                UIButtonOutlined(text: "Game Timer", symbol: "stopwatch", fill: .black, color: UIColor(named: "AccentGray")!, action: {
                     withAnimation {
                         self.activeView = .format
                     }
                 })
-                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-                    withAnimation {
-                        self.activeView = .player
-                    }
-                })
+                if (self.playerCount == 2 || self.playerCount == 4 || self.playerCount == 6) {
+                    UIButtonOutlined(
+                        text: "Change Layout",
+                        symbol: "uiwindow.split.2x1",
+                        fill: .black,
+                        color: UIColor(named: "AccentGray")!,
+                        action: {
+                            withAnimation {
+                                self.activeView = .layout
+                            }
+                        }
+                    )
+                }
+//                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
+//                    withAnimation {
+//                        self.activeView = .player
+//                    }
+//                })
                 UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: {
                     dismissModal()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -349,17 +237,26 @@ struct GameSettingsDialog: View {
             VStack {
                 switch (activeView) {
                     case .home:
-                        GameSettingsHomeView(endGame: endGame, dismissModal: dismissModal, activeView: $activeView, playerCount: playerCount)
+                        GameSettingsHomeView(
+                            endGame: endGame,
+                            dismissModal: dismissModal,
+                            activeView: $activeView,
+                            playerCount: playerCount
+                        )
                     case .roll:
                         DiceRollView()
                     case .timer:
                         TimerView()
                     case .layout:
-                        LayoutSelectorView(activeView: $activeView, selectedLayout: $selectedLayout, playerCount: playerCount)
+                        LayoutSelectorView(
+                            activeView: $activeView,
+                            selectedLayout: $selectedLayout,
+                            playerCount: playerCount
+                        )
                     case .format:
                         FormatSelectorView()
                     case .player:
-                        PlayerSelectorView()
+                        PlayerSelectorView(activeView: $activeView)
                 }
             }
             .frame(maxWidth: 300)

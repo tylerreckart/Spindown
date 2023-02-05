@@ -7,31 +7,49 @@
 
 import SwiftUI
 
+enum TileOrientation {
+    case landscape
+    case landscapeReverse
+    case portrait
+}
+
 struct PlayerTile: View {
-    @Binding var player: Participant
-
+    var player: Participant
     var color: UIColor
-
-    @Binding var numPlayersRemaining: Int
-    
-    @State private var currentLifeTotal: String = "0"
-    @State private var loser: Bool = false
+    var updateLifeTotal: (Participant, Int) -> Void
+    var orientation: TileOrientation = .portrait
     
     var body: some View {
         ZStack {
-            VStack(spacing: 0) {
-                Button(action: {
-                    incrementLifeTotal()
-                }) {
-                    Rectangle()
-                        .fill(Color(color))
+            if (self.orientation == .portrait) {
+                VStack(spacing: 0) {
+                    Button(action: { incrementLifeTotal() }) {
+                        Rectangle().fill(Color(color))
+                    }
+                    
+                    Button(action: { decrementLifeTotal() }) {
+                        Rectangle().fill(Color(color))
+                    }
                 }
-                
-                Button(action: {
-                    decrementLifeTotal()
-                }) {
-                    Rectangle()
-                        .fill(Color(color))
+            } else if (self.orientation == .landscape) {
+                HStack(spacing: 0) {
+                    Button(action: { incrementLifeTotal() }) {
+                        Rectangle().fill(Color(color))
+                    }
+                    
+                    Button(action: { decrementLifeTotal() }) {
+                        Rectangle().fill(Color(color))
+                    }
+                }
+            } else if (self.orientation == .landscapeReverse) {
+                HStack(spacing: 0) {
+                    Button(action: { decrementLifeTotal() }) {
+                        Rectangle().fill(Color(color))
+                    }
+                    
+                    Button(action: { incrementLifeTotal() }) {
+                        Rectangle().fill(Color(color))
+                    }
                 }
             }
 
@@ -45,43 +63,30 @@ struct PlayerTile: View {
                         Image(systemName: "heart.fill")
                             .font(.system(size: 24))
                     }
+                    .rotationEffect(
+                        self.orientation == .landscapeReverse
+                            ? Angle(degrees: 90)
+                            : self.orientation == .landscape
+                                ? Angle(degrees: -90)
+                                : Angle(degrees: 0)
+                    )
                 }
             }
             .foregroundColor(.white)
         }
-        .onAppear {
-            self.currentLifeTotal = String(player.currentLifeTotal)
-        }
     }
     
     func incrementLifeTotal() -> Void {
+        print("increment")
         let currentLifeTotal = player.currentLifeTotal
         let nextLifeTotal = currentLifeTotal + 1
-        player.currentLifeTotal = nextLifeTotal
-        print("increment life total: \(nextLifeTotal)")
-        self.currentLifeTotal = String(nextLifeTotal)
-        
-        if (currentLifeTotal == 0 && nextLifeTotal > 0) {
-            player.loser = false
-            self.loser = false
-            numPlayersRemaining = numPlayersRemaining + 1
-            print("\(player.name) re-entered the game")
-        }
+        updateLifeTotal(player, nextLifeTotal)
     }
     
     func decrementLifeTotal() -> Void {
+        print("decrement")
         let currentLifeTotal = player.currentLifeTotal
         let nextLifeTotal = currentLifeTotal - 1
-
-        if (nextLifeTotal == 0) {
-            player.loser = true
-            self.loser = true
-            numPlayersRemaining = numPlayersRemaining - 1
-            print("\(player.name) lost the game")
-        }
-
-        player.currentLifeTotal = nextLifeTotal
-        print("deccrement life total: \(nextLifeTotal)")
-        self.currentLifeTotal = String(nextLifeTotal)
+        updateLifeTotal(player, nextLifeTotal)
     }
 }

@@ -1,0 +1,68 @@
+//
+//  StartingLifeTotalSelector.swift
+//  Spindown
+//
+//  Created by Tyler Reckart on 1/29/23.
+//
+
+import SwiftUI
+
+struct StartingLifeTotalSelector: View {
+    @Binding var setupStep: Int
+
+    var setStartingLifeTotal: (Int) -> ()
+    
+    var body: some View {
+        VStack {
+            Spacer()
+
+            VStack {
+                Text("Starting Life")
+                    .font(.system(size: 64, weight: .black))
+                    .foregroundColor(.white)
+                    .padding(.bottom, 5)
+                Text("Select your starting life total.")
+                    .font(.system(size: 20))
+                    .foregroundColor(Color(.systemGray))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(6)
+            }
+            .padding(.bottom)
+            .frame(maxWidth: 600)
+
+            VStack(spacing: 20) {
+                HStack(spacing: 20) {
+                    UIButtonTile(text: "20", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setStartingLifeTotal(20)
+                        setupStep += 1
+                    })
+                    UIButtonTile(text: "40", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setStartingLifeTotal(40)
+                        setupStep += 1
+                    })
+                    UIButtonTile(text: "60", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setStartingLifeTotal(60)
+                        setupStep += 1
+                    })
+                }
+                HStack(spacing: 20) {
+                    UIButtonTile(text: "80", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setStartingLifeTotal(80)
+                        setupStep += 1
+                    })
+                    UIButtonTile(text: "100", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setStartingLifeTotal(100)
+                        setupStep += 1
+                    })
+                    UIButtonTile(text: "200", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setStartingLifeTotal(200)
+                        setupStep += 1
+                    })
+                }
+            }
+            
+            Spacer()
+        }
+    }
+}
+

@@ -10,7 +10,6 @@ import CoreData
 
 struct ContentView: View {
     @State private var playerCount: Int = 0
-    @State private var format: Format? = nil
     @State private var setupStep: Int = 0
     @State private var setupComplete: Bool = false
     @State private var players: [Participant] = []
@@ -19,6 +18,7 @@ struct ContentView: View {
     @State private var activePlayer: Participant?
     @State private var showStartOverlay: Bool = false
     @State private var gameBoardOpacity: CGFloat = 0
+    @State private var startingLifeTotal: Int = 0
     
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct ContentView: View {
                 }
                 
                 if (self.setupStep == 1) {
-                    FormatSelector(setupStep: $setupStep, setFormat: selectFormat)
+                    StartingLifeTotalSelector(setupStep: $setupStep, setStartingLifeTotal: selectStartingLifeTotal)
                 }
                 
                 if (self.setupStep == 2) {
@@ -38,8 +38,12 @@ struct ContentView: View {
             
             if (self.setupComplete) {
                 ZStack {
-                    GameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, activePlayer: $activePlayer, endGame: endGame)
-                        .opacity(gameBoardOpacity)
+                    GameBoard(
+                        players: $players,
+                        numPlayersRemaining: $numPlayersRemaining,
+                        activePlayer: $activePlayer,
+                        endGame: endGame
+                    ).opacity(gameBoardOpacity)
                     
                     if (self.winner != nil) {
                         WinnerDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
@@ -75,7 +79,8 @@ struct ContentView: View {
                 for count in 1..<self.playerCount + 1 {
                     let player = Participant()
                     player.name = "Player \(count)"
-                    player.currentLifeTotal = format?.startingLifeTotal ?? 20
+                    player.currentLifeTotal = self.startingLifeTotal
+                    player.startingLifeTotal = self.startingLifeTotal
                     player.color = colors[count - 1]
                     self.players.append(player)
                 }
@@ -103,13 +108,8 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.all)
     }
     
-    private func selectFormat(_ selectedFormat: Format) -> Void {
-        if (self.format == nil) {
-            self.format = selectedFormat
-        } else {
-            self.format!.name = selectedFormat.name
-            self.format!.startingLifeTotal = selectedFormat.startingLifeTotal
-        }
+    private func selectStartingLifeTotal(_ total: Int) -> Void {
+        self.startingLifeTotal = total
     }
     
     private func selectPlayerCount(_ numPlayers: Int) {
@@ -130,7 +130,7 @@ struct ContentView: View {
     
     private func resetBoard() {
         for player in self.players {
-            player.currentLifeTotal = format?.startingLifeTotal ?? 20
+            player.currentLifeTotal = self.startingLifeTotal
             player.loser = false
         }
         
@@ -144,7 +144,7 @@ struct ContentView: View {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.setupComplete = false
-            self.format = nil
+            self.startingLifeTotal = 0
             self.playerCount = 0
             self.numPlayersRemaining = 0
             self.winner = nil

@@ -34,24 +34,25 @@ struct GameBoard: View {
         ZStack {
             if (players.count == 1) {
                 PlayerTile(
-                    player: $players[0],
+                    player: players[0],
                     color: colors[0],
-                    numPlayersRemaining: $numPlayersRemaining
+                    updateLifeTotal: updateLifeTotal
                 )
             } else if (players.count == 2) {
                 TwoPlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
-                    selectedLayout: $selectedLayout
+                    selectedLayout: $selectedLayout,
+                    updateLifeTotal: updateLifeTotal
                 )
             } else if (players.count == 3) {
-                ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+                ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, updateLifeTotal: updateLifeTotal)
             } else if (players.count == 4) {
-                FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout)
+                FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout, updateLifeTotal: updateLifeTotal)
             } else if (players.count == 5) {
-                FivePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining)
+                FivePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, updateLifeTotal: updateLifeTotal)
             } else if (players.count == 6) {
-                SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout)
+                SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout, updateLifeTotal: updateLifeTotal)
             }
             
             VStack {
@@ -103,6 +104,27 @@ struct GameBoard: View {
             activePlayer = players[0]
         } else {
             activePlayer = players[currentIndex! + 1]
+        }
+    }
+    
+    private func updateLifeTotal(_ player: Participant, _ newLifeTotal: Int) -> Void {
+        let index = self.players.firstIndex(where: { $0.name == player.name })
+        
+        if (index != nil) {
+            print("update life total")
+            player.currentLifeTotal = newLifeTotal
+            
+            if (newLifeTotal == 0) {
+                player.loser = true
+                self.numPlayersRemaining = numPlayersRemaining - 1
+                print("\(player.name) lost the game")
+            } else if (players[index!].currentLifeTotal <= 0 && newLifeTotal > 0) {
+                player.loser = false
+                self.numPlayersRemaining = numPlayersRemaining + 1
+                print("\(player.name) re-entered the game")
+            }
+            
+            players[index!] = player
         }
     }
 }
