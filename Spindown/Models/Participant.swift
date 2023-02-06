@@ -15,6 +15,7 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     var startingLifeTotal: Int = 0
     var color: UIColor = UIColor(named: "PrimaryBlue") ?? .systemGray
     var loser: Bool = false
+    var symbol: String?
     
     static func == (lhs: Participant, rhs: Participant) -> Bool {
         return lhs.uid == rhs.uid

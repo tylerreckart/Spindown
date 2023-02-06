@@ -1,5 +1,5 @@
 //
-//  PlayerSelector.swift
+//  PlayersSelector.swift
 //  Spindown
 //
 //  Created by Tyler Reckart on 1/29/23.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct PlayerSelector: View {
-    @Binding var setupStep: Int
+struct PlayersSelector: View {
+    @Binding var setupStep: Double
 
     var setNumPlayers: (Int) -> ()
     
@@ -59,9 +59,15 @@ struct PlayerSelector: View {
                         setupStep += 1
                     })
                 }
-                UIButtonOutlined(text: "Saved Players", symbol: nil, fill: .black, color: UIColor(named: "AccentGray")!, action: {
-                    setupStep += 1
-                })
+                UIButtonOutlined(
+                    text: "Saved Players",
+                    symbol: nil,
+                    fill: .black,
+                    color: UIColor(named: "AccentGray")!,
+                    action: {
+                        setupStep += 0.5
+                    }
+                )
                 .padding(.top, 10)
             }
             .frame(maxWidth: 300)

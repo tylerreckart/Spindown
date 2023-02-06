@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartingLifeTotalSelector: View {
-    @Binding var setupStep: Int
+    @Binding var setupStep: Double
 
     var setStartingLifeTotal: (Int) -> ()
     

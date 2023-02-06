@@ -78,8 +78,8 @@ struct GameBoard: View {
                 GameSettingsDialog(
                     open: $showSettingsDialog,
                     selectedLayout: $selectedLayout,
-                    endGame: endGame,
-                    playerCount: self.players.count
+                    players: $players,
+                    endGame: endGame
                 )
                 .edgesIgnoringSafeArea(.all)
             }

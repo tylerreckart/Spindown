@@ -1,5 +1,5 @@
 //
-//  WinnerDialog.swift
+//  GameOverDialog.swift
 //  Spindown
 //
 //  Created by Tyler Reckart on 1/29/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WinnerDialog: View {
+struct GameOverDialog: View {
     var winner: Participant?
 
     var resetBoard: () -> ()

@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @State private var playerCount: Int = 0
-    @State private var setupStep: Int = 0
+    @State private var setupStep: Double = 0
     @State private var setupComplete: Bool = false
     @State private var players: [Participant] = []
     @State private var numPlayersRemaining: Int = 0
@@ -32,7 +32,11 @@ struct ContentView: View {
                 }
                 
                 if (self.setupStep == 2) {
-                    PlayerSelector(setupStep: $setupStep, setNumPlayers: selectPlayerCount)
+                    PlayersSelector(setupStep: $setupStep, setNumPlayers: selectPlayerCount)
+                }
+                
+                if (self.setupStep == 2.5) {
+                    SavedPlayersSelector(setupStep: $setupStep, setPlayers: setPlayers)
                 }
             }
             
@@ -46,7 +50,7 @@ struct ContentView: View {
                     ).opacity(gameBoardOpacity)
                     
                     if (self.winner != nil) {
-                        WinnerDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
+                        GameOverDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
                     }
                 }
             }
@@ -115,6 +119,8 @@ struct ContentView: View {
     private func selectPlayerCount(_ numPlayers: Int) {
         self.playerCount = numPlayers
     }
+    
+    private func setPlayers () {}
     
     private func chooseStartingPlayer() {
         self.activePlayer = self.players.randomElement()

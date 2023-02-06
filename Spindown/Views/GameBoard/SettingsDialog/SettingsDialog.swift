@@ -27,6 +27,7 @@ struct FormatSelectorView: View {
 
 struct PlayerSelectorView: View {
     @Binding var activeView: ActiveSettingsView
+    @Binding var players: [Participant]
 
     var body: some View {
         VStack {
@@ -43,57 +44,22 @@ struct PlayerSelectorView: View {
             VStack {
                 ScrollView {
                     VStack(spacing: 0) {
-                        HStack {
-                            Image(systemName: "person.circle")
-                                .foregroundColor(Color.white)
-                            Text("Player 1")
-                                .foregroundColor(Color.white)
-                            Spacer()
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(Color.white)
+                        ForEach(self.players, id: \.self) { player in
+                            Button(action: {}) {
+                                HStack {
+                                    Image(systemName: player.symbol != nil ? player.symbol! : "person.circle.fill")
+                                        .foregroundColor(Color.white)
+                                    Text(player.name)
+                                        .foregroundColor(Color.white)
+                                    Spacer()
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(Color.white)
+                                }
+                                .font(.system(size: 18, weight: .black))
+                                .padding()
+                                .background(Color(UIColor(named: "DeepGray") ?? .systemGray5))
+                            }
                         }
-                        .font(.system(size: 18, weight: .black))
-                        .padding()
-                        .background(Color(UIColor(named: "DeepGray") ?? .systemGray5))
- 
-                        HStack {
-                            Image(systemName: "person.circle")
-                                .foregroundColor(Color.white)
-                            Text("Player 2")
-                                .foregroundColor(Color.white)
-                            Spacer()
-                            Image(systemName: "circle")
-                                .foregroundColor(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
-                        }
-                        .font(.system(size: 18, weight: .black))
-                        .padding()
-                        .background(Color.black)
-
-                        HStack {
-                            Image(systemName: "person.circle")
-                                .foregroundColor(Color.white)
-                            Text("Player 3")
-                                .foregroundColor(Color.white)
-                            Spacer()
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(Color.white)
-                        }
-                        .font(.system(size: 18, weight: .black))
-                        .padding()
-                        .background(Color(UIColor(named: "DeepGray") ?? .systemGray5))
-
-                        HStack {
-                            Image(systemName: "person.circle")
-                                .foregroundColor(Color.white)
-                            Text("Player 4")
-                                .foregroundColor(Color.white)
-                            Spacer()
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(Color.white)
-                        }
-                        .font(.system(size: 18, weight: .black))
-                        .padding()
-                        .background(Color.black)
                     }
                     .cornerRadius(4)
                 }
@@ -198,9 +164,9 @@ struct GameSettingsHomeView: View {
             }
             .frame(maxWidth: 300)
         }
-        .sheet(isPresented: $showRulesSheet, onDismiss: { self.showRulesSheet = false }) {
-            RulesSheet()
-        }
+//        .sheet(isPresented: $showRulesSheet, onDismiss: { self.showRulesSheet = false }) {
+//            RulesSheet()
+//        }
     }
 }
 
@@ -216,10 +182,9 @@ enum ActiveSettingsView {
 struct GameSettingsDialog: View {
     @Binding var open: Bool
     @Binding var selectedLayout: BoardLayout
+    @Binding var players: [Participant]
     
     var endGame: () -> ()
-    
-    var playerCount: Int
 
     @State private var overlayOpacity: CGFloat = 0
     @State private var dialogOpacity: CGFloat = 0
@@ -241,7 +206,7 @@ struct GameSettingsDialog: View {
                             endGame: endGame,
                             dismissModal: dismissModal,
                             activeView: $activeView,
-                            playerCount: playerCount
+                            playerCount: self.players.count
                         )
                     case .roll:
                         DiceRollView()
@@ -251,12 +216,12 @@ struct GameSettingsDialog: View {
                         LayoutSelectorView(
                             activeView: $activeView,
                             selectedLayout: $selectedLayout,
-                            playerCount: playerCount
+                            playerCount: self.players.count
                         )
                     case .format:
                         FormatSelectorView()
                     case .player:
-                        PlayerSelectorView(activeView: $activeView)
+                        PlayerSelectorView(activeView: $activeView, players: $players)
                 }
             }
             .frame(maxWidth: 300)
