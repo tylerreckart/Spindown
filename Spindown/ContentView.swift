@@ -109,7 +109,6 @@ struct ContentView: View {
                 self.winner = winningPlayer
             }
         }
-        .edgesIgnoringSafeArea(.all)
     }
     
     private func selectStartingLifeTotal(_ total: Int) -> Void {

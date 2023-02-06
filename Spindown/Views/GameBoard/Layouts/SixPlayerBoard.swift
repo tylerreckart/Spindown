@@ -18,8 +18,8 @@ struct SixPlayerGameBoard: View {
 
     var body: some View {
         if (self.selectedLayout == .tandem) {
-            VStack(spacing: 0) {
-                HStack(spacing: 0) {
+            VStack(spacing: 20) {
+                HStack(spacing: 20) {
                     PlayerTile(
                         player: players[0],
                         color: colors[0],
@@ -43,7 +43,7 @@ struct SixPlayerGameBoard: View {
                     )
                 }
                 .rotationEffect(Angle(degrees: 180))
-                HStack(spacing: 0) {
+                HStack(spacing: 20) {
                     PlayerTile(
                         player: players[3],
                         color: colors[3],
@@ -69,7 +69,7 @@ struct SixPlayerGameBoard: View {
             }
             .edgesIgnoringSafeArea(.all)
         } else if (self.selectedLayout == .facingLandscape) {
-            VStack(spacing: 0) {
+            VStack(spacing: 20) {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
@@ -79,8 +79,8 @@ struct SixPlayerGameBoard: View {
                 )
                 .rotationEffect(Angle(degrees: 180))
                 .frame(maxHeight: screenHeight / 4)
-                HStack(spacing: 0) {
-                    VStack(spacing: 0) {
+                HStack(spacing: 20) {
+                    VStack(spacing: 20) {
                         PlayerTile(
                             player: players[1],
                             color: colors[1],
@@ -98,7 +98,7 @@ struct SixPlayerGameBoard: View {
                             selectedPlayer: $selectedPlayer
                         )
                     }
-                    VStack(spacing: 0) {
+                    VStack(spacing: 20) {
                         PlayerTile(
                             player: players[3],
                             color: colors[3],

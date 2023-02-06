@@ -47,7 +47,7 @@ struct PlayerSelectorView: View {
                         ForEach(self.players, id: \.self) { player in
                             Button(action: {}) {
                                 HStack {
-                                    Image(systemName: player.symbol != nil ? player.symbol! : "person.circle.fill")
+                                    Image(systemName: "person.circle.fill")
                                         .foregroundColor(Color.white)
                                     Text(player.name)
                                         .foregroundColor(Color.white)

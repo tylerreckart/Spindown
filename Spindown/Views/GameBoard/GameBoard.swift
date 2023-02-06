@@ -125,6 +125,7 @@ struct GameBoard: View {
             }
         }
         .opacity(opacity)
+        .padding(10)
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true
 
@@ -156,7 +157,7 @@ struct GameBoard: View {
         
         if (index != nil) {
             print("update life total")
-            player.currentLifeTotal = newLifeTotal
+            player.setLifeTotal(newLifeTotal)
             
             if (newLifeTotal == 0) {
                 player.loser = true

@@ -83,23 +83,25 @@ struct LifeTotalCalculatorDialog: View {
                 .cornerRadius(8)
                 
                 HStack(spacing: 20) {
-                    UIButton(
+                    UIButtonOutlined(
                         text: "Add",
                         symbol: "plus",
+                        fill: .black,
                         color:
                             self.activeSelection == .add ?
-                        UIColor(named: "PrimaryPurple")! :
+                            .white :
                             UIColor(named: "AccentGrayDarker")!,
                         action: {
                             self.activeSelection = .add
                         }
                     )
-                    UIButton(
+                    UIButtonOutlined(
                         text: "Subtract",
                         symbol: "minus",
+                        fill: .black,
                         color:
                             self.activeSelection == .subtract ?
-                        UIColor(named: "PrimaryPurple")! :
+                            .white :
                             UIColor(named: "AccentGrayDarker")!,
                         action: {
                             self.activeSelection = .subtract
@@ -126,13 +128,12 @@ struct LifeTotalCalculatorDialog: View {
                         }
                     )
                     .disabled(Int(lifeTotal) == nil)
-                    .opacity(Int(lifeTotal) != nil ? 1 : 0.75)
+                    .opacity(Int(lifeTotal) != nil ? 1 : 0.5)
                     
-                    UIButtonOutlined(
+                    UIButton(
                         text: "Cancel",
                         symbol: "xmark",
-                        fill: .black,
-                        color: UIColor(named: "AccentGray") ?? .systemGray, action: {
+                        color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
                             dismissModal()
                         }
                     )

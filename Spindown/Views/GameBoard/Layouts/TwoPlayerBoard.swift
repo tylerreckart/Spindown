@@ -24,7 +24,7 @@ struct TwoPlayerGameBoard: View {
 
     var body: some View {
         if (self.selectedLayout == .facingPortrait) {
-            VStack(spacing: 0) {
+            VStack(spacing: 20) {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
@@ -43,7 +43,7 @@ struct TwoPlayerGameBoard: View {
             }
             .edgesIgnoringSafeArea(.all)
         } else if (self.selectedLayout == .facingLandscape) {
-            HStack(spacing: 0) {
+            HStack(spacing: 20) {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
@@ -62,7 +62,7 @@ struct TwoPlayerGameBoard: View {
             }
             .edgesIgnoringSafeArea(.all)
         } else if (self.selectedLayout == .tandem) {
-            HStack(spacing: 0) {
+            HStack(spacing: 20) {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],

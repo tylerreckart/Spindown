@@ -14,7 +14,7 @@ enum TileOrientation {
 }
 
 struct PlayerTile: View {
-    var player: Participant
+    @ObservedObject var player: Participant
     var color: UIColor
     var updateLifeTotal: (Participant, Int) -> Void
     var orientation: TileOrientation = .portrait
@@ -79,19 +79,14 @@ struct PlayerTile: View {
             }
             .foregroundColor(.white)
         }
+        .cornerRadius(16)
     }
     
     func incrementLifeTotal() -> Void {
-        print("increment")
-        let currentLifeTotal = player.currentLifeTotal
-        let nextLifeTotal = currentLifeTotal + 1
-        updateLifeTotal(player, nextLifeTotal)
+        player.incrementLifeTotal()
     }
     
     func decrementLifeTotal() -> Void {
-        print("decrement")
-        let currentLifeTotal = player.currentLifeTotal
-        let nextLifeTotal = currentLifeTotal - 1
-        updateLifeTotal(player, nextLifeTotal)
+        player.decrementLifeTotal()
     }
 }

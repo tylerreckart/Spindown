@@ -15,8 +15,8 @@ struct ThreePlayerGameBoard: View {
     var showLifeTotalCalculatorForPlayer: () -> ()
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
+        VStack(spacing: 20) {
+            HStack(spacing: 20) {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
