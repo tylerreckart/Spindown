@@ -30,13 +30,13 @@ enum FocusField {
 }
 
 struct LifeTotalCalculatorDialog: View {
+    @Binding var selectedPlayer: Participant?
     var toggleCalculator: () -> ()
-
+    var updateLifeTotal: (Participant, Int) -> Void
+    @FocusState private var focused: FocusField?
     @State private var dialogOpacity: Double = 0
     @State private var dialogOffset: Double = 0
-    
     @State private var lifeTotal: String = ""
-    @FocusState private var focused: FocusField?
     @State private var activeSelection: LifeTotalCalculatorSelection = .subtract
 
     var body: some View {
@@ -113,6 +113,15 @@ struct LifeTotalCalculatorDialog: View {
                         symbol: "checkmark",
                         color: UIColor(named: "PrimaryRed")!,
                         action: {
+                            let delta = Int(self.lifeTotal) ?? 0
+                            let currentLifeTotal = self.selectedPlayer!.currentLifeTotal
+        
+                            if (self.activeSelection == .add) {
+                                updateLifeTotal(self.selectedPlayer!, currentLifeTotal + delta)
+                            } else {
+                                updateLifeTotal(self.selectedPlayer!, currentLifeTotal - delta)
+                            }
+
                             dismissModal()
                         }
                     )
@@ -170,10 +179,14 @@ struct LifeTotalCalculatorDialog: View {
 }
 
 struct LifeTotalCalculatorDialog_Previews: PreviewProvider {
-    static func toggleCalculator() {}
+    @State static private var selectedPlayer: Participant? = nil
     static var previews: some View {
         LifeTotalCalculatorDialog(
-            toggleCalculator: toggleCalculator
+            selectedPlayer: $selectedPlayer,
+            toggleCalculator: toggleCalculator,
+            updateLifeTotal: updateLifeTotal
         ).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+    static func toggleCalculator() {}
+    static func updateLifeTotal(_ a: Participant, _ b: Int) {}
 }

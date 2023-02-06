@@ -10,12 +10,10 @@ import SwiftUI
 struct SixPlayerGameBoard: View {
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
-    
+    @Binding var selectedPlayer: Participant?
     @Binding var selectedLayout: BoardLayout
-    
     var updateLifeTotal: (Participant, Int) -> Void
     var showLifeTotalCalculatorForPlayer: () -> ()
-    
     var screenHeight = UIScreen.main.bounds.height
 
     var body: some View {
@@ -26,19 +24,22 @@ struct SixPlayerGameBoard: View {
                         player: players[0],
                         color: colors[0],
                         updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                        selectedPlayer: $selectedPlayer
                     )
                     PlayerTile(
                         player: players[1],
                         color: colors[1],
                         updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                        selectedPlayer: $selectedPlayer
                     )
                     PlayerTile(
                         player: players[2],
                         color: colors[2],
                         updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                        selectedPlayer: $selectedPlayer
                     )
                 }
                 .rotationEffect(Angle(degrees: 180))
@@ -47,19 +48,22 @@ struct SixPlayerGameBoard: View {
                         player: players[3],
                         color: colors[3],
                         updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                        selectedPlayer: $selectedPlayer
                     )
                     PlayerTile(
                         player: players[4],
                         color: colors[4],
                         updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                        selectedPlayer: $selectedPlayer
                     )
                     PlayerTile(
                         player: players[5],
                         color: colors[5],
                         updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                        selectedPlayer: $selectedPlayer
                     )
                 }
             }
@@ -70,7 +74,8 @@ struct SixPlayerGameBoard: View {
                     player: players[0],
                     color: colors[0],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
                 .frame(maxHeight: screenHeight / 4)
@@ -81,14 +86,16 @@ struct SixPlayerGameBoard: View {
                             color: colors[1],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscapeReverse,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
                         )
                         PlayerTile(
                             player: players[2],
                             color: colors[2],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscapeReverse,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
                         )
                     }
                     VStack(spacing: 0) {
@@ -97,14 +104,16 @@ struct SixPlayerGameBoard: View {
                             color: colors[3],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscape,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
                         )
                         PlayerTile(
                             player: players[4],
                             color: colors[4],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscape,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
                         )
                     }
                 }
@@ -112,7 +121,8 @@ struct SixPlayerGameBoard: View {
                     player: players[5],
                     color: colors[5],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
                 .frame(maxHeight: screenHeight / 4)
             }

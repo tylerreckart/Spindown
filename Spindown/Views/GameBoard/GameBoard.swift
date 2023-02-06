@@ -29,6 +29,7 @@ struct GameBoard: View {
     @State private var showSettingsDialog: Bool = false
     @State private var showLifeTotalCalculator: Bool = false
     
+    @State private var selectedPlayer: Participant?
     @State private var selectedLayout: BoardLayout = .tandem
     
     var body: some View {
@@ -38,12 +39,14 @@ struct GameBoard: View {
                     player: players[0],
                     color: colors[0],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
             } else if (players.count == 2) {
                 TwoPlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
+                    selectedPlayer: $selectedPlayer,
                     selectedLayout: $selectedLayout,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer,
                     updateLifeTotal: updateLifeTotal
@@ -52,6 +55,7 @@ struct GameBoard: View {
                 ThreePlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
+                    selectedPlayer: $selectedPlayer,
                     updateLifeTotal: updateLifeTotal,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
                 )
@@ -59,6 +63,7 @@ struct GameBoard: View {
                 FourPlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
+                    selectedPlayer: $selectedPlayer,
                     selectedLayout: $selectedLayout,
                     updateLifeTotal: updateLifeTotal,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
@@ -67,6 +72,7 @@ struct GameBoard: View {
                 FivePlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
+                    selectedPlayer: $selectedPlayer,
                     updateLifeTotal: updateLifeTotal,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
                 )
@@ -74,6 +80,7 @@ struct GameBoard: View {
                 SixPlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
+                    selectedPlayer: $selectedPlayer,
                     selectedLayout: $selectedLayout,
                     updateLifeTotal: updateLifeTotal,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
@@ -110,7 +117,11 @@ struct GameBoard: View {
             }
             
             if (self.showLifeTotalCalculator == true) {
-                LifeTotalCalculatorDialog(toggleCalculator: { self.showLifeTotalCalculator.toggle() })
+                LifeTotalCalculatorDialog(
+                    selectedPlayer: $selectedPlayer,
+                    toggleCalculator: { self.showLifeTotalCalculator.toggle() },
+                    updateLifeTotal: updateLifeTotal
+                )
             }
         }
         .opacity(opacity)
@@ -159,6 +170,8 @@ struct GameBoard: View {
             
             players[index!] = player
         }
+        
+        self.selectedPlayer = nil
     }
 }
 

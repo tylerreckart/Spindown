@@ -18,8 +18,8 @@ struct PlayerTile: View {
     var color: UIColor
     var updateLifeTotal: (Participant, Int) -> Void
     var orientation: TileOrientation = .portrait
-    
     var showLifeTotalCalculator: () -> ()
+    @Binding var selectedPlayer: Participant?
     
     var body: some View {
         ZStack {
@@ -59,7 +59,10 @@ struct PlayerTile: View {
                     VStack {
                         Text(player.name)
                             .font(.system(size: 20, weight: .regular))
-                        Button(action: { showLifeTotalCalculator() }) {
+                        Button(action: {
+                            showLifeTotalCalculator()
+                            selectedPlayer = player
+                        }) {
                             Text("\(player.currentLifeTotal)")
                                 .font(.system(size: 64, weight: .black))
                         }

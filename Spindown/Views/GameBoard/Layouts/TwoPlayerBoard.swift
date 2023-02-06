@@ -16,7 +16,7 @@ enum BoardLayout {
 struct TwoPlayerGameBoard: View {
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
-    
+    @Binding var selectedPlayer: Participant?
     @Binding var selectedLayout: BoardLayout
     var showLifeTotalCalculatorForPlayer: () -> ()
     
@@ -29,14 +29,16 @@ struct TwoPlayerGameBoard: View {
                     player: players[0],
                     color: colors[0],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
             }
             .edgesIgnoringSafeArea(.all)
@@ -46,13 +48,15 @@ struct TwoPlayerGameBoard: View {
                     player: players[0],
                     color: colors[0],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
             }
@@ -63,13 +67,15 @@ struct TwoPlayerGameBoard: View {
                     player: players[0],
                     color: colors[0],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
                 )
             }
             .edgesIgnoringSafeArea(.all)
