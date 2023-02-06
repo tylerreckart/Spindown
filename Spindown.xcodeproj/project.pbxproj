@@ -11,6 +11,7 @@
 		DB1D3A072991566400A741DC /* PlayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A062991566400A741DC /* PlayerList.swift */; };
 		DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */; };
 		DB1D3A0B29915CA200A741DC /* NewPlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0A29915CA200A741DC /* NewPlayerScreen.swift */; };
+		DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
 		DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */; };
@@ -41,6 +42,7 @@
 		DB1D3A062991566400A741DC /* PlayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerList.swift; sourceTree = "<group>"; };
 		DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPlayersSelector.swift; sourceTree = "<group>"; };
 		DB1D3A0A29915CA200A741DC /* NewPlayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerScreen.swift; sourceTree = "<group>"; };
+		DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTotalCalculatorDialog.swift; sourceTree = "<group>"; };
 		DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerDialog.swift; sourceTree = "<group>"; };
 		DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreePlayerBoard.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				DB41B1A8298AF4B00000EC42 /* Button.swift */,
 				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
+				DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */,
 				DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */,
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
+				DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */,
 				DB8B8F6D298767100023A84B /* PlayerTile.swift in Sources */,
 				DB8B8F6F298767390023A84B /* Participant.swift in Sources */,
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,

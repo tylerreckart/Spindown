@@ -9,7 +9,7 @@ Magic: The Gathering Tabletop Companion App
     - [ ] Change Layout
         - [x] Two Players
         - [ ] Three Players
-        - [ ] Four Players
+        - [x] Four Players
         - [ ] Five Players
         - [x] Six Players
     - [ ] ~~Change Format~~
@@ -20,7 +20,7 @@ Magic: The Gathering Tabletop Companion App
     - [ ] ~~Roll die~~ (postponed for v2 release)
     - [ ] Start timer
     - [x] End game
-- [ ] Player Settings Dialog
+- [ ] New Player View (sub-view for player settings dialog)
     - [ ] Player name
     - [ ] Player color
     - [ ] ~~Player symbol~~ (postponed for v2 release)

@@ -137,7 +137,7 @@ struct GameSettingsHomeView: View {
                         self.activeView = .format
                     }
                 })
-                if (self.playerCount == 2 || self.playerCount == 4 || self.playerCount == 6) {
+                if (self.playerCount != 1) {
                     UIButtonOutlined(
                         text: "Change Layout",
                         symbol: "uiwindow.split.2x1",
@@ -150,11 +150,13 @@ struct GameSettingsHomeView: View {
                         }
                     )
                 }
-//                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-//                    withAnimation {
-//                        self.activeView = .player
-//                    }
-//                })
+
+                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
+                    withAnimation {
+                        self.activeView = .player
+                    }
+                })
+
                 UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: {
                     dismissModal()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
