@@ -27,6 +27,7 @@ struct GameBoard: View {
     var endGame: () -> ()
     
     @State private var showSettingsDialog: Bool = false
+    @State private var showLifeTotalCalculator: Bool = false
     
     @State private var selectedLayout: BoardLayout = .tandem
     
@@ -36,23 +37,47 @@ struct GameBoard: View {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
             } else if (players.count == 2) {
                 TwoPlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
                     selectedLayout: $selectedLayout,
+                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer,
                     updateLifeTotal: updateLifeTotal
                 )
             } else if (players.count == 3) {
-                ThreePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, updateLifeTotal: updateLifeTotal)
+                ThreePlayerGameBoard(
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
+                )
             } else if (players.count == 4) {
-                FourPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout, updateLifeTotal: updateLifeTotal)
+                FourPlayerGameBoard(
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    selectedLayout: $selectedLayout,
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
+                )
             } else if (players.count == 5) {
-                FivePlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, updateLifeTotal: updateLifeTotal)
+                FivePlayerGameBoard(
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
+                )
             } else if (players.count == 6) {
-                SixPlayerGameBoard(players: $players, numPlayersRemaining: $numPlayersRemaining, selectedLayout: $selectedLayout, updateLifeTotal: updateLifeTotal)
+                SixPlayerGameBoard(
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    selectedLayout: $selectedLayout,
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
+                )
             }
             
             VStack {
@@ -83,6 +108,10 @@ struct GameBoard: View {
                 )
                 .edgesIgnoringSafeArea(.all)
             }
+            
+            if (self.showLifeTotalCalculator == true) {
+                LifeTotalCalculatorDialog(toggleCalculator: { self.showLifeTotalCalculator.toggle() })
+            }
         }
         .opacity(opacity)
         .onAppear {
@@ -95,6 +124,10 @@ struct GameBoard: View {
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
         }
+    }
+    
+    private func showLifeTotalCalculatorForPlayer() {
+        self.showLifeTotalCalculator.toggle()
     }
                  
     private func chooseNextPlayer() {

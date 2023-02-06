@@ -14,6 +14,7 @@ struct SixPlayerGameBoard: View {
     @Binding var selectedLayout: BoardLayout
     
     var updateLifeTotal: (Participant, Int) -> Void
+    var showLifeTotalCalculatorForPlayer: () -> ()
     
     var screenHeight = UIScreen.main.bounds.height
 
@@ -24,17 +25,20 @@ struct SixPlayerGameBoard: View {
                     PlayerTile(
                         player: players[0],
                         color: colors[0],
-                        updateLifeTotal: updateLifeTotal
+                        updateLifeTotal: updateLifeTotal,
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     PlayerTile(
                         player: players[1],
                         color: colors[1],
-                        updateLifeTotal: updateLifeTotal
+                        updateLifeTotal: updateLifeTotal,
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     PlayerTile(
                         player: players[2],
                         color: colors[2],
-                        updateLifeTotal: updateLifeTotal
+                        updateLifeTotal: updateLifeTotal,
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                 }
                 .rotationEffect(Angle(degrees: 180))
@@ -42,17 +46,20 @@ struct SixPlayerGameBoard: View {
                     PlayerTile(
                         player: players[3],
                         color: colors[3],
-                        updateLifeTotal: updateLifeTotal
+                        updateLifeTotal: updateLifeTotal,
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     PlayerTile(
                         player: players[4],
                         color: colors[4],
-                        updateLifeTotal: updateLifeTotal
+                        updateLifeTotal: updateLifeTotal,
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     PlayerTile(
                         player: players[5],
                         color: colors[5],
-                        updateLifeTotal: updateLifeTotal
+                        updateLifeTotal: updateLifeTotal,
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                 }
             }
@@ -62,7 +69,8 @@ struct SixPlayerGameBoard: View {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
                 .frame(maxHeight: screenHeight / 4)
@@ -72,13 +80,15 @@ struct SixPlayerGameBoard: View {
                             player: players[1],
                             color: colors[1],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscapeReverse
+                            orientation: .landscapeReverse,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[2],
                             color: colors[2],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscapeReverse
+                            orientation: .landscapeReverse,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
                     VStack(spacing: 0) {
@@ -86,20 +96,23 @@ struct SixPlayerGameBoard: View {
                             player: players[3],
                             color: colors[3],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscape
+                            orientation: .landscape,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[4],
                             color: colors[4],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscape
+                            orientation: .landscape,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
                 }
                 PlayerTile(
                     player: players[5],
                     color: colors[5],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 .frame(maxHeight: screenHeight / 4)
             }

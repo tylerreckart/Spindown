@@ -18,6 +18,7 @@ struct TwoPlayerGameBoard: View {
     @Binding var numPlayersRemaining: Int
     
     @Binding var selectedLayout: BoardLayout
+    var showLifeTotalCalculatorForPlayer: () -> ()
     
     var updateLifeTotal: (Participant, Int) -> Void
 
@@ -27,13 +28,15 @@ struct TwoPlayerGameBoard: View {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
             }
             .edgesIgnoringSafeArea(.all)
@@ -42,12 +45,14 @@ struct TwoPlayerGameBoard: View {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
             }
@@ -57,12 +62,14 @@ struct TwoPlayerGameBoard: View {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
             }
             .edgesIgnoringSafeArea(.all)

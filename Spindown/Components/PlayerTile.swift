@@ -19,7 +19,7 @@ struct PlayerTile: View {
     var updateLifeTotal: (Participant, Int) -> Void
     var orientation: TileOrientation = .portrait
     
-    @State private var showLifeTotalCalculator: Bool = false
+    var showLifeTotalCalculator: () -> ()
     
     var body: some View {
         ZStack {
@@ -59,7 +59,7 @@ struct PlayerTile: View {
                     VStack {
                         Text(player.name)
                             .font(.system(size: 20, weight: .regular))
-                        Button(action: { self.showLifeTotalCalculator.toggle() }) {
+                        Button(action: { showLifeTotalCalculator() }) {
                             Text("\(player.currentLifeTotal)")
                                 .font(.system(size: 64, weight: .black))
                         }
@@ -75,10 +75,6 @@ struct PlayerTile: View {
                     )
             }
             .foregroundColor(.white)
-            
-            if (self.showLifeTotalCalculator) {
-                LifeTotalCalculatorDialog()
-            }
         }
     }
     

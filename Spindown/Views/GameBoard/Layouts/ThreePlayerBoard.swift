@@ -12,6 +12,7 @@ struct ThreePlayerGameBoard: View {
     @Binding var numPlayersRemaining: Int
     
     var updateLifeTotal: (Participant, Int) -> Void
+    var showLifeTotalCalculatorForPlayer: () -> ()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -19,18 +20,21 @@ struct ThreePlayerGameBoard: View {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 PlayerTile(
                     player: players[1],
                     color: colors[1],
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
             }
             PlayerTile(
                 player: players[2],
                 color: colors[2],
-                updateLifeTotal: updateLifeTotal
+                updateLifeTotal: updateLifeTotal,
+                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
             )
         }
         .edgesIgnoringSafeArea(.all)
