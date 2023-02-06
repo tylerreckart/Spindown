@@ -2,7 +2,7 @@
 Magic: The Gathering Tabletop Companion App
 
 ## Feature Roadmap
-- [ ] Custom Formats
+- [ ] ~~Custom Formats~~
 - [ ] Custom Players
 - [ ] Add counters (poison etc)
 - [ ] Game Settings Dialog
@@ -11,19 +11,19 @@ Magic: The Gathering Tabletop Companion App
         - [ ] Three Players
         - [ ] Four Players
         - [ ] Five Players
-        - [ ] Six Players
-    - [ ] Change Format
-    - [ ] View rules for current format
+        - [x] Six Players
+    - [ ] ~~Change Format~~
+    - [ ] ~~View rules for current format~~
       - [x] Fetch rules
       - [ ] Cache rules
       - [ ] `ripgrep` search
-    - [ ] Roll die
+    - [ ] ~~Roll die~~ (postponed for v2 release)
     - [ ] Start timer
     - [x] End game
 - [ ] Player Settings Dialog
     - [ ] Player name
     - [ ] Player color
-    - [ ] Player symbol
+    - [ ] ~~Player symbol~~ (postponed for v2 release)
 - [ ] Life Total Dialog
     - [ ] Ability to add or subtract a defined quantity of damage
     - [ ] Ability to mark as commander damage when commander format is true
@@ -34,5 +34,5 @@ Magic: The Gathering Tabletop Companion App
     - [ ] Change app icon
     - [ ] Subscription settings
     - [ ] Change saved players
-    - [ ] Change saved formats
+    - [ ] ~~Change saved formats~~
     - [ ] Feedback and info
