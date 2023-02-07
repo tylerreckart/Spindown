@@ -32,6 +32,7 @@ struct FivePlayerGameBoard: View {
                     selectedPlayer: $selectedPlayer
                 )
             }
+            .rotationEffect(Angle(degrees: 180))
             HStack(spacing: 20) {
                 PlayerTile(
                     player: players[2],
@@ -47,14 +48,14 @@ struct FivePlayerGameBoard: View {
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                     selectedPlayer: $selectedPlayer
                 )
+                PlayerTile(
+                    player: players[4],
+                    color: colors[4],
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
+                )
             }
-            PlayerTile(
-                player: players[4],
-                color: colors[4],
-                updateLifeTotal: updateLifeTotal,
-                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                selectedPlayer: $selectedPlayer
-            )
         }
         .edgesIgnoringSafeArea(.all)
     }

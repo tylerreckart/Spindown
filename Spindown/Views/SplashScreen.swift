@@ -31,10 +31,10 @@ struct SplashScreen: View {
                         .frame(maxWidth: 300, maxHeight: 60)
                         .shadow(color: Color.black.opacity(0.1), radius: 10)
                         .opacity(globalOpacity)
-                    UIButtonOutlined(text: "Game History", symbol: "text.book.closed", fill: .black, color: .white, action: { self.setupStep += 1 })
-                        .frame(maxWidth: 300, maxHeight: 60)
-                        .shadow(color: Color.black.opacity(0.1), radius: 10)
-                        .opacity(globalOpacity)
+//                    UIButtonOutlined(text: "Game History", symbol: "text.book.closed", fill: .black, color: .white, action: { self.setupStep += 1 })
+//                        .frame(maxWidth: 300, maxHeight: 60)
+//                        .shadow(color: Color.black.opacity(0.1), radius: 10)
+//                        .opacity(globalOpacity)
                     UIButtonOutlined(text: "Settings", symbol: "gearshape", fill: .black, color: .white, action: { self.setupStep += 1 })
                         .frame(maxWidth: 300, maxHeight: 60)
                         .shadow(color: Color.black.opacity(0.1), radius: 10)
@@ -47,7 +47,7 @@ struct SplashScreen: View {
         }
         .background(Color(.black))
         .onAppear {
-            withAnimation(.easeIn(duration: 1)) {
+            withAnimation(.linear(duration: 0.6)) {
                 self.globalOpacity = 1
             }
         }

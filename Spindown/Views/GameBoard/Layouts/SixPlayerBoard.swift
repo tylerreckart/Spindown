@@ -14,7 +14,7 @@ struct SixPlayerGameBoard: View {
     @Binding var selectedLayout: BoardLayout
     var updateLifeTotal: (Participant, Int) -> Void
     var showLifeTotalCalculatorForPlayer: () -> ()
-    var screenHeight = UIScreen.main.bounds.height
+    var screenWidth = UIScreen.main.bounds.width
 
     var body: some View {
         if (self.selectedLayout == .tandem) {
@@ -69,23 +69,23 @@ struct SixPlayerGameBoard: View {
             }
             .edgesIgnoringSafeArea(.all)
         } else if (self.selectedLayout == .facingLandscape) {
-            VStack(spacing: 20) {
+            HStack(spacing: 20) {
                 PlayerTile(
                     player: players[0],
                     color: colors[0],
                     updateLifeTotal: updateLifeTotal,
+                    orientation: .landscape,
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                     selectedPlayer: $selectedPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
-                .frame(maxHeight: screenHeight / 4)
-                HStack(spacing: 20) {
-                    VStack(spacing: 20) {
+                .frame(maxWidth: screenWidth / 4)
+                VStack(spacing: 20) {
+                    HStack(spacing: 20) {
                         PlayerTile(
                             player: players[1],
                             color: colors[1],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscapeReverse,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
@@ -93,17 +93,16 @@ struct SixPlayerGameBoard: View {
                             player: players[2],
                             color: colors[2],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscapeReverse,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
                     }
-                    VStack(spacing: 20) {
+                    .rotationEffect(Angle(degrees: 180))
+                    HStack(spacing: 20) {
                         PlayerTile(
                             player: players[3],
                             color: colors[3],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscape,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
@@ -111,7 +110,6 @@ struct SixPlayerGameBoard: View {
                             player: players[4],
                             color: colors[4],
                             updateLifeTotal: updateLifeTotal,
-                            orientation: .landscape,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
@@ -121,10 +119,11 @@ struct SixPlayerGameBoard: View {
                     player: players[5],
                     color: colors[5],
                     updateLifeTotal: updateLifeTotal,
+                    orientation: .landscape,
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                     selectedPlayer: $selectedPlayer
                 )
-                .frame(maxHeight: screenHeight / 4)
+                .frame(maxWidth: screenWidth / 4)
             }
             .edgesIgnoringSafeArea(.all)
         }

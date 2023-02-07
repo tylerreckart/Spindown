@@ -21,7 +21,7 @@ struct PlayersSelector: View {
                     .font(.system(size: 64, weight: .black))
                     .foregroundColor(.white)
                     .padding(.bottom, 5)
-                Text("Select the number of players or choose to play with saved players.")
+                Text("Choose the number of players.")
                     .font(.system(size: 20))
                     .foregroundColor(Color(.systemGray))
                     .multilineTextAlignment(.center)
@@ -59,16 +59,16 @@ struct PlayersSelector: View {
                         setupStep += 1
                     })
                 }
-                UIButtonOutlined(
-                    text: "Saved Players",
-                    symbol: nil,
-                    fill: .black,
-                    color: UIColor(named: "AccentGray")!,
-                    action: {
-                        setupStep += 0.5
-                    }
-                )
-                .padding(.top, 10)
+//                UIButtonOutlined(
+//                    text: "Saved Players",
+//                    symbol: nil,
+//                    fill: .black,
+//                    color: UIColor(named: "AccentGray")!,
+//                    action: {
+//                        setupStep += 0.5
+//                    }
+//                )
+//                .padding(.top, 10)
             }
             .frame(maxWidth: 300)
             

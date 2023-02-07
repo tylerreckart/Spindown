@@ -3,7 +3,7 @@ Magic: The Gathering Tabletop Companion App
 
 ## Feature Roadmap
 - [ ] ~~Custom Formats~~ _(Postponed for v2 release)_
-- [ ] Custom Players
+- [ ] ~~Custom Players~~ _(v2)_
 - [ ] Add counters (poison etc)
 - [ ] Game Settings Dialog
     - [ ] Change Layout
@@ -20,19 +20,19 @@ Magic: The Gathering Tabletop Companion App
     - [ ] ~~Roll die~~ _(v2)_
     - [ ] Start timer
     - [x] End game
-- [ ] New Player View (sub-view for player settings dialog)
+- [ ] ~~New Player View (sub-view for player settings dialog)~~ _(v2)_
     - [ ] Player name
     - [ ] Player color
-    - [ ] ~~Player symbol~~ _(v2)_
+    - [ ] Player symbol
 - [x] Life Total Dialog
     - [x] Ability to add or subtract a defined quantity of damage
     - [ ] ~~Ability to mark as commander damage when commander format is true~~ _(v2)_
-- [ ] Game History Screen
+- [ ] ~~Game History Screen~~ _(v2)_
     - [ ] Show names of each player and the order of defeat.
     - [ ] Ability to remove games from history
 - [ ] App Settings Screen
     - [ ] Change app icon
     - [ ] Subscription settings
-    - [ ] Change saved players
+    - [ ] ~~Change saved players~~ _(v2)_
     - [ ] ~~Change saved formats~~ _(v2)_
     - [ ] Feedback and info
