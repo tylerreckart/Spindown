@@ -55,6 +55,7 @@ struct StartingLifeTotalSelector: View {
             
             Spacer()
         }
+        .transition(.push(from: .trailing))
     }
 }
 

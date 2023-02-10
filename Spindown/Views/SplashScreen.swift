@@ -41,5 +41,6 @@ struct SplashScreen: View {
             Spacer()
         }
         .background(Color(.black))
+        .transition(.push(from: .trailing))
     }
 }

@@ -10,7 +10,6 @@
 		DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D39FB298D60D400A741DC /* RulesSheet.swift */; };
 		DB1D3A072991566400A741DC /* PlayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A062991566400A741DC /* PlayerList.swift */; };
 		DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */; };
-		DB1D3A0B29915CA200A741DC /* NewPlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0A29915CA200A741DC /* NewPlayerScreen.swift */; };
 		DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
@@ -42,7 +41,6 @@
 		DB1D39FB298D60D400A741DC /* RulesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesSheet.swift; sourceTree = "<group>"; };
 		DB1D3A062991566400A741DC /* PlayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerList.swift; sourceTree = "<group>"; };
 		DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPlayersSelector.swift; sourceTree = "<group>"; };
-		DB1D3A0A29915CA200A741DC /* NewPlayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerScreen.swift; sourceTree = "<group>"; };
 		DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTotalCalculatorDialog.swift; sourceTree = "<group>"; };
 		DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerDialog.swift; sourceTree = "<group>"; };
 		DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerBoard.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */,
 				DB8B8F72298767890023A84B /* PlayersSelector.swift */,
 				DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */,
-				DB1D3A0A29915CA200A741DC /* NewPlayerScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,7 +297,6 @@
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
 				DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,
-				DB1D3A0B29915CA200A741DC /* NewPlayerScreen.swift in Sources */,
 				DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */,
 				DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */,
 			);
@@ -442,7 +438,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -481,7 +477,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;

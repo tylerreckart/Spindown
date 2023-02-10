@@ -51,21 +51,12 @@ struct PlayersSelector: View {
                         setNumPlayers(6)
                     })
                 }
-//                UIButtonOutlined(
-//                    text: "Saved Players",
-//                    symbol: nil,
-//                    fill: .black,
-//                    color: UIColor(named: "AccentGray")!,
-//                    action: {
-//                        setupStep += 0.5
-//                    }
-//                )
-//                .padding(.top, 10)
             }
             .frame(maxWidth: 300)
             
             Spacer()
         }
+        .transition(.push(from: .trailing))
     }
 }
 
