@@ -4,7 +4,7 @@ Magic: The Gathering Tabletop Companion App
 ## Feature Roadmap
 - [ ] ~~Custom Formats~~ _(Postponed for v2 release)_
 - [ ] ~~Custom Players~~ _(v2)_
-- [ ] Add counters (poison etc)
+- [x] Add counters (poison etc)
 - [ ] Game Settings Dialog
     - [ ] Change Layout
         - [x] Two Players

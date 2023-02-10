@@ -161,11 +161,9 @@ struct GameBoard: View {
             player.setLifeTotal(newLifeTotal)
             
             if (newLifeTotal == 0) {
-                player.loser = true
                 self.numPlayersRemaining = numPlayersRemaining - 1
                 print("\(player.name) lost the game")
-            } else if (players[index!].currentLifeTotal <= 0 && newLifeTotal > 0) {
-                player.loser = false
+            } else if (players[index!].lifeTotal <= 0 && newLifeTotal > 0) {
                 self.numPlayersRemaining = numPlayersRemaining + 1
                 print("\(player.name) re-entered the game")
             }
@@ -183,7 +181,7 @@ func buildTestPlayers() -> [Participant] {
     for index in 1..<3 {
         let player = Participant()
         player.name = "Player \(index)"
-        player.currentLifeTotal = 20
+        player.lifeTotal = 20
         players.append(player)
     }
     

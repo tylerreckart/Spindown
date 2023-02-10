@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct PlayersSelector: View {
-    @Binding var setupStep: Double
-
     var setNumPlayers: (Int) -> ()
     
     var body: some View {
@@ -34,29 +32,23 @@ struct PlayersSelector: View {
                 HStack(spacing: 20) {
                     UIButtonTile(text: "1", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(1)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "2", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(2)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(3)
-                        setupStep += 1
                     })
                 }
                 HStack(spacing: 20) {
                     UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(4)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(5)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(6)
-                        setupStep += 1
                     })
                 }
 //                UIButtonOutlined(

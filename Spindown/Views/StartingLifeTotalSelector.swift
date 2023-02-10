@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct StartingLifeTotalSelector: View {
-    @Binding var setupStep: Double
-
     var setStartingLifeTotal: (Int) -> ()
     
     var body: some View {
@@ -34,29 +32,23 @@ struct StartingLifeTotalSelector: View {
                 HStack(spacing: 20) {
                     UIButtonTile(text: "20", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setStartingLifeTotal(20)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "30", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setStartingLifeTotal(30)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "40", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setStartingLifeTotal(40)
-                        setupStep += 1
                     })
                 }
                 HStack(spacing: 20) {
                     UIButtonTile(text: "50", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setStartingLifeTotal(50)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "60", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setStartingLifeTotal(60)
-                        setupStep += 1
                     })
                     UIButtonTile(text: "100", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setStartingLifeTotal(100)
-                        setupStep += 1
                     })
                 }
             }

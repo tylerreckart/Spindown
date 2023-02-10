@@ -8,10 +8,72 @@
 import SwiftUI
 import CoreData
 
+enum Page: CaseIterable {
+    case home
+    case lifeTotal
+    case players
+    case gameBoard
+    
+    static let page = Page.allCases
+    
+    var shouldShowBackButton: Bool {
+        switch self {
+        case .lifeTotal, .players:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    @ViewBuilder
+    func view(
+        setStartingLifeTotal: @escaping (Int) -> (),
+        setPlayerCount: @escaping (Int) -> (),
+        chooseStartingPlayer: @escaping () -> Void,
+        startGame: @escaping () -> Void,
+        endGame: @escaping () -> Void,
+        resetBoard: @escaping () -> Void,
+        showNextPage: @escaping () -> Void,
+        players: Binding<[Participant]>,
+        numPlayersRemaining: Binding<Int>,
+        activePlayer: Binding<Participant?>,
+        showStartingPlayerOverlay: Bool,
+        winner: Participant?
+    ) -> some View {
+        switch self {
+        case .home:
+            SplashScreen(showNextPage: showNextPage)
+        case .lifeTotal:
+            StartingLifeTotalSelector(setStartingLifeTotal: setStartingLifeTotal)
+        case .players:
+            PlayersSelector(setNumPlayers: setPlayerCount)
+        case .gameBoard:
+            ZStack {
+                GameBoard(
+                    players: players,
+                    numPlayersRemaining: numPlayersRemaining,
+                    activePlayer: activePlayer,
+                    endGame: endGame
+                )
+                
+                if (winner != nil) {
+                    GameOverDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
+                }
+
+                if (showStartingPlayerOverlay) {
+                    StartingPlayerDialog(
+                        activePlayer: activePlayer,
+                        startGame: startGame,
+                        chooseStartingPlayer: chooseStartingPlayer
+                    )
+                }
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var playerCount: Int = 0
-    @State private var setupStep: Double = 0
-    @State private var setupComplete: Bool = false
     @State private var players: [Participant] = []
     @State private var numPlayersRemaining: Int = 0
     @State private var winner: Participant? = nil
@@ -20,106 +82,61 @@ struct ContentView: View {
     @State private var gameBoardOpacity: CGFloat = 0
     @State private var startingLifeTotal: Int = 0
     
+    @State private var currentPage: Page = .home
+    private let pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
+
     var body: some View {
-        ZStack {
-            if (self.setupComplete == false) {
-                if (self.setupStep == 0) {
-                    SplashScreen(setupStep: $setupStep)
-                }
-                
-                if (self.setupStep == 1) {
-                    StartingLifeTotalSelector(setupStep: $setupStep, setStartingLifeTotal: selectStartingLifeTotal)
-                }
-                
-                if (self.setupStep == 2) {
-                    PlayersSelector(setupStep: $setupStep, setNumPlayers: selectPlayerCount)
-                }
-                
-                if (self.setupStep == 2.5) {
-                    SavedPlayersSelector(setupStep: $setupStep, setPlayers: setPlayers)
-                }
-            }
-            
-            if (self.setupComplete) {
-                ZStack {
-                    GameBoard(
-                        players: $players,
-                        numPlayersRemaining: $numPlayersRemaining,
-                        activePlayer: $activePlayer,
-                        endGame: endGame
-                    ).opacity(gameBoardOpacity)
-                    
-                    if (self.winner != nil) {
-                        GameOverDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
-                    }
-                }
-            }
-            
-            if (self.showStartOverlay == true) {
-                StartingPlayerDialog(
-                    activePlayer: $activePlayer,
+        ForEach(pages, id: \.self) { page in
+            if page == currentPage {
+                page.view(
+                    setStartingLifeTotal: setStartingLifeTotal,
+                    setPlayerCount: setPlayerCount,
+                    chooseStartingPlayer: chooseStartingPlayer,
                     startGame: startGame,
-                    chooseStartingPlayer: chooseStartingPlayer
+                    endGame: endGame,
+                    resetBoard: resetBoard,
+                    showNextPage: showNextPage,
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    activePlayer: $activePlayer,
+                    showStartingPlayerOverlay: showStartOverlay,
+                    winner: winner
                 )
-            }
-        }
-        .background(.black)
-        .onChange(of: setupStep) { newState in
-            print("setup step change handler")
-            if (setupStep == 3) {
-                // Reset state for future game setup.
-                self.setupStep = 0
-                // Set completion state for board draw.
-                self.setupComplete = true
-
-                withAnimation {
-                    self.gameBoardOpacity = 1
-                }
-            }
-        }
-        .onChange(of: setupComplete) { newState in
-            print("setup completion change handler")
-            if (self.setupComplete == true && self.players.count == 0) {
-                for count in 1..<self.playerCount + 1 {
-                    let player = Participant()
-                    player.name = "Player \(count)"
-                    player.currentLifeTotal = self.startingLifeTotal
-                    player.startingLifeTotal = self.startingLifeTotal
-                    player.color = colors[count - 1]
-                    self.players.append(player)
-                }
-                
-                // Select the starting player.
-                chooseStartingPlayer()
-            } else {
-                self.players = []
-            }
-
-            self.numPlayersRemaining = self.players.count
-        }
-        .onChange(of: numPlayersRemaining) { newState in
-            if (newState == 1 && players.count != 1) {
-                let winningPlayer = self.players.filter { $0.loser != true }
-                
-                if (winningPlayer.count > 0) {
-                    self.winner = winningPlayer[0]
-                }
-            } else if (newState == 0 && players.count == 1) {
-                let winningPlayer = self.players[0]
-                self.winner = winningPlayer
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                    .transition(AnyTransition.scale)
             }
         }
     }
     
-    private func selectStartingLifeTotal(_ total: Int) -> Void {
+    private func showNextPage() {
+        guard let currentIndex = pages.firstIndex(of: currentPage), pages.count > currentIndex + 1 else {
+            return
+        }
+        currentPage = pages[currentIndex + 1]
+    }
+    
+    private func setStartingLifeTotal(_ total: Int) -> Void {
         self.startingLifeTotal = total
+        showNextPage()
     }
     
-    private func selectPlayerCount(_ numPlayers: Int) {
+    private func setPlayerCount(_ numPlayers: Int) {
         self.playerCount = numPlayers
+        
+        for count in 1..<numPlayers + 1 {
+            let player = Participant()
+            player.name = "Player \(count)"
+            player.lifeTotal = self.startingLifeTotal
+            player.color = colors[count - 1]
+            self.players.append(player)
+        }
+        
+        // Select the starting player.
+        chooseStartingPlayer()
+
+        self.numPlayersRemaining = numPlayers
+        showNextPage()
     }
-    
-    private func setPlayers () {}
     
     private func chooseStartingPlayer() {
         self.activePlayer = self.players.randomElement()
@@ -135,30 +152,23 @@ struct ContentView: View {
     
     private func resetBoard() {
         for player in self.players {
-            player.currentLifeTotal = self.startingLifeTotal
-            player.loser = false
+            player.lifeTotal = self.startingLifeTotal
         }
         
         self.winner = nil
     }
     
     private func endGame() {
-        withAnimation {
-            self.gameBoardOpacity = 0
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.setupComplete = false
-            self.startingLifeTotal = 0
-            self.playerCount = 0
-            self.numPlayersRemaining = 0
-            self.winner = nil
-        }
+        self.currentPage = .home
+        self.startingLifeTotal = 0
+        self.playerCount = 0
+        self.numPlayersRemaining = 0
+        self.winner = nil
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}

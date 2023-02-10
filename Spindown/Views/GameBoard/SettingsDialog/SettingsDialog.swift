@@ -151,11 +151,11 @@ struct GameSettingsHomeView: View {
                     )
                 }
 
-                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-                    withAnimation {
-                        self.activeView = .player
-                    }
-                })
+//                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
+//                    withAnimation {
+//                        self.activeView = .player
+//                    }
+//                })
 
                 UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: {
                     dismissModal()

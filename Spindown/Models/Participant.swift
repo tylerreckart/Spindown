@@ -7,8 +7,31 @@
 
 import Foundation
 import UIKit
+import SwiftUI
+
+enum Counter {
+    case poison
+    case experience
+    case energy
+    case tickets
+}
 
 class Participant: ObservableObject, Equatable, Identifiable, Hashable {
+    // Unique Identifier
+    var uid: UUID = UUID()
+    // Player Name
+    var name: String = ""
+    // Player's chosen accent color. Default to system colors if named color cannot be found.
+    var color: UIColor = UIColor(named: "PrimaryBlue") ?? .systemBlue
+    // Life total given current board state.
+    // @Published sends updates to any views watching this value.
+    @Published var lifeTotal: Int = 0
+    // Counters
+    @Published var poison: Int = 0
+    @Published var experience: Int = 0
+    @Published var energy: Int = 0
+    @Published var tickets: Int = 0
+    
     static func == (lhs: Participant, rhs: Participant) -> Bool {
         return lhs.uid == rhs.uid
     }
@@ -16,30 +39,42 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     public func hash(into hasher: inout Hasher) -> Void {
         hasher.combine(uid)
     }
-
-    // Unique Identifier
-    var uid: UUID = UUID()
-    // Player Name
-    var name: String = ""
-    // Life total given current board state.
-    // @Published sends updates to any views watching this value.
-    @Published var currentLifeTotal: Int = 0
-    // Life total at start of game.
-    var startingLifeTotal: Int = 0
-    // Player's chosen accent color.
-    var color: UIColor = UIColor(named: "PrimaryBlue")!
-    // Has this player lost the game?
-    var loser: Bool = false
     
     public func incrementLifeTotal() -> Void {
-        self.currentLifeTotal = self.currentLifeTotal + 1
+        self.lifeTotal = self.lifeTotal + 1
     }
     
     public func decrementLifeTotal() -> Void {
-        self.currentLifeTotal = self.currentLifeTotal - 1
+        self.lifeTotal = self.lifeTotal - 1
     }
     
     public func setLifeTotal(_ newLifeTotal: Int) {
-        self.currentLifeTotal = newLifeTotal
+        self.lifeTotal = newLifeTotal
+    }
+    
+    public func addCounter(_ counter: Counter) {
+        switch (counter) {
+            case .poison:
+                self.poison += 1
+            case .energy:
+                self.energy += 1
+            case .experience:
+                self.experience += 1
+            case .tickets:
+                self.tickets += 1
+        }
+    }
+    
+    public func removeCounter(_ counter: Counter) {
+        switch (counter) {
+            case .poison:
+                self.poison -= 1
+            case .energy:
+                self.energy -= 1
+            case .experience:
+                self.experience -= 1
+            case .tickets:
+                self.tickets -= 1
+        }
     }
 }
