@@ -134,7 +134,7 @@ struct GameSettingsHomeView: View {
                 
                 UIButtonOutlined(text: "Game Timer", symbol: "stopwatch", fill: .black, color: UIColor(named: "AccentGray")!, action: {
                     withAnimation {
-                        self.activeView = .format
+                        self.activeView = .timer
                     }
                 })
                 if (self.playerCount != 1) {
@@ -213,7 +213,7 @@ struct GameSettingsDialog: View {
                     case .roll:
                         DiceRollView()
                     case .timer:
-                        TimerView()
+                        GameTimer()
                     case .layout:
                         LayoutSelectorView(
                             activeView: $activeView,

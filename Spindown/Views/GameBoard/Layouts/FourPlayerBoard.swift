@@ -64,7 +64,6 @@ struct FourPlayerGameBoard: View {
                     selectedPlayer: $selectedPlayer
                 )
                 .rotationEffect(Angle(degrees: 180))
-                .frame(maxHeight: screenHeight / 4)
                 HStack(spacing: 20) {
                     PlayerTile(
                         player: players[1],
@@ -90,7 +89,6 @@ struct FourPlayerGameBoard: View {
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                     selectedPlayer: $selectedPlayer
                 )
-                .frame(maxHeight: screenHeight / 4)
             }
             .edgesIgnoringSafeArea(.all)
         }

@@ -27,6 +27,9 @@ enum LifeTotalCalculatorSelection {
 
 enum FocusField {
     case quantity
+    case hours
+    case minutes
+    case seconds
 }
 
 struct LifeTotalCalculatorDialog: View {

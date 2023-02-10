@@ -36,24 +36,26 @@ struct ContentView: View {
         case .players:
             PlayersSelector(setNumPlayers: setPlayerCount)
         case .gameBoard:
-            ZStack {
-                GameBoard(
-                    players: $players,
-                    numPlayersRemaining: $numPlayersRemaining,
-                    activePlayer: $activePlayer,
-                    endGame: endGame
-                )
-                
-                if (winner != nil) {
-                    GameOverDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
-                }
-
-                if (showStartOverlay) {
-                    StartingPlayerDialog(
+            if (players.count > 0) {
+                ZStack {
+                    GameBoard(
+                        players: $players,
+                        numPlayersRemaining: $numPlayersRemaining,
                         activePlayer: $activePlayer,
-                        startGame: startGame,
-                        chooseStartingPlayer: chooseStartingPlayer
+                        endGame: endGame
                     )
+                    
+                    if (winner != nil) {
+                        GameOverDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
+                    }
+                    
+                    if (showStartOverlay) {
+                        StartingPlayerDialog(
+                            activePlayer: $activePlayer,
+                            startGame: startGame,
+                            chooseStartingPlayer: chooseStartingPlayer
+                        )
+                    }
                 }
             }
         }
@@ -63,17 +65,19 @@ struct ContentView: View {
         guard let currentIndex = pages.firstIndex(of: currentPage), pages.count > currentIndex + 1 else {
             return
         }
-        withAnimation(.linear(duration: 0.4)) {
+        withAnimation(.easeInOut(duration: 0.4)) {
             currentPage = pages[currentIndex + 1]
         }
     }
     
     private func setStartingLifeTotal(_ total: Int) -> Void {
+        print("set starting life total: \(total)")
         self.startingLifeTotal = total
         showNextPage()
     }
     
     private func setPlayerCount(_ numPlayers: Int) {
+        print("set player count: \(numPlayers) players")
         self.playerCount = numPlayers
         
         for count in 1..<numPlayers + 1 {
@@ -94,7 +98,7 @@ struct ContentView: View {
     private func chooseStartingPlayer() {
         self.activePlayer = self.players.randomElement()
         
-        withAnimation(.easeIn(duration: 0.5)) {
+        withAnimation(.easeIn(duration: 0.4)) {
             self.showStartOverlay = true
         }
     }
@@ -112,13 +116,18 @@ struct ContentView: View {
     }
     
     private func endGame() {
-        withAnimation {
-            self.currentPage = .home
-        }
         self.startingLifeTotal = 0
         self.playerCount = 0
         self.numPlayersRemaining = 0
         self.winner = nil
+
+        withAnimation(.easeInOut(duration: 0.4)) {
+            self.currentPage = .home
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.players = []
+            }
+        }
     }
 }
 

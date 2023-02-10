@@ -31,7 +31,7 @@ Magic: The Gathering Tabletop Companion App
     - [ ] Show names of each player and the order of defeat.
     - [ ] Ability to remove games from history
 - [ ] App Settings Screen
-    - [ ] Change app icon
+    - [ ] ~~Change app icon~~ _(v2)_
     - [ ] Subscription settings
     - [ ] ~~Change saved players~~ _(v2)_
     - [ ] ~~Change saved formats~~ _(v2)_

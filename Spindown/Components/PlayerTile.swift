@@ -150,8 +150,8 @@ struct PlayerTile: View {
                                             self.activeSum = .energy
                                         }
                                     }) {
-                                        Image(systemName: "atom")
-                                            .font(.system(size: 24))
+                                        Image(systemName: "drop.triangle.fill")
+                                            .font(.system(size: 24, weight: .black))
                                     }
                                 }
                                 .transition(
@@ -176,7 +176,7 @@ struct PlayerTile: View {
                                         }
                                     }) {
                                         Image(systemName: "bolt.fill")
-                                            .font(.system(size: 24))
+                                            .font(.system(size: 24, weight: .black))
                                     }
                                 }
                                 .transition(
@@ -200,8 +200,8 @@ struct PlayerTile: View {
                                             self.activeSum = .tickets
                                         }
                                     }) {
-                                        Image(systemName: "book.fill")
-                                            .font(.system(size: 24))
+                                        Image(systemName: "magazine.fill")
+                                            .font(.system(size: 24, weight: .bold))
                                     }
                                 }
                                 .transition(
@@ -226,7 +226,7 @@ struct PlayerTile: View {
                                         }
                                     }) {
                                         Image(systemName: "ticket.fill")
-                                            .font(.system(size: 24))
+                                            .font(.system(size: 24, weight: .bold))
                                     }
                                 }
                                 .transition(
