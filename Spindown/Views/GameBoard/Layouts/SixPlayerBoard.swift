@@ -89,7 +89,6 @@ struct SixPlayerGameBoard: View {
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
-                        .frame(maxWidth: screenWidth / 4)
                         PlayerTile(
                             player: players[2],
                             color: colors[2],
@@ -97,7 +96,6 @@ struct SixPlayerGameBoard: View {
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
-                        .frame(maxWidth: screenWidth / 4)
                     }
                     .rotationEffect(Angle(degrees: 180))
                     HStack(spacing: 20) {
