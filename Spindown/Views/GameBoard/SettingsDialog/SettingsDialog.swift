@@ -166,6 +166,12 @@ struct GameSettingsHomeView: View {
             }
             .frame(maxWidth: 300)
         }
+        .transition(
+            .asymmetric(
+                insertion: .push(from: .leading).combined(with: .opacity),
+                removal: .push(from: .trailing).combined(with: .opacity)
+            )
+        )
 //        .sheet(isPresented: $showRulesSheet, onDismiss: { self.showRulesSheet = false }) {
 //            RulesSheet()
 //        }

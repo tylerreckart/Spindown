@@ -165,6 +165,67 @@ struct FourPlayerLayoutCard: View {
     }
 }
 
+struct FivePlayerLayoutCard: View {
+    var p1Rotation: Double = 0
+    var p2Rotation: Double = 0
+    var p3Rotation: Double = 0
+    var p4Rotation: Double = 0
+    var p5Rotation: Double = 0
+    var layout: BoardLayout
+    
+    @Binding var selectedLayout: BoardLayout
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                self.selectedLayout = layout
+            }) {
+                VStack {
+                    VStack {
+                        if (self.layout == .facingPortrait) {
+                            VStack(spacing: 6) {
+                                HStack(spacing: 6) {
+                                    PersonCard(rotation: p1Rotation, width: 40, height: 40)
+                                    PersonCard(rotation: p2Rotation, width: 40, height: 40)
+                                }
+                                HStack(spacing: 6) {
+                                    PersonCard(rotation: p3Rotation, width: 40, height: 40)
+                                    PersonCard(rotation: p4Rotation, width: 40, height: 40)
+                                }
+                                PersonCard(rotation: p5Rotation, width: 86, height: 40)
+                            }
+                        } else if (self.layout == .tandem) {
+                            VStack(spacing: 6) {
+                                HStack(spacing: 6) {
+                                    PersonCard(rotation: p1Rotation, width: 63, height: 40)
+                                    PersonCard(rotation: p2Rotation, width: 63, height: 40)
+                                }
+                                HStack(spacing: 6) {
+                                    PersonCard(rotation: p3Rotation, width: 40, height: 40)
+                                    PersonCard(rotation: p4Rotation, width: 40, height: 40)
+                                    PersonCard(rotation: p5Rotation, width: 40, height: 40)
+                                }
+                            }
+                        }
+                    }
+                    .padding(11)
+                    .background(
+                        Color(UIColor(named: "AccentGray") ?? .systemGray)
+                            .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
+                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                    )
+                    .cornerRadius(12)
+                    
+                    Image(systemName: self.selectedLayout == layout ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(self.selectedLayout == layout ? Color.white : Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
+                        .font(.system(size: 18, weight: .black))
+                        .padding(.top, 5)
+                }
+            }
+        }
+    }
+}
+
 struct SixPlayerLayoutCard: View {
     var p1Rotation: Double = 0
     var p2Rotation: Double = 0
@@ -269,6 +330,18 @@ struct FourPlayerLayoutContainer: View {
     }
 }
 
+struct FivePlayerLayoutContainer: View {
+    @Binding var selectedLayout: BoardLayout
+
+    var body: some View {
+        HStack(alignment: .bottom, spacing: 0) {
+            FivePlayerLayoutCard(p1Rotation: -180, p2Rotation: -180, p3Rotation: 0, p4Rotation: 0, p5Rotation: 0, layout: .tandem, selectedLayout: $selectedLayout)
+            Spacer()
+            FivePlayerLayoutCard(p1Rotation: 90, p2Rotation: -90, p3Rotation: 90, p4Rotation: -90, p5Rotation: 0, layout: .facingPortrait, selectedLayout: $selectedLayout)
+        }
+    }
+}
+
 struct SixPlayerLayoutContainer: View {
     @Binding var selectedLayout: BoardLayout
 
@@ -305,8 +378,10 @@ struct LayoutSelectorView: View {
                     TwoPlayerLayoutContainer(selectedLayout: $selectedLayout)
                 } else if (self.playerCount == 3) {
                     ThreePlayerLayoutContainer(selectedLayout: $selectedLayout)
-                }else if (self.playerCount == 4) {
+                } else if (self.playerCount == 4) {
                     FourPlayerLayoutContainer(selectedLayout: $selectedLayout)
+                } else if (self.playerCount == 5) {
+                    FivePlayerLayoutContainer(selectedLayout: $selectedLayout)
                 } else if (self.playerCount == 6) {
                     SixPlayerLayoutContainer(selectedLayout: $selectedLayout)
                 }
@@ -321,5 +396,11 @@ struct LayoutSelectorView: View {
             }
         }
         .frame(maxWidth: 300)
+        .transition(
+            .asymmetric(
+                insertion: .push(from: .trailing).combined(with: .opacity),
+                removal: .push(from: .leading).combined(with: .opacity)
+            )
+        )
     }
 }

@@ -74,6 +74,7 @@ struct GameBoard: View {
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,
                     selectedPlayer: $selectedPlayer,
+                    selectedLayout: $selectedLayout,
                     updateLifeTotal: updateLifeTotal,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
                 )

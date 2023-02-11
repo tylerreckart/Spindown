@@ -139,6 +139,12 @@ struct GameTimer: View {
         .background(.black)
         .foregroundColor(.white)
         .frame(maxWidth: 300)
+        .transition(
+            .asymmetric(
+                insertion: .push(from: .trailing).combined(with: .opacity),
+                removal: .push(from: .leading).combined(with: .opacity)
+            )
+        )
     }
     
     func resetTimer() -> Void {
