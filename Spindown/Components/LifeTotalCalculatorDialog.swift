@@ -154,8 +154,7 @@ struct LifeTotalCalculatorDialog: View {
             .opacity(dialogOpacity)
             .scaleEffect(dialogOffset)
             .onAppear {
-                
-                withAnimation {
+                withAnimation(.easeInOut(duration: 0.6)) {
                     self.dialogOpacity = 1
                     self.dialogOffset = 1.1
                     
@@ -176,7 +175,7 @@ struct LifeTotalCalculatorDialog: View {
             self.dialogOffset = 0.75
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             toggleCalculator()
         }
     }

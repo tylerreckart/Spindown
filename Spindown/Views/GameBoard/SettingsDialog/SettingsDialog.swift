@@ -213,7 +213,7 @@ struct GameSettingsDialog: View {
                     case .roll:
                         DiceRollView()
                     case .timer:
-                        GameTimer()
+                        GameTimer(activeView: $activeView)
                     case .layout:
                         LayoutSelectorView(
                             activeView: $activeView,

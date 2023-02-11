@@ -114,8 +114,11 @@ struct PlayerTile: View {
                                     Text(player.name)
                                         .font(.system(size: 20, weight: .regular))
                                     Button(action: {
-                                        showLifeTotalCalculator()
                                         selectedPlayer = player
+
+                                        withAnimation(.easeInOut) {
+                                            showLifeTotalCalculator()
+                                        }
                                     }) {
                                         Text("\(player.lifeTotal)")
                                             .font(.system(size: 64, weight: .black))

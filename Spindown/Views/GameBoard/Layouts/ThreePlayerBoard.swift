@@ -16,7 +16,7 @@ struct ThreePlayerGameBoard: View {
     var showLifeTotalCalculatorForPlayer: () -> ()
 
     var body: some View {
-        if (self.selectedLayout == .tandem) {
+        if (self.selectedLayout == .facingPortrait) {
             VStack(spacing: 20) {
                 HStack(spacing: 20) {
                     PlayerTile(
@@ -46,28 +46,24 @@ struct ThreePlayerGameBoard: View {
             .edgesIgnoringSafeArea(.all)
         } else {
             HStack(spacing: 20) {
-                VStack(spacing: 20) {
-                    PlayerTile(
-                        player: players[0],
-                        color: colors[0],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
-                    .rotationEffect(Angle(degrees: 180))
-                    PlayerTile(
-                        player: players[1],
-                        color: colors[1],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
-                }
+                PlayerTile(
+                    player: players[0],
+                    color: colors[0],
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
+                )
+                PlayerTile(
+                    player: players[1],
+                    color: colors[1],
+                    updateLifeTotal: updateLifeTotal,
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                    selectedPlayer: $selectedPlayer
+                )
                 PlayerTile(
                     player: players[2],
                     color: colors[2],
                     updateLifeTotal: updateLifeTotal,
-                    orientation: .landscapeReverse,
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                     selectedPlayer: $selectedPlayer
                 )

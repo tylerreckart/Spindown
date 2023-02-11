@@ -38,7 +38,7 @@ struct StartingPlayerDialog: View {
                 }
                 
                 VStack {
-                    UIButton(text: "Start Game", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: startGame)
+                    UIButton(text: "Start Game", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: dismissModal)
                         .padding(.bottom, 5)
                     UIButtonOutlined(text: "Choose Another Player", symbol: "arrow.clockwise", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: chooseStartingPlayer)
                 }
@@ -63,6 +63,18 @@ struct StartingPlayerDialog: View {
                     }
                 }
             }
+        }
+    }
+    
+    func dismissModal() {
+        withAnimation {
+            self.overlayOpacity = 0
+            self.dialogOpacity = 0
+            self.dialogOffset = 0.75
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            startGame()
         }
     }
 }

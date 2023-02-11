@@ -61,6 +61,54 @@ struct TwoPlayerLayoutCard: View {
     }
 }
 
+struct ThreePlayerLayoutCard: View {
+    var p1Rotation: CGFloat = 0
+    var p2Rotation: CGFloat = 0
+    var p3Rotation: CGFloat = 0
+    var layout: BoardLayout
+    
+    @Binding var selectedLayout: BoardLayout
+
+    var body: some View {
+        Button(action: {
+            self.selectedLayout = layout
+        }) {
+            VStack {
+                VStack {
+                    if (self.layout == .tandem) {
+                        HStack(spacing: 6) {
+                            PersonCard(rotation: p1Rotation, width: 40, height: 86)
+                            PersonCard(rotation: p2Rotation, width: 40, height: 86)
+                            PersonCard(rotation: p3Rotation, width: 40, height: 86)
+                        }
+                    }
+                    if (self.layout == .facingPortrait) {
+                        VStack(spacing: 6) {
+                            HStack(spacing: 6) {
+                                PersonCard(rotation: p1Rotation, width: 40, height: 41)
+                                PersonCard(rotation: p2Rotation, width: 40, height: 41)
+                            }
+                            PersonCard(rotation: p3Rotation, width: 86, height: 41)
+                        }
+                    }
+                }
+                .padding(11)
+                .background(
+                    Color(UIColor(named: "AccentGray") ?? .systemGray)
+                        .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
+                        .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                )
+                .cornerRadius(12)
+                
+                Image(systemName: self.selectedLayout == layout ? "checkmark.circle.fill" : "circle")
+                    .foregroundColor(self.selectedLayout == layout ? Color.white : Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
+                    .font(.system(size: 18, weight: .black))
+                    .padding(.top, 5)
+            }
+        }
+    }
+}
+
 struct FourPlayerLayoutCard: View {
     var p1Rotation: Double = 0
     var p2Rotation: Double = 0
@@ -197,6 +245,18 @@ struct TwoPlayerLayoutContainer: View {
     }
 }
 
+struct ThreePlayerLayoutContainer: View {
+    @Binding var selectedLayout: BoardLayout
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ThreePlayerLayoutCard(p1Rotation: -180, p2Rotation: -180, p3Rotation: 0, layout: .facingPortrait, selectedLayout: $selectedLayout)
+            Spacer()
+            ThreePlayerLayoutCard(p1Rotation: 0, p2Rotation: 0, p3Rotation: 0, layout: .tandem, selectedLayout: $selectedLayout)
+        }
+    }
+}
+
 struct FourPlayerLayoutContainer: View {
     @Binding var selectedLayout: BoardLayout
 
@@ -243,18 +303,19 @@ struct LayoutSelectorView: View {
             VStack(spacing: 20) {
                 if (self.playerCount == 2) {
                     TwoPlayerLayoutContainer(selectedLayout: $selectedLayout)
-                } else if (self.playerCount == 4) {
+                } else if (self.playerCount == 3) {
+                    ThreePlayerLayoutContainer(selectedLayout: $selectedLayout)
+                }else if (self.playerCount == 4) {
                     FourPlayerLayoutContainer(selectedLayout: $selectedLayout)
                 } else if (self.playerCount == 6) {
                     SixPlayerLayoutContainer(selectedLayout: $selectedLayout)
                 }
                 
                 VStack(spacing: 10) {
-                    UIButtonOutlined(text: "Save", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
+                    UIButtonOutlined(text: "Go Back", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
                         withAnimation {
                             self.activeView = .home
                         }
-                        
                     })
                 }
             }

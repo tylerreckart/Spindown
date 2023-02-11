@@ -133,6 +133,10 @@ struct GameBoard: View {
             withAnimation(.easeIn(duration: 0.5)) {
                 self.opacity = 1
             }
+            
+            if (players.count == 3 || players.count == 5) {
+                self.selectedLayout = .facingPortrait
+            }
         }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -140,7 +144,9 @@ struct GameBoard: View {
     }
     
     private func showLifeTotalCalculatorForPlayer() {
-        self.showLifeTotalCalculator.toggle()
+        withAnimation(.easeInOut) {
+            self.showLifeTotalCalculator.toggle()
+        }
     }
                  
     private func chooseNextPlayer() {
