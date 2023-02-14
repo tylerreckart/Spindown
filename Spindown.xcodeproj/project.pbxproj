@@ -34,8 +34,10 @@
 		DB8B8F6F298767390023A84B /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F6E298767390023A84B /* Participant.swift */; };
 		DB8B8F71298767670023A84B /* StartingLifeTotalSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */; };
 		DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F72298767890023A84B /* PlayersSelector.swift */; };
-		DBF130672992C06E00B9E19A /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = DBF130662992C06E00B9E19A /* SwiftUIPager */; };
 		DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF130682996AAE100B9E19A /* GameTimer.swift */; };
+		DBF1306B299BE04100B9E19A /* SubscriptionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */; };
+		DBF1306D299BE19100B9E19A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306C299BE19100B9E19A /* Store.swift */; };
+		DBF1306F299BE1F100B9E19A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306E299BE1F100B9E19A /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,9 @@
 		DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLifeTotalSelector.swift; sourceTree = "<group>"; };
 		DB8B8F72298767890023A84B /* PlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersSelector.swift; sourceTree = "<group>"; };
 		DBF130682996AAE100B9E19A /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
+		DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDialog.swift; sourceTree = "<group>"; };
+		DBF1306C299BE19100B9E19A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		DBF1306E299BE1F100B9E19A /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBF130672992C06E00B9E19A /* SwiftUIPager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,7 @@
 		DB41B1A7298AF4A30000EC42 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */,
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
 				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
 				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				DB8B8F6E298767390023A84B /* Participant.swift */,
+				DBF1306E299BE1F100B9E19A /* Error.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +189,7 @@
 				DB41B1AC298C01810000EC42 /* Models */,
 				DB41B1A7298AF4A30000EC42 /* Components */,
 				DB8B8F542986E2CB0023A84B /* SpindownApp.swift */,
+				DBF1306C299BE19100B9E19A /* Store.swift */,
 				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
 				DB8B8F562986E2CB0023A84B /* Persistence.swift */,
 				DB8B8F5D2986E2CC0023A84B /* Assets.xcassets */,
@@ -218,7 +225,6 @@
 			);
 			name = Spindown;
 			packageProductDependencies = (
-				DBF130662992C06E00B9E19A /* SwiftUIPager */,
 			);
 			productName = Spindown;
 			productReference = DB8B8F512986E2CB0023A84B /* Spindown.app */;
@@ -278,11 +284,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */,
+				DBF1306B299BE04100B9E19A /* SubscriptionDialog.swift in Sources */,
 				DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */,
 				DB8B8F69298766BD0023A84B /* GameOverDialog.swift in Sources */,
 				DB8A3252298CB2DF00FB7658 /* ChangeLayout.swift in Sources */,
 				DB1D3A072991566400A741DC /* PlayerList.swift in Sources */,
 				DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */,
+				DBF1306D299BE19100B9E19A /* Store.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
 				DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */,
@@ -296,6 +304,7 @@
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
 				DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */,
 				DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */,
+				DBF1306F299BE1F100B9E19A /* Error.swift in Sources */,
 				DB8B8F6D298767100023A84B /* PlayerTile.swift in Sources */,
 				DB8B8F6F298767390023A84B /* Participant.swift in Sources */,
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
@@ -529,14 +538,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DBF130662992C06E00B9E19A /* SwiftUIPager */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DBF130652992C06E00B9E19A /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
-			productName = SwiftUIPager;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */ = {
