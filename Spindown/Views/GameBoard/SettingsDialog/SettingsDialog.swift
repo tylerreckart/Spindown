@@ -131,12 +131,11 @@ struct GameSettingsHomeView: View {
             
             VStack(spacing: 15) {
 //                HorizontalControlRow(activeView: $activeView, showRulesSheet: $showRulesSheet)
-                
-                UIButtonOutlined(text: "Game Timer", symbol: "stopwatch", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-                    withAnimation {
-                        self.activeView = .timer
-                    }
-                })
+//                UIButtonOutlined(text: "Game Timer", symbol: "stopwatch", fill: .black, color: UIColor(named: "AccentGray")!, action: {
+//                    withAnimation {
+//                        self.activeView = .timer
+//                    }
+//                })
                 if (self.playerCount != 1) {
                     UIButtonOutlined(
                         text: "Change Layout",
@@ -150,13 +149,11 @@ struct GameSettingsHomeView: View {
                         }
                     )
                 }
-
 //                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
 //                    withAnimation {
 //                        self.activeView = .player
 //                    }
 //                })
-
                 UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: {
                     dismissModal()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

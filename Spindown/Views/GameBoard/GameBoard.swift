@@ -92,20 +92,6 @@ struct GameBoard: View {
             VStack {
                 Spacer()
                 HStack {
-                    HStack {
-                        Image(systemName: "stopwatch")
-                            .font(.system(size: 16, weight: .black))
-                        Text("25:45")
-                            .font(.system(size: 16, weight: .black))
-                        
-                    }
-                    .foregroundColor(Color(UIColor(named: "PrimaryPurple")!))
-                    .padding([.leading, .trailing], 15)
-                    .padding([.top, .bottom], 10)
-                    .background(.white)
-                    .cornerRadius(.infinity)
-                    .shadow(color: Color.black.opacity(0.1), radius: 10)
-    
                     Spacer()
 
                     Button(action: {
