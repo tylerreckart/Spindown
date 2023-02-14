@@ -257,7 +257,6 @@
 			);
 			mainGroup = DB8B8F482986E2CB0023A84B;
 			packageReferences = (
-				DBF130652992C06E00B9E19A /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = DB8B8F522986E2CB0023A84B /* Products */;
 			projectDirPath = "";
@@ -535,17 +534,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DBF130652992C06E00B9E19A /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */ = {
