@@ -9,7 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionTile: View {
-    @State private var sub: Product?
+    var sub: Product?
     @Binding var selectedOffer: Product?
 
     var body: some View {
@@ -60,7 +60,7 @@ struct Pitch: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color(UIColor(named: "AccentGray")!))
 
-//            if !store.subscriptions.isEmpty {
+            if !store.subscriptions.isEmpty {
                 VStack(alignment: .center) {
                     HStack {
                         Spacer()
@@ -70,16 +70,14 @@ struct Pitch: View {
                         Spacer()
                     }
                     HStack(spacing: 20) {
-                        SubscriptionTile(selectedOffer: $selectedOffer)
-                        SubscriptionTile(selectedOffer: $selectedOffer)
-//                        ForEach(store.subscriptions) { sub in
-//                            SubscriptionTile(sub: sub, selectedOffer: $selectedOffer)
-//                        }
+                        ForEach(store.subscriptions) { sub in
+                            SubscriptionTile(sub: sub, selectedOffer: $selectedOffer)
+                        }
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 10)
                 }
-//            }
+            }
         }
     }
 }
@@ -109,7 +107,7 @@ struct BuyButton: View {
     }
 }
 
-struct Subscription: View {
+struct SubscriptionDialog: View {
     var store: Store
 
     @State private var selectedOffer: Product?
@@ -128,7 +126,7 @@ struct Subscription: View {
                         .frame(maxWidth: 64, maxHeight: 64)
                 }
                 .padding([.top, .bottom])
-
+                
                 VStack {
                     HStack(alignment: .center) {
                         Text("Spindown")
@@ -143,8 +141,8 @@ struct Subscription: View {
                     .padding(.bottom, 5)
                 }
                 .padding(.horizontal)
-
-
+                
+                
                 if !hasPurchased {
                     Pitch(store: store, selectedOffer: $selectedOffer)
                         .padding(.bottom, 20)
@@ -155,9 +153,9 @@ struct Subscription: View {
                     }
                     .padding(.horizontal)
                 }
-
+                
                 VStack(spacing: 20) {
-//                    if !store.subscriptions.isEmpty {
+                    if !store.subscriptions.isEmpty {
                         if !hasPurchased {
                             UIButton(text: "Start Your Free Trial", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
@@ -181,9 +179,9 @@ struct Subscription: View {
                             .cornerRadius(12)
                             .shadow(color: Color.black.opacity(0.05), radius: 12, x: 0, y: 10)
                         }
-//                    }
-
-
+                    }
+                    
+                    
                     UIButtonOutlined(text: "Restore Previous Purchases", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {
                         Task {
                             try? await AppStore.sync()
@@ -192,7 +190,7 @@ struct Subscription: View {
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
-
+                
                 VStack {
                     Text("Payment for your subscription will be charged to your Apple ID account at the confirmation of purchase. Subscription automatically renews unless cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.")
                         .font(.system(size: 12))
@@ -205,7 +203,7 @@ struct Subscription: View {
                         .padding(.horizontal)
                 }
                 .padding(.horizontal)
-
+                
                 VStack(spacing: 20) {
                     UIButtonOutlined(text: "Terms of Use", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {})
                     UIButtonOutlined(text: "Privacy Policy", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {})
@@ -258,6 +256,6 @@ struct Subscription: View {
 struct SubscriptionDialog_Previews: PreviewProvider {
     @StateObject static var store: Store = Store()
     static var previews: some View {
-        Subscription(store: store).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        SubscriptionDialog(store: store).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
