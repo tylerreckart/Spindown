@@ -11,6 +11,7 @@
 		DB1D3A072991566400A741DC /* PlayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A062991566400A741DC /* PlayerList.swift */; };
 		DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */; };
 		DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */; };
+		DB1F08F2299C29A700A057CC /* AppSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1F08F1299C29A700A057CC /* AppSettingsDialog.swift */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
 		DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */; };
@@ -46,6 +47,7 @@
 		DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPlayersSelector.swift; sourceTree = "<group>"; };
 		DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTotalCalculatorDialog.swift; sourceTree = "<group>"; };
 		DB1F08F0299C1C6100A057CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB1F08F1299C29A700A057CC /* AppSettingsDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsDialog.swift; sourceTree = "<group>"; };
 		DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerDialog.swift; sourceTree = "<group>"; };
 		DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreePlayerBoard.swift; sourceTree = "<group>"; };
@@ -100,6 +102,18 @@
 			path = Layouts;
 			sourceTree = "<group>";
 		};
+		DB1F08F3299C29B600A057CC /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */,
+				DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */,
+				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
+				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
+				DB1F08F1299C29A700A057CC /* AppSettingsDialog.swift */,
+			);
+			path = Dialogs;
+			sourceTree = "<group>";
+		};
 		DB41B19C298AD7350000EC42 /* GameBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,14 +127,11 @@
 		DB41B1A7298AF4A30000EC42 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */,
+				DB1F08F3299C29B600A057CC /* Dialogs */,
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
-				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
-				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
 				DB41B1A8298AF4B00000EC42 /* Button.swift */,
 				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
-				DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -298,6 +309,7 @@
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
 				DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */,
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
+				DB1F08F2299C29A700A057CC /* AppSettingsDialog.swift in Sources */,
 				DB8B8F71298767670023A84B /* StartingLifeTotalSelector.swift in Sources */,
 				DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */,
 				DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */,

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SplashScreen: View {
     @StateObject var store: Store = Store()
-    @State private var showOnboardingDialog: Bool = false
 
     var showNextPage: () -> Void
+    
+    @State private var showOnboardingDialog: Bool = false
+    @State private var showSettingsDialog: Bool = false
 
     var body: some View {
         ZStack {
@@ -29,12 +31,11 @@ struct SplashScreen: View {
                     
                     VStack(spacing: 20) {
                         UIButton(text: "Setup Game", symbol: "dice.fill", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: { showNextPage() })
-                            .frame(maxWidth: 300, maxHeight: 60)
                             .shadow(color: Color.black.opacity(0.1), radius: 10)
-                        UIButtonOutlined(text: "Settings", symbol: "gearshape", fill: .black, color: .white, action: {})
-                            .frame(maxWidth: 300, maxHeight: 60)
+                        UIButtonOutlined(text: "Settings", symbol: "gearshape", fill: .black, color: .white, action: { self.showSettingsDialog.toggle() })
                             .shadow(color: Color.black.opacity(0.1), radius: 10)
                     }
+                    .frame(maxWidth: 300)
                     
                     Spacer()
                 }
@@ -51,6 +52,14 @@ struct SplashScreen: View {
                 VStack {
                     Spacer()
                     SubscriptionDialog(store: store)
+                    Spacer()
+                }
+            }
+            
+            if (showSettingsDialog) {
+                VStack {
+                    Spacer()
+                    AppSettingsDialog(store: store, open: $showSettingsDialog)
                     Spacer()
                 }
             }
