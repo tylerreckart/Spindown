@@ -136,6 +136,12 @@ struct SubscriptionDialog: View {
                 VStack(spacing: 20) {
                     if !store.subscriptions.isEmpty {
                         if !hasPurchased {
+                            Text("Try Spindown completely free for two weeks. Cancel anytime.")
+                                .font(.system(size: 12))
+                                .foregroundColor(Color(.systemGray))
+                                .padding(.bottom, 10)
+                                .padding(.horizontal)
+                            
                             UIButton(text: "Start Your Free Trial", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
                                     try? await buy()
@@ -164,7 +170,6 @@ struct SubscriptionDialog: View {
                     Text("Payment for your subscription will be charged to your Apple ID account at the confirmation of purchase. Subscription automatically renews unless cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.")
                         .font(.system(size: 12))
                         .foregroundColor(Color(.systemGray))
-                        .padding(.bottom, 10)
                         .padding(.horizontal)
                     Text("You can manage and cancel your subscriptions by got to your account settings in the App Store after purchase.")
                         .font(.system(size: 12))
@@ -179,10 +184,10 @@ struct SubscriptionDialog: View {
                 }
                 .padding()
             }
-            .padding()
         }
+        .padding()
         .background(Color(UIColor(named: "DeepGray")!))
-        .frame(maxWidth: 500, maxHeight: 525)
+        .frame(maxWidth: 500, maxHeight: 500)
         .foregroundColor(.white)
         .cornerRadius(16)
         .shadow(color: Color.black.opacity(0.1), radius: 15)
