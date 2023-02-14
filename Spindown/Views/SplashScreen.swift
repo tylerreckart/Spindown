@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplashScreen: View {
     @StateObject var store: Store = Store()
+    @State private var showOnboardingDialog: Bool = false
 
     var showNextPage: () -> Void
 
@@ -46,10 +47,23 @@ struct SplashScreen: View {
                     removal: .push(from: .trailing))
             )
             
-            VStack {
-                Spacer()
-                SubscriptionDialog(store: store)
-                Spacer()
+            if (showOnboardingDialog) {
+                VStack {
+                    Spacer()
+                    SubscriptionDialog(store: store)
+                    Spacer()
+                }
+            }
+        }
+        .onChange(of: store.subscriptions) { newState in
+            if (newState.count > 0 && store.purchasedSubscriptions.isEmpty) {
+                print("render onboarding dialog")
+                self.showOnboardingDialog = true
+            }
+        }
+        .onChange(of: store.purchasedSubscriptions) { newState in
+            if (!newState.isEmpty) {
+                self.showOnboardingDialog = false
             }
         }
     }

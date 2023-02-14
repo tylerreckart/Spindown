@@ -18,7 +18,7 @@ struct SubscriptionTile: View {
         }) {
             VStack {
                 VStack(spacing: 0) {
-                    Text(sub?.displayName ?? "Monthly")
+                    Text(sub?.id == "com.Spindown.subscription.yearly" ? "Yearly" : "Monthly")
                         .font(.system(size: 12, weight: .bold))
                         .padding(.top, 6)
                     VStack(spacing: 0) {
@@ -26,16 +26,17 @@ struct SubscriptionTile: View {
                             .font(.system(size: 18, weight: .bold))
                         Text("Cancel anytime")
                             .font(.caption)
-                            .foregroundColor(selectedOffer == sub ? Color.white.opacity(0.75) : Color(.systemGray))
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(UIColor(named: "DeepGray")!))
                     .cornerRadius(6)
                     .padding(4)
+                    .foregroundColor(.white)
                 }
             }
             .frame(width: 120, height: 120)
-            .background(Color(UIColor(named: "AccentGrayDarker")!))
+            .foregroundColor(selectedOffer == sub ? .black : .white)
+            .background(selectedOffer == sub ? .white : Color(UIColor(named: "AccentGrayDarker")!))
             .cornerRadius(8)
         }
         .onAppear {
@@ -82,31 +83,6 @@ struct Pitch: View {
     }
 }
 
-struct BuyButton: View {
-    var buy: () async -> Void
-
-    var body: some View {
-        Button(action: {
-            Task {
-                try? await buy()
-            }
-        }) {
-            HStack {
-                Spacer()
-                Text("Join Now")
-                    .fontWeight(.bold)
-                Spacer()
-            }
-            .foregroundColor(Color(.white))
-            .padding()
-            .background(Color(.systemBlue))
-            .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-            .cornerRadius(12)
-            .shadow(color: Color.black.opacity(0.05), radius: 12, x: 0, y: 10)
-        }
-    }
-}
-
 struct SubscriptionDialog: View {
     var store: Store
 
@@ -116,6 +92,9 @@ struct SubscriptionDialog: View {
     @State private var showManageSubscriptions: Bool = false
     @State private var errorMessage: String?
     @State private var showErrorAlert: Bool = false
+    
+    @State private var dialogOpacity: CGFloat = 0
+    @State private var dialogOffset: CGFloat = 0
 
     var body: some View {
         ScrollView {
@@ -159,25 +138,15 @@ struct SubscriptionDialog: View {
                         if !hasPurchased {
                             UIButton(text: "Start Your Free Trial", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
-                                    buy
+                                    try? await buy()
                                 }
                             })
                         } else {
-                            Button(action: {
+                            UIButton(text: "Change or Cancel Subscription", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
                                     showManageSubscriptions.toggle()
                                 }
-                            }) {
-                                HStack {
-                                    Spacer()
-                                    Text("Change or Cancel Subscription")
-                                    Spacer()
-                                }
-                            }
-                            .padding()
-                            .background(.white)
-                            .cornerRadius(12)
-                            .shadow(color: Color.black.opacity(0.05), radius: 12, x: 0, y: 10)
+                            })
                         }
                     }
                     
@@ -218,10 +187,24 @@ struct SubscriptionDialog: View {
         .cornerRadius(16)
         .shadow(color: Color.black.opacity(0.1), radius: 15)
         .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
+        .opacity(dialogOpacity)
+        .scaleEffect(dialogOffset)
         .onAppear {
             if !store.purchasedSubscriptions.isEmpty {
                 hasPurchased = true
             }
+            
+            withAnimation(.easeInOut(duration: 0.6)) {
+                self.dialogOpacity = 1
+                self.dialogOffset = 1.1
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    withAnimation {
+                        self.dialogOffset = 1
+                    }
+                }
+            }
+
         }
         .alert(isPresented: $showErrorAlert, error: ValidationError.NaN) {_ in
             Button(action: {
@@ -236,7 +219,6 @@ struct SubscriptionDialog: View {
 
     func buy() async {
         do {
-            print(store)
             print(selectedOffer as Any)
             print(store.subscriptions)
             if try await store.purchase(selectedOffer!) != nil {
