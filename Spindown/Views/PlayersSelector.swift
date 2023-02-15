@@ -15,15 +15,27 @@ struct PlayersSelector: View {
             Spacer()
 
             VStack {
-                Text("Players")
-                    .font(.system(size: 64, weight: .black))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 5)
-                Text("Choose the number of players.")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(.systemGray))
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(6)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Text("Players")
+                        .font(.system(size: 64, weight: .black))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 5)
+                    Text("Choose the number of players.")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color(.systemGray))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(6)
+                } else {
+                    Text("Players")
+                        .font(.system(size: 48, weight: .black))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 5)
+                    Text("Choose the number of players.")
+                        .font(.system(size: 16))
+                        .foregroundColor(Color(.systemGray))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(6)
+                }
             }
             .padding(.bottom)
             .frame(maxWidth: 320)
@@ -40,16 +52,18 @@ struct PlayersSelector: View {
                         setNumPlayers(3)
                     })
                 }
-                HStack(spacing: 20) {
-                    UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                        setNumPlayers(4)
-                    })
-                    UIButtonTile(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                        setNumPlayers(5)
-                    })
-                    UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                        setNumPlayers(6)
-                    })
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    HStack(spacing: 20) {
+                        UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            setNumPlayers(4)
+                        })
+                        UIButtonTile(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            setNumPlayers(5)
+                        })
+                        UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            setNumPlayers(6)
+                        })
+                    }
                 }
             }
             .frame(maxWidth: 300)

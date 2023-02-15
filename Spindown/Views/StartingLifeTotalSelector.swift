@@ -15,15 +15,27 @@ struct StartingLifeTotalSelector: View {
             Spacer()
 
             VStack {
-                Text("Starting Life")
-                    .font(.system(size: 64, weight: .black))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 5)
-                Text("Select your starting life total.")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(.systemGray))
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(6)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Text("Starting Life")
+                        .font(.system(size: 64, weight: .black))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 5)
+                    Text("Select your starting life total.")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color(.systemGray))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(6)
+                } else {
+                    Text("Starting Life")
+                        .font(.system(size: 48, weight: .black))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 5)
+                    Text("Select your starting life total.")
+                        .font(.system(size: 16))
+                        .foregroundColor(Color(.systemGray))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(6)
+                }
             }
             .padding(.bottom)
             .frame(maxWidth: 600)

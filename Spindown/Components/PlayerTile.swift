@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 enum TileOrientation {
     case landscape
@@ -100,6 +101,14 @@ struct PlayerTile: View {
     
     @State private var activeSum: ActiveSum = .lifeTotal
     
+    public var fontSize: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 64
+        } else {
+            return 48
+        }
+    }
+    
     var body: some View {
         ZStack {
             PlayerTileControls(player: player, activeSum: $activeSum, orientation: orientation, color: color)
@@ -121,7 +130,7 @@ struct PlayerTile: View {
                                         }
                                     }) {
                                         Text("\(player.lifeTotal)")
-                                            .font(.system(size: 64, weight: .black))
+                                            .font(.system(size: fontSize, weight: .black))
                                     }
                                     Button(action: {
                                         withAnimation(.linear(duration: 0.2)) {
@@ -147,7 +156,7 @@ struct PlayerTile: View {
                                     Text("Poison")
                                         .font(.system(size: 20, weight: .regular))
                                     Text("\(player.poison)")
-                                        .font(.system(size: 64, weight: .black))
+                                        .font(.system(size: fontSize, weight: .black))
                                     Button(action: {
                                         withAnimation(.linear(duration: 0.2)) {
                                             self.activeSum = .energy
@@ -172,7 +181,7 @@ struct PlayerTile: View {
                                     Text("Energy")
                                         .font(.system(size: 20, weight: .regular))
                                     Text("\(player.energy)")
-                                        .font(.system(size: 64, weight: .black))
+                                        .font(.system(size: fontSize, weight: .black))
                                     Button(action: {
                                         withAnimation {
                                             self.activeSum = .experience
@@ -197,7 +206,7 @@ struct PlayerTile: View {
                                     Text("Experience")
                                         .font(.system(size: 20, weight: .regular))
                                     Text("\(player.experience)")
-                                        .font(.system(size: 64, weight: .black))
+                                        .font(.system(size: fontSize, weight: .black))
                                     Button(action: {
                                         withAnimation {
                                             self.activeSum = .tickets
@@ -222,7 +231,7 @@ struct PlayerTile: View {
                                     Text("Tickets")
                                         .font(.system(size: 20, weight: .regular))
                                     Text("\(player.tickets)")
-                                        .font(.system(size: 64, weight: .black))
+                                        .font(.system(size: fontSize, weight: .black))
                                     Button(action: {
                                         withAnimation {
                                             self.activeSum = .lifeTotal
