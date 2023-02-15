@@ -55,6 +55,7 @@ struct Pitch: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("Development of this app would not be possible without our subscribers. Show your support and help fund the development of new features by subscribing today.")
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 5)
                 .padding(.bottom)
                 .padding(.horizontal)
@@ -83,18 +84,17 @@ struct Pitch: View {
     }
 }
 
-struct SubscriptionDialog: View {
+struct SubscriptionView: View {
     var store: Store
 
-    @State private var selectedOffer: Product?
-    @State private var hasPurchased: Bool = false
-
-    @State private var showManageSubscriptions: Bool = false
-    @State private var errorMessage: String?
-    @State private var showErrorAlert: Bool = false
+    @Binding var selectedOffer: Product?
+    @Binding var hasPurchased: Bool
+    @Binding var showManageSubscriptions: Bool
     
-    @State private var dialogOpacity: CGFloat = 0
-    @State private var dialogOffset: CGFloat = 0
+    var buy: () async -> ()
+    
+    @State private var showTermsSheet: Bool = false
+    @State private var showPrivacySheet: Bool = false
 
     var body: some View {
         ScrollView {
@@ -129,6 +129,7 @@ struct SubscriptionDialog: View {
                     VStack {
                         Text("Thank you for supporting Spindown as a premium subscriber. Your contributions help fund new features and cover the costs of development.")
                             .padding(.bottom)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     .padding(.horizontal)
                 }
@@ -141,10 +142,12 @@ struct SubscriptionDialog: View {
                                 .foregroundColor(Color(.systemGray))
                                 .padding(.bottom, 10)
                                 .padding(.horizontal)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
                             
                             UIButton(text: "Start Your Free Trial", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
-                                    try? await buy()
+                                    await buy()
                                 }
                             })
                         } else {
@@ -171,29 +174,76 @@ struct SubscriptionDialog: View {
                         .font(.system(size: 12))
                         .foregroundColor(Color(.systemGray))
                         .padding(.horizontal)
+                        .padding(.bottom, 5)
+                        .fixedSize(horizontal: false, vertical: true)
                     Text("You can manage and cancel your subscriptions by got to your account settings in the App Store after purchase.")
                         .font(.system(size: 12))
                         .foregroundColor(Color(.systemGray))
                         .padding(.horizontal)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal)
                 
                 VStack(spacing: 20) {
-                    UIButtonOutlined(text: "Terms of Use", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {})
-                    UIButtonOutlined(text: "Privacy Policy", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {})
+                    UIButtonOutlined(
+                        text: "Terms of Use",
+                        fill: UIColor(named: "DeepGray")!,
+                        color: UIColor(named: "AccentGrayDarker")!,
+                        action: {
+                            self.showTermsSheet.toggle()
+                        })
+                    UIButtonOutlined(
+                        text: "Privacy Policy",
+                        fill: UIColor(named: "DeepGray")!,
+                        color: UIColor(named: "AccentGrayDarker")!,
+                        action: {
+                            self.showPrivacySheet.toggle()
+                        }
+                    )
                 }
                 .padding()
             }
         }
-        .padding()
-        .background(Color(UIColor(named: "DeepGray")!))
-        .frame(maxWidth: 500, maxHeight: 500)
         .foregroundColor(.white)
+        .background(Color(UIColor(named: "DeepGray")!))
+        .interactiveDismissDisabled(true)
+        .sheet(isPresented: $showTermsSheet) {
+            TermsOfUseView()
+        }
+        .sheet(isPresented: $showPrivacySheet) {
+            PrivacyPolicyView()
+        }
+    }
+}
+
+struct SubscriptionDialog: View {
+    var store: Store
+
+    @State private var selectedOffer: Product?
+    @State private var hasPurchased: Bool = false
+
+    @State private var showManageSubscriptions: Bool = false
+    @State private var errorMessage: String?
+    @State private var showErrorAlert: Bool = false
+    
+    @State private var dialogOpacity: CGFloat = 0
+    @State private var dialogOffset: CGFloat = 0
+
+    var body: some View {
+        SubscriptionView(
+            store: store,
+            selectedOffer: $selectedOffer,
+            hasPurchased: $hasPurchased,
+            showManageSubscriptions: $showManageSubscriptions,
+            buy: buy
+        )
+        .padding()
+        .frame(maxWidth: 500, maxHeight: 500)
         .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 15)
-        .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
         .opacity(dialogOpacity)
         .scaleEffect(dialogOffset)
+        .shadow(color: Color.black.opacity(0.1), radius: 15)
+        .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
         .onAppear {
             if !store.purchasedSubscriptions.isEmpty {
                 hasPurchased = true

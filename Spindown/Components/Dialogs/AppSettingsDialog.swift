@@ -23,6 +23,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "PrimaryRed")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "textformat")
                                     .foregroundColor(.white)
                                     .font(.system(size: 16, weight: .bold))
@@ -31,6 +32,7 @@ struct AppSettingsView: View {
                             Text("Display")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                     NavigationLink(destination: EmptyView()) {
                         HStack {
@@ -39,6 +41,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "PrimaryBlue")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.3), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "note.text")
                                     .foregroundColor(.white)
                                     .font(.system(size: 16, weight: .bold))
@@ -47,6 +50,7 @@ struct AppSettingsView: View {
                             Text("Game History")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                     NavigationLink(destination: EmptyView()) {
                         HStack {
@@ -55,6 +59,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "PrimaryPurple")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "person.fill")
                                     .foregroundColor(.white)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
@@ -62,6 +67,7 @@ struct AppSettingsView: View {
                             Text("Players")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                     NavigationLink(destination: EmptyView()) {
                         HStack {
@@ -70,6 +76,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "AccentGrayDarker")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 
                                 VStack(spacing: 4) {
                                     HStack(spacing: 4) {
@@ -86,7 +93,7 @@ struct AppSettingsView: View {
                                         RoundedRectangle(cornerRadius: 2)
                                             .fill(Color(UIColor(named: "PrimaryBlue")!))
                                             .frame(width: 8, height: 8)
-                                            .shadow(color: Color.black.opacity(0.2), radius: 1)
+                                            .shadow(color: Color.black.opacity(0.1), radius: 1)
                                         RoundedRectangle(cornerRadius: 2)
                                             .fill(Color(UIColor(named: "AccentGray")!))
                                             .frame(width: 8, height: 8)
@@ -97,6 +104,7 @@ struct AppSettingsView: View {
                             Text("App Icon")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                 }
                 .listRowBackground(Color(UIColor(named: "NotAsDeepGray")!))
@@ -110,6 +118,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "PrimaryPurple")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "creditcard.fill")
                                     .foregroundColor(.white)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
@@ -118,6 +127,7 @@ struct AppSettingsView: View {
                                 .foregroundColor(.white)
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                     NavigationLink(destination: TermsOfUseView()) {
                         HStack {
@@ -126,6 +136,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "AccentGray")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "doc.plaintext.fill")
                                     .foregroundColor(.white)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
@@ -133,6 +144,7 @@ struct AppSettingsView: View {
                             Text("Terms Of Use")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                     NavigationLink(destination: PrivacyPolicyView()) {
                         HStack {
@@ -141,6 +153,7 @@ struct AppSettingsView: View {
                                     .fill(Color(UIColor(named: "AccentGray")!))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "lock.fill")
                                     .foregroundColor(.white)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
@@ -148,6 +161,7 @@ struct AppSettingsView: View {
                             Text("Privacy Policy")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                     NavigationLink(destination: EmptyView()) {
                         HStack {
@@ -156,6 +170,7 @@ struct AppSettingsView: View {
                                     .fill(Color(.black))
                                     .frame(width: 30, height: 30)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom).cornerRadius(6))
                                 Image(systemName: "creditcard.fill")
                                     .foregroundColor(.white)
                                     .shadow(color: Color.black.opacity(0.1), radius: 3)
@@ -163,6 +178,7 @@ struct AppSettingsView: View {
                             Text("Haptic Software")
                         }
                         .padding([.top, .bottom], 2)
+                        .padding(.leading, -12)
                     }
                 }
                 .listRowBackground(Color(UIColor(named: "NotAsDeepGray")!))
