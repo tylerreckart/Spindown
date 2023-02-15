@@ -13,7 +13,10 @@ struct SplashScreen: View {
     var showNextPage: () -> Void
     
     @State private var showOnboardingDialog: Bool = false
+    @State private var showOnboardingSheet: Bool = false
     @State private var showSettingsDialog: Bool = false
+    @State private var showSettingsSheet: Bool = false
+    @State private var showManageSubscriptions: Bool = false
 
     var body: some View {
         ZStack {
@@ -32,7 +35,18 @@ struct SplashScreen: View {
                     VStack(spacing: 20) {
                         UIButton(text: "Setup Game", symbol: "dice.fill", color: UIColor(named: "PrimaryBlue") ?? .systemGray, action: { showNextPage() })
                             .shadow(color: Color.black.opacity(0.1), radius: 10)
-                        UIButtonOutlined(text: "Settings", symbol: "gearshape", fill: .black, color: .white, action: { self.showSettingsDialog.toggle() })
+                        UIButtonOutlined(
+                            text: "Settings",
+                            symbol: "gearshape",
+                            fill: .black,
+                            color: .white,
+                            action: {
+                                if UIDevice.current.userInterfaceIdiom == .pad {
+                                    self.showSettingsDialog.toggle()
+                                } else {
+                                    self.showSettingsSheet.toggle()
+                                }
+                            })
                             .shadow(color: Color.black.opacity(0.1), radius: 10)
                     }
                     .frame(maxWidth: 300)
@@ -75,5 +89,15 @@ struct SplashScreen: View {
                 self.showOnboardingDialog = false
             }
         }
+        .sheet(isPresented: $showSettingsSheet) {
+            NavigationStack {
+                AppSettingsView(dismissModal: dismissModal, showManageSubscriptions: $showManageSubscriptions)
+            }
+        }
+        .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
+    }
+    
+    func dismissModal() {
+        self.showSettingsSheet.toggle()
     }
 }
