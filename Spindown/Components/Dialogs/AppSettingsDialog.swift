@@ -14,69 +14,190 @@ struct AppSettingsDialog: View {
     
     @State private var dialogOpacity: CGFloat = 0
     @State private var dialogOffset: CGFloat = 0
+    
+    @State private var showManageSubscriptions: Bool = false
 
     var body: some View {
-        ScrollView {
-            HStack(spacing: 0) {
-                Image(systemName: "gearshape")
-                    .padding(.trailing, 4)
-                Text("Settings")
-                Spacer()
-                Button(action: { dismissModal() }) {
-                    Image(systemName: "xmark.circle.fill")
+        NavigationStack {
+            ScrollView {
+                List {
+                    Section(header: Text("General")) {
+                        NavigationLink(destination: EmptyView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "PrimaryRed")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "textformat")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 16, weight: .bold))
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Display")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                        NavigationLink(destination: EmptyView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "PrimaryBlue")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "note.text")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 16, weight: .bold))
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Game History")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                        NavigationLink(destination: EmptyView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "person.fill")
+                                        .foregroundColor(.white)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Players")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                        NavigationLink(destination: EmptyView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "AccentGrayDarker")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    
+                                    VStack(spacing: 4) {
+                                        HStack(spacing: 4) {
+                                            RoundedRectangle(cornerRadius: 2)
+                                                .fill(Color(UIColor(named: "AccentGray")!))
+                                                .frame(width: 8, height: 8)
+                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
+                                            RoundedRectangle(cornerRadius: 2)
+                                                .fill(Color(UIColor(named: "AccentGray")!))
+                                                .frame(width: 8, height: 8)
+                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
+                                        }
+                                        HStack(spacing: 4) {
+                                            RoundedRectangle(cornerRadius: 2)
+                                                .fill(Color(UIColor(named: "PrimaryBlue")!))
+                                                .frame(width: 8, height: 8)
+                                                .shadow(color: Color.black.opacity(0.2), radius: 1)
+                                            RoundedRectangle(cornerRadius: 2)
+                                                .fill(Color(UIColor(named: "AccentGray")!))
+                                                .frame(width: 8, height: 8)
+                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
+                                        }
+                                    }
+                                }
+                                Text("App Icon")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                    }
+                    .listRowBackground(Color(UIColor(named: "NotAsDeepGray")!))
+                    .listRowSeparatorTint(Color.white.opacity(0.15))
+                    
+                    Section(header: Text("About")) {
+                        Button(action: { self.showManageSubscriptions.toggle() }) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "creditcard.fill")
+                                        .foregroundColor(.white)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Manage Subscription")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                        NavigationLink(destination: TermsOfUseView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "AccentGray")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "doc.plaintext.fill")
+                                        .foregroundColor(.white)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Terms Of Use")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                        NavigationLink(destination: PrivacyPolicyView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(UIColor(named: "AccentGray")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "lock.fill")
+                                        .foregroundColor(.white)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Privacy Policy")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                        NavigationLink(destination: EmptyView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(.black))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "creditcard.fill")
+                                        .foregroundColor(.white)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Haptic Software")
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
+                    }
+                    .listRowBackground(Color(UIColor(named: "NotAsDeepGray")!))
                 }
+                .frame(height: 460)
+                .background(Color(UIColor(named: "DeepGray")!))
+                .scrollContentBackground(.hidden)
+                .scrollDisabled(true)
+                
+                Text("© 2023 Haptic Software LLC. Spindown 1.0.1")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(UIColor(named: "AccentGray")!))
+                    .padding(.bottom)
             }
-            .font(.system(size: 24, weight: .black))
-            .foregroundColor(Color.white)
-            .padding()
-            
-            List {
-                Section(header: Text("General")) {
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Display")
-                    }
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Game History")
-                    }
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Players")
-                    }
-                    NavigationLink(destination: EmptyView()) {
-                        Text("App Icon")
-                    }
-                }
-                .listRowBackground(Color(UIColor(named: "NotAsDeepGray")!))
-                .listRowSeparatorTint(Color.white.opacity(0.15))
-
-                Section(header: Text("About")) {
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Manage Subscription")
-                    }
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Terms of Use")
-                    }
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Privacy Policy")
-                    }
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Haptic Software")
-                    }
-                }
-                .listRowBackground(Color(UIColor(named: "NotAsDeepGray")!))
-            }
-            .frame(height: 460)
             .background(Color(UIColor(named: "DeepGray")!))
-            .scrollContentBackground(.hidden)
-            .scrollDisabled(true)
-            
-            Text("© 2023 Haptic Software LLC. Spindown 1.0.1")
-                .font(.system(size: 12))
-                .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                .padding(.bottom)
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        dismissModal()
+                    }) {
+                        Text("Close")
+                            .foregroundColor(Color(UIColor(named: "PrimaryRed")!))
+                    }
+                }
+            }
         }
-        .padding()
         .background(Color(UIColor(named: "DeepGray")!))
-        .frame(maxWidth: 500, maxHeight: 500)
+        .frame(maxWidth: 475, maxHeight: 475)
         .foregroundColor(.white)
         .cornerRadius(16)
         .shadow(color: Color.black.opacity(0.1), radius: 15)
@@ -94,6 +215,7 @@ struct AppSettingsDialog: View {
                 }
             }
         }
+        .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
     }
     
     func dismissModal() {
