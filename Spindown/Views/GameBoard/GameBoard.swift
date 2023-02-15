@@ -95,11 +95,12 @@ struct GameBoard: View {
                     Spacer()
 
                     Button(action: {
-                        print("render gameboard settings modal")
-                        self.showSettingsDialog.toggle()
+                        withAnimation(.easeInOut(duration: 0.4)) {
+                            self.showSettingsDialog.toggle()
+                        }
                     }) {
                         Image(systemName: "gearshape.circle.fill")
-                            .font(.system(size: 48))
+                            .font(.system(size: 32))
                             .foregroundColor(.white)
                             .shadow(color: Color.black.opacity(0.1), radius: 10)
                     }
@@ -107,39 +108,38 @@ struct GameBoard: View {
                 .padding()
             }
             .edgesIgnoringSafeArea(.all)
+        
+            GameSettingsDialog(
+                open: $showSettingsDialog,
+                selectedLayout: $selectedLayout,
+                players: $players,
+                endGame: endGame
+            )
             
-            if (self.showSettingsDialog == true) {
-                GameSettingsDialog(
-                    open: $showSettingsDialog,
-                    selectedLayout: $selectedLayout,
-                    players: $players,
-                    endGame: endGame
-                )
-                .edgesIgnoringSafeArea(.all)
-            }
-            
-            if (self.showLifeTotalCalculator == true) {
-                LifeTotalCalculatorDialog(
-                    selectedPlayer: $selectedPlayer,
-                    toggleCalculator: { self.showLifeTotalCalculator.toggle() },
-                    updateLifeTotal: updateLifeTotal
-                )
-            }
+            LifeTotalCalculatorDialog(
+                open: $showLifeTotalCalculator,
+                selectedPlayer: $selectedPlayer,
+                toggleCalculator: { self.showLifeTotalCalculator.toggle() },
+                updateLifeTotal: updateLifeTotal
+            )
         }
         .opacity(opacity)
         .padding(10)
         .onAppear {
+            // Prevent the system idle timer from putting the device's display
+            // to sleep while the game board is active.
             UIApplication.shared.isIdleTimerDisabled = true
-
+            // Custom start layout conditions.
+            if (players.count == 2 || players.count == 3 || players.count == 5) {
+                self.selectedLayout = .facingPortrait
+            }
+            // Display the game board.
             withAnimation(.easeIn(duration: 0.5)) {
                 self.opacity = 1
             }
-            
-            if (players.count == 3 || players.count == 5) {
-                self.selectedLayout = .facingPortrait
-            }
         }
         .onDisappear {
+            // Re-enable the system idle timer when this view unmounts.
             UIApplication.shared.isIdleTimerDisabled = false
         }
     }

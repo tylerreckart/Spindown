@@ -48,7 +48,7 @@ struct TwoPlayerLayoutCard: View {
                 .background(
                     Color(.systemGray)
                         .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                        .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                        .overlay(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(named: "DeepGray")!)).padding(4).cornerRadius(8))
                 )
                 .cornerRadius(12)
             }
@@ -96,7 +96,7 @@ struct ThreePlayerLayoutCard: View {
                 .background(
                     Color(UIColor(named: "AccentGray") ?? .systemGray)
                         .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                        .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                        .overlay(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(named: "DeepGray")!)).padding(4).cornerRadius(8))
                 )
                 .cornerRadius(12)
                 
@@ -151,7 +151,7 @@ struct FourPlayerLayoutCard: View {
                     .background(
                         Color(UIColor(named: "AccentGray") ?? .systemGray)
                             .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(named: "DeepGray")!)).padding(4).cornerRadius(8))
                     )
                     .cornerRadius(12)
                     
@@ -212,7 +212,7 @@ struct FivePlayerLayoutCard: View {
                     .background(
                         Color(UIColor(named: "AccentGray") ?? .systemGray)
                             .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(named: "DeepGray")!)).padding(4).cornerRadius(8))
                     )
                     .cornerRadius(12)
                     
@@ -278,7 +278,7 @@ struct SixPlayerLayoutCard: View {
                     .background(
                         Color(UIColor(named: "AccentGray") ?? .systemGray)
                             .overlay(LinearGradient(colors: [Color.white.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom))
-                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color.black).padding(4))
+                            .overlay(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(named: "DeepGray")!)).padding(4).cornerRadius(8))
                     )
                     .cornerRadius(12)
                     
@@ -297,11 +297,11 @@ struct TwoPlayerLayoutContainer: View {
 
     var body: some View {
         HStack(spacing: 0) {
+            TwoPlayerLayoutCard(p1Rotation: 180, p2Rotation: 0, layout: .facingPortrait, selectedLayout: $selectedLayout)
+            Spacer()
             TwoPlayerLayoutCard(p1Rotation: 90, p2Rotation: 90, layout: .tandem, selectedLayout: $selectedLayout)
             Spacer()
             TwoPlayerLayoutCard(p1Rotation: 90, p2Rotation: -90, layout: .facingLandscape, selectedLayout: $selectedLayout)
-            Spacer()
-            TwoPlayerLayoutCard(p1Rotation: 180, p2Rotation: 0, layout: .facingPortrait, selectedLayout: $selectedLayout)
         }
     }
 }
@@ -387,11 +387,16 @@ struct LayoutSelectorView: View {
                 }
                 
                 VStack(spacing: 10) {
-                    UIButtonOutlined(text: "Go Back", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
-                        withAnimation {
-                            self.activeView = .home
+                    UIButtonOutlined(
+                        text: "Go Back",
+                        fill: UIColor(named: "DeepGray")!,
+                        color: UIColor(named: "AccentGray")!,
+                        action: {
+                            withAnimation {
+                                self.activeView = .home
+                            }
                         }
-                    })
+                    )
                 }
             }
         }

@@ -112,7 +112,6 @@ struct HorizontalControlRow: View {
 
 struct GameSettingsHomeView: View {
     var endGame: () -> ()
-    var dismissModal: () -> ()
     
     @Binding var activeView: ActiveSettingsView
     
@@ -123,24 +122,30 @@ struct GameSettingsHomeView: View {
     var body: some View {
         VStack {
             HStack(spacing: 0) {
-                Text("Settings")
+                Text("Game Settings")
                     .font(.system(size: 24, weight: .black))
                     .foregroundColor(Color.white)
                 Spacer()
             }
             
             VStack(spacing: 15) {
-//                HorizontalControlRow(activeView: $activeView, showRulesSheet: $showRulesSheet)
-//                UIButtonOutlined(text: "Game Timer", symbol: "stopwatch", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-//                    withAnimation {
-//                        self.activeView = .timer
-//                    }
-//                })
+                HorizontalControlRow(activeView: $activeView, showRulesSheet: $showRulesSheet)
+                UIButtonOutlined(
+                    text: "Game Timer",
+                    symbol: "stopwatch",
+                    fill: UIColor(named: "DeepGray")!,
+                    color: UIColor(named: "AccentGray")!,
+                    action: {
+                        withAnimation {
+                            self.activeView = .timer
+                        }
+                    }
+                )
                 if (self.playerCount != 1) {
                     UIButtonOutlined(
                         text: "Change Layout",
                         symbol: "uiwindow.split.2x1",
-                        fill: .black,
+                        fill: UIColor(named: "DeepGray")!,
                         color: UIColor(named: "AccentGray")!,
                         action: {
                             withAnimation {
@@ -149,19 +154,24 @@ struct GameSettingsHomeView: View {
                         }
                     )
                 }
-//                UIButtonOutlined(text: "Change Players", symbol: "person.2", fill: .black, color: UIColor(named: "AccentGray")!, action: {
-//                    withAnimation {
-//                        self.activeView = .player
-//                    }
-//                })
-                UIButton(text: "End Game", symbol: "xmark", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: {
-                    dismissModal()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        endGame()
+                UIButtonOutlined(
+                    text: "Change Players",
+                    symbol: "person.2",
+                    fill: UIColor(named: "DeepGray")!,
+                    color: UIColor(named: "AccentGray")!,
+                    action: {
+                        withAnimation(.easeInOut(duration: 0.6)) {
+                            self.activeView = .player
+                        }
                     }
-                })
+                )
+                UIButton(
+                    text: "End Game",
+                    symbol: "xmark",
+                    color: UIColor(named: "PrimaryRed")!,
+                    action: endGame
+                )
             }
-            .frame(maxWidth: 300)
         }
         .transition(
             .asymmetric(
@@ -169,9 +179,6 @@ struct GameSettingsHomeView: View {
                 removal: .push(from: .trailing).combined(with: .opacity)
             )
         )
-//        .sheet(isPresented: $showRulesSheet, onDismiss: { self.showRulesSheet = false }) {
-//            RulesSheet()
-//        }
     }
 }
 
@@ -198,18 +205,12 @@ struct GameSettingsDialog: View {
     @State private var activeView: ActiveSettingsView = .home
     
     var body: some View {
-        ZStack {
-            Color.black.opacity(overlayOpacity)
-                .onTapGesture {
-                    dismissModal()
-                }
-            
+        Dialog(content: {
             VStack {
                 switch (activeView) {
                     case .home:
                         GameSettingsHomeView(
                             endGame: endGame,
-                            dismissModal: dismissModal,
                             activeView: $activeView,
                             playerCount: self.players.count
                         )
@@ -229,41 +230,6 @@ struct GameSettingsDialog: View {
                         PlayerSelectorView(activeView: $activeView, players: $players)
                 }
             }
-            .frame(maxWidth: 300)
-            .padding(30)
-            .background(
-                Color(.black)
-                    .overlay(LinearGradient(colors: [.white.opacity(0.05), .clear], startPoint: .top, endPoint: .bottom))
-            )
-            .cornerRadius(16)
-            .shadow(color: Color.black.opacity(0.1), radius: 15)
-            .opacity(dialogOpacity)
-            .scaleEffect(dialogOffset)
-            .onAppear {
-                withAnimation {
-                    self.overlayOpacity = 0.5
-                    self.dialogOpacity = 1
-                    self.dialogOffset = 1.1
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        withAnimation {
-                            self.dialogOffset = 1
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func dismissModal() {
-        withAnimation {
-            self.overlayOpacity = 0
-            self.dialogOpacity = 0
-            self.dialogOffset = 0.75
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            open.toggle()
-        }
+        }, maxWidth: 300, open: $open)
     }
 }

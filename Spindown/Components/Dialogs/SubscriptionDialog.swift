@@ -86,15 +86,16 @@ struct Pitch: View {
 
 struct SubscriptionView: View {
     var store: Store
-
-    @Binding var selectedOffer: Product?
-    @Binding var hasPurchased: Bool
-    @Binding var showManageSubscriptions: Bool
-    
-    var buy: () async -> ()
-    
+    // Store data.
+    @State private var selectedOffer: Product?
+    @State private var hasPurchased: Bool = false
+    // Sheet views.
+    @State private var showManageSubscriptions: Bool = false
     @State private var showTermsSheet: Bool = false
     @State private var showPrivacySheet: Bool = false
+    // Error handling.
+    @State private var errorMessage: String?
+    @State private var showErrorAlert: Bool = false
 
     var body: some View {
         ScrollView {
@@ -213,54 +214,6 @@ struct SubscriptionView: View {
         .sheet(isPresented: $showPrivacySheet) {
             PrivacyPolicyView()
         }
-    }
-}
-
-struct SubscriptionDialog: View {
-    var store: Store
-
-    @State private var selectedOffer: Product?
-    @State private var hasPurchased: Bool = false
-
-    @State private var showManageSubscriptions: Bool = false
-    @State private var errorMessage: String?
-    @State private var showErrorAlert: Bool = false
-    
-    @State private var dialogOpacity: CGFloat = 0
-    @State private var dialogOffset: CGFloat = 0
-
-    var body: some View {
-        SubscriptionView(
-            store: store,
-            selectedOffer: $selectedOffer,
-            hasPurchased: $hasPurchased,
-            showManageSubscriptions: $showManageSubscriptions,
-            buy: buy
-        )
-        .padding()
-        .frame(maxWidth: 500, maxHeight: 500)
-        .cornerRadius(16)
-        .opacity(dialogOpacity)
-        .scaleEffect(dialogOffset)
-        .shadow(color: Color.black.opacity(0.1), radius: 15)
-        .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
-        .onAppear {
-            if !store.purchasedSubscriptions.isEmpty {
-                hasPurchased = true
-            }
-            
-            withAnimation(.easeInOut(duration: 0.6)) {
-                self.dialogOpacity = 1
-                self.dialogOffset = 1.1
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    withAnimation {
-                        self.dialogOffset = 1
-                    }
-                }
-            }
-
-        }
         .alert(isPresented: $showErrorAlert, error: ValidationError.NaN) {_ in
             Button(action: {
                 showErrorAlert = false
@@ -271,7 +224,7 @@ struct SubscriptionDialog: View {
             Text(errorMessage ?? "Error. Please try again.")
         }
     }
-
+    
     func buy() async {
         do {
             print(selectedOffer as Any)
@@ -287,12 +240,5 @@ struct SubscriptionDialog: View {
         } catch {
             print("Failed purchase: \(error)")
         }
-    }
-}
-
-struct SubscriptionDialog_Previews: PreviewProvider {
-    @StateObject static var store: Store = Store()
-    static var previews: some View {
-        SubscriptionDialog(store: store).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

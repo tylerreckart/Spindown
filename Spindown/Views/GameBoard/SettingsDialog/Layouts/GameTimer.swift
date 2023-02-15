@@ -136,7 +136,6 @@ struct GameTimer: View {
                 })
             }
         }
-        .background(.black)
         .foregroundColor(.white)
         .frame(maxWidth: 300)
         .transition(

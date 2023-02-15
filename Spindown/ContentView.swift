@@ -68,17 +68,12 @@ struct ContentView: View {
                         endGame: endGame
                     )
                     
-                    if (winner != nil) {
-                        GameOverDialog(winner: winner, resetBoard: resetBoard, endGame: endGame)
-                    }
-                    
-                    if (showStartOverlay) {
-                        StartingPlayerDialog(
-                            activePlayer: $activePlayer,
-                            startGame: startGame,
-                            chooseStartingPlayer: chooseStartingPlayer
-                        )
-                    }
+                    StartingPlayerDialog(
+                        open: $showStartOverlay,
+                        activePlayer: $activePlayer,
+                        startGame: startGame,
+                        chooseStartingPlayer: chooseStartingPlayer
+                    )
                 }
             }
         }
@@ -120,14 +115,18 @@ struct ContentView: View {
     
     private func chooseStartingPlayer() {
         self.activePlayer = self.players.randomElement()
-        
-        withAnimation(.easeIn(duration: 0.4)) {
-            self.showStartOverlay = true
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                self.showStartOverlay = true
+            }
         }
     }
     
     private func startGame() {
-        self.showStartOverlay = false
+        withAnimation(.easeInOut(duration: 0.4)) {
+            self.showStartOverlay = false
+        }
     }
     
     private func resetBoard() {
@@ -153,9 +152,3 @@ struct ContentView: View {
         }
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//    }
-//}

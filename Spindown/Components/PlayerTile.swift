@@ -162,8 +162,9 @@ struct PlayerTile: View {
                                             self.activeSum = .energy
                                         }
                                     }) {
-                                        Image(systemName: "drop.triangle.fill")
-                                            .font(.system(size: 24, weight: .black))
+                                        Image("ToxicSymbol")
+                                            .resizable()
+                                            .frame(width: 18.67, height: 28)
                                     }
                                 }
                                 .transition(
