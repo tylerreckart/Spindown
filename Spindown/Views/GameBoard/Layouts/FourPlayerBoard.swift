@@ -17,9 +17,46 @@ struct FourPlayerGameBoard: View {
     var screenHeight = UIScreen.main.bounds.height
 
     var body: some View {
-        if (self.selectedLayout == .tandem) {
-            VStack(spacing: 20) {
-                HStack(spacing: 20) {
+        if (self.players.count == 4) {
+            if (self.selectedLayout == .tandem || self.selectedLayout == .facingPortrait) {
+                VStack(spacing: 20) {
+                    HStack(spacing: 20) {
+                        PlayerTile(
+                            player: players[0],
+                            color: colors[0],
+                            updateLifeTotal: updateLifeTotal,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
+                        )
+                        PlayerTile(
+                            player: players[1],
+                            color: colors[1],
+                            updateLifeTotal: updateLifeTotal,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
+                        )
+                    }
+                    .rotationEffect(Angle(degrees: 180))
+                    HStack(spacing: 20) {
+                        PlayerTile(
+                            player: players[2],
+                            color: colors[2],
+                            updateLifeTotal: updateLifeTotal,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
+                        )
+                        PlayerTile(
+                            player: players[3],
+                            color: colors[3],
+                            updateLifeTotal: updateLifeTotal,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
+                        )
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+            } else if (self.selectedLayout == .facingLandscape) {
+                VStack(spacing: 20) {
                     PlayerTile(
                         player: players[0],
                         color: colors[0],
@@ -27,23 +64,25 @@ struct FourPlayerGameBoard: View {
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                         selectedPlayer: $selectedPlayer
                     )
-                    PlayerTile(
-                        player: players[1],
-                        color: colors[1],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
-                }
-                .rotationEffect(Angle(degrees: 180))
-                HStack(spacing: 20) {
-                    PlayerTile(
-                        player: players[2],
-                        color: colors[2],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
+                    .rotationEffect(Angle(degrees: 180))
+                    HStack(spacing: 20) {
+                        PlayerTile(
+                            player: players[1],
+                            color: colors[1],
+                            updateLifeTotal: updateLifeTotal,
+                            orientation: .landscapeReverse,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
+                        )
+                        PlayerTile(
+                            player: players[2],
+                            color: colors[2],
+                            updateLifeTotal: updateLifeTotal,
+                            orientation: .landscape,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer
+                        )
+                    }
                     PlayerTile(
                         player: players[3],
                         color: colors[3],
@@ -52,45 +91,8 @@ struct FourPlayerGameBoard: View {
                         selectedPlayer: $selectedPlayer
                     )
                 }
+                .edgesIgnoringSafeArea(.all)
             }
-            .edgesIgnoringSafeArea(.all)
-        } else if (self.selectedLayout == .facingLandscape) {
-            VStack(spacing: 20) {
-                PlayerTile(
-                    player: players[0],
-                    color: colors[0],
-                    updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                    selectedPlayer: $selectedPlayer
-                )
-                .rotationEffect(Angle(degrees: 180))
-                HStack(spacing: 20) {
-                    PlayerTile(
-                        player: players[1],
-                        color: colors[1],
-                        updateLifeTotal: updateLifeTotal,
-                        orientation: .landscapeReverse,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
-                    PlayerTile(
-                        player: players[2],
-                        color: colors[2],
-                        updateLifeTotal: updateLifeTotal,
-                        orientation: .landscape,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
-                }
-                PlayerTile(
-                    player: players[3],
-                    color: colors[3],
-                    updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                    selectedPlayer: $selectedPlayer
-                )
-            }
-            .edgesIgnoringSafeArea(.all)
         }
     }
 }
