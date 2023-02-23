@@ -26,37 +26,36 @@ struct PlayerTileControls: View {
     @ObservedObject var player: Participant
     @Binding var activeSum: ActiveSum
     var orientation: TileOrientation
-    var color: UIColor
 
     var body: some View {
         if (self.orientation == .portrait) {
             VStack(spacing: 0) {
                 Button(action: { increment() }) {
-                    Rectangle().fill(Color(color))
+                    Rectangle().fill(Color(player.color))
                 }
                 
                 Button(action: { decrement() }) {
-                    Rectangle().fill(Color(color))
+                    Rectangle().fill(Color(player.color))
                 }
             }
         } else if (self.orientation == .landscape) {
             HStack(spacing: 0) {
                 Button(action: { increment() }) {
-                    Rectangle().fill(Color(color))
+                    Rectangle().fill(Color(player.color))
                 }
                 
                 Button(action: { decrement() }) {
-                    Rectangle().fill(Color(color))
+                    Rectangle().fill(Color(player.color))
                 }
             }
         } else if (self.orientation == .landscapeReverse) {
             HStack(spacing: 0) {
                 Button(action: { decrement() }) {
-                    Rectangle().fill(Color(color))
+                    Rectangle().fill(Color(player.color))
                 }
                 
                 Button(action: { increment() }) {
-                    Rectangle().fill(Color(color))
+                    Rectangle().fill(Color(player.color))
                 }
             }
         }
@@ -93,7 +92,6 @@ struct PlayerTileControls: View {
 
 struct PlayerTile: View {
     @ObservedObject var player: Participant
-    var color: UIColor
     var updateLifeTotal: (Participant, Int) -> Void
     var orientation: TileOrientation = .portrait
     var showLifeTotalCalculator: () -> ()
@@ -111,7 +109,7 @@ struct PlayerTile: View {
     
     var body: some View {
         ZStack {
-            PlayerTileControls(player: player, activeSum: $activeSum, orientation: orientation, color: color)
+            PlayerTileControls(player: player, activeSum: $activeSum, orientation: orientation)
 
             VStack(spacing: 0) {
                 Spacer()

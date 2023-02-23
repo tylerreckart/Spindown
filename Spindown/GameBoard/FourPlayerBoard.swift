@@ -23,14 +23,12 @@ struct FourPlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[0],
-                            color: colors[0],
                             updateLifeTotal: updateLifeTotal,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
                         PlayerTile(
                             player: players[1],
-                            color: colors[1],
                             updateLifeTotal: updateLifeTotal,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
@@ -40,14 +38,12 @@ struct FourPlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[2],
-                            color: colors[2],
                             updateLifeTotal: updateLifeTotal,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
                         PlayerTile(
                             player: players[3],
-                            color: colors[3],
                             updateLifeTotal: updateLifeTotal,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
@@ -59,7 +55,6 @@ struct FourPlayerGameBoard: View {
                 VStack(spacing: 20) {
                     PlayerTile(
                         player: players[0],
-                        color: colors[0],
                         updateLifeTotal: updateLifeTotal,
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                         selectedPlayer: $selectedPlayer
@@ -68,7 +63,6 @@ struct FourPlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[1],
-                            color: colors[1],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscapeReverse,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
@@ -76,7 +70,6 @@ struct FourPlayerGameBoard: View {
                         )
                         PlayerTile(
                             player: players[2],
-                            color: colors[2],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscape,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
@@ -85,7 +78,6 @@ struct FourPlayerGameBoard: View {
                     }
                     PlayerTile(
                         player: players[3],
-                        color: colors[3],
                         updateLifeTotal: updateLifeTotal,
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                         selectedPlayer: $selectedPlayer

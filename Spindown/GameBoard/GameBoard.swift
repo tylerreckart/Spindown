@@ -37,7 +37,6 @@ struct GameBoard: View {
             if (players.count == 1) {
                 PlayerTile(
                     player: players[0],
-                    color: colors[0],
                     updateLifeTotal: updateLifeTotal,
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                     selectedPlayer: $selectedPlayer

@@ -31,25 +31,22 @@ struct DiceRollView: View {
             if (!self.rolling && self.result == nil) {
                 VStack(spacing: 20) {
                     HStack(spacing: 20) {
-                        UIButtonStacked(
+                        UIButton(
                             text: "D20",
-                            symbol: "dice.fill",
                             color: UIColor(named: "AccentGrayDarker")!,
                             action: {
                                 rollDice(20)
                             }
                         )
-                        UIButtonStacked(
+                        UIButton(
                             text: "D12",
-                            symbol: "dice.fill",
                             color: UIColor(named: "AccentGrayDarker")!,
                             action: {
                                 rollDice(12)
                             }
                         )
-                        UIButtonStacked(
+                        UIButton(
                             text: "D10",
-                            symbol: "dice.fill",
                             color: UIColor(named: "AccentGrayDarker")!,
                             action: {
                                 rollDice(10)
@@ -58,25 +55,22 @@ struct DiceRollView: View {
                     }
                     
                     HStack(spacing: 20) {
-                        UIButtonStacked(
+                        UIButton(
                             text: "D8",
-                            symbol: "dice.fill",
                             color: UIColor(named: "AccentGrayDarker")!,
                             action: {
                                 rollDice(8)
                             }
                         )
-                        UIButtonStacked(
+                        UIButton(
                             text: "D6",
-                            symbol: "dice.fill",
                             color: UIColor(named: "AccentGrayDarker")!,
                             action: {
                                 rollDice(6)
                             }
                         )
-                        UIButtonStacked(
+                        UIButton(
                             text: "D4",
-                            symbol: "dice.fill",
                             color: UIColor(named: "AccentGrayDarker")!,
                             action: {
                                 rollDice(4)

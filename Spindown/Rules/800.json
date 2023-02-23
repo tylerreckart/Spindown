@@ -1,0 +1,1790 @@
+{
+  "800.1": {
+    "ruleNumber": "800.1",
+    "examples": null,
+    "ruleText": "A multiplayer game is a game that begins with more than two players. This section contains additional optional rules that can be used for multiplayer play.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "729.2",
+      "nextRule": "800.2"
+    }
+  },
+  "800.2": {
+    "ruleNumber": "800.2",
+    "examples": null,
+    "ruleText": "These rules consist of a series of options that can be added to a multiplayer game and a number of variant styles of multiplayer play. A single game may use multiple options but only one variant.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "800.1",
+      "nextRule": "800.3"
+    }
+  },
+  "800.3": {
+    "ruleNumber": "800.3",
+    "examples": null,
+    "ruleText": "Many multiplayer Magic tournaments have additional rules not included here, including rules for deck construction. See the most current Magic: The Gathering Tournament Rules for more information. They can be found at WPN.Wizards.com/en/resources/rules-documents.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "800.2",
+      "nextRule": "800.4"
+    }
+  },
+  "800.4": {
+    "ruleNumber": "800.4",
+    "examples": null,
+    "ruleText": "Unlike two-player games, multiplayer games can continue after one or more players have left the game.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "800.3",
+      "nextRule": "800.4a"
+    }
+  },
+  "800.5": {
+    "ruleNumber": "800.5",
+    "examples": null,
+    "ruleText": "Unless a chosen variant or option prescribes otherwise, seating order is determined by any mutually agreeable method. For example, players could agree to remain where they were before the game began, roll dice to determine seating order, and so on.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "800.4p",
+      "nextRule": "800.6"
+    }
+  },
+  "800.6": {
+    "ruleNumber": "800.6",
+    "examples": null,
+    "ruleText": "In a multiplayer game, the first mulligan a player takes doesn’t count toward the number of cards that player will put on the bottom of their library or the number of mulligans that player may take. Subsequent mulligans are counted toward these numbers as normal.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "800.5",
+      "nextRule": "800.7"
+    }
+  },
+  "800.7": {
+    "ruleNumber": "800.7",
+    "examples": null,
+    "ruleText": "In a multiplayer game other than a Two-Headed Giant game, the starting player doesn’t skip the draw step of their first turn. In a Two-Headed Giant game, the team who plays first skips the draw step of their first turn. See rule 103.8.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "800.6",
+      "nextRule": null
+    }
+  },
+  "801.1": {
+    "ruleNumber": "801.1",
+    "examples": null,
+    "ruleText": "Limited range of influence is an option that can be applied to most multiplayer games. It’s always used in the Emperor variant (see rule 809), and it’s often used for games involving five or more players.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "800.7",
+      "nextRule": "801.2"
+    }
+  },
+  "801.2": {
+    "ruleNumber": "801.2",
+    "examples": null,
+    "ruleText": "A player’s range of influence is the maximum distance from that player, measured in player seats, that the player can affect. Players within that many seats of the player are within that player’s range of influence. Objects controlled by players within a player’s range of influence are also within that player’s range of influence. Range of influence covers spells, abilities, effects, damage dealing, attacking, making choices, and winning the game.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "801.1",
+      "nextRule": "801.2a"
+    }
+  },
+  "801.3": {
+    "ruleNumber": "801.3",
+    "examples": null,
+    "ruleText": "Creatures can attack only opponents within their controller’s range of influence or planeswalkers controlled by those opponents. If no opponents are within a player’s range of influence, creatures that player controls can’t attack.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "801.2d",
+      "nextRule": "801.4"
+    }
+  },
+  "801.4": {
+    "ruleNumber": "801.4",
+    "examples": null,
+    "ruleText": "Objects and players outside a player’s range of influence can’t be the targets of spells or abilities that player controls.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "801.3",
+      "nextRule": "801.5"
+    }
+  },
+  "801.5": {
+    "ruleNumber": "801.5",
+    "examples": null,
+    "ruleText": "Some cards require players to make choices. These cards work differently when the limited range of influence option is used.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "801.4",
+      "nextRule": "801.5a"
+    }
+  },
+  "801.6": {
+    "ruleNumber": "801.6",
+    "examples": null,
+    "ruleText": "A player can’t activate the activated abilities of an object outside of their range of influence.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "801.5c",
+      "nextRule": "801.7"
+    }
+  },
+  "801.7": {
+    "ruleNumber": "801.7",
+    "examples": [
+      "In a game in which all players have range of influence 1, Alex is seated to the left of Rob. Rob controls two Auras attached to Alex’s Runeclaw Bear: One with the trigger condition “Whenever enchanted creature becomes blocked,” and one with the trigger condition “Whenever enchanted creature becomes blocked by a creature.” Alex’s Runeclaw Bear attacks the player to Alex’s left and becomes blocked. The ability of Rob’s first Aura triggers because the entire event (Runeclaw Bear becomes blocked) happens within Rob’s range of influence. The ability of Rob’s second Aura doesn’t trigger, however, because that event includes the blocking creature, which is out of Rob’s range."
+    ],
+    "ruleText": "A triggered ability doesn’t trigger unless its trigger event happens entirely within the range of influence of its source’s controller.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "801.6",
+      "nextRule": "801.7a"
+    }
+  },
+  "801.8": {
+    "ruleNumber": "801.8",
+    "examples": null,
+    "ruleText": "An Aura can’t enchant an object or player outside its controller’s range of influence. If an Aura is attached to an illegal object or player, the Aura is put into its owner’s graveyard as a state-based action. See rule 704.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "801.7a",
+      "nextRule": "801.9"
+    }
+  },
+  "801.9": {
+    "ruleNumber": "801.9",
+    "examples": null,
+    "ruleText": "An Equipment can’t equip an object outside its controller’s range of influence, and a Fortification can’t fortify an object outside its controller’s range of influence. If an Equipment or Fortification is attached to an illegal permanent, it becomes unattached from that permanent but remains on the battlefield. This is a state-based action. See rule 704.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "801.8",
+      "nextRule": "801.10"
+    }
+  },
+  "802.1": {
+    "ruleNumber": "802.1",
+    "examples": null,
+    "ruleText": "Some multiplayer games allow the active player to attack multiple other players. If this option is used, a player can also choose to attack only one player during a particular combat.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "801.18",
+      "nextRule": "802.2"
+    }
+  },
+  "802.2": {
+    "ruleNumber": "802.2",
+    "examples": null,
+    "ruleText": "As the combat phase starts, the attacking player doesn’t choose an opponent to become the defending player. Instead, all the attacking player’s opponents are defending players during the combat phase.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "802.1",
+      "nextRule": "802.2a"
+    }
+  },
+  "802.3": {
+    "ruleNumber": "802.3",
+    "examples": null,
+    "ruleText": "As the attacking player declares each attacking creature, they choose a defending player or a planeswalker controlled by a defending player for it to attack. See rule 508, “Declare Attackers Step.”",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "802.2a",
+      "nextRule": "802.3a"
+    }
+  },
+  "802.4": {
+    "ruleNumber": "802.4",
+    "examples": null,
+    "ruleText": "If more than one player is being attacked or controls a planeswalker that’s being attacked, each defending player in APNAP order declares blockers as the declare blockers step begins. (See rule 101.4 and rule 509, “Declare Blockers Step.”) The first defending player declares all their blocks, then the second defending player, and so on.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "802.3b",
+      "nextRule": "802.4a"
+    }
+  },
+  "802.5": {
+    "ruleNumber": "802.5",
+    "examples": null,
+    "ruleText": "After blockers have been declared, if any creatures are blocking multiple creatures, each defending player in APNAP order announces the damage assignment order among the attacking creatures for each blocking creature they control. See rule 510, “Combat Damage Step.”",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "802.4b",
+      "nextRule": "802.6"
+    }
+  },
+  "802.6": {
+    "ruleNumber": "802.6",
+    "examples": null,
+    "ruleText": "Combat damage is assigned in APNAP order. Other than that, the combat damage step proceeds just as in a two-player game. See rule 510, “Combat Damage Step.”",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "802.5",
+      "nextRule": null
+    }
+  },
+  "803.1": {
+    "ruleNumber": "803.1",
+    "examples": null,
+    "ruleText": "Some multiplayer games use the optional attack left or attack right rules.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "802.6",
+      "nextRule": "803.1a"
+    }
+  },
+  "804.1": {
+    "ruleNumber": "804.1",
+    "examples": null,
+    "ruleText": "The Emperor variant always uses the deploy creatures option, and it can be used in other variants that allow players to compete in teams. Multiplayer formats in which players compete as individuals usually don’t use this option.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "803.1b",
+      "nextRule": "804.2"
+    }
+  },
+  "804.2": {
+    "ruleNumber": "804.2",
+    "examples": null,
+    "ruleText": "Each creature has the ability “{T}: Target teammate gains control of this creature. Activate only as a sorcery.”",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "804.1",
+      "nextRule": null
+    }
+  },
+  "805.1": {
+    "ruleNumber": "805.1",
+    "examples": null,
+    "ruleText": "Some multiplayer games between teams use the shared team turns option. It’s always used in the Two-Headed Giant variant (see rule 810) and the Archenemy casual variant (see rule 904). It can be used only if the members of each team are sitting in adjacent seats.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "804.2",
+      "nextRule": "805.2"
+    }
+  },
+  "805.2": {
+    "ruleNumber": "805.2",
+    "examples": null,
+    "ruleText": "Within each team, the player seated in the rightmost seat from that team’s perspective is the primary player. If the players on a team can’t agree on a choice, such as which creatures attack or what order triggered abilities are put on the stack, the primary player makes that choice.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "805.1",
+      "nextRule": "805.3"
+    }
+  },
+  "805.3": {
+    "ruleNumber": "805.3",
+    "examples": null,
+    "ruleText": "The methods described in rule 103.1 are used to determine which team will take the first turn. The team determined this way is the starting team.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "805.2",
+      "nextRule": "805.3a"
+    }
+  },
+  "805.4": {
+    "ruleNumber": "805.4",
+    "examples": null,
+    "ruleText": "Each team takes turns rather than each player.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "805.3b",
+      "nextRule": "805.4a"
+    }
+  },
+  "805.5": {
+    "ruleNumber": "805.5",
+    "examples": null,
+    "ruleText": "Teams have priority, not individual players.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "805.4d",
+      "nextRule": "805.5a"
+    }
+  },
+  "805.6": {
+    "ruleNumber": "805.6",
+    "examples": null,
+    "ruleText": "The Active Player, Nonactive Player order rule (see rule 101.4) is modified if the shared team turns option is used. If multiple teams would make choices and/or take actions at the same time, first the active team makes any choices required, then each nonactive team in turn order makes any choices required. If multiple players would make choices and/or take actions at the same time, first each player on the active team makes any choices required in whatever order they like, then the players on each nonactive team in turn order do the same. Once all choices have been made, the actions happen simultaneously.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "805.5b",
+      "nextRule": "805.6a"
+    }
+  },
+  "805.7": {
+    "ruleNumber": "805.7",
+    "examples": null,
+    "ruleText": "If multiple triggered abilities have triggered since the last time a team received priority, the members of the active team put all triggered abilities any of them controls on the stack in any order they choose, then the members of each nonactive team in turn order do the same.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "805.6a",
+      "nextRule": "805.8"
+    }
+  },
+  "805.8": {
+    "ruleNumber": "805.8",
+    "examples": null,
+    "ruleText": "If an effect gives a player an extra turn or adds a phase or step to that player’s turn, that player’s team takes the extra turn, phase, or step. If an effect causes a player to skip a step, phase, or turn, that player’s team does so. If a single effect causes more than one player on the same team to add or skip the same step, phase, or turn, that team adds or skips only that step, phase, or turn. If an effect causes a player to control another player, the first player controls the affected player’s team.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "805.7",
+      "nextRule": "805.9"
+    }
+  },
+  "805.9": {
+    "ruleNumber": "805.9",
+    "examples": null,
+    "ruleText": "Any ability that refers to the “active player” refers to one specific active player, not to all of the active players. The ability’s controller chooses which one the ability refers to at the time its effect is applied.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "805.8",
+      "nextRule": "805.10"
+    }
+  },
+  "806.1": {
+    "ruleNumber": "806.1",
+    "examples": null,
+    "ruleText": "In Free-for-All multiplayer games, a group of players compete as individuals against each other.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "805.10g",
+      "nextRule": "806.2"
+    }
+  },
+  "806.2": {
+    "ruleNumber": "806.2",
+    "examples": null,
+    "ruleText": "Any multiplayer options used are determined before play begins. The Free-for-All variant uses the following default options.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "806.1",
+      "nextRule": "806.2a"
+    }
+  },
+  "806.3": {
+    "ruleNumber": "806.3",
+    "examples": null,
+    "ruleText": "The players are randomly seated around the table.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "806.2c",
+      "nextRule": null
+    }
+  },
+  "807.1": {
+    "ruleNumber": "807.1",
+    "examples": null,
+    "ruleText": "The Grand Melee variant is a modification of the Free-for-All variant, in which a group of players compete against each other as individuals. Grand Melee is normally used only in games begun with ten or more players.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "806.3",
+      "nextRule": "807.2"
+    }
+  },
+  "807.2": {
+    "ruleNumber": "807.2",
+    "examples": null,
+    "ruleText": "Any multiplayer options used are decided before play begins. The Grand Melee variant uses the following default options.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "807.1",
+      "nextRule": "807.2a"
+    }
+  },
+  "807.3": {
+    "ruleNumber": "807.3",
+    "examples": null,
+    "ruleText": "The players are seated at random.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "807.2c",
+      "nextRule": "807.4"
+    }
+  },
+  "807.4": {
+    "ruleNumber": "807.4",
+    "examples": null,
+    "ruleText": "The Grand Melee variant allows multiple players to take turns at the same time. Moving turn markers keep track of which players are currently taking turns. Each turn marker represents an active player’s turn.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "807.3",
+      "nextRule": "807.4a"
+    }
+  },
+  "807.5": {
+    "ruleNumber": "807.5",
+    "examples": null,
+    "ruleText": "Rather than having a single stack, Grand Melee games contain multiple stacks. Each turn marker represents its own stack.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "807.4j",
+      "nextRule": "807.5a"
+    }
+  },
+  "808.1": {
+    "ruleNumber": "808.1",
+    "examples": null,
+    "ruleText": "Team vs. Team games are played with two or more teams. Each team may have any number of players on it.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "807.5b",
+      "nextRule": "808.2"
+    }
+  },
+  "808.2": {
+    "ruleNumber": "808.2",
+    "examples": null,
+    "ruleText": "Each team sits together on one side of the table. Each team decides the order in which its players sit.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "808.1",
+      "nextRule": "808.3"
+    }
+  },
+  "808.3": {
+    "ruleNumber": "808.3",
+    "examples": null,
+    "ruleText": "Any multiplayer options used are determined before play begins. The Team vs. Team variant uses the following default options.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "808.2",
+      "nextRule": "808.3a"
+    }
+  },
+  "808.4": {
+    "ruleNumber": "808.4",
+    "examples": null,
+    "ruleText": "To determine which player goes first, randomly choose a team. If that team has an odd number of players, the player in its center seat goes first. If that team has an even number of players, the player to the left of its midpoint goes first. Turn order goes to the players’ left.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "808.3b",
+      "nextRule": "808.5"
+    }
+  },
+  "808.5": {
+    "ruleNumber": "808.5",
+    "examples": null,
+    "ruleText": "In the Team vs. Team variant, a team’s resources (cards in hand, mana, and so on) are not shared. Teammates may review each other’s hands and discuss strategies at any time. Teammates can’t manipulate each other’s cards or permanents.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "808.4",
+      "nextRule": null
+    }
+  },
+  "809.1": {
+    "ruleNumber": "809.1",
+    "examples": null,
+    "ruleText": "The Emperor variant involves two or more teams of three players each.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "808.5",
+      "nextRule": "809.2"
+    }
+  },
+  "809.2": {
+    "ruleNumber": "809.2",
+    "examples": null,
+    "ruleText": "Each team sits together on one side of the table. Each team decides the order in which it’s seated. Each team has one emperor, who sits in the middle of the team. The remaining players on the team are generals whose job is to protect the emperor.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "809.1",
+      "nextRule": "809.3"
+    }
+  },
+  "809.3": {
+    "ruleNumber": "809.3",
+    "examples": null,
+    "ruleText": "The Emperor variant uses the following default options.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "809.2",
+      "nextRule": "809.3a"
+    }
+  },
+  "809.4": {
+    "ruleNumber": "809.4",
+    "examples": null,
+    "ruleText": "Randomly determine which emperor goes first. Turn order goes to the players’ left.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "809.3c",
+      "nextRule": "809.5"
+    }
+  },
+  "809.5": {
+    "ruleNumber": "809.5",
+    "examples": null,
+    "ruleText": "The Emperor variant includes the following specifications for winning and losing the game. All other rules for ending the game also apply. (See rule 104.)",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "809.4",
+      "nextRule": "809.5a"
+    }
+  },
+  "809.6": {
+    "ruleNumber": "809.6",
+    "examples": null,
+    "ruleText": "The Emperor variant can also be played with any number of equally sized teams. If the teams have more than three players, the range of influence of each player should be adjusted.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "809.5c",
+      "nextRule": "809.6a"
+    }
+  },
+  "809.7": {
+    "ruleNumber": "809.7",
+    "examples": null,
+    "ruleText": "In the Emperor variant, a team’s resources (cards in hand, mana, and so on) are not shared. Teammates may review each other’s hands and discuss strategies at any time. Teammates can’t manipulate each other’s cards or permanents.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "809.6a",
+      "nextRule": null
+    }
+  },
+  "810.1": {
+    "ruleNumber": "810.1",
+    "examples": null,
+    "ruleText": "Two-Headed Giant games are played with two teams of two players each.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "809.7",
+      "nextRule": "810.2"
+    }
+  },
+  "810.2": {
+    "ruleNumber": "810.2",
+    "examples": null,
+    "ruleText": "The Two-Headed Giant variant uses the shared team turns option. (See rule 805.)",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "810.1",
+      "nextRule": "810.3"
+    }
+  },
+  "810.3": {
+    "ruleNumber": "810.3",
+    "examples": null,
+    "ruleText": "Each team sits together on one side of the table. Each team decides the order in which its players sit.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "810.2",
+      "nextRule": "810.4"
+    }
+  },
+  "810.4": {
+    "ruleNumber": "810.4",
+    "examples": null,
+    "ruleText": "Each team has a shared life total, which starts at 30 life.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "810.3",
+      "nextRule": "810.5"
+    }
+  },
+  "810.5": {
+    "ruleNumber": "810.5",
+    "examples": null,
+    "ruleText": "With the exception of life total and poison counters, a team’s resources (cards in hand, mana, and so on) are not shared in the Two-Headed Giant variant. Teammates may review each other’s hands and discuss strategies at any time. Teammates can’t manipulate each other’s cards or permanents.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "810.4",
+      "nextRule": "810.6"
+    }
+  },
+  "810.6": {
+    "ruleNumber": "810.6",
+    "examples": null,
+    "ruleText": "The team who plays first skips the draw step of its first turn.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "810.5",
+      "nextRule": "810.7"
+    }
+  },
+  "810.7": {
+    "ruleNumber": "810.7",
+    "examples": null,
+    "ruleText": "The Two-Headed Giant variant uses the combat rules for the shared team turns option (see rule 805.10). This is a change from previous rules.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "810.6",
+      "nextRule": "810.8"
+    }
+  },
+  "810.8": {
+    "ruleNumber": "810.8",
+    "examples": null,
+    "ruleText": "The Two-Headed Giant variant uses the normal rules for winning or losing the game (see rule 104), with the following additions and specifications.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "810.7",
+      "nextRule": "810.8a"
+    }
+  },
+  "810.9": {
+    "ruleNumber": "810.9",
+    "examples": [
+      "In a Two-Headed Giant game, a player casts Flame Rift, which reads, “Flame Rift deals 4 damage to each player.” Each team is dealt a total of 8 damage."
+    ],
+    "ruleText": "Damage, loss of life, and gaining life happen to each player individually. The result is applied to the team’s shared life total.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "810.8d",
+      "nextRule": "810.9a"
+    }
+  },
+  "811.1": {
+    "ruleNumber": "811.1",
+    "examples": null,
+    "ruleText": "Alternating Teams games are played with two or more teams of equal size.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "810.11",
+      "nextRule": "811.2"
+    }
+  },
+  "811.2": {
+    "ruleNumber": "811.2",
+    "examples": null,
+    "ruleText": "Any multiplayer options used are determined before play begins. The Alternating Teams variant uses the following default options.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "811.1",
+      "nextRule": "811.2a"
+    }
+  },
+  "811.3": {
+    "ruleNumber": "811.3",
+    "examples": [
+      "In an Alternating Teams game with three teams, A, B, and C, the seating around the table at the start of the game is A1, B1, C1, A2, B2, C2, A3, B3, C3, and so on."
+    ],
+    "ruleText": "At the start of the game, players are seated so that no one is next to a teammate and each team is equally spaced out.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "811.2c",
+      "nextRule": "811.4"
+    }
+  },
+  "811.4": {
+    "ruleNumber": "811.4",
+    "examples": null,
+    "ruleText": "A player can’t attack opponents who aren’t seated next to them.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "811.3",
+      "nextRule": "811.5"
+    }
+  },
+  "811.5": {
+    "ruleNumber": "811.5",
+    "examples": null,
+    "ruleText": "In the Alternating Teams variant, a team’s resources (cards in hand, mana, and so on) are not shared. Teammates can’t review each other’s hands unless they are sitting next to each other. Teammates may discuss strategies at any time. Teammates can’t manipulate each other’s cards or permanents.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "811.4",
+      "nextRule": null
+    }
+  },
+  "800.4a": {
+    "ruleNumber": "800.4a",
+    "examples": [
+      "Alex casts Mind Control, an Aura that reads, “You control enchanted creature,” on Bianca’s Assault Griffin. If Alex leaves the game, so does Mind Control, and Assault Griffin reverts to Bianca’s control. If, instead, Bianca leaves the game, so does Assault Griffin, and Mind Control is put into Alex’s graveyard.",
+      "Alex casts Act of Treason, which reads, in part, “Gain control of target creature until end of turn,” targeting Bianca’s Runeclaw Bears. If Alex leaves the game, Act of Treason’s change-of-control effect ends and Runeclaw Bears reverts to Bianca’s control.",
+      "Alex casts Bribery, which reads, “Search target opponent’s library for a creature card and put that card onto the battlefield under your control. Then that player shuffles their library,” targeting Bianca. Alex puts Serra Angel onto the battlefield from Bianca’s library. If Bianca leaves the game, Serra Angel also leaves the game. If, instead, Alex leaves the game, Serra Angel is exiled."
+    ],
+    "ruleText": "When a player leaves the game, all objects (see rule 109) owned by that player leave the game and any effects which give that player control of any objects or players end. Then, if that player controlled any objects on the stack not represented by cards, those objects cease to exist. Then, if there are any objects still controlled by that player, those objects are exiled. This is not a state-based action. It happens as soon as the player leaves the game. If the player who left the game had priority at the time they left, priority passes to the next player in turn order who’s still in the game.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "800.4",
+      "nextRule": "800.4b"
+    }
+  },
+  "800.4b": {
+    "ruleNumber": "800.4b",
+    "examples": null,
+    "ruleText": "If an object would change to the control of a player who has left the game, it doesn’t. If a token would be created under the control of a player who has left the game, no token is created. If an object would be put onto the battlefield or onto the stack under the control of a player who has left the game, that object remains in its current zone. If a player would be controlled by a player who has left the game, they aren’t.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "800.4a",
+      "nextRule": "800.4c"
+    }
+  },
+  "800.4c": {
+    "ruleNumber": "800.4c",
+    "examples": null,
+    "ruleText": "If an effect that gives a player still in the game control of an object ends, there is no other effect giving control of that object to another player in the game, and the player who controlled that object by default has left the game, the object is exiled. This is not a state-based action. It happens as soon as the control-changing effect ends.",
+    "fragment": "4c",
+    "navigation": {
+      "previousRule": "800.4b",
+      "nextRule": "800.4d"
+    }
+  },
+  "800.4d": {
+    "ruleNumber": "800.4d",
+    "examples": [
+      "Astral Slide is an enchantment that reads, “Whenever a player cycles a card, you may exile target creature. If you do, return that creature to the battlefield under its owner’s control at the beginning of the next end step.” During Alex’s turn, Bianca uses Astral Slide’s ability to exile Alex’s Hypnotic Specter. Before the end of that turn, Bianca leaves the game. At the beginning of the end step, the delayed triggered ability generated by Astral Slide that would return Hypnotic Specter to the battlefield triggers, but it isn’t put on the stack. Hypnotic Specter never returns to the battlefield."
+    ],
+    "ruleText": "If an object that would be owned by a player who has left the game would be created in any zone, it isn’t created. If a triggered ability that would be controlled by a player who has left the game would be put onto the stack, it isn’t put on the stack.",
+    "fragment": "4d",
+    "navigation": {
+      "previousRule": "800.4c",
+      "nextRule": "800.4e"
+    }
+  },
+  "800.4e": {
+    "ruleNumber": "800.4e",
+    "examples": null,
+    "ruleText": "If combat damage would be assigned to a player who has left the game, that damage isn’t assigned.",
+    "fragment": "4e",
+    "navigation": {
+      "previousRule": "800.4d",
+      "nextRule": "800.4f"
+    }
+  },
+  "800.4f": {
+    "ruleNumber": "800.4f",
+    "examples": null,
+    "ruleText": "If an object requires a player who has left the game to pay a cost or choose whether to pay a cost, that cost is not paid.",
+    "fragment": "4f",
+    "navigation": {
+      "previousRule": "800.4e",
+      "nextRule": "800.4g"
+    }
+  },
+  "800.4g": {
+    "ruleNumber": "800.4g",
+    "examples": null,
+    "ruleText": "If an object requires a player who has left the game to make a choice other than whether to pay a cost, the controller of the object chooses another player to make that choice. If the original choice was to be made by an opponent of the controller of the object, that player chooses another opponent if possible.",
+    "fragment": "4g",
+    "navigation": {
+      "previousRule": "800.4f",
+      "nextRule": "800.4h"
+    }
+  },
+  "800.4h": {
+    "ruleNumber": "800.4h",
+    "examples": null,
+    "ruleText": "If a rule requires a player who has left the game to make a choice, the next player in turn order makes that choice.",
+    "fragment": "4h",
+    "navigation": {
+      "previousRule": "800.4g",
+      "nextRule": "800.4i"
+    }
+  },
+  "800.4i": {
+    "ruleNumber": "800.4i",
+    "examples": null,
+    "ruleText": "If an effect requires information about a specific player, the effect uses the current information about that player if they are still in the game; otherwise, the effect uses the last known information about that player before they left the game. If an effect requires information from the game about actions players have taken, the effect can find actions that were taken by a player who has left the game.",
+    "fragment": "4i",
+    "navigation": {
+      "previousRule": "800.4h",
+      "nextRule": "800.4j"
+    }
+  },
+  "800.4j": {
+    "ruleNumber": "800.4j",
+    "examples": null,
+    "ruleText": "If a player leaves the game during their turn, that turn continues to its completion without an active player. If the active player would receive priority, instead the next player in turn order receives priority, or the top object on the stack resolves, or the phase or step ends, whichever is appropriate.",
+    "fragment": "4j",
+    "navigation": {
+      "previousRule": "800.4i",
+      "nextRule": "800.4k"
+    }
+  },
+  "800.4k": {
+    "ruleNumber": "800.4k",
+    "examples": null,
+    "ruleText": "If a player who has left the game would begin a turn, that turn doesn’t begin.",
+    "fragment": "4k",
+    "navigation": {
+      "previousRule": "800.4j",
+      "nextRule": "800.4m"
+    }
+  },
+  "800.4m": {
+    "ruleNumber": "800.4m",
+    "examples": null,
+    "ruleText": "When a player leaves the game, any continuous effects with durations that last until that player’s next turn or until a specific point in that turn will last until that turn would have begun. They neither expire immediately nor last indefinitely.",
+    "fragment": "4m",
+    "navigation": {
+      "previousRule": "800.4k",
+      "nextRule": "800.4n"
+    }
+  },
+  "800.4n": {
+    "ruleNumber": "800.4n",
+    "examples": null,
+    "ruleText": "When a player leaves the game, objects that player owns in the ante zone do not leave the game. This is an exception to rule 800.4a. See rule 407, “Ante.”",
+    "fragment": "4n",
+    "navigation": {
+      "previousRule": "800.4m",
+      "nextRule": "800.4p"
+    }
+  },
+  "800.4p": {
+    "ruleNumber": "800.4p",
+    "examples": null,
+    "ruleText": "In a Planechase game, if the player designated as the planar controller would leave the game, instead the next player in turn order that wouldn’t leave the game becomes the planar controller, then the old planar controller leaves the game. See rule 310.5.",
+    "fragment": "4p",
+    "navigation": {
+      "previousRule": "800.4n",
+      "nextRule": "800.5"
+    }
+  },
+  "801.10": {
+    "ruleNumber": "801.10",
+    "examples": [
+      "In a six-player game in which each player has range of influence 1, Alex casts Pyroclasm, which reads, “Pyroclasm deals 2 damage to each creature.” Pyroclasm deals 2 damage to each creature controlled by Alex, the player to Alex’s left, and the player to Alex’s right. No other creatures are dealt damage."
+    ],
+    "ruleText": "Spells and abilities can’t affect objects or players outside their controller’s range of influence. The parts of the effect that attempt to affect an out-of-range object or player will do nothing. The rest of the effect will work normally.",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "801.9",
+      "nextRule": "801.11"
+    }
+  },
+  "801.11": {
+    "ruleNumber": "801.11",
+    "examples": [
+      "In a six-player game where each player has range of influence 1, Alex controls Coat of Arms, which reads, “Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it.” Coat of Arms will boost Alex’s creatures based only on what creatures are controlled by Alex, the player to Alex’s left, and the player to Alex’s right. It won’t take other creatures into account.",
+      "In the same game, Rob is sitting to the right of Alex. Coat of Arms will boost Rob’s creatures based on what creatures are controlled by players within Alex’s range of influence, including the player sitting to Alex’s left, who’s out of Rob’s range of influence."
+    ],
+    "ruleText": "If a spell or ability requires information from the game, it gets only information from within its controller’s range of influence. It doesn’t see objects or events outside its controller’s range of influence.",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "801.10",
+      "nextRule": "801.12"
+    }
+  },
+  "801.12": {
+    "ruleNumber": "801.12",
+    "examples": null,
+    "ruleText": "The “world rule” (see rule 704.5k) applies to a permanent only if other world permanents are within its controller’s range of influence.",
+    "fragment": "12",
+    "navigation": {
+      "previousRule": "801.11",
+      "nextRule": "801.13"
+    }
+  },
+  "801.13": {
+    "ruleNumber": "801.13",
+    "examples": null,
+    "ruleText": "Replacement and prevention effects watch for a particular event to happen and then completely or partially replace that event. The limited range of influence option can cause the modified event to contain instructions that can’t be carried out, in which case the player simply ignores the impossible instructions. See rule 614, “Replacement Effects,” and rule 615, “Prevention Effects.”",
+    "fragment": "13",
+    "navigation": {
+      "previousRule": "801.12",
+      "nextRule": "801.13a"
+    }
+  },
+  "801.14": {
+    "ruleNumber": "801.14",
+    "examples": null,
+    "ruleText": "If an effect states that a player wins the game, all of that player’s opponents within that player’s range of influence lose the game instead.",
+    "fragment": "14",
+    "navigation": {
+      "previousRule": "801.13b",
+      "nextRule": "801.15"
+    }
+  },
+  "801.15": {
+    "ruleNumber": "801.15",
+    "examples": null,
+    "ruleText": "If the effect of a spell or ability states that the game is a draw, the game is a draw for that spell or ability’s controller and all players within that player’s range of influence. They leave the game. All remaining players continue to play the game.",
+    "fragment": "15",
+    "navigation": {
+      "previousRule": "801.14",
+      "nextRule": "801.16"
+    }
+  },
+  "801.16": {
+    "ruleNumber": "801.16",
+    "examples": null,
+    "ruleText": "If the game somehow enters a “loop” of mandatory actions, repeating a sequence of events with no way to stop, the game is a draw for each player who controls an object that’s involved in that loop, as well as for each player within the range of influence of any of those players. They leave the game. All remaining players continue to play the game.",
+    "fragment": "16",
+    "navigation": {
+      "previousRule": "801.15",
+      "nextRule": "801.17"
+    }
+  },
+  "801.17": {
+    "ruleNumber": "801.17",
+    "examples": null,
+    "ruleText": "Effects that restart the game (see rule 724) are exempt from the limited range of influence option. All players in the game will be involved in the new game.",
+    "fragment": "17",
+    "navigation": {
+      "previousRule": "801.16",
+      "nextRule": "801.18"
+    }
+  },
+  "801.18": {
+    "ruleNumber": "801.18",
+    "examples": null,
+    "ruleText": "In multiplayer Planechase games other than Grand Melee games, plane cards and phenomenon cards are exempt from the limited range of influence option. Their abilities, and the effects of those abilities, affect all applicable objects and players in the game. See rule 901, “Planechase.”",
+    "fragment": "18",
+    "navigation": {
+      "previousRule": "801.17",
+      "nextRule": null
+    }
+  },
+  "801.2a": {
+    "ruleNumber": "801.2a",
+    "examples": [
+      "A range of influence of 1 means that only you and the players seated directly next to you are within your range of influence.",
+      "A range of influence of 2 means that you and the two players to your left and the two players to your right are within your range of influence."
+    ],
+    "ruleText": "The most commonly chosen limited ranges of influence are 1 seat and 2 seats. Different players may have different ranges of influence.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "801.2",
+      "nextRule": "801.2b"
+    }
+  },
+  "801.2b": {
+    "ruleNumber": "801.2b",
+    "examples": null,
+    "ruleText": "A player is always within their own range of influence.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "801.2a",
+      "nextRule": "801.2c"
+    }
+  },
+  "801.2c": {
+    "ruleNumber": "801.2c",
+    "examples": [
+      "In a game with a range of influence of 1, Alex is seated to the left of Rob, and Carissa is seated to the right of Rob. Carissa is not in Alex’s range of influence. If Rob leaves the game, Carissa will enter Alex’s range of influence at the start of the next turn."
+    ],
+    "ruleText": "The particular players within each player’s range of influence are determined as each turn begins.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "801.2b",
+      "nextRule": "801.2d"
+    }
+  },
+  "801.2d": {
+    "ruleNumber": "801.2d",
+    "examples": null,
+    "ruleText": "An object is within a player’s range of influence if it’s controlled by that player or by another player within that many seats of that player.",
+    "fragment": "2d",
+    "navigation": {
+      "previousRule": "801.2c",
+      "nextRule": "801.3"
+    }
+  },
+  "801.5a": {
+    "ruleNumber": "801.5a",
+    "examples": [
+      "In a game with a range of influence of 1, Alex is seated to the left of Rob. Alex activates the ability of Cuombajj Witches, which reads, “{T}: Cuombajj Witches deals 1 damage to any target and 1 damage to any target of an opponent’s choice,” targeting Rob and choosing Rob as the opponent who picks the other target. Rob must choose a target that’s in both his range of influence and in the range of influence of the controller of Cuombajj Witches. He must therefore choose himself, Alex, or a creature controlled by either himself or Alex."
+    ],
+    "ruleText": "If a player is asked to choose an object or player, they must choose one within their range of influence.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "801.5",
+      "nextRule": "801.5b"
+    }
+  },
+  "801.5b": {
+    "ruleNumber": "801.5b",
+    "examples": [
+      "Alex, who has a range of influence of 2, is seated to the left of Rob, and Carissa, who has a range of influence of 1, is seated to the right of Rob. Alex casts a spell that reads, “An opponent chooses one — You draw two cards; or each creature you control gets +2/+2 until end of turn,” and chooses Carissa to make that choice. Carissa can choose the mode even though Alex is out of her range."
+    ],
+    "ruleText": "If a player is asked to choose between one or more options (and not between one or more objects or players), they can choose between those options even if those options refer to objects or players outside the player’s range of influence.",
+    "fragment": "5b",
+    "navigation": {
+      "previousRule": "801.5a",
+      "nextRule": "801.5c"
+    }
+  },
+  "801.5c": {
+    "ruleNumber": "801.5c",
+    "examples": [
+      "In an Emperor game in which all players have range of influence 1, an emperor casts Fact or Fiction, which reads, “Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.” Since no opponent is within the emperor’s range of influence, the nearest opponent to the emperor’s left separates the cards into piles."
+    ],
+    "ruleText": "If an effect requires a choice and there’s no player who can make that choice within its controller’s range of influence, the closest appropriate player to its controller’s left makes that choice.",
+    "fragment": "5c",
+    "navigation": {
+      "previousRule": "801.5b",
+      "nextRule": "801.6"
+    }
+  },
+  "801.7a": {
+    "ruleNumber": "801.7a",
+    "examples": [
+      "Carissa and Alex are outside each other’s range of influence. Carissa controls a Runeclaw Bear owned by Alex and they each control an Extractor Demon, a creature which reads, in part, “Whenever another creature leaves the battlefield, you may have target player mill two cards.” The Runeclaw Bear is destroyed and is put into Alex’s graveyard. The ability of Alex’s Extractor Demon doesn’t trigger because the leaves-the-battlefield event was outside Alex’s range of influence. The ability of Carissa’s Extractor Demon does trigger, even though the creature is going to a graveyard outside her range, because the leaves-the-battlefield event was within her range."
+    ],
+    "ruleText": "If a trigger event includes an object moving out of or into a player’s range of influence, use the game state before or after the event as appropriate to determine whether the triggered ability will trigger. See rules 603.6 and 603.10.",
+    "fragment": "7a",
+    "navigation": {
+      "previousRule": "801.7",
+      "nextRule": "801.8"
+    }
+  },
+  "802.2a": {
+    "ruleNumber": "802.2a",
+    "examples": [
+      "Rob attacks Alex with Runeclaw Bear and attacks Carissa with a creature with mountainwalk. Whether the creature with mountainwalk can be blocked depends only on whether Carissa controls a Mountain."
+    ],
+    "ruleText": "Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, or the controller of the planeswalker that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat or the controller of the planeswalker that creature was attacking before it was removed from combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "802.2",
+      "nextRule": "802.3"
+    }
+  },
+  "802.3a": {
+    "ruleNumber": "802.3a",
+    "examples": null,
+    "ruleText": "Restrictions and requirements that don’t apply to attacking a specific player are evaluated based on the entire group of attacking creatures. Restrictions and requirements that apply to attacking a specific player apply only to creatures attacking that player. The entire group of attacking creatures must still be legal. See rule 508.1.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "802.3",
+      "nextRule": "802.3b"
+    }
+  },
+  "802.3b": {
+    "ruleNumber": "802.3b",
+    "examples": null,
+    "ruleText": "Creatures in a band can’t attack different players. See rule 702.22, “Banding.”",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "802.3a",
+      "nextRule": "802.4"
+    }
+  },
+  "802.4a": {
+    "ruleNumber": "802.4a",
+    "examples": null,
+    "ruleText": "A defending player can block only with creatures they control. Those creatures can block only creatures attacking that player or a planeswalker that player controls.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "802.4",
+      "nextRule": "802.4b"
+    }
+  },
+  "802.4b": {
+    "ruleNumber": "802.4b",
+    "examples": null,
+    "ruleText": "When determining whether a defending player’s blocks are legal, ignore any creatures attacking other players and any blocking creatures controlled by other players.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "802.4a",
+      "nextRule": "802.5"
+    }
+  },
+  "803.1a": {
+    "ruleNumber": "803.1a",
+    "examples": null,
+    "ruleText": "If the attack left option is used, a player can attack only an opponent seated immediately to their left. If a player’s nearest opponent to the left is more than one seat away, the player can’t attack.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "803.1",
+      "nextRule": "803.1b"
+    }
+  },
+  "803.1b": {
+    "ruleNumber": "803.1b",
+    "examples": null,
+    "ruleText": "If the attack right option is used, a player can attack only an opponent seated immediately to their right. If a player’s nearest opponent to the right is more than one seat away, the player can’t attack.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "803.1a",
+      "nextRule": null
+    }
+  },
+  "805.10": {
+    "ruleNumber": "805.10",
+    "examples": null,
+    "ruleText": "The shared team turns option uses different combat rules than other multiplayer options.",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "805.9",
+      "nextRule": "805.10a"
+    }
+  },
+  "805.3a": {
+    "ruleNumber": "805.3a",
+    "examples": null,
+    "ruleText": "The process for handling mulligans is altered accordingly. First, each player on the starting team, in whatever order that team likes, declares whether that player will take a mulligan. Then the players on each other team in turn order do the same. Teammates may consult while making their decisions. Then all mulligans are taken at the same time. Teammates may consult while choosing which cards, if any, to put on the bottom of their library. A player may take a mulligan even after a teammate has decided to keep their opening hand. See rule 103.5.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "805.3",
+      "nextRule": "805.3b"
+    }
+  },
+  "805.3b": {
+    "ruleNumber": "805.3b",
+    "examples": null,
+    "ruleText": "The process for handling cards that allow a player to begin the game with them on the battlefield is altered accordingly. First, each player on the starting team, in whatever order that team likes, may put any or all such cards onto the battlefield from that player’s opening hand. Teammates may consult while making their decisions. Then each player on each other team in turn order does the same.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "805.3a",
+      "nextRule": "805.4"
+    }
+  },
+  "805.4a": {
+    "ruleNumber": "805.4a",
+    "examples": null,
+    "ruleText": "The team whose turn it is is the active team. Each other team is a nonactive team.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "805.4",
+      "nextRule": "805.4b"
+    }
+  },
+  "805.4b": {
+    "ruleNumber": "805.4b",
+    "examples": null,
+    "ruleText": "Each player on a team draws a card during that team’s draw step.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "805.4a",
+      "nextRule": "805.4c"
+    }
+  },
+  "805.4c": {
+    "ruleNumber": "805.4c",
+    "examples": null,
+    "ruleText": "Each player on a team may play a land during each of that team’s turns.",
+    "fragment": "4c",
+    "navigation": {
+      "previousRule": "805.4b",
+      "nextRule": "805.4d"
+    }
+  },
+  "805.4d": {
+    "ruleNumber": "805.4d",
+    "examples": null,
+    "ruleText": "An ability that triggers at the beginning of a step or phase may trigger multiple times if it triggers at the beginning of “each player’s” or “each opponent’s” step or phase. These abilities trigger once for each appropriate player if the ability’s trigger condition, effect, or intervening “if” clause refers to “that player,” “that opponent,” or similar.",
+    "fragment": "4d",
+    "navigation": {
+      "previousRule": "805.4c",
+      "nextRule": "805.5"
+    }
+  },
+  "805.5a": {
+    "ruleNumber": "805.5a",
+    "examples": null,
+    "ruleText": "A player may cast a spell, activate an ability, or take a special action when their team has priority.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "805.5",
+      "nextRule": "805.5b"
+    }
+  },
+  "805.5b": {
+    "ruleNumber": "805.5b",
+    "examples": null,
+    "ruleText": "If a team has priority and no player on that team wishes to do anything, that team passes. If all teams pass in succession (that is, if all teams pass without any player taking any actions in between passing), the top object on the stack resolves, then the active team receives priority. If the stack is empty when all teams pass in succession, the phase or step ends and the next one begins.",
+    "fragment": "5b",
+    "navigation": {
+      "previousRule": "805.5a",
+      "nextRule": "805.6"
+    }
+  },
+  "805.6a": {
+    "ruleNumber": "805.6a",
+    "examples": null,
+    "ruleText": "If more than one player is instructed to draw cards in a game that’s using the shared team turns option, first each player on the active team, in whatever order that team likes, performs that player’s draws, then each player on each nonactive team in turn order does the same.",
+    "fragment": "6a",
+    "navigation": {
+      "previousRule": "805.6",
+      "nextRule": "805.7"
+    }
+  },
+  "806.2a": {
+    "ruleNumber": "806.2a",
+    "examples": null,
+    "ruleText": "The limited range of influence option usually isn’t used in Free-for-All games. If it is, each player has the same range of influence, which is determined before play begins. See rule 801, “Limited Range of Influence Option.”",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "806.2",
+      "nextRule": "806.2b"
+    }
+  },
+  "806.2b": {
+    "ruleNumber": "806.2b",
+    "examples": null,
+    "ruleText": "Exactly one of the attack left, attack right, and attack multiple players options must be used. See rule 803, “Attack Left and Attack Right Options,” and rule 802, “Attack Multiple Players Option.”",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "806.2a",
+      "nextRule": "806.2c"
+    }
+  },
+  "806.2c": {
+    "ruleNumber": "806.2c",
+    "examples": null,
+    "ruleText": "The deploy creatures option isn’t used in the Free-for-All variant.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "806.2b",
+      "nextRule": "806.3"
+    }
+  },
+  "807.2a": {
+    "ruleNumber": "807.2a",
+    "examples": null,
+    "ruleText": "Each player has a range of influence of 1 (see rule 801).",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "807.2",
+      "nextRule": "807.2b"
+    }
+  },
+  "807.2b": {
+    "ruleNumber": "807.2b",
+    "examples": null,
+    "ruleText": "The attack left option is used (see rule 803).",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "807.2a",
+      "nextRule": "807.2c"
+    }
+  },
+  "807.2c": {
+    "ruleNumber": "807.2c",
+    "examples": null,
+    "ruleText": "The attack multiple players and deploy creatures options aren’t used in the Grand Melee variant.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "807.2b",
+      "nextRule": "807.3"
+    }
+  },
+  "807.4a": {
+    "ruleNumber": "807.4a",
+    "examples": [
+      "A Grand Melee game with sixteen players has four turn markers. A game with fifteen players has three turn markers."
+    ],
+    "ruleText": "There is one turn marker for each full four players in the game.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "807.4",
+      "nextRule": "807.4b"
+    }
+  },
+  "807.4b": {
+    "ruleNumber": "807.4b",
+    "examples": null,
+    "ruleText": "The starting player in the game gets the first turn marker. The player four seats to that player’s left (the fifth player) takes the second turn marker, and so on until all the turn markers have been handed out. Each turn marker is assigned a number in this way. Then all players with turn markers start their turns at the same time.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "807.4a",
+      "nextRule": "807.4c"
+    }
+  },
+  "807.4c": {
+    "ruleNumber": "807.4c",
+    "examples": null,
+    "ruleText": "After a player ends their turn, that player passes the turn marker to the player on their left. If a player with a turn marker leaves the game during their turn, the player to their left takes the turn marker after that turn ends. If a player with a turn marker leaves the game before their turn begins, the player to their left takes the turn marker immediately.",
+    "fragment": "4c",
+    "navigation": {
+      "previousRule": "807.4b",
+      "nextRule": "807.4d"
+    }
+  },
+  "807.4d": {
+    "ruleNumber": "807.4d",
+    "examples": null,
+    "ruleText": "A player who receives a turn marker can’t begin their turn if any player in the three seats to their left has a turn marker. If this is the case, that player waits until the player four seats to their left takes the other turn marker.",
+    "fragment": "4d",
+    "navigation": {
+      "previousRule": "807.4c",
+      "nextRule": "807.4e"
+    }
+  },
+  "807.4e": {
+    "ruleNumber": "807.4e",
+    "examples": null,
+    "ruleText": "If a player leaves the game and that player leaving the game would reduce the number of turn markers in the game, the turn marker immediately to the departed player’s right is designated for removal. If more than one player leaves the game simultaneously, those players leaving the game would reduce the number of turn markers in the game, and there are multiple turn markers that could be removed, the marker with the lowest number is designated for removal. A turn marker may be designated for removal multiple times.",
+    "fragment": "4e",
+    "navigation": {
+      "previousRule": "807.4d",
+      "nextRule": "807.4f"
+    }
+  },
+  "807.4f": {
+    "ruleNumber": "807.4f",
+    "examples": null,
+    "ruleText": "For the purposes of determining if one or more players leaving the game would reduce the number of turn markers in the game (see rule 807.4e), disregard turn markers already designated for removal.",
+    "fragment": "4f",
+    "navigation": {
+      "previousRule": "807.4e",
+      "nextRule": "807.4g"
+    }
+  },
+  "807.4g": {
+    "ruleNumber": "807.4g",
+    "examples": null,
+    "ruleText": "If a player who’s taking a turn has a turn marker that’s been designated for removal, that turn marker is removed rather than being passed after that turn ends. If a player who’s not taking a turn has a turn marker that’s been designated for removal, that turn marker is removed immediately. If a removed turn marker had been designated for removal multiple times, the turn marker to its right becomes designated for removal that many times minus one.",
+    "fragment": "4g",
+    "navigation": {
+      "previousRule": "807.4f",
+      "nextRule": "807.4h"
+    }
+  },
+  "807.4h": {
+    "ruleNumber": "807.4h",
+    "examples": null,
+    "ruleText": "If one or more consecutively seated players leave the game, the players that were on either side of those seats don’t enter one another’s range of influence until the next turn begins.",
+    "fragment": "4h",
+    "navigation": {
+      "previousRule": "807.4g",
+      "nextRule": "807.4i"
+    }
+  },
+  "807.4i": {
+    "ruleNumber": "807.4i",
+    "examples": null,
+    "ruleText": "If an effect causes a player with a turn marker to take an extra turn after the current one, that player keeps the turn marker and starts their next turn after the current turn ends, unless another turn marker is too close on either side at that time. If a turn marker is within three seats on the player’s left, the extra turn waits to begin until the player four seats to their left takes the other turn marker. If a turn marker is within three seats on the player’s right, the player passes the turn marker to their left when the turn ends rather than keeping it, and the player will take the extra turn immediately before their next turn.",
+    "fragment": "4i",
+    "navigation": {
+      "previousRule": "807.4h",
+      "nextRule": "807.4j"
+    }
+  },
+  "807.4j": {
+    "ruleNumber": "807.4j",
+    "examples": [
+      "During Alex’s turn, he casts Time Walk, which causes him to take an extra turn after this one. During the same turn, the player to Alex’s left leaves the game, which causes the number of turn markers to be reduced. After Alex’s current turn ends, his turn marker is removed. He won’t take the extra turn from Time Walk until just before his normal turn the next time he receives a turn marker."
+    ],
+    "ruleText": "If an effect would cause a player to take an extra turn after the current turn, but that player wouldn’t have a turn marker at the start of that turn, that player will take the extra turn immediately before their next turn instead.",
+    "fragment": "4j",
+    "navigation": {
+      "previousRule": "807.4i",
+      "nextRule": "807.5"
+    }
+  },
+  "807.5a": {
+    "ruleNumber": "807.5a",
+    "examples": null,
+    "ruleText": "A player gets priority for a particular turn marker’s stack only if the turn marker is within their range of influence or an object on that stack is controlled by a player within their range of influence.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "807.5",
+      "nextRule": "807.5b"
+    }
+  },
+  "807.5b": {
+    "ruleNumber": "807.5b",
+    "examples": null,
+    "ruleText": "If a player has priority for multiple stacks and casts a spell, activates an ability, or a triggered ability they control triggers, the player must specify which one of those stacks the spell or ability is put on. If an object on one of those stacks caused the triggered ability to trigger, the player must put it on that stack. If a resolving spell or ability on one of those stacks causes a player to cast a spell or create a copy of a spell, the new spell must be put on the same stack. If a spell or ability targets an object on one of those stacks, it must be put on the same stack as its target; it can’t target objects on multiple stacks.",
+    "fragment": "5b",
+    "navigation": {
+      "previousRule": "807.5a",
+      "nextRule": null
+    }
+  },
+  "808.3a": {
+    "ruleNumber": "808.3a",
+    "examples": null,
+    "ruleText": "The attack multiple players option is used (see rule 802).",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "808.3",
+      "nextRule": "808.3b"
+    }
+  },
+  "808.3b": {
+    "ruleNumber": "808.3b",
+    "examples": null,
+    "ruleText": "The deploy creatures options and limited range of influence options usually aren’t used in the Team vs. Team variant.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "808.3a",
+      "nextRule": "808.4"
+    }
+  },
+  "809.3a": {
+    "ruleNumber": "809.3a",
+    "examples": null,
+    "ruleText": "The range of influence is limited to 2 for emperors and 1 for generals. See rule 801, “Limited Range of Influence Option.”",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "809.3",
+      "nextRule": "809.3b"
+    }
+  },
+  "809.3b": {
+    "ruleNumber": "809.3b",
+    "examples": null,
+    "ruleText": "Emperor games use the deploy creatures option (see rule 804).",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "809.3a",
+      "nextRule": "809.3c"
+    }
+  },
+  "809.3c": {
+    "ruleNumber": "809.3c",
+    "examples": [
+      "At the start of an Emperor game, neither emperor can attack any opponents, even though both of the opposing generals are within their spell range."
+    ],
+    "ruleText": "A player can attack only an opponent seated immediately next to them.",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "809.3b",
+      "nextRule": "809.4"
+    }
+  },
+  "809.5a": {
+    "ruleNumber": "809.5a",
+    "examples": null,
+    "ruleText": "A team wins the game if its emperor wins.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "809.5",
+      "nextRule": "809.5b"
+    }
+  },
+  "809.5b": {
+    "ruleNumber": "809.5b",
+    "examples": null,
+    "ruleText": "A team loses the game if its emperor loses.",
+    "fragment": "5b",
+    "navigation": {
+      "previousRule": "809.5a",
+      "nextRule": "809.5c"
+    }
+  },
+  "809.5c": {
+    "ruleNumber": "809.5c",
+    "examples": null,
+    "ruleText": "The game is a draw for a team if the game is a draw for its emperor.",
+    "fragment": "5c",
+    "navigation": {
+      "previousRule": "809.5b",
+      "nextRule": "809.6"
+    }
+  },
+  "809.6a": {
+    "ruleNumber": "809.6a",
+    "examples": [
+      "In an Emperor game between two teams of four players each, the player configuration (either clockwise or counterclockwise around the table) should be: Team A general 1, Team A emperor, Team A general 2, Team A general 3, Team B general 1, Team B emperor, Team B general 2, Team B general 3. Each emperor has range of influence 3. Each general 2 has range of influence 2. Each general 1 and general 3 has range of influence 1."
+    ],
+    "ruleText": "Each general’s range of influence should be the minimum number that allows one general from an opposing team to begin the game within their range of influence. Each emperor’s range of influence should be the minimum number that allows two generals from opposing teams to begin the game within their range of influence. Players should be seated such that no emperor begins the game within the range of influence of another emperor.",
+    "fragment": "6a",
+    "navigation": {
+      "previousRule": "809.6",
+      "nextRule": "809.7"
+    }
+  },
+  "810.10": {
+    "ruleNumber": "810.10",
+    "examples": null,
+    "ruleText": "Effects that cause players to get poison counters happen to each player individually. The poison counters are shared by the team.",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "810.9h",
+      "nextRule": "810.10a"
+    }
+  },
+  "810.11": {
+    "ruleNumber": "810.11",
+    "examples": null,
+    "ruleText": "The Two-Headed Giant variant can also be played with equally sized teams of more than two players. For each player a team has beyond the second, that team’s starting life total is increased by 15 and the number of poison counters required for the team to lose is increased by five. (These variants are called Three-Headed Giant, Four-Headed Giant, and so on.)",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "810.10d",
+      "nextRule": null
+    }
+  },
+  "810.8a": {
+    "ruleNumber": "810.8a",
+    "examples": [
+      "In a Two-Headed Giant game, a player controls Transcendence, which reads, in part, “You don’t lose the game for having 0 or less life.” If that player’s team’s life total is 0 or less, that team doesn’t lose the game.",
+      "In a Two-Headed Giant game, a player attempts to draw a card while there are no cards in that player’s library. That player loses the game, so that player’s entire team loses the game.",
+      "In a Two-Headed Giant game, a player controls Platinum Angel, which reads, “You can’t lose the game and your opponents can’t win the game.” Neither that player nor their teammate can lose the game while Platinum Angel is on the battlefield, and neither player on the opposing team can win the game."
+    ],
+    "ruleText": "Players win and lose the game only as a team, not as individuals. If either player on a team loses the game, the team loses the game. If either player on a team wins the game, the entire team wins the game. If an effect says that a player can’t win the game, that player’s team can’t win the game. If an effect says that a player can’t lose the game, that player’s team can’t lose the game.",
+    "fragment": "8a",
+    "navigation": {
+      "previousRule": "810.8",
+      "nextRule": "810.8b"
+    }
+  },
+  "810.8b": {
+    "ruleNumber": "810.8b",
+    "examples": null,
+    "ruleText": "If a player concedes, their team leaves the game immediately. That team loses the game.",
+    "fragment": "8b",
+    "navigation": {
+      "previousRule": "810.8a",
+      "nextRule": "810.8c"
+    }
+  },
+  "810.8c": {
+    "ruleNumber": "810.8c",
+    "examples": null,
+    "ruleText": "If a team’s life total is 0 or less, the team loses the game. (This is a state-based action. See rule 704.)",
+    "fragment": "8c",
+    "navigation": {
+      "previousRule": "810.8b",
+      "nextRule": "810.8d"
+    }
+  },
+  "810.8d": {
+    "ruleNumber": "810.8d",
+    "examples": null,
+    "ruleText": "If a team has fifteen or more poison counters, that team loses the game. (This is a state-based action. See rule 704.)",
+    "fragment": "8d",
+    "navigation": {
+      "previousRule": "810.8c",
+      "nextRule": "810.9"
+    }
+  },
+  "810.9a": {
+    "ruleNumber": "810.9a",
+    "examples": [
+      "In a Two-Headed Giant game, a player on a team that has 17 life is targeted by Beacon of Immortality, which reads, in part, “Double target player’s life total.” That player gains 17 life, so the team winds up at 34 life.",
+      "In a Two-Headed Giant game, a player controls Test of Endurance, an enchantment that reads, “At the beginning of your upkeep, if you have 50 or more life, you win the game.” At the beginning of that player’s upkeep, the player’s team wins the game if their team’s life total is 50 or more.",
+      "In a Two-Headed Giant game, a player on a team that has 11 life controls Lurking Evil, an enchantment that reads, “Pay half your life, rounded up: Lurking Evil becomes a 4/4 Horror creature with flying.” To activate the ability, that player must pay 6 life. The team winds up at 5 life."
+    ],
+    "ruleText": "If a cost or effect needs to know the value of an individual player’s life total, that cost or effect uses the team’s life total instead.",
+    "fragment": "9a",
+    "navigation": {
+      "previousRule": "810.9",
+      "nextRule": "810.9b"
+    }
+  },
+  "810.9b": {
+    "ruleNumber": "810.9b",
+    "examples": null,
+    "ruleText": "If a cost or effect allows both members of a team to pay life simultaneously, the total amount of life they pay may not exceed their team’s life total. (Players can always pay 0 life.)",
+    "fragment": "9b",
+    "navigation": {
+      "previousRule": "810.9a",
+      "nextRule": "810.9c"
+    }
+  },
+  "810.9c": {
+    "ruleNumber": "810.9c",
+    "examples": [
+      "In a Two-Headed Giant game, a player on a team that has 25 life is targeted by an ability that reads, “Target player’s life total becomes 10.” That player’s life total is considered to be 25, so that player loses 15 life. The team winds up at 10 life."
+    ],
+    "ruleText": "If an effect sets a single player’s life total to a specific number, the player gains or loses the necessary amount of life to end up with the new total. The team’s life total is adjusted by the amount of life that player gained or lost.",
+    "fragment": "9c",
+    "navigation": {
+      "previousRule": "810.9b",
+      "nextRule": "810.9d"
+    }
+  },
+  "810.9d": {
+    "ruleNumber": "810.9d",
+    "examples": [
+      "In a Two-Headed Giant game, one team has 7 life and the other team has 13 life. A player casts Repay in Kind, which reads, “Each player’s life total becomes the lowest life total among all players.” Each team chooses one of its members to be affected. The result is that the chosen player on the team that has 13 life loses 6 life, so that team’s life total winds up at 7."
+    ],
+    "ruleText": "If an effect would set the life total of each player on a team to a number, that team chooses one of its members. On that team, only that player is affected.",
+    "fragment": "9d",
+    "navigation": {
+      "previousRule": "810.9c",
+      "nextRule": "810.9e"
+    }
+  },
+  "810.9e": {
+    "ruleNumber": "810.9e",
+    "examples": null,
+    "ruleText": "A player can’t exchange life totals with their teammate. If an effect would cause that to occur, the exchange won’t happen.",
+    "fragment": "9e",
+    "navigation": {
+      "previousRule": "810.9d",
+      "nextRule": "810.9f"
+    }
+  },
+  "810.9f": {
+    "ruleNumber": "810.9f",
+    "examples": null,
+    "ruleText": "If an effect instructs a player to redistribute any number of players’ life totals, that player may not affect more than one member of each team this way.",
+    "fragment": "9f",
+    "navigation": {
+      "previousRule": "810.9e",
+      "nextRule": "810.9g"
+    }
+  },
+  "810.9g": {
+    "ruleNumber": "810.9g",
+    "examples": null,
+    "ruleText": "If an effect says that a player can’t gain life, no player on that player’s team can gain life.",
+    "fragment": "9g",
+    "navigation": {
+      "previousRule": "810.9f",
+      "nextRule": "810.9h"
+    }
+  },
+  "810.9h": {
+    "ruleNumber": "810.9h",
+    "examples": null,
+    "ruleText": "If an effect says that a player can’t lose life, no player on that player’s team can lose life or pay any amount of life other than 0.",
+    "fragment": "9h",
+    "navigation": {
+      "previousRule": "810.9g",
+      "nextRule": "810.10"
+    }
+  },
+  "811.2a": {
+    "ruleNumber": "811.2a",
+    "examples": null,
+    "ruleText": "The recommended range of influence is 2. See rule 801, “Limited Range of Influence Option.”",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "811.2",
+      "nextRule": "811.2b"
+    }
+  },
+  "811.2b": {
+    "ruleNumber": "811.2b",
+    "examples": null,
+    "ruleText": "Exactly one of the attack left, attack right, and attack multiple players options must be used. See rule 803, “Attack Left and Attack Right Options,” and rule 802, “Attack Multiple Players Option.”",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "811.2a",
+      "nextRule": "811.2c"
+    }
+  },
+  "811.2c": {
+    "ruleNumber": "811.2c",
+    "examples": null,
+    "ruleText": "The deploy creatures option isn’t normally used in the Alternating Teams variant.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "811.2b",
+      "nextRule": "811.3"
+    }
+  },
+  "801.13a": {
+    "ruleNumber": "801.13a",
+    "examples": [
+      "Alex casts Lava Axe (“Lava Axe deals 5 damage to target player or planeswalker.”) targeting Rob. In response, Rob casts Captain’s Maneuver (“The next X damage that would be dealt to target creature, planeswalker, or player this turn is dealt to another target creature, planeswalker, or player instead.”) with X equal to 3, targeting Carissa. Carissa isn’t in Alex’s range of influence. When Lava Axe resolves, it deals 2 damage to Rob and no damage to Carissa."
+    ],
+    "ruleText": "If a replacement effect tries to cause a spell or ability to affect an object or player outside its controller’s range of influence, that portion of the event does nothing.",
+    "fragment": "13a",
+    "navigation": {
+      "previousRule": "801.13",
+      "nextRule": "801.13b"
+    }
+  },
+  "801.13b": {
+    "ruleNumber": "801.13b",
+    "examples": [
+      "Rob is within Alex’s range of influence, but Carissa is not. Alex controls an enchantment that says, “Prevent all damage that would be dealt by creatures.” Carissa attacks Rob with a creature. The creature deals combat damage to Rob.",
+      "Rob is within Alex’s range of influence, but Carissa is not. Carissa casts Lightning Blast (“Lightning Blast deals 4 damage to any target.”) targeting Rob. In response, Alex casts Mending Hands (“Prevent the next 4 damage that would be dealt to any target this turn.”) targeting Rob. The damage to Rob is prevented.",
+      "Rob is within Alex’s range of influence, but Carissa is not. Carissa attacks Rob with a creature, and Rob blocks with a creature. Alex casts Fog (“Prevent all combat damage that would be dealt this turn.”) Carissa and Rob’s creatures deal combat damage to each other."
+    ],
+    "ruleText": "If a spell or ability creates an effect that prevents damage that would be dealt by a source, it can affect only sources within the spell or ability’s controller’s range of influence. If a spell or ability creates an effect that prevents damage that would be dealt to a permanent or player, it can affect only permanents and players within the spell or ability’s controller’s range of influence. If a spell or ability creates an effect that prevents damage, but neither the source nor the would-be recipient of the damage is specified, it prevents damage only if both the source and recipient of that damage are within the spell or ability’s controller’s range of influence.",
+    "fragment": "13b",
+    "navigation": {
+      "previousRule": "801.13a",
+      "nextRule": "801.14"
+    }
+  },
+  "805.10a": {
+    "ruleNumber": "805.10a",
+    "examples": null,
+    "ruleText": "Each team’s creatures attack the other team as a group. During the combat phase, the active team is the attacking team and each player on the active team is an attacking player. Likewise, the nonactive team is the defending team and each player on the nonactive team is a defending player.",
+    "fragment": "10a",
+    "navigation": {
+      "previousRule": "805.10",
+      "nextRule": "805.10b"
+    }
+  },
+  "805.10b": {
+    "ruleNumber": "805.10b",
+    "examples": null,
+    "ruleText": "As the declare attackers step begins, the active team declares attackers. For each attacking creature, the attacking team announces which defending player or planeswalker that creature is attacking. The active team has one combined attack, and that set of attacking creatures must be legal as a whole. See rule 508.1.",
+    "fragment": "10b",
+    "navigation": {
+      "previousRule": "805.10a",
+      "nextRule": "805.10c"
+    }
+  },
+  "805.10c": {
+    "ruleNumber": "805.10c",
+    "examples": null,
+    "ruleText": "Any rule, object, or effect that refers to an “attacking player” refers to one specific attacking player, not to all attacking players. If an ability of a blocking creature refers to an attacking player, or a spell or ability refers to both a blocking creature and an attacking player, then unless otherwise specified, the attacking player it’s referring to is the player who controls the attacking creature that blocking creature is blocking. If a spell or ability could apply to multiple blocking creatures, the appropriate attacking player is individually determined for each of those blocking creatures. If there are multiple attacking players that could be chosen, the controller of the spell or ability chooses one.",
+    "fragment": "10c",
+    "navigation": {
+      "previousRule": "805.10b",
+      "nextRule": "805.10d"
+    }
+  },
+  "805.10d": {
+    "ruleNumber": "805.10d",
+    "examples": null,
+    "ruleText": "As the declare blockers step begins, the defending team declares blockers. Creatures controlled by the defending players can block creatures attacking any player on the defending team or attacking a planeswalker controlled by one of those players. The defending team has one combined block, and that set of blocking creatures must be legal as a whole. See rule 509.1.",
+    "fragment": "10d",
+    "navigation": {
+      "previousRule": "805.10c",
+      "nextRule": "805.10e"
+    }
+  },
+  "805.10e": {
+    "ruleNumber": "805.10e",
+    "examples": null,
+    "ruleText": "Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, or the controller of the planeswalker that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat or the controller of the planeswalker that creature was attacking before it was removed from combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.",
+    "fragment": "10e",
+    "navigation": {
+      "previousRule": "805.10d",
+      "nextRule": "805.10f"
+    }
+  },
+  "805.10f": {
+    "ruleNumber": "805.10f",
+    "examples": null,
+    "ruleText": "Once blockers have been declared, for each attacking creature that’s become blocked by multiple creatures, the active team announces the damage assignment order among the blocking creatures. Then, for each creature that’s blocking multiple creatures, the defending team announces the damage assignment order among the attacking creatures.",
+    "fragment": "10f",
+    "navigation": {
+      "previousRule": "805.10e",
+      "nextRule": "805.10g"
+    }
+  },
+  "805.10g": {
+    "ruleNumber": "805.10g",
+    "examples": null,
+    "ruleText": "As the combat damage step begins, the active team announces how each attacking creature will assign its combat damage. Then the defending team announces how each blocking creature will assign its combat damage. See rule 510.1.",
+    "fragment": "10g",
+    "navigation": {
+      "previousRule": "805.10f",
+      "nextRule": null
+    }
+  },
+  "810.10a": {
+    "ruleNumber": "810.10a",
+    "examples": null,
+    "ruleText": "If an effect needs to know how many poison counters an individual player has, that effect uses the number of poison counters that player’s team has. If an effect needs to know how many poison counters a player’s opponents have, that effect uses the number of poison counters opposing teams have.",
+    "fragment": "10a",
+    "navigation": {
+      "previousRule": "810.10",
+      "nextRule": "810.10b"
+    }
+  },
+  "810.10b": {
+    "ruleNumber": "810.10b",
+    "examples": null,
+    "ruleText": "If an effect says that a player loses poison counters, that player’s team loses that many poison counters.",
+    "fragment": "10b",
+    "navigation": {
+      "previousRule": "810.10a",
+      "nextRule": "810.10c"
+    }
+  },
+  "810.10c": {
+    "ruleNumber": "810.10c",
+    "examples": null,
+    "ruleText": "If an effect says that a player can’t get poison counters, no player on that player’s team can get poison counters.",
+    "fragment": "10c",
+    "navigation": {
+      "previousRule": "810.10b",
+      "nextRule": "810.10d"
+    }
+  },
+  "810.10d": {
+    "ruleNumber": "810.10d",
+    "examples": null,
+    "ruleText": "If a rule or effect needs to know what kinds of counters an individual player has, that effect uses the kinds of counters that player has and the kinds of counters that player’s team has. A player is “poisoned” if that player’s team has one or more poison counters.",
+    "fragment": "10d",
+    "navigation": {
+      "previousRule": "810.10c",
+      "nextRule": "810.11"
+    }
+  }
+}

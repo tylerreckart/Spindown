@@ -21,8 +21,8 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     var uid: UUID = UUID()
     // Player Name
     var name: String = ""
-    // Player's chosen accent color. Default to system colors if named color cannot be found.
-    var color: UIColor = UIColor(named: "PrimaryBlue") ?? .systemBlue
+    // Player's chosen accent color.
+    var color: UIColor = UIColor(named: "PrimaryBlue")!
     // Life total given current board state.
     // @Published sends updates to any views watching this value.
     @Published var lifeTotal: Int = 0

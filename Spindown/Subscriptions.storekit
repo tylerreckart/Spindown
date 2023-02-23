@@ -1,0 +1,89 @@
+{
+  "identifier" : "2FCD9014",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "90FC6842",
+      "localizations" : [
+
+      ],
+      "name" : "Subscriptions",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+            {
+              "internalID" : "C8A27F55",
+              "offerID" : "com.Spindown.trial.monthly",
+              "paymentMode" : "free",
+              "referenceName" : "Free Trial",
+              "subscriptionPeriod" : "P2W"
+            }
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "CA607FAD",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.Spindown.subscription.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly",
+          "subscriptionGroupID" : "90FC6842",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+            {
+              "internalID" : "DBEAD747",
+              "offerID" : "com.Spindown.trial.yearly",
+              "paymentMode" : "free",
+              "referenceName" : "Free Trial",
+              "subscriptionPeriod" : "P2W"
+            }
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "3FFDC6FC",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.Spindown.subscription.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly",
+          "subscriptionGroupID" : "90FC6842",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

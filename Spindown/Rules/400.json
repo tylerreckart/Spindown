@@ -1,0 +1,784 @@
+{
+  "400.1": {
+    "ruleNumber": "400.1",
+    "examples": null,
+    "ruleText": "A zone is a place where objects can be during a game. There are normally seven zones: library, hand, battlefield, graveyard, stack, exile, and command. Some older cards also use the ante zone. Each player has their own library, hand, and graveyard. The other zones are shared by all players.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "315.1",
+      "nextRule": "400.2"
+    }
+  },
+  "400.2": {
+    "ruleNumber": "400.2",
+    "examples": null,
+    "ruleText": "Public zones are zones in which all players can see the cards’ faces, except for those cards that some rule or effect specifically allow to be face down. Graveyard, battlefield, stack, exile, ante, and command are public zones. Hidden zones are zones in which not all players can be expected to see the cards’ faces. Library and hand are hidden zones, even if all the cards in one such zone happen to be revealed.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "400.1",
+      "nextRule": "400.3"
+    }
+  },
+  "400.3": {
+    "ruleNumber": "400.3",
+    "examples": null,
+    "ruleText": "If an object would go to any library, graveyard, or hand other than its owner’s, it goes to its owner’s corresponding zone.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "400.2",
+      "nextRule": "400.4"
+    }
+  },
+  "400.4": {
+    "ruleNumber": "400.4",
+    "examples": null,
+    "ruleText": "Cards with certain card types can’t enter certain zones.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "400.3",
+      "nextRule": "400.4a"
+    }
+  },
+  "400.5": {
+    "ruleNumber": "400.5",
+    "examples": null,
+    "ruleText": "The order of objects in a library, in a graveyard, or on the stack can’t be changed except when effects or rules allow it. The same is true for objects arranged in face-down piles in other zones. Other objects in other zones can be arranged however their owners wish, although who controls those objects, whether they’re tapped or flipped, and what other objects are attached to them must remain clear to all players.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "400.4b",
+      "nextRule": "400.6"
+    }
+  },
+  "400.6": {
+    "ruleNumber": "400.6",
+    "examples": [
+      "Exquisite Archangel has an ability which reads “If you would lose the game, instead exile Exquisite Archangel and your life total becomes equal to your starting life total.” A spell deals 5 damage to a player with 5 life and 5 damage to an Exquisite Archangel under that player’s control. As state-based actions are performed, that player’s life total becomes equal to their starting life total, and that player chooses whether Exquisite Archangel moves to its owner’s graveyard or to exile."
+    ],
+    "ruleText": "If an object would move from one zone to another, determine what event is moving the object. If the object is moving to a public zone and its owner will be able to look at it in that zone, its owner looks at it to see if it has any abilities that would affect the move. If the object is moving to the battlefield, each other player who will be able to look at it in that zone does so. Then any appropriate replacement effects, whether they come from that object or from elsewhere, are applied to that event. If any effects or rules try to do two or more contradictory or mutually exclusive things to a particular object, that object’s controller—or its owner if it has no controller—chooses which effect to apply, and what that effect does. (Note that multiple instances of the same thing may be mutually exclusive; for example, two simultaneous “destroy” effects.) Then the event moves the object.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "400.5",
+      "nextRule": "400.7"
+    }
+  },
+  "400.7": {
+    "ruleNumber": "400.7",
+    "examples": null,
+    "ruleText": "An object that moves from one zone to another becomes a new object with no memory of, or relation to, its previous existence. This rule has the following exceptions.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "400.6",
+      "nextRule": "400.7a"
+    }
+  },
+  "400.8": {
+    "ruleNumber": "400.8",
+    "examples": null,
+    "ruleText": "If an object in the exile zone is exiled, it doesn’t change zones, but it becomes a new object that has just been exiled.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "400.7m",
+      "nextRule": "400.9"
+    }
+  },
+  "400.9": {
+    "ruleNumber": "400.9",
+    "examples": null,
+    "ruleText": "If a face-up object in the command zone is turned face down, it becomes a new object.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "400.8",
+      "nextRule": "400.10"
+    }
+  },
+  "401.1": {
+    "ruleNumber": "401.1",
+    "examples": null,
+    "ruleText": "When a game begins, each player’s deck becomes their library.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "400.12",
+      "nextRule": "401.2"
+    }
+  },
+  "401.2": {
+    "ruleNumber": "401.2",
+    "examples": null,
+    "ruleText": "Each library must be kept in a single face-down pile. Players can’t look at or change the order of cards in a library.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "401.1",
+      "nextRule": "401.3"
+    }
+  },
+  "401.3": {
+    "ruleNumber": "401.3",
+    "examples": null,
+    "ruleText": "Any player may count the number of cards remaining in any player’s library at any time.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "401.2",
+      "nextRule": "401.4"
+    }
+  },
+  "401.4": {
+    "ruleNumber": "401.4",
+    "examples": null,
+    "ruleText": "If an effect puts two or more cards in a specific position in a library at the same time, the owner of those cards may arrange them in any order. That library’s owner doesn’t reveal the order in which the cards go into the library.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "401.3",
+      "nextRule": "401.5"
+    }
+  },
+  "401.5": {
+    "ruleNumber": "401.5",
+    "examples": null,
+    "ruleText": "Some effects tell a player to play with the top card of their library revealed, or say that a player may look at the top card of their library. If the top card of the player’s library changes while a spell is being cast, the new top card won’t be revealed and can’t be looked at until the spell becomes cast (see rule 601.2i). The same is true with relation to an ability being activated.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "401.4",
+      "nextRule": "401.6"
+    }
+  },
+  "401.6": {
+    "ruleNumber": "401.6",
+    "examples": null,
+    "ruleText": "If an effect causes a player to play with the top card of their library revealed, and that particular card stops being revealed for any length of time before being revealed again, it becomes a new object.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "401.5",
+      "nextRule": "401.7"
+    }
+  },
+  "401.7": {
+    "ruleNumber": "401.7",
+    "examples": null,
+    "ruleText": "If an effect causes a player to put a card into a library “Nth from the top,” and that library has fewer than N cards in it, the player puts that card on the bottom of that library.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "401.6",
+      "nextRule": null
+    }
+  },
+  "402.1": {
+    "ruleNumber": "402.1",
+    "examples": null,
+    "ruleText": "The hand is where a player holds cards that have been drawn. Cards can be put into a player’s hand by other effects as well. At the beginning of the game, each player draws a number of cards equal to that player’s starting hand size, normally seven. (See rule 103, “Starting the Game.”)",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "401.7",
+      "nextRule": "402.2"
+    }
+  },
+  "402.2": {
+    "ruleNumber": "402.2",
+    "examples": null,
+    "ruleText": "Each player has a maximum hand size, which is normally seven cards. A player may have any number of cards in their hand, but as part of their cleanup step, the player must discard excess cards down to the maximum hand size.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "402.1",
+      "nextRule": "402.3"
+    }
+  },
+  "402.3": {
+    "ruleNumber": "402.3",
+    "examples": null,
+    "ruleText": "A player may arrange their hand in any convenient fashion and look at it at any time. A player can’t look at the cards in another player’s hand but may count those cards at any time.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "402.2",
+      "nextRule": null
+    }
+  },
+  "403.1": {
+    "ruleNumber": "403.1",
+    "examples": null,
+    "ruleText": "Most of the area between the players represents the battlefield. The battlefield starts out empty. Permanents a player controls are normally kept in front of them on the battlefield, though there are some cases (such as an Aura attached to another player’s permanent) when a permanent one player controls is kept closer to a different player.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "402.3",
+      "nextRule": "403.2"
+    }
+  },
+  "403.2": {
+    "ruleNumber": "403.2",
+    "examples": null,
+    "ruleText": "A spell or ability affects and checks only the battlefield unless it specifically mentions a player or another zone.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "403.1",
+      "nextRule": "403.3"
+    }
+  },
+  "403.3": {
+    "ruleNumber": "403.3",
+    "examples": null,
+    "ruleText": "Permanents exist only on the battlefield. Every object on the battlefield is a permanent. See rule 110, “Permanents.”",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "403.2",
+      "nextRule": "403.4"
+    }
+  },
+  "403.4": {
+    "ruleNumber": "403.4",
+    "examples": null,
+    "ruleText": "Whenever a permanent enters the battlefield, it becomes a new object and has no relationship to any previous permanent represented by the same card, except for the cases listed in rule 400.7. (This is also true for any objects entering any zone.)",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "403.3",
+      "nextRule": "403.5"
+    }
+  },
+  "403.5": {
+    "ruleNumber": "403.5",
+    "examples": null,
+    "ruleText": "Previously, the battlefield was called the “in-play zone.” Cards that were printed with text that contains the phrases “in play,” “from play,” “into play,” or the like are referring to the battlefield. Cards that were printed with that text have received errata in the Oracle card reference.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "403.4",
+      "nextRule": null
+    }
+  },
+  "404.1": {
+    "ruleNumber": "404.1",
+    "examples": null,
+    "ruleText": "A player’s graveyard is their discard pile. Any object that’s countered, discarded, destroyed, or sacrificed is put on top of its owner’s graveyard, as is any instant or sorcery spell that’s finished resolving. Each player’s graveyard starts out empty.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "403.5",
+      "nextRule": "404.2"
+    }
+  },
+  "404.2": {
+    "ruleNumber": "404.2",
+    "examples": null,
+    "ruleText": "Each graveyard is kept in a single face-up pile. A player can examine the cards in any graveyard at any time but normally can’t change their order. Additional rules applying to sanctioned tournaments may allow a player to change the order of cards in their graveyard.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "404.1",
+      "nextRule": "404.3"
+    }
+  },
+  "404.3": {
+    "ruleNumber": "404.3",
+    "examples": null,
+    "ruleText": "If an effect or rule puts two or more cards into the same graveyard at the same time, the owner of those cards may arrange them in any order.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "404.2",
+      "nextRule": null
+    }
+  },
+  "405.1": {
+    "ruleNumber": "405.1",
+    "examples": null,
+    "ruleText": "When a spell is cast, the physical card is put on the stack (see rule 601.2a). When an ability is activated or triggers, it goes on top of the stack without any card associated with it (see rules 602.2a and 603.3).",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "404.3",
+      "nextRule": "405.2"
+    }
+  },
+  "405.2": {
+    "ruleNumber": "405.2",
+    "examples": null,
+    "ruleText": "The stack keeps track of the order that spells and/or abilities were added to it. Each time an object is put on the stack, it’s put on top of all objects already there.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "405.1",
+      "nextRule": "405.3"
+    }
+  },
+  "405.3": {
+    "ruleNumber": "405.3",
+    "examples": null,
+    "ruleText": "If an effect puts two or more objects on the stack at the same time, those controlled by the active player are put on lowest, followed by each other player’s objects in APNAP order (see rule 101.4). If a player controls more than one of these objects, that player chooses their relative order on the stack.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "405.2",
+      "nextRule": "405.4"
+    }
+  },
+  "405.4": {
+    "ruleNumber": "405.4",
+    "examples": null,
+    "ruleText": "Each spell has all the characteristics of the card associated with it. Each activated or triggered ability that’s on the stack has the text of the ability that created it and no other characteristics. The controller of a spell is the person who cast it. The controller of an activated ability is the player who activated it. The controller of a triggered ability is the player who controlled the ability’s source when it triggered, unless it’s a delayed triggered ability. To determine the controller of a delayed triggered ability, see rules 603.7d–f.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "405.3",
+      "nextRule": "405.5"
+    }
+  },
+  "405.5": {
+    "ruleNumber": "405.5",
+    "examples": null,
+    "ruleText": "When all players pass in succession, the top (last-added) spell or ability on the stack resolves. If the stack is empty when all players pass, the current step or phase ends and the next begins.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "405.4",
+      "nextRule": "405.6"
+    }
+  },
+  "405.6": {
+    "ruleNumber": "405.6",
+    "examples": null,
+    "ruleText": "Some things that happen during the game don’t use the stack.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "405.5",
+      "nextRule": "405.6a"
+    }
+  },
+  "406.1": {
+    "ruleNumber": "406.1",
+    "examples": null,
+    "ruleText": "The exile zone is essentially a holding area for objects. Some spells and abilities exile an object without any way to return that object to another zone. Other spells and abilities exile an object only temporarily.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "405.6h",
+      "nextRule": "406.2"
+    }
+  },
+  "406.2": {
+    "ruleNumber": "406.2",
+    "examples": null,
+    "ruleText": "To exile an object is to put it into the exile zone from whatever zone it’s currently in. An exiled card is a card that’s been put into the exile zone.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "406.1",
+      "nextRule": "406.3"
+    }
+  },
+  "406.3": {
+    "ruleNumber": "406.3",
+    "examples": null,
+    "ruleText": "Exiled cards are, by default, kept face up and may be examined by any player at any time. Cards “exiled face down” can’t be examined by any player except when instructions allow it. However, if a player is instructed to look at a card and then exile it face down, or once a player is allowed to look at a card exiled face down, that player may continue to look at that card as long as it remains exiled, even if the instruction allowing the player to do so no longer applies.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "406.2",
+      "nextRule": "406.3a"
+    }
+  },
+  "406.4": {
+    "ruleNumber": "406.4",
+    "examples": null,
+    "ruleText": "Face-down cards in exile should be kept in separate piles based on when they were exiled and how they were exiled. If a player is instructed to choose an exiled card, the player may choose a specific face-down card only if the player is allowed to look at that card. Otherwise, they may choose a pile of face-down exiled cards, and then a card is chosen at random from within that pile. If choosing such a card is part of casting a spell or activating an ability, the chosen card isn’t revealed until after that cost is fully paid. (See rule 601.2i.)",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "406.3b",
+      "nextRule": "406.5"
+    }
+  },
+  "406.5": {
+    "ruleNumber": "406.5",
+    "examples": null,
+    "ruleText": "Exiled cards that might return to the battlefield or any other zone should be kept in separate piles to keep track of their respective ways of returning. Exiled cards that may have an impact on the game due to their own abilities (such as cards with haunt) or the abilities of the cards that exiled them should likewise be kept in separate piles.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "406.4",
+      "nextRule": "406.6"
+    }
+  },
+  "406.6": {
+    "ruleNumber": "406.6",
+    "examples": null,
+    "ruleText": "An object may have one ability printed on it that causes one or more cards to be exiled, and another ability that refers either to “the exiled cards” or to cards “exiled with [this object].” These abilities are linked: the second refers only to cards that have been exiled due to the first. See rule 607, “Linked Abilities.”",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "406.5",
+      "nextRule": "406.7"
+    }
+  },
+  "406.7": {
+    "ruleNumber": "406.7",
+    "examples": null,
+    "ruleText": "If an object in the exile zone becomes exiled, it doesn’t change zones, but it becomes a new object that has just been exiled.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "406.6",
+      "nextRule": "406.8"
+    }
+  },
+  "406.8": {
+    "ruleNumber": "406.8",
+    "examples": null,
+    "ruleText": "Previously, the exile zone was called the “removed-from-the-game zone.” Cards that were printed with text that “removes [an object] from the game” exiles that object. The same is true for cards printed with text that “sets [an object] aside.” Cards that were printed with that text have received errata in the Oracle card reference.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "406.7",
+      "nextRule": null
+    }
+  },
+  "407.1": {
+    "ruleNumber": "407.1",
+    "examples": null,
+    "ruleText": "Earlier versions of the Magic rules included an ante rule as a way of playing “for keeps.” Playing Magic games for ante is now considered an optional variation on the game, and it’s allowed only where it’s not forbidden by law or by other rules. Playing for ante is strictly forbidden under the Magic: The Gathering Tournament Rules (WPN.Wizards.com/en/resources/rules-documents).",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "406.8",
+      "nextRule": "407.2"
+    }
+  },
+  "407.2": {
+    "ruleNumber": "407.2",
+    "examples": null,
+    "ruleText": "When playing for ante, each player puts one random card from their deck into the ante zone after determining which player goes first but before players draw any cards. Cards in the ante zone may be examined by any player at any time. At the end of the game, the winner becomes the owner of all the cards in the ante zone.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "407.1",
+      "nextRule": "407.3"
+    }
+  },
+  "407.3": {
+    "ruleNumber": "407.3",
+    "examples": null,
+    "ruleText": "A few cards have the text “Remove [this card] from your deck before playing if you’re not playing for ante.” These are the only cards that can add or remove cards from the ante zone or change a card’s owner. When not playing for ante, players can’t include these cards in their decks or sideboards, and these cards can’t be brought into the game from outside the game.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "407.2",
+      "nextRule": "407.4"
+    }
+  },
+  "407.4": {
+    "ruleNumber": "407.4",
+    "examples": null,
+    "ruleText": "To ante an object is to put that object into the ante zone from whichever zone it’s currently in. The owner of an object is the only person who can ante that object.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "407.3",
+      "nextRule": null
+    }
+  },
+  "408.1": {
+    "ruleNumber": "408.1",
+    "examples": null,
+    "ruleText": "The command zone is a game area reserved for certain specialized objects that have an overarching effect on the game, yet are not permanents and cannot be destroyed.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "407.4",
+      "nextRule": "408.2"
+    }
+  },
+  "408.2": {
+    "ruleNumber": "408.2",
+    "examples": null,
+    "ruleText": "Emblems may be created in the command zone. See rule 114, “Emblems.”",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "408.1",
+      "nextRule": "408.3"
+    }
+  },
+  "408.3": {
+    "ruleNumber": "408.3",
+    "examples": null,
+    "ruleText": "In the Planechase, Vanguard, Commander, Archenemy, and Conspiracy Draft casual variants, nontraditional Magic cards and/or specially designated cards start the game in the command zone. Each variant has its own rules regarding such cards. See section 9, “Casual Variants.”",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "408.2",
+      "nextRule": null
+    }
+  },
+  "400.10": {
+    "ruleNumber": "400.10",
+    "examples": null,
+    "ruleText": "If an object in the command zone is put into the command zone, it doesn’t change zones, but it becomes a new object that has just entered the command zone.",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "400.9",
+      "nextRule": "400.11"
+    }
+  },
+  "400.11": {
+    "ruleNumber": "400.11",
+    "examples": null,
+    "ruleText": "An object is outside the game if it isn’t in any of the game’s zones. Outside the game is not a zone.",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "400.10",
+      "nextRule": "400.11a"
+    }
+  },
+  "400.12": {
+    "ruleNumber": "400.12",
+    "examples": null,
+    "ruleText": "Some effects instruct a player to do something to a zone (such as “Shuffle your hand into your library”). That action is performed on all cards in that zone. The zone itself is not affected.",
+    "fragment": "12",
+    "navigation": {
+      "previousRule": "400.11c",
+      "nextRule": null
+    }
+  },
+  "400.4a": {
+    "ruleNumber": "400.4a",
+    "examples": null,
+    "ruleText": "If an instant or sorcery card would enter the battlefield, it remains in its previous zone.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "400.4",
+      "nextRule": "400.4b"
+    }
+  },
+  "400.4b": {
+    "ruleNumber": "400.4b",
+    "examples": null,
+    "ruleText": "If a conspiracy, phenomenon, plane, scheme, or vanguard card would leave the command zone, it remains in the command zone.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "400.4a",
+      "nextRule": "400.5"
+    }
+  },
+  "400.7a": {
+    "ruleNumber": "400.7a",
+    "examples": null,
+    "ruleText": "Effects from spells, activated abilities, and triggered abilities that change the characteristics or controller of a permanent spell on the stack continue to apply to the permanent that spell becomes.",
+    "fragment": "7a",
+    "navigation": {
+      "previousRule": "400.7",
+      "nextRule": "400.7b"
+    }
+  },
+  "400.7b": {
+    "ruleNumber": "400.7b",
+    "examples": null,
+    "ruleText": "Effects from static abilities that grant an ability to a permanent spell that functions on the battlefield continue to apply to the permanent that spell becomes (see rule 611.3d).",
+    "fragment": "7b",
+    "navigation": {
+      "previousRule": "400.7a",
+      "nextRule": "400.7c"
+    }
+  },
+  "400.7c": {
+    "ruleNumber": "400.7c",
+    "examples": null,
+    "ruleText": "Prevention effects that apply to damage from a permanent spell on the stack continue to apply to damage from the permanent that spell becomes.",
+    "fragment": "7c",
+    "navigation": {
+      "previousRule": "400.7b",
+      "nextRule": "400.7d"
+    }
+  },
+  "400.7d": {
+    "ruleNumber": "400.7d",
+    "examples": null,
+    "ruleText": "An ability of a permanent can reference information about the spell that became that permanent as it resolved, including what costs were paid to cast that spell or what mana was spent to pay those costs.",
+    "fragment": "7d",
+    "navigation": {
+      "previousRule": "400.7c",
+      "nextRule": "400.7e"
+    }
+  },
+  "400.7e": {
+    "ruleNumber": "400.7e",
+    "examples": null,
+    "ruleText": "Abilities that trigger when an object moves from one zone to another (for example, “When Rancor is put into a graveyard from the battlefield”) can find the new object that it became in the zone it moved to when the ability triggered, if that zone is a public zone.",
+    "fragment": "7e",
+    "navigation": {
+      "previousRule": "400.7d",
+      "nextRule": "400.7f"
+    }
+  },
+  "400.7f": {
+    "ruleNumber": "400.7f",
+    "examples": null,
+    "ruleText": "Abilities of Auras that trigger when the enchanted permanent leaves the battlefield can find the new object that Aura became in its owner’s graveyard if it was put into that graveyard at the same time the enchanted permanent left the battlefield. It can also find the new object that Aura became in its owner’s graveyard as a result of being put there as a state-based action for not being attached to a permanent. (See rule 704.5m.)",
+    "fragment": "7f",
+    "navigation": {
+      "previousRule": "400.7e",
+      "nextRule": "400.7g"
+    }
+  },
+  "400.7g": {
+    "ruleNumber": "400.7g",
+    "examples": null,
+    "ruleText": "If an effect grants a nonland card an ability that allows it to be cast, that ability will continue to apply to the new object that card became after it moved to the stack as a result of being cast this way.",
+    "fragment": "7g",
+    "navigation": {
+      "previousRule": "400.7f",
+      "nextRule": "400.7h"
+    }
+  },
+  "400.7h": {
+    "ruleNumber": "400.7h",
+    "examples": null,
+    "ruleText": "If an effect allows a nonland card to be cast, other parts of that effect can find the new object that card becomes after it moves to the stack as a result of being cast this way.",
+    "fragment": "7h",
+    "navigation": {
+      "previousRule": "400.7g",
+      "nextRule": "400.7i"
+    }
+  },
+  "400.7i": {
+    "ruleNumber": "400.7i",
+    "examples": null,
+    "ruleText": "If an effect allows a land card to be played, other parts of that effect can find the new object that land card becomes after it moves to the battlefield as a result of being played this way.",
+    "fragment": "7i",
+    "navigation": {
+      "previousRule": "400.7h",
+      "nextRule": "400.7j"
+    }
+  },
+  "400.7j": {
+    "ruleNumber": "400.7j",
+    "examples": null,
+    "ruleText": "If an effect causes an object to move to a public zone, other parts of that effect can find that object. If the cost of a spell or ability causes an object to move to a public zone, that spell or ability’s effects can find that object.",
+    "fragment": "7j",
+    "navigation": {
+      "previousRule": "400.7i",
+      "nextRule": "400.7k"
+    }
+  },
+  "400.7k": {
+    "ruleNumber": "400.7k",
+    "examples": null,
+    "ruleText": "After resolving a madness triggered ability (see rule 702.35), if the exiled card wasn’t cast and was moved to a public zone, effects referencing the discarded card can find that object.",
+    "fragment": "7k",
+    "navigation": {
+      "previousRule": "400.7j",
+      "nextRule": "400.7m"
+    }
+  },
+  "400.7m": {
+    "ruleNumber": "400.7m",
+    "examples": null,
+    "ruleText": "Stickers on an object in a public zone are retained as it moves to another public zone (see rule 123.5). Any effects from stickers continue to apply to the new object it becomes in that zone.",
+    "fragment": "7m",
+    "navigation": {
+      "previousRule": "400.7k",
+      "nextRule": "400.8"
+    }
+  },
+  "405.6a": {
+    "ruleNumber": "405.6a",
+    "examples": null,
+    "ruleText": "Effects don’t go on the stack; they’re the result of spells and abilities resolving. Effects may create delayed triggered abilities, however, and these may go on the stack when they trigger (see rule 603.7).",
+    "fragment": "6a",
+    "navigation": {
+      "previousRule": "405.6",
+      "nextRule": "405.6b"
+    }
+  },
+  "405.6b": {
+    "ruleNumber": "405.6b",
+    "examples": null,
+    "ruleText": "Static abilities continuously generate effects and don’t go on the stack. (See rule 604, “Handling Static Abilities.”) This includes characteristic-defining abilities such as “[This object] is red” (see rule 604.3).",
+    "fragment": "6b",
+    "navigation": {
+      "previousRule": "405.6a",
+      "nextRule": "405.6c"
+    }
+  },
+  "405.6c": {
+    "ruleNumber": "405.6c",
+    "examples": null,
+    "ruleText": "Mana abilities resolve immediately. If a mana ability both produces mana and has another effect, the mana is produced and the other effect happens immediately. If a player had priority before a mana ability was activated, that player gets priority after it resolves. (See rule 605, “Mana Abilities.”)",
+    "fragment": "6c",
+    "navigation": {
+      "previousRule": "405.6b",
+      "nextRule": "405.6d"
+    }
+  },
+  "405.6d": {
+    "ruleNumber": "405.6d",
+    "examples": null,
+    "ruleText": "Special actions don’t use the stack; they happen immediately. See rule 116, “Special Actions.”",
+    "fragment": "6d",
+    "navigation": {
+      "previousRule": "405.6c",
+      "nextRule": "405.6e"
+    }
+  },
+  "405.6e": {
+    "ruleNumber": "405.6e",
+    "examples": null,
+    "ruleText": "Turn-based actions don’t use the stack; they happen automatically when certain steps or phases begin. They’re dealt with before a player would receive priority (see rule 117.3a). Turn-based actions also happen automatically when each step and phase ends; no player receives priority afterward. See rule 703.",
+    "fragment": "6e",
+    "navigation": {
+      "previousRule": "405.6d",
+      "nextRule": "405.6f"
+    }
+  },
+  "405.6f": {
+    "ruleNumber": "405.6f",
+    "examples": null,
+    "ruleText": "State-based actions don’t use the stack; they happen automatically when certain conditions are met. See rule 704. They are dealt with before a player would receive priority. See rule 117.5.",
+    "fragment": "6f",
+    "navigation": {
+      "previousRule": "405.6e",
+      "nextRule": "405.6g"
+    }
+  },
+  "405.6g": {
+    "ruleNumber": "405.6g",
+    "examples": null,
+    "ruleText": "A player may concede the game at any time. That player leaves the game immediately. See rule 104.3a.",
+    "fragment": "6g",
+    "navigation": {
+      "previousRule": "405.6f",
+      "nextRule": "405.6h"
+    }
+  },
+  "405.6h": {
+    "ruleNumber": "405.6h",
+    "examples": null,
+    "ruleText": "If a player leaves a multiplayer game, objects may leave the game, cease to exist, change control, or be exiled as a result. These actions happen immediately. See rule 800.4a.",
+    "fragment": "6h",
+    "navigation": {
+      "previousRule": "405.6g",
+      "nextRule": null
+    }
+  },
+  "406.3a": {
+    "ruleNumber": "406.3a",
+    "examples": null,
+    "ruleText": "A card exiled face down has no characteristics, but the spell or ability that exiled it may allow it to be played from exile. Unless that card is being cast face down (see rule 708.4), the card is turned face up just before the player announces that they are playing the card (see rule 601.2).",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "406.3",
+      "nextRule": "406.3b"
+    }
+  },
+  "406.3b": {
+    "ruleNumber": "406.3b",
+    "examples": null,
+    "ruleText": "Some spells and abilities allow a player to cast spells with certain qualities from among face-down cards in exile. A player may cast such a spell only if they are allowed to look at the face-down card in exile and if the resulting spell has the specified qualities.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "406.3a",
+      "nextRule": "406.4"
+    }
+  },
+  "400.11a": {
+    "ruleNumber": "400.11a",
+    "examples": null,
+    "ruleText": "Cards in a player’s sideboard are outside the game. See rule 100.4.",
+    "fragment": "11a",
+    "navigation": {
+      "previousRule": "400.11",
+      "nextRule": "400.11b"
+    }
+  },
+  "400.11b": {
+    "ruleNumber": "400.11b",
+    "examples": null,
+    "ruleText": "Some effects bring cards into a game from outside the game. Those cards remain in the game until the game ends, their owner leaves the game, or a rule or effect removes them from the game, whichever comes first.",
+    "fragment": "11b",
+    "navigation": {
+      "previousRule": "400.11a",
+      "nextRule": "400.11c"
+    }
+  },
+  "400.11c": {
+    "ruleNumber": "400.11c",
+    "examples": null,
+    "ruleText": "Cards outside the game can’t be affected by spells or abilities, except for characteristic-defining abilities printed on them (see rule 604.3) and spells and abilities that allow those cards to be brought into the game.",
+    "fragment": "11c",
+    "navigation": {
+      "previousRule": "400.11b",
+      "nextRule": "400.12"
+    }
+  }
+}

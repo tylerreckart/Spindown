@@ -1,0 +1,3249 @@
+{
+  "601.1": {
+    "ruleNumber": "601.1",
+    "examples": null,
+    "ruleText": "Previously, the action of casting a spell, or casting a card as a spell, was referred to on cards as “playing” that spell or that card. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “casting” that spell or that card.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "514.3a",
+      "nextRule": "601.1a"
+    }
+  },
+  "601.2": {
+    "ruleNumber": "601.2",
+    "examples": null,
+    "ruleText": "To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules 601.2a–d) and determination and payment of costs (rules 601.2f–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process (see rule 601.3). If a player is unable to comply with the requirements of a step listed below while performing that step, the casting of the spell is illegal; the game returns to the moment before the casting of that spell was proposed (see rule 729, “Handling Illegal Actions”).",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "601.1a",
+      "nextRule": "601.2a"
+    }
+  },
+  "601.3": {
+    "ruleNumber": "601.3",
+    "examples": null,
+    "ruleText": "A player can begin to cast a spell only if a rule or effect allows that player to cast it and no rule or effect prohibits that player from casting it.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "601.2i",
+      "nextRule": "601.3a"
+    }
+  },
+  "601.4": {
+    "ruleNumber": "601.4",
+    "examples": [
+      "Inscription of Abundance is a modal spell with kicker and the text “Choose one. If this spell was kicked, choose any number instead.” When announcing the chosen modes for the spell, its controller may choose any number of modes, even though choosing to pay the kicker cost is normally done later in the announcement process."
+    ],
+    "ruleText": "While announcing the choices of any modes, alternative costs, and/or additional costs as described in rule 601.2b, some options may be available to a player only if other choices are made that would normally be made later in that rule’s instructions. In that case, the spell’s controller may consider any other choices to be made in that step. If any such choices could allow them to choose a particular mode, alternative cost, or additional cost, they may do so.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "601.3f",
+      "nextRule": "601.5"
+    }
+  },
+  "601.5": {
+    "ruleNumber": "601.5",
+    "examples": null,
+    "ruleText": "If a player is no longer allowed to cast a spell after completing its proposal (see rules 601.2a–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule 729, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules 601.2f–h) or any time after the spell has been cast.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "601.4",
+      "nextRule": "601.5a"
+    }
+  },
+  "601.6": {
+    "ruleNumber": "601.6",
+    "examples": null,
+    "ruleText": "Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "601.5a",
+      "nextRule": "601.6a"
+    }
+  },
+  "601.7": {
+    "ruleNumber": "601.7",
+    "examples": null,
+    "ruleText": "Casting a spell that alters costs won’t affect spells and abilities that are already on the stack.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "601.6b",
+      "nextRule": null
+    }
+  },
+  "602.1": {
+    "ruleNumber": "602.1",
+    "examples": null,
+    "ruleText": "Activated abilities have a cost and an effect. They are written as “[Cost]: [Effect.] [Activation instructions (if any).]”",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "601.7",
+      "nextRule": "602.1a"
+    }
+  },
+  "602.2": {
+    "ruleNumber": "602.2",
+    "examples": null,
+    "ruleText": "To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule 729, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "602.1d",
+      "nextRule": "602.2a"
+    }
+  },
+  "602.3": {
+    "ruleNumber": "602.3",
+    "examples": null,
+    "ruleText": "Some abilities specify that one of their controller’s opponents does something the controller would normally do while it’s being activated, such as choose a mode or choose targets. In these cases, the opponent does so when the ability’s controller normally would do so.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "602.2b",
+      "nextRule": "602.3a"
+    }
+  },
+  "602.4": {
+    "ruleNumber": "602.4",
+    "examples": null,
+    "ruleText": "Activating an ability that alters costs won’t affect spells and abilities that are already on the stack.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "602.3b",
+      "nextRule": "602.5"
+    }
+  },
+  "602.5": {
+    "ruleNumber": "602.5",
+    "examples": null,
+    "ruleText": "A player can’t begin to activate an ability that’s prohibited from being activated.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "602.4",
+      "nextRule": "602.5a"
+    }
+  },
+  "603.1": {
+    "ruleNumber": "603.1",
+    "examples": null,
+    "ruleText": "Triggered abilities have a trigger condition and an effect. They are written as “[When/Whenever/At] [trigger condition or event], [effect]. [Instructions (if any).]”",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "602.5e",
+      "nextRule": "603.1a"
+    }
+  },
+  "603.2": {
+    "ruleNumber": "603.2",
+    "examples": null,
+    "ruleText": "Whenever a game event or game state matches a triggered ability’s trigger event, that ability automatically triggers. The ability doesn’t do anything at this point.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "603.1a",
+      "nextRule": "603.2a"
+    }
+  },
+  "603.3": {
+    "ruleNumber": "603.3",
+    "examples": null,
+    "ruleText": "Once an ability has triggered, its controller puts it on the stack as an object that’s not a card the next time a player would receive priority. See rule 117, “Timing and Priority.” The ability becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. It remains on the stack until it’s countered, it resolves, a rule causes it to be removed from the stack, or an effect moves it elsewhere.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "603.2i",
+      "nextRule": "603.3a"
+    }
+  },
+  "603.4": {
+    "ruleNumber": "603.4",
+    "examples": [
+      "Felidar Sovereign reads, “At the beginning of your upkeep, if you have 40 or more life, you win the game.” Its controller’s life total is checked as that player’s upkeep begins. If that player has 39 or less life, the ability doesn’t trigger at all. If that player has 40 or more life, the ability triggers and goes on the stack. As the ability resolves, that player’s life total is checked again. If that player has 39 or less life at this time, the ability is removed from the stack and has no effect. If that player has 40 or more life at this time, the ability resolves and that player wins the game."
+    ],
+    "ruleText": "A triggered ability may read “When/Whenever/At [trigger event], if [condition], [effect].” When the trigger event occurs, the ability checks whether the stated condition is true. The ability triggers only if it is; otherwise it does nothing. If the ability triggers, it checks the stated condition again as it resolves. If the condition isn’t true at that time, the ability is removed from the stack and does nothing. Note that this mirrors the check for legal targets. This rule is referred to as the “intervening ‘if’ clause” rule. (The word “if” has only its normal English meaning anywhere else in the text of a card; this rule only applies to an “if” that immediately follows a trigger condition.)",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "603.3d",
+      "nextRule": "603.5"
+    }
+  },
+  "603.5": {
+    "ruleNumber": "603.5",
+    "examples": null,
+    "ruleText": "Some triggered abilities’ effects are optional (they contain “may,” as in “At the beginning of your upkeep, you may draw a card”). These abilities go on the stack when they trigger, regardless of whether their controller intends to exercise the ability’s option or not. The choice is made when the ability resolves. Likewise, triggered abilities that have an effect “unless” something is true or a player chooses to do something will go on the stack normally; the “unless” part of the ability is dealt with when the ability resolves.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "603.4",
+      "nextRule": "603.6"
+    }
+  },
+  "603.6": {
+    "ruleNumber": "603.6",
+    "examples": null,
+    "ruleText": "Trigger events that involve objects changing zones are called “zone-change triggers.” Many abilities with zone-change triggers attempt to do something to that object after it changes zones. During resolution, these abilities look for the object in the zone that it moved to. If the object is unable to be found in the zone it went to, the part of the ability attempting to do something to the object will fail to do anything. The ability could be unable to find the object because the object never entered the specified zone, because it left the zone before the ability resolved, or because it is in a zone that is hidden from a player, such as a library or an opponent’s hand. (This rule applies even if the object leaves the zone and returns again before the ability resolves.) The most common zone-change triggers are enters-the-battlefield triggers and leaves-the-battlefield triggers.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "603.5",
+      "nextRule": "603.6a"
+    }
+  },
+  "603.7": {
+    "ruleNumber": "603.7",
+    "examples": null,
+    "ruleText": "An effect may create a delayed triggered ability that can do something at a later time. A delayed triggered ability will contain “when,” “whenever,” or “at,” although that word won’t usually begin the ability.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "603.6e",
+      "nextRule": "603.7a"
+    }
+  },
+  "603.8": {
+    "ruleNumber": "603.8",
+    "examples": [
+      "A permanent’s ability reads, “Whenever you have no cards in hand, draw a card.” If its controller plays the last card from their hand, the ability will trigger once and won’t trigger again until it has left the stack. If its controller casts a spell that reads “Discard your hand, then draw that many cards,” the ability will trigger during the spell’s resolution because the player’s hand was momentarily empty."
+    ],
+    "ruleText": "Some triggered abilities trigger when a game state (such as a player controlling no permanents of a particular card type) is true, rather than triggering when an event occurs. These abilities trigger as soon as the game state matches the condition. They’ll go onto the stack at the next available opportunity. These are called state triggers. (Note that state triggers aren’t the same as state-based actions.) A state-triggered ability doesn’t trigger again until the ability has resolved, has been countered, or has otherwise left the stack. Then, if the object with the ability is still in the same zone and the game state still matches its trigger condition, the ability will trigger again.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "603.7g",
+      "nextRule": "603.9"
+    }
+  },
+  "603.9": {
+    "ruleNumber": "603.9",
+    "examples": null,
+    "ruleText": "Some triggered abilities trigger specifically when a player loses the game. These abilities trigger when a player loses or leaves the game, regardless of the reason, unless that player leaves the game as the result of a draw. See rule 104.3.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "603.8",
+      "nextRule": "603.10"
+    }
+  },
+  "604.1": {
+    "ruleNumber": "604.1",
+    "examples": null,
+    "ruleText": "Static abilities do something all the time rather than being activated or triggered. They are written as statements, and they’re simply true.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "603.12a",
+      "nextRule": "604.2"
+    }
+  },
+  "604.2": {
+    "ruleNumber": "604.2",
+    "examples": null,
+    "ruleText": "Static abilities create continuous effects, some of which are prevention effects or replacement effects. These effects are active as long as the permanent with the ability remains on the battlefield and has the ability, or as long as the object with the ability remains in the appropriate zone, as described in rule 113.6.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "604.1",
+      "nextRule": "604.3"
+    }
+  },
+  "604.3": {
+    "ruleNumber": "604.3",
+    "examples": null,
+    "ruleText": "Some static abilities are characteristic-defining abilities. A characteristic-defining ability conveys information about an object’s characteristics that would normally be found elsewhere on that object (such as in its mana cost, type line, or power/toughness box). Characteristic-defining abilities can add to or override information found elsewhere on that object. Characteristic-defining abilities function in all zones. They also function outside the game and before the game begins.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "604.2",
+      "nextRule": "604.3a"
+    }
+  },
+  "604.4": {
+    "ruleNumber": "604.4",
+    "examples": null,
+    "ruleText": "Many Auras, Equipment, and Fortifications have static abilities that modify the object they’re attached to, but those abilities don’t target that object. If an Aura, Equipment, or Fortification is moved to a different object, the ability stops applying to the original object and starts modifying the new one.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "604.3a",
+      "nextRule": "604.5"
+    }
+  },
+  "604.5": {
+    "ruleNumber": "604.5",
+    "examples": null,
+    "ruleText": "Some static abilities apply while a spell is on the stack. These are often abilities that refer to countering the spell. Also, abilities that say “As an additional cost to cast . . . ,” “You may pay [cost] rather than pay [this object]’s mana cost,” and “You may cast [this object] without paying its mana cost” work while a spell is on the stack.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "604.4",
+      "nextRule": "604.6"
+    }
+  },
+  "604.6": {
+    "ruleNumber": "604.6",
+    "examples": null,
+    "ruleText": "Some static abilities apply while a card is in any zone that you could cast or play it from (usually your hand). These are limited to those that read, “You may [cast/play] [this card] . . . ,” “You can’t [cast/play] [this card] . . . ,” and “[Cast/Play] [this card] only . . . .”",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "604.5",
+      "nextRule": "604.7"
+    }
+  },
+  "604.7": {
+    "ruleNumber": "604.7",
+    "examples": null,
+    "ruleText": "Unlike spells and other kinds of abilities, static abilities can’t use an object’s last known information for purposes of determining how their effects are applied.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "604.6",
+      "nextRule": null
+    }
+  },
+  "605.1": {
+    "ruleNumber": "605.1",
+    "examples": null,
+    "ruleText": "Some activated abilities and some triggered abilities are mana abilities, which are subject to special rules. Only abilities that meet either of the following two sets of criteria are mana abilities, regardless of what other effects they may generate or what timing restrictions (such as “Activate only as an instant”) they may have.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "604.7",
+      "nextRule": "605.1a"
+    }
+  },
+  "605.2": {
+    "ruleNumber": "605.2",
+    "examples": [
+      "A permanent has an ability that reads “{T}: Add {G} for each creature you control.” The ability is still a mana ability even if you control no creatures or if the permanent is already tapped."
+    ],
+    "ruleText": "A mana ability remains a mana ability even if the game state doesn’t allow it to produce mana.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "605.1b",
+      "nextRule": "605.3"
+    }
+  },
+  "605.3": {
+    "ruleNumber": "605.3",
+    "examples": null,
+    "ruleText": "Activating an activated mana ability follows the rules for activating any other activated ability (see rule 602.2), with the following exceptions:",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "605.2",
+      "nextRule": "605.3a"
+    }
+  },
+  "605.4": {
+    "ruleNumber": "605.4",
+    "examples": null,
+    "ruleText": "Triggered mana abilities follow all the rules for other triggered abilities (see rule 603, “Handling Triggered Abilities”), with the following exception:",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "605.3c",
+      "nextRule": "605.4a"
+    }
+  },
+  "605.5": {
+    "ruleNumber": "605.5",
+    "examples": null,
+    "ruleText": "Abilities that don’t meet the criteria specified in rules 605.1a–b and spells aren’t mana abilities.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "605.4a",
+      "nextRule": "605.5a"
+    }
+  },
+  "606.1": {
+    "ruleNumber": "606.1",
+    "examples": null,
+    "ruleText": "Some activated abilities are loyalty abilities, which are subject to special rules.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "605.5b",
+      "nextRule": "606.2"
+    }
+  },
+  "606.2": {
+    "ruleNumber": "606.2",
+    "examples": null,
+    "ruleText": "An activated ability with a loyalty symbol in its cost is a loyalty ability. Normally, only planeswalkers have loyalty abilities.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "606.1",
+      "nextRule": "606.3"
+    }
+  },
+  "606.3": {
+    "ruleNumber": "606.3",
+    "examples": null,
+    "ruleText": "A player may activate a loyalty ability of a permanent they control any time they have priority and the stack is empty during a main phase of their turn, but only if no player has previously activated a loyalty ability of that permanent that turn.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "606.2",
+      "nextRule": "606.4"
+    }
+  },
+  "606.4": {
+    "ruleNumber": "606.4",
+    "examples": null,
+    "ruleText": "The cost to activate a loyalty ability of a permanent is to put on or remove from that permanent a certain number of loyalty counters, as shown by the loyalty symbol in the ability’s cost. This cost may be modified by other effects.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "606.3",
+      "nextRule": "606.5"
+    }
+  },
+  "606.5": {
+    "ruleNumber": "606.5",
+    "examples": [
+      "A player controls Carth the Lion, which says, in part, “Planeswalkers’ loyalty abilities you control cost an additional [+1] to activate. That player also controls a planeswalker with three loyalty counters. To activate one of that planeswalker’s abilities that normally costs [+1], they put two loyalty counters on it. To activate one of its abilities that normally costs [−4], they remove three loyalty counters from it."
+    ],
+    "ruleText": "If the total cost to activate a loyalty ability contains multiple costs to add or remove loyalty counters, those costs are combined into a single cost to add or remove loyalty counters, as appropriate.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "606.4",
+      "nextRule": "606.6"
+    }
+  },
+  "606.6": {
+    "ruleNumber": "606.6",
+    "examples": null,
+    "ruleText": "A loyalty ability with a negative loyalty cost, taking into account any additional costs, can’t be activated unless the permanent has at least that many loyalty counters on it.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "606.5",
+      "nextRule": null
+    }
+  },
+  "607.1": {
+    "ruleNumber": "607.1",
+    "examples": null,
+    "ruleText": "An object may have two abilities printed on it such that one of them causes actions to be taken or objects or players to be affected and the other one directly refers to those actions, objects, or players. If so, these two abilities are linked: the second refers only to actions that were taken or objects or players that were affected by the first, and not by any other ability.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "606.6",
+      "nextRule": "607.1a"
+    }
+  },
+  "607.2": {
+    "ruleNumber": "607.2",
+    "examples": null,
+    "ruleText": "There are different kinds of linked abilities.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "607.1d",
+      "nextRule": "607.2a"
+    }
+  },
+  "607.3": {
+    "ruleNumber": "607.3",
+    "examples": null,
+    "ruleText": "If, within a pair of linked abilities, one ability refers to a single object as “the exiled card,” “a card exiled with [this card],” or a similar phrase, and the other ability has exiled multiple cards (usually because it was copied), the ability refers to each of the exiled cards. If that ability asks for any information about the exiled card, such as a characteristic or mana value, it gets multiple answers. If these answers are used to determine the value of a variable, the sum of the answers is used. If that ability performs any actions on “the” card, it performs that action on each exiled card. If that ability creates a token that is a copy of “the” card, then for each exiled card, it creates a token that is a copy of that card. If that ability performs any actions on “a” card, the controller of the ability chooses which card is affected.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "607.2q",
+      "nextRule": "607.4"
+    }
+  },
+  "607.4": {
+    "ruleNumber": "607.4",
+    "examples": [
+      "Paradise Plume has the following three abilities: “As Paradise Plume enters the battlefield, choose a color,” “Whenever a player casts a spell of the chosen color, you may gain 1 life,” and “{T}: Add one mana of the chosen color.” The first and second abilities are linked. The first and third abilities are linked."
+    ],
+    "ruleText": "An ability may be part of more than one pair of linked abilities.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "607.3",
+      "nextRule": "607.5"
+    }
+  },
+  "607.5": {
+    "ruleNumber": "607.5",
+    "examples": [
+      "Arc-Slogger has the ability “{R}, Exile the top ten cards of your library: Arc-Slogger deals 2 damage to any target.” Sisters of Stone Death has the ability “{B}{G}: Exile target creature blocking or blocked by Sisters of Stone Death” and the ability “{2}{B}: Put a creature card exiled with Sisters of Stone Death onto the battlefield under your control.” Quicksilver Elemental has the ability “{U}: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If a player has Quicksilver Elemental gain Arc-Slogger’s ability, activates it, then has Quicksilver Elemental gain Sisters of Stone Death’s abilities, activates the exile ability, and then activates the return-to-the-battlefield ability, only the creature card Quicksilver Elemental exiled with Sisters of Stone Death’s ability can be returned to the battlefield. Creature cards Quicksilver Elemental exiled with Arc-Slogger’s ability can’t be returned."
+    ],
+    "ruleText": "If an object acquires a pair of linked abilities as part of the same effect, the abilities will be similarly linked to one another on that object even though they weren’t printed on that object. They can’t be linked to any other ability, regardless of what other abilities the object may currently have or may have had in the past.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "607.4",
+      "nextRule": "607.5a"
+    }
+  },
+  "608.1": {
+    "ruleNumber": "608.1",
+    "examples": null,
+    "ruleText": "Each time all players pass in succession, the spell or ability on top of the stack resolves. (See rule 609, “Effects.”)",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "607.5a",
+      "nextRule": "608.2"
+    }
+  },
+  "608.2": {
+    "ruleNumber": "608.2",
+    "examples": null,
+    "ruleText": "If the object that’s resolving is an instant spell, a sorcery spell, or an ability, its resolution may involve several steps. The steps described in rules 608.2a and 608.2b are followed first. The steps described in rules 608.2c–k are then followed as appropriate, in no specific order. The step described in rule 608.2m is followed last.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "608.1",
+      "nextRule": "608.2a"
+    }
+  },
+  "608.3": {
+    "ruleNumber": "608.3",
+    "examples": null,
+    "ruleText": "If the object that’s resolving is a permanent spell, its resolution may involve several steps. The instructions in rules 608.3a and b are always performed first. Then one of the steps in rule 608.3c–e is performed, if appropriate.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "608.2m",
+      "nextRule": "608.3a"
+    }
+  },
+  "609.1": {
+    "ruleNumber": "609.1",
+    "examples": null,
+    "ruleText": "An effect is something that happens in the game as a result of a spell or ability. When a spell, activated ability, or triggered ability resolves, it may create one or more one-shot or continuous effects. Static abilities may create one or more continuous effects. Text itself is never an effect.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "608.3g",
+      "nextRule": "609.2"
+    }
+  },
+  "609.2": {
+    "ruleNumber": "609.2",
+    "examples": [
+      "An effect that changes all lands into creatures won’t alter land cards in players’ graveyards. But an effect that says spells cost more to cast will apply only to spells on the stack, since a spell is always on the stack while a player is casting it."
+    ],
+    "ruleText": "Effects apply only to permanents unless the instruction’s text states otherwise or they clearly can apply only to objects in one or more other zones.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "609.1",
+      "nextRule": "609.3"
+    }
+  },
+  "609.3": {
+    "ruleNumber": "609.3",
+    "examples": [
+      "If a player is holding only one card, an effect that reads “Discard two cards” causes them to discard only that card. If an effect moves cards out of the library (as opposed to drawing), it moves as many as possible."
+    ],
+    "ruleText": "If an effect attempts to do something impossible, it does only as much as possible.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "609.2",
+      "nextRule": "609.4"
+    }
+  },
+  "609.4": {
+    "ruleNumber": "609.4",
+    "examples": null,
+    "ruleText": "Some effects state that a player may do something “as though” some condition were true or a creature can do something “as though” some condition were true. This applies only to the stated effect. For purposes of that effect, treat the game exactly as if the stated condition were true. For all other purposes, treat the game normally.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "609.3",
+      "nextRule": "609.4a"
+    }
+  },
+  "609.5": {
+    "ruleNumber": "609.5",
+    "examples": null,
+    "ruleText": "If an effect could result in a tie, the text of the spell or ability that created the effect will specify what to do in the event of a tie. The Magic game has no default for ties.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "609.4b",
+      "nextRule": "609.6"
+    }
+  },
+  "609.6": {
+    "ruleNumber": "609.6",
+    "examples": null,
+    "ruleText": "Some continuous effects are replacement effects or prevention effects. See rules 614 and 615.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "609.5",
+      "nextRule": "609.7"
+    }
+  },
+  "609.7": {
+    "ruleNumber": "609.7",
+    "examples": null,
+    "ruleText": "Some effects apply to damage from a source—for example, “The next time a red source of your choice would deal damage to you this turn, prevent that damage.”",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "609.6",
+      "nextRule": "609.7a"
+    }
+  },
+  "609.8": {
+    "ruleNumber": "609.8",
+    "examples": [
+      "A player attacks with Bear Cub. Later in the turn, an effect causes Bear Cub to become a noncreature permanent. The same player then casts Search Party Captain, a spell that says in part “This spell costs {1} less to cast for each creature you attacked with this turn.” That spell costs {1} less because the player attacked with a creature, even though the Bear Cub they attacked with is no longer a creature."
+    ],
+    "ruleText": "Some effects look back in time and consider previous game states and actions rather than considering the current game state. If such an effect refers to an object or group of objects, those objects don’t need to be currently in the zone they were in at the time of the action, nor do they need to currently meet the criteria described in the action, as long as they did so at the specified time.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "609.7c",
+      "nextRule": null
+    }
+  },
+  "610.1": {
+    "ruleNumber": "610.1",
+    "examples": null,
+    "ruleText": "A one-shot effect does something just once and doesn’t have a duration. Examples include dealing damage, destroying a permanent, creating a token, and moving an object from one zone to another.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "609.8",
+      "nextRule": "610.2"
+    }
+  },
+  "610.2": {
+    "ruleNumber": "610.2",
+    "examples": null,
+    "ruleText": "Some one-shot effects create a delayed triggered ability, which instructs a player to do something later in the game (usually at a specific time) rather than as the spell or ability that’s creating the one-shot effect resolves. See rule 603.7.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "610.1",
+      "nextRule": "610.3"
+    }
+  },
+  "610.3": {
+    "ruleNumber": "610.3",
+    "examples": null,
+    "ruleText": "Some one-shot effects cause an object to change zones “until” a specified event occurs. A second one-shot effect is created immediately after the specified event. This second one-shot effect returns the object to its previous zone.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "610.2",
+      "nextRule": "610.3a"
+    }
+  },
+  "610.4": {
+    "ruleNumber": "610.4",
+    "examples": null,
+    "ruleText": "Some one-shot effects cause a permanent to phase out “until” a specified event occurs. A second one-shot effect is created immediately after the specified event. This second one-shot effect causes the permanent to phase in.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "610.3d",
+      "nextRule": "610.4a"
+    }
+  },
+  "611.1": {
+    "ruleNumber": "611.1",
+    "examples": null,
+    "ruleText": "A continuous effect modifies characteristics of objects, modifies control of objects, or affects players or the rules of the game, for a fixed or indefinite period.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "610.4d",
+      "nextRule": "611.2"
+    }
+  },
+  "611.2": {
+    "ruleNumber": "611.2",
+    "examples": null,
+    "ruleText": "A continuous effect may be generated by the resolution of a spell or ability.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "611.1",
+      "nextRule": "611.2a"
+    }
+  },
+  "611.3": {
+    "ruleNumber": "611.3",
+    "examples": null,
+    "ruleText": "A continuous effect may be generated by the static ability of an object.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "611.2f",
+      "nextRule": "611.3a"
+    }
+  },
+  "612.1": {
+    "ruleNumber": "612.1",
+    "examples": null,
+    "ruleText": "Some continuous effects change an object’s text. This can apply to any words or symbols printed on that object, but generally affects only that object’s rules text (which appears in its text box) and/or the text that appears in its type line. Such an effect is a text-changing effect.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "611.3d",
+      "nextRule": "612.2"
+    }
+  },
+  "612.2": {
+    "ruleNumber": "612.2",
+    "examples": null,
+    "ruleText": "A text-changing effect changes only those words that are used in the correct way (for example, a Magic color word being used as a color word, a land type word used as a land type, or a creature type word used as a creature type). An effect that changes a color word or a subtype can’t change a card name, even if that name contains a word or a series of letters that is the same as a Magic color word, basic land type, or creature type.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "612.1",
+      "nextRule": "612.2a"
+    }
+  },
+  "612.3": {
+    "ruleNumber": "612.3",
+    "examples": null,
+    "ruleText": "Effects that add or remove abilities don’t change the text of the objects they affect, so any abilities that are granted to an object can’t be modified by text-changing effects that affect that object.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "612.2a",
+      "nextRule": "612.4"
+    }
+  },
+  "612.4": {
+    "ruleNumber": "612.4",
+    "examples": null,
+    "ruleText": "A token’s subtypes and rules text are defined by the spell or ability that created the token. A text-changing effect that affects a token can change these characteristics.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "612.3",
+      "nextRule": "612.5"
+    }
+  },
+  "612.5": {
+    "ruleNumber": "612.5",
+    "examples": null,
+    "ruleText": "One card (Exchange of Words) instructs a player to exchange the text boxes of two objects. This replaces all of the rules text of each object with the rules text of the other object. (In games involving certain cards that aren’t covered by these rules, other elements of the text box may also be exchanged. See rule 100.7.)",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "612.4",
+      "nextRule": "612.6"
+    }
+  },
+  "612.6": {
+    "ruleNumber": "612.6",
+    "examples": null,
+    "ruleText": "One card (Volrath’s Shapeshifter) states that an object has the “full text” of another object. This changes not just the text that appears in the object’s text box and type line, but also changes the text that represents its name, mana cost, color indicator, power, and toughness.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "612.5",
+      "nextRule": "612.7"
+    }
+  },
+  "612.7": {
+    "ruleNumber": "612.7",
+    "examples": null,
+    "ruleText": "One card (Spy Kit) states that an object has “all names of nonlegendary creature cards.” This changes the text that represents the object’s name. That object has the name of each nonlegendary creature card in the Oracle card reference. (See rule 108.1.)",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "612.6",
+      "nextRule": "612.8"
+    }
+  },
+  "612.8": {
+    "ruleNumber": "612.8",
+    "examples": null,
+    "ruleText": "Some cards create a continuous effect that sets the name of an object. This changes the text that represents the object’s name. That object loses any names it had and has only the specified name.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "612.7",
+      "nextRule": "612.9"
+    }
+  },
+  "612.9": {
+    "ruleNumber": "612.9",
+    "examples": null,
+    "ruleText": "A name sticker on a permanent or on a card not on the battlefield creates a continuous effect that adds a word to the text that represents the object’s name. (See rule 123.6.)",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "612.8",
+      "nextRule": "612.10"
+    }
+  },
+  "613.1": {
+    "ruleNumber": "613.1",
+    "examples": null,
+    "ruleText": "The values of an object’s characteristics are determined by starting with the actual object. For a card, that means the values of the characteristics printed on that card. For a token or a copy of a spell or card, that means the values of the characteristics defined by the effect that created it. Then all applicable continuous effects are applied in a series of layers in the following order:",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "612.10",
+      "nextRule": "613.1a"
+    }
+  },
+  "613.2": {
+    "ruleNumber": "613.2",
+    "examples": null,
+    "ruleText": "Within layer 1, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order (see rule 613.7). Note that dependency may alter the order in which effects are applied within a sublayer. (See rule 613.8.)",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "613.1g",
+      "nextRule": "613.2a"
+    }
+  },
+  "613.3": {
+    "ruleNumber": "613.3",
+    "examples": null,
+    "ruleText": "Within layers 2–6, apply effects from characteristic-defining abilities first (see rule 604.3), then all other effects in timestamp order (see rule 613.7). Note that dependency may alter the order in which effects are applied within a layer. (See rule 613.8.)",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "613.2c",
+      "nextRule": "613.4"
+    }
+  },
+  "613.4": {
+    "ruleNumber": "613.4",
+    "examples": null,
+    "ruleText": "Within layer 7, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order. (See rule 613.7.) Note that dependency may alter the order in which effects are applied within a sublayer. (See rule 613.8.)",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "613.3",
+      "nextRule": "613.4a"
+    }
+  },
+  "613.5": {
+    "ruleNumber": "613.5",
+    "examples": [
+      "Honor of the Pure is an enchantment that reads “White creatures you control get +1/+1.” Honor of the Pure and a 2/2 black creature are on the battlefield under your control. If an effect then turns the creature white (layer 5), it gets +1/+1 from Honor of the Pure (layer 7c), becoming 3/3. If the creature’s color is later changed to red (layer 5), Honor of the Pure’s effect stops applying to it, and it will return to being 2/2.",
+      "Gray Ogre, a 2/2 creature, is on the battlefield. An effect puts a +1/+1 counter on it (layer 7c), making it 3/3. A spell targeting it that says “Target creature gets +4/+4 until end of turn” resolves (layer 7c), making it 7/7. An enchantment that says “Creatures you control get +0/+2” enters the battlefield (layer 7c), making it 7/9. An effect that says “Target creature becomes 0/1 until end of turn” is applied to it (layer 7b), making it 5/8 (0/1, with +4/+4 from the resolved spell, +0/+2 from the enchantment, and +1/+1 from the counter)."
+    ],
+    "ruleText": "The application of continuous effects as described by the layer system is continually and automatically performed by the game. All resulting changes to an object’s characteristics are instantaneous.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "613.4d",
+      "nextRule": "613.6"
+    }
+  },
+  "613.6": {
+    "ruleNumber": "613.6",
+    "examples": [
+      "An effect that reads “Wild Mongrel gets +1/+1 and becomes the color of your choice until end of turn” is both a power- and toughness-changing effect and a color-changing effect. The “becomes the color of your choice” part is applied in layer 5, and then the “gets +1/+1” part is applied in layer 7c.",
+      "Act of Treason has an effect that reads “Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.” This is both a control-changing effect and an effect that adds an ability to an object. The “gain control” part is applied in layer 2, and then the “it gains haste” part is applied in layer 6.",
+      "An effect that reads “All noncreature artifacts become 2/2 artifact creatures until end of turn” is both a type-changing effect and a power- and toughness-setting effect. The type-changing effect is applied to all noncreature artifacts in layer 4 and the power- and toughness-setting effect is applied to those same permanents in layer 7b, even though those permanents aren’t noncreature artifacts by then."
+    ],
+    "ruleText": "If an effect should be applied in different layers and/or sublayers, the parts of the effect each apply in their appropriate ones. If an effect starts to apply in one layer and/or sublayer, it will continue to be applied to the same set of objects in each other applicable layer and/or sublayer, even if the ability generating the effect is removed during this process.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "613.5",
+      "nextRule": "613.7"
+    }
+  },
+  "613.7": {
+    "ruleNumber": "613.7",
+    "examples": null,
+    "ruleText": "Within a layer or sublayer, determining which order effects are applied in is usually done using a timestamp system. An effect with an earlier timestamp is applied before an effect with a later timestamp.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "613.6",
+      "nextRule": "613.7a"
+    }
+  },
+  "613.8": {
+    "ruleNumber": "613.8",
+    "examples": null,
+    "ruleText": "Within a layer or sublayer, determining which order effects are applied in is sometimes done using a dependency system. If a dependency exists, it will override the timestamp system.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "613.7m",
+      "nextRule": "613.8a"
+    }
+  },
+  "613.9": {
+    "ruleNumber": "613.9",
+    "examples": [
+      "Two effects are affecting the same creature: one from an Aura that says “Enchanted creature has flying” and one from an Aura that says “Enchanted creature loses flying.” Neither of these depends on the other, since nothing changes what they affect or what they’re doing to it. Applying them in timestamp order means the one that was generated last “wins.” The same process would be followed, and the same result reached, if either of the effects had a duration (such as “Target creature loses flying until end of turn”) or came from a non-Aura source (such as “All creatures lose flying”).",
+      "One effect reads, “White creatures get +1/+1,” and another reads, “Enchanted creature is white.” The enchanted creature gets +1/+1 from the first effect, regardless of its previous color."
+    ],
+    "ruleText": "One continuous effect can override another. Sometimes the results of one effect determine whether another effect applies or what another effect does.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "613.8c",
+      "nextRule": "613.10"
+    }
+  },
+  "614.1": {
+    "ruleNumber": "614.1",
+    "examples": null,
+    "ruleText": "Some continuous effects are replacement effects. Like prevention effects (see rule 615), replacement effects apply continuously as events happen—they aren’t locked in ahead of time. Such effects watch for a particular event that would happen and completely or partially replace that event with a different event. They act like “shields” around whatever they’re affecting.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "613.11",
+      "nextRule": "614.1a"
+    }
+  },
+  "614.2": {
+    "ruleNumber": "614.2",
+    "examples": null,
+    "ruleText": "Some replacement effects apply to damage from a source. See rule 609.7.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "614.1e",
+      "nextRule": "614.3"
+    }
+  },
+  "614.3": {
+    "ruleNumber": "614.3",
+    "examples": null,
+    "ruleText": "There are no special restrictions on casting a spell or activating an ability that generates a replacement effect. Such effects last until they’re used up or their duration has expired.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "614.2",
+      "nextRule": "614.4"
+    }
+  },
+  "614.4": {
+    "ruleNumber": "614.4",
+    "examples": [
+      "A player can activate an ability to regenerate a creature in response to a spell that would destroy it. Once the spell resolves, though, it’s too late to regenerate the creature."
+    ],
+    "ruleText": "Replacement effects must exist before the appropriate event occurs—they can’t “go back in time” and change something that’s already happened. Spells or abilities that generate these effects are often cast or activated in response to whatever would produce the event and thus resolve before that event would occur.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "614.3",
+      "nextRule": "614.5"
+    }
+  },
+  "614.5": {
+    "ruleNumber": "614.5",
+    "examples": [
+      "A player controls two permanents, each with an ability that reads “If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.” A creature that normally deals 2 damage will deal 8 damage—not just 4, and not an infinite amount."
+    ],
+    "ruleText": "A replacement effect doesn’t invoke itself repeatedly; it gets only one opportunity to affect an event or any modified events that may replace that event.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "614.4",
+      "nextRule": "614.6"
+    }
+  },
+  "614.6": {
+    "ruleNumber": "614.6",
+    "examples": null,
+    "ruleText": "If an event is replaced, it never happens. A modified event occurs instead, which may in turn trigger abilities. Note that the modified event may contain instructions that can’t be carried out, in which case the impossible instruction is simply ignored.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "614.5",
+      "nextRule": "614.7"
+    }
+  },
+  "614.7": {
+    "ruleNumber": "614.7",
+    "examples": null,
+    "ruleText": "If a replacement effect would replace an event, but that event never happens, the replacement effect simply doesn’t do anything.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "614.6",
+      "nextRule": "614.7a"
+    }
+  },
+  "614.8": {
+    "ruleNumber": "614.8",
+    "examples": null,
+    "ruleText": "Regeneration is a destruction-replacement effect. The word “instead” doesn’t appear on the card but is implicit in the definition of regeneration. “Regenerate [permanent]” means “The next time [permanent] would be destroyed this turn, instead remove all damage marked on it and tap it. If it’s an attacking or blocking creature, remove it from combat.” Abilities that trigger from damage being dealt still trigger even if the permanent regenerates. See rule 701.15.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "614.7a",
+      "nextRule": "614.9"
+    }
+  },
+  "614.9": {
+    "ruleNumber": "614.9",
+    "examples": null,
+    "ruleText": "Some effects replace damage dealt to one creature, planeswalker, or player with the same damage dealt to another creature, planeswalker, or player; such effects are called redirection effects. If either creature or planeswalker is no longer on the battlefield when the damage would be redirected, or is no longer a creature or planeswalker when the damage would be redirected, the effect does nothing. If damage would be redirected to or from a player who has left the game, the effect does nothing.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "614.8",
+      "nextRule": "614.10"
+    }
+  },
+  "615.1": {
+    "ruleNumber": "615.1",
+    "examples": null,
+    "ruleText": "Some continuous effects are prevention effects. Like replacement effects (see rule 614), prevention effects apply continuously as events happen—they aren’t locked in ahead of time. Such effects watch for a damage event that would happen and completely or partially prevent the damage that would be dealt. They act like “shields” around whatever they’re affecting.",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "614.17d",
+      "nextRule": "615.1a"
+    }
+  },
+  "615.2": {
+    "ruleNumber": "615.2",
+    "examples": null,
+    "ruleText": "Many prevention effects apply to damage from a source. See rule 609.7.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "615.1a",
+      "nextRule": "615.3"
+    }
+  },
+  "615.3": {
+    "ruleNumber": "615.3",
+    "examples": null,
+    "ruleText": "There are no special restrictions on casting a spell or activating an ability that generates a prevention effect. Such effects last until they’re used up or their duration has expired.",
+    "fragment": "3",
+    "navigation": {
+      "previousRule": "615.2",
+      "nextRule": "615.4"
+    }
+  },
+  "615.4": {
+    "ruleNumber": "615.4",
+    "examples": [
+      "A player can activate an ability that prevents damage in response to a spell that would deal damage. Once the spell resolves, though, it’s too late to prevent the damage."
+    ],
+    "ruleText": "Prevention effects must exist before the appropriate damage event occurs—they can’t “go back in time” and change something that’s already happened. Spells or abilities that generate these effects are often cast or activated in response to whatever would produce the event and thus resolve before that event would occur.",
+    "fragment": "4",
+    "navigation": {
+      "previousRule": "615.3",
+      "nextRule": "615.5"
+    }
+  },
+  "615.5": {
+    "ruleNumber": "615.5",
+    "examples": null,
+    "ruleText": "Some prevention effects also include an additional effect, which may refer to the amount of damage that was prevented. The prevention takes place at the time the original event would have happened; the rest of the effect takes place immediately afterward.",
+    "fragment": "5",
+    "navigation": {
+      "previousRule": "615.4",
+      "nextRule": "615.6"
+    }
+  },
+  "615.6": {
+    "ruleNumber": "615.6",
+    "examples": null,
+    "ruleText": "If damage that would be dealt is prevented, it never happens. A modified event may occur instead, which may in turn trigger abilities. Note that the modified event may contain instructions that can’t be carried out, in which case the impossible instruction is simply ignored.",
+    "fragment": "6",
+    "navigation": {
+      "previousRule": "615.5",
+      "nextRule": "615.7"
+    }
+  },
+  "615.7": {
+    "ruleNumber": "615.7",
+    "examples": null,
+    "ruleText": "Some prevention effects generated by the resolution of a spell or ability refer to a specific amount of damage—for example, “Prevent the next 3 damage that would be dealt to any target this turn.” These work like shields. Each 1 damage that would be dealt to the “shielded” permanent or player is prevented. Preventing 1 damage reduces the remaining shield by 1. If damage would be dealt to the shielded permanent or player by two or more applicable sources at the same time, the player or the controller of the permanent chooses which damage the shield prevents. Once the shield has been reduced to 0, any remaining damage is dealt normally. Such effects count only the amount of damage; the number of events or sources dealing it doesn’t matter.",
+    "fragment": "7",
+    "navigation": {
+      "previousRule": "615.6",
+      "nextRule": "615.8"
+    }
+  },
+  "615.8": {
+    "ruleNumber": "615.8",
+    "examples": null,
+    "ruleText": "Some prevention effects generated by the resolution of a spell or ability refer to the next time a specific source would deal damage. These effects prevent the next instance of damage from that source, regardless of how much damage that is. Once an instance of damage from that source has been prevented, any subsequent instances of damage that would be dealt by that source are dealt normally.",
+    "fragment": "8",
+    "navigation": {
+      "previousRule": "615.7",
+      "nextRule": "615.9"
+    }
+  },
+  "615.9": {
+    "ruleNumber": "615.9",
+    "examples": null,
+    "ruleText": "Some effects generated by the resolution of a spell or ability prevent damage from a source of a player’s choice with certain properties. When the source would deal damage, the shield rechecks the source’s properties. If the properties no longer match, the damage isn’t prevented or replaced and the shield isn’t used up. See rule 609.7b.",
+    "fragment": "9",
+    "navigation": {
+      "previousRule": "615.8",
+      "nextRule": "615.10"
+    }
+  },
+  "616.1": {
+    "ruleNumber": "616.1",
+    "examples": null,
+    "ruleText": "If two or more replacement and/or prevention effects are attempting to modify the way an event affects an object or player, the affected object’s controller (or its owner if it has no controller) or the affected player chooses one to apply, following the steps listed below. If two or more players have to make these choices at the same time, choices are made in APNAP order (see rule 101.4).",
+    "fragment": "1",
+    "navigation": {
+      "previousRule": "615.13",
+      "nextRule": "616.1a"
+    }
+  },
+  "616.2": {
+    "ruleNumber": "616.2",
+    "examples": [
+      "One effect reads “If you would gain life, draw that many cards instead,” and another reads “If you would draw a card, return a card from your graveyard to your hand instead.” Both effects combine (regardless of the order they came into existence): Instead of gaining 1 life, the player puts a card from their graveyard into their hand."
+    ],
+    "ruleText": "A replacement or prevention effect can become applicable to an event as the result of another replacement or prevention effect that modifies the event.",
+    "fragment": "2",
+    "navigation": {
+      "previousRule": "616.1g",
+      "nextRule": null
+    }
+  },
+  "601.1a": {
+    "ruleNumber": "601.1a",
+    "examples": null,
+    "ruleText": "Some effects still refer to “playing” a card. “Playing a card” means playing that card as a land or casting that card as a spell, whichever is appropriate.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "601.1",
+      "nextRule": "601.2"
+    }
+  },
+  "601.2a": {
+    "ruleNumber": "601.2a",
+    "examples": null,
+    "ruleText": "To propose the casting of a spell, a player first moves that card (or that copy of a card) from where it is to the stack. It becomes the topmost object on the stack. It has all the characteristics of the card (or the copy of a card) associated with it, and that player becomes its controller. Any continuous effects that modify the characteristics of the spell as you start casting it begin as it is put on the stack (see rule 611.2f). The spell remains on the stack until it resolves, it’s countered, or a rule or effect moves it elsewhere.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "601.2",
+      "nextRule": "601.2b"
+    }
+  },
+  "601.2b": {
+    "ruleNumber": "601.2b",
+    "examples": null,
+    "ruleText": "If the spell is modal, the player announces the mode choice (see rule 700.2). If the player wishes to splice any cards onto the spell (see rule 702.47), they reveal those cards in their hand. If the spell has alternative or additional costs that will be paid as it’s being cast such as buyback or kicker costs (see rules 118.8 and 118.9), the player announces their intentions to pay any or all of those costs (see rule 601.2f). A player can’t apply two alternative methods of casting or two alternative costs to a single spell. If the spell has a variable cost that will be paid as it’s being cast (such as an {X} in its mana cost; see rule 107.3), the player announces the value of that variable. If the value of that variable is defined in the text of the spell by a choice that player would make later in the announcement or resolution of the spell, that player makes that choice at this time instead of that later time. If a cost that will be paid as the spell is being cast includes hybrid mana symbols, the player announces the nonhybrid equivalent cost they intend to pay. If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or a corresponding colored mana cost for each of those symbols. Previously made choices (such as choosing to cast a spell with flashback from a graveyard or choosing to cast a creature with morph face down) may restrict the player’s options when making these choices.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "601.2a",
+      "nextRule": "601.2c"
+    }
+  },
+  "601.2c": {
+    "ruleNumber": "601.2c",
+    "examples": [
+      "If a spell says “Tap two target creatures,” then the same creature can’t be chosen twice; the spell requires two different legal targets. A spell that says “Destroy target artifact and target land,” however, can target the same artifact land twice because it uses the word “target” in multiple places."
+    ],
+    "ruleText": "The player announces their choice of an appropriate object or player for each target the spell requires. A spell may require some targets only if an alternative or additional cost (such as a kicker cost) or a particular mode was chosen for it; otherwise, the spell is cast as though it did not require those targets. Similarly, a spell may require alternative targets only if an alternative or additional cost was chosen for it. If the spell has a variable number of targets, the player announces how many targets they will choose before they announce those targets. In some cases, the number of targets will be defined by the spell’s text. Once the number of targets the spell has is determined, that number doesn’t change, even if the information used to determine the number of targets does. The same target can’t be chosen multiple times for any one instance of the word “target” on the spell. However, if the spell uses the word “target” in multiple places, the same object or player can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). If any effects say that an object or player must be chosen as a target, the player chooses targets so that they obey the maximum possible number of such effects without violating any rules or effects that say that an object or player can’t be chosen as a target. The chosen objects and/or players each become a target of that spell. (Any abilities that trigger when those objects and/or players become the target of a spell trigger at this point; they’ll wait to be put on the stack until the spell has finished being cast.)",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "601.2b",
+      "nextRule": "601.2d"
+    }
+  },
+  "601.2d": {
+    "ruleNumber": "601.2d",
+    "examples": null,
+    "ruleText": "If the spell requires the player to divide or distribute an effect (such as damage or counters) among one or more targets, the player announces the division. Each of these targets must receive at least one of whatever is being divided.",
+    "fragment": "2d",
+    "navigation": {
+      "previousRule": "601.2c",
+      "nextRule": "601.2e"
+    }
+  },
+  "601.2e": {
+    "ruleNumber": "601.2e",
+    "examples": null,
+    "ruleText": "The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 729, “Handling Illegal Actions”).",
+    "fragment": "2e",
+    "navigation": {
+      "previousRule": "601.2d",
+      "nextRule": "601.2f"
+    }
+  },
+  "601.2f": {
+    "ruleNumber": "601.2f",
+    "examples": null,
+    "ruleText": "The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule 601.2b), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be {0}. It can’t be reduced to less than {0}. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.",
+    "fragment": "2f",
+    "navigation": {
+      "previousRule": "601.2e",
+      "nextRule": "601.2g"
+    }
+  },
+  "601.2g": {
+    "ruleNumber": "601.2g",
+    "examples": null,
+    "ruleText": "If the total cost includes a mana payment, the player then has a chance to activate mana abilities (see rule 605, “Mana Abilities”). Mana abilities must be activated before costs are paid.",
+    "fragment": "2g",
+    "navigation": {
+      "previousRule": "601.2f",
+      "nextRule": "601.2h"
+    }
+  },
+  "601.2h": {
+    "ruleNumber": "601.2h",
+    "examples": [
+      "You cast Altar’s Reap, which costs {1}{B} and has an additional cost of sacrificing a creature. You sacrifice Thunderscape Familiar, whose effect makes your black spells cost {1} less to cast. Because a spell’s total cost is “locked in” before payments are actually made, you pay {B}, not {1}{B}, even though you’re sacrificing the Familiar."
+    ],
+    "ruleText": "The player pays the total cost. First, they pay all costs that don’t involve random elements or moving objects from the library to a public zone, in any order. Then they pay all remaining costs in any order. Partial payments are not allowed. Unpayable costs can’t be paid.",
+    "fragment": "2h",
+    "navigation": {
+      "previousRule": "601.2g",
+      "nextRule": "601.2i"
+    }
+  },
+  "601.2i": {
+    "ruleNumber": "601.2i",
+    "examples": null,
+    "ruleText": "Once the steps described in 601.2a–h are completed, effects that modify the characteristics of the spell as it’s cast are applied, then the spell becomes cast. Any abilities that trigger when a spell is cast or put onto the stack trigger at this time. If the spell’s controller had priority before casting it, they get priority.",
+    "fragment": "2i",
+    "navigation": {
+      "previousRule": "601.2h",
+      "nextRule": "601.3"
+    }
+  },
+  "601.3a": {
+    "ruleNumber": "601.3a",
+    "examples": [
+      "A player controls Void Winnower, which reads, in part, “Your opponents can’t cast spells with even mana values.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is {X}{R}{R}, because the chosen value of X may cause the spell’s mana value to become odd."
+    ],
+    "ruleText": "If an effect prohibits a player from casting a spell with certain qualities, that player may consider any choices to be made during that spell’s proposal that may cause those qualities to change. If any such choices could cause that effect to no longer prohibit that player from casting that spell, the player may begin to cast the spell, ignoring the effect.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "601.3",
+      "nextRule": "601.3b"
+    }
+  },
+  "601.3b": {
+    "ruleNumber": "601.3b",
+    "examples": [
+      "An effect says that you may cast Aura spells as though they had flash, and you have a creature card with bestow in your hand. Because choosing the bestow ability’s alternative cost causes that spell to become an Aura spell, you may legally begin to cast that spell as though it had flash."
+    ],
+    "ruleText": "If an effect allows a player to cast a spell with certain qualities as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause that spell’s qualities to change. If any such choices could cause that effect to apply, that player may begin to cast that spell as though it had flash.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "601.3a",
+      "nextRule": "601.3c"
+    }
+  },
+  "601.3c": {
+    "ruleNumber": "601.3c",
+    "examples": null,
+    "ruleText": "If an effect allows a player to cast a spell as though it had flash only if an alternative or additional cost is paid, that player may begin to cast that spell as though it had flash.",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "601.3b",
+      "nextRule": "601.3d"
+    }
+  },
+  "601.3d": {
+    "ruleNumber": "601.3d",
+    "examples": null,
+    "ruleText": "If a spell would have flash only if certain conditions are met, its controller may begin to cast that spell as though it had flash if those conditions are met.",
+    "fragment": "3d",
+    "navigation": {
+      "previousRule": "601.3c",
+      "nextRule": "601.3e"
+    }
+  },
+  "601.3e": {
+    "ruleNumber": "601.3e",
+    "examples": [
+      "Garruk’s Horde says, in part, “You may cast creature spells from the top of your library.” If you control Garruk’s Horde and the top card of your library is a noncreature card with morph, you may cast it using its morph ability.",
+      "Melek, Izzet Paragon says, in part, “You may cast instant and sorcery spells from the top of your library.” If you control Melek, Izzet Paragon and the top card of your library is Giant Killer, an adventurer creature card whose Adventure is an instant named Chop Down, you may cast Chop Down but not Giant Killer. If instead you control Garruk’s Horde and the top card of your library is Giant Killer, you may cast Giant Killer but not Chop Down."
+    ],
+    "ruleText": "Some rules and effects state that an alternative set of characteristics or a subset of characteristics are considered to determine if a card or copy of a card is legal to cast. These alternative characteristics replace the object’s characteristics for this determination. Continuous effects that would apply to that object once it has those characteristics are also considered.",
+    "fragment": "3e",
+    "navigation": {
+      "previousRule": "601.3d",
+      "nextRule": "601.3f"
+    }
+  },
+  "601.3f": {
+    "ruleNumber": "601.3f",
+    "examples": null,
+    "ruleText": "Some effects allow a player to cast a spell with certain qualities from among face-down cards in exile. A player may begin to cast such a spell only if they can look at the face-down card in exile.",
+    "fragment": "3f",
+    "navigation": {
+      "previousRule": "601.3e",
+      "nextRule": "601.4"
+    }
+  },
+  "601.5a": {
+    "ruleNumber": "601.5a",
+    "examples": null,
+    "ruleText": "Once a player has begun casting a spell that had flash because certain conditions were met or that could be cast as though it had flash because certain conditions were met (see 601.3d), they may continue to cast that spell as though it had flash even if those conditions stop being met.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "601.5",
+      "nextRule": "601.6"
+    }
+  },
+  "601.6a": {
+    "ruleNumber": "601.6a",
+    "examples": null,
+    "ruleText": "If there is more than one opponent who could make such a choice, the spell’s controller decides which of those opponents will make the choice.",
+    "fragment": "6a",
+    "navigation": {
+      "previousRule": "601.6",
+      "nextRule": "601.6b"
+    }
+  },
+  "601.6b": {
+    "ruleNumber": "601.6b",
+    "examples": null,
+    "ruleText": "If the spell instructs its controller and another player to do something at the same time as the spell is being cast, the spell’s controller goes first, then the other player. This is an exception to rule 101.4.",
+    "fragment": "6b",
+    "navigation": {
+      "previousRule": "601.6a",
+      "nextRule": "601.7"
+    }
+  },
+  "602.1a": {
+    "ruleNumber": "602.1a",
+    "examples": [
+      "The activation cost of an ability that reads “{2}, {T}: You gain 1 life” is two mana of any type plus tapping the permanent that has the ability."
+    ],
+    "ruleText": "The activation cost is everything before the colon (:). An ability’s activation cost must be paid by the player who is activating it.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "602.1",
+      "nextRule": "602.1b"
+    }
+  },
+  "602.1b": {
+    "ruleNumber": "602.1b",
+    "examples": null,
+    "ruleText": "Some text after the colon of an activated ability states instructions that must be followed while activating that ability. Such text may state which players can activate that ability, may restrict when a player can activate the ability, or may define some aspect of the activation cost. This text is not part of the ability’s effect. It functions at all times. If an activated ability has any activation instructions, they appear last, after the ability’s effect.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "602.1a",
+      "nextRule": "602.1c"
+    }
+  },
+  "602.1c": {
+    "ruleNumber": "602.1c",
+    "examples": null,
+    "ruleText": "An activated ability is the only kind of ability that can be activated. If an object or rule refers to activating an ability without specifying what kind, it must be referring to an activated ability.",
+    "fragment": "1c",
+    "navigation": {
+      "previousRule": "602.1b",
+      "nextRule": "602.1d"
+    }
+  },
+  "602.1d": {
+    "ruleNumber": "602.1d",
+    "examples": null,
+    "ruleText": "Previously, the action of using an activated ability was referred to on cards as “playing” that ability. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “activating” that ability.",
+    "fragment": "1d",
+    "navigation": {
+      "previousRule": "602.1c",
+      "nextRule": "602.2"
+    }
+  },
+  "602.2a": {
+    "ruleNumber": "602.2a",
+    "examples": null,
+    "ruleText": "The player announces that they are activating the ability. If an activated ability is being activated from a hidden zone, the card that has that ability is revealed. That ability is created on the stack as an object that’s not a card. It becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. Its controller is the player who activated the ability. The ability remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "602.2",
+      "nextRule": "602.2b"
+    }
+  },
+  "602.2b": {
+    "ruleNumber": "602.2b",
+    "examples": null,
+    "ruleText": "The remainder of the process for activating an ability is identical to the process for casting a spell listed in rules 601.2b–i. Those rules apply to activating an ability just as they apply to casting a spell. An activated ability’s analog to a spell’s mana cost (as referenced in rule 601.2f) is its activation cost.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "602.2a",
+      "nextRule": "602.3"
+    }
+  },
+  "602.3a": {
+    "ruleNumber": "602.3a",
+    "examples": null,
+    "ruleText": "If there is more than one opponent who could make such a choice, the ability’s controller decides which of those opponents will make the choice.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "602.3",
+      "nextRule": "602.3b"
+    }
+  },
+  "602.3b": {
+    "ruleNumber": "602.3b",
+    "examples": null,
+    "ruleText": "If the ability instructs its controller and another player to do something at the same time as the ability is being activated, the ability’s controller goes first, then the other player. This is an exception to rule 101.4.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "602.3a",
+      "nextRule": "602.4"
+    }
+  },
+  "602.5a": {
+    "ruleNumber": "602.5a",
+    "examples": null,
+    "ruleText": "A creature’s activated ability with the tap symbol ({T}) or the untap symbol ({Q}) in its activation cost can’t be activated unless the creature has been under its controller’s control since the start of their most recent turn. Ignore this rule for creatures with haste (see rule 702.10).",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "602.5",
+      "nextRule": "602.5b"
+    }
+  },
+  "602.5b": {
+    "ruleNumber": "602.5b",
+    "examples": null,
+    "ruleText": "If an activated ability has a restriction on its use (for example, “Activate only once each turn”), the restriction continues to apply to that object even if its controller changes.",
+    "fragment": "5b",
+    "navigation": {
+      "previousRule": "602.5a",
+      "nextRule": "602.5c"
+    }
+  },
+  "602.5c": {
+    "ruleNumber": "602.5c",
+    "examples": null,
+    "ruleText": "If an object acquires an activated ability with a restriction on its use from another object, that restriction applies only to that ability as acquired from that object. It doesn’t apply to other, identically worded abilities.",
+    "fragment": "5c",
+    "navigation": {
+      "previousRule": "602.5b",
+      "nextRule": "602.5d"
+    }
+  },
+  "602.5d": {
+    "ruleNumber": "602.5d",
+    "examples": null,
+    "ruleText": "Activated abilities that read “Activate only as a sorcery” mean the player must follow the timing rules for casting a sorcery spell, though the ability isn’t actually a sorcery. The player doesn’t actually need to have a sorcery card that they could cast.",
+    "fragment": "5d",
+    "navigation": {
+      "previousRule": "602.5c",
+      "nextRule": "602.5e"
+    }
+  },
+  "602.5e": {
+    "ruleNumber": "602.5e",
+    "examples": null,
+    "ruleText": "Activated abilities that read “Activate only as an instant” mean the player must follow the timing rules for casting an instant spell, though the ability isn’t actually an instant. The player doesn’t actually need to have an instant card that they could cast.",
+    "fragment": "5e",
+    "navigation": {
+      "previousRule": "602.5d",
+      "nextRule": null
+    }
+  },
+  "603.10": {
+    "ruleNumber": "603.10",
+    "examples": null,
+    "ruleText": "Normally, objects that exist immediately after an event are checked to see if the event matched any trigger conditions, and continuous effects that exist at that time are used to determine what the trigger conditions are and what the objects involved in the event look like. However, some triggered abilities are exceptions to this rule; the game “looks back in time” to determine if those abilities trigger, using the existence of those abilities and the appearance of objects immediately prior to the event. The list of exceptions is as follows:",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "603.9",
+      "nextRule": "603.10a"
+    }
+  },
+  "603.11": {
+    "ruleNumber": "603.11",
+    "examples": [
+      "An ability that reads “Reveal the first card you draw each turn. Whenever you reveal a basic land card this way, draw a card” is a static ability linked to a triggered ability."
+    ],
+    "ruleText": "Some objects have a static ability that’s linked to one or more triggered abilities. (See rule 607, “Linked Abilities.”) These objects combine the abilities into one paragraph, with the static ability first, followed by each triggered ability that’s linked to it. A very few objects have triggered abilities which are written with the trigger condition in the middle of the ability, rather than at the beginning.",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "603.10g",
+      "nextRule": "603.12"
+    }
+  },
+  "603.12": {
+    "ruleNumber": "603.12",
+    "examples": [
+      "Heart-Piercer Manticore has an ability that reads “When Heart-Piercer Manticore enters the battlefield, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason."
+    ],
+    "ruleText": "A resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule 603.7), except that they’re checked immediately after being created and trigger based on whether the trigger event or events occurred earlier during the resolution of the spell or ability that created them.",
+    "fragment": "12",
+    "navigation": {
+      "previousRule": "603.11",
+      "nextRule": "603.12a"
+    }
+  },
+  "603.1a": {
+    "ruleNumber": "603.1a",
+    "examples": null,
+    "ruleText": "A triggered ability may include instructions after its effects that limit what the ability may target or state that it can’t be countered. This text is not part of the ability’s effect. It functions while the ability is on the stack.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "603.1",
+      "nextRule": "603.2"
+    }
+  },
+  "603.2a": {
+    "ruleNumber": "603.2a",
+    "examples": null,
+    "ruleText": "Because they aren’t cast or activated, triggered abilities can trigger even when it isn’t legal to cast spells and activate abilities. Effects that preclude abilities from being activated don’t affect them.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "603.2",
+      "nextRule": "603.2b"
+    }
+  },
+  "603.2b": {
+    "ruleNumber": "603.2b",
+    "examples": null,
+    "ruleText": "When a phase or step begins, all abilities that trigger “at the beginning of” that phase or step trigger.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "603.2a",
+      "nextRule": "603.2c"
+    }
+  },
+  "603.2c": {
+    "ruleNumber": "603.2c",
+    "examples": [
+      "A permanent has an ability whose trigger condition reads, “Whenever a land is put into a graveyard from the battlefield, . . . .” If someone casts a spell that destroys all lands, the ability will trigger once for each land put into the graveyard during the spell’s resolution."
+    ],
+    "ruleText": "An ability triggers only once each time its trigger event occurs. However, it can trigger repeatedly if one event contains multiple occurrences.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "603.2b",
+      "nextRule": "603.2d"
+    }
+  },
+  "603.2d": {
+    "ruleNumber": "603.2d",
+    "examples": null,
+    "ruleText": "An ability may state that a triggered ability triggers additional times. In this case, rather than simply determining that such an ability has triggered, determine how many times it should trigger, then that ability triggers that many times. An effect that states that an ability triggers additional times doesn’t invoke itself repeatedly and doesn’t apply to other effects that affect how many times an ability triggers.",
+    "fragment": "2d",
+    "navigation": {
+      "previousRule": "603.2c",
+      "nextRule": "603.2e"
+    }
+  },
+  "603.2e": {
+    "ruleNumber": "603.2e",
+    "examples": null,
+    "ruleText": "Some effects refer to a triggered ability of an object. Such effects refer only to triggered abilities the object has, not any delayed triggered abilities (see rule 603.7) that may be created by abilities the object has.",
+    "fragment": "2e",
+    "navigation": {
+      "previousRule": "603.2d",
+      "nextRule": "603.2f"
+    }
+  },
+  "603.2f": {
+    "ruleNumber": "603.2f",
+    "examples": [
+      "An ability that triggers when a permanent “becomes tapped” triggers only when the status of a permanent that’s already on the battlefield changes from untapped to tapped."
+    ],
+    "ruleText": "Some trigger events use the word “becomes” (for example, “becomes attached” or “becomes blocked”). These trigger only at the time the named event happens—they don’t trigger if that state already exists or retrigger if it persists. An ability that triggers when a permanent “becomes tapped” or “becomes untapped” doesn’t trigger if the permanent enters the battlefield in that state.",
+    "fragment": "2f",
+    "navigation": {
+      "previousRule": "603.2e",
+      "nextRule": "603.2g"
+    }
+  },
+  "603.2g": {
+    "ruleNumber": "603.2g",
+    "examples": null,
+    "ruleText": "If a triggered ability’s trigger condition is met, but the object with that triggered ability is at no time visible to all players, the ability does not trigger.",
+    "fragment": "2g",
+    "navigation": {
+      "previousRule": "603.2f",
+      "nextRule": "603.2h"
+    }
+  },
+  "603.2h": {
+    "ruleNumber": "603.2h",
+    "examples": [
+      "An ability that triggers on damage being dealt won’t trigger if all the damage is prevented."
+    ],
+    "ruleText": "An ability triggers only if its trigger event actually occurs. An event that’s prevented or replaced won’t trigger anything.",
+    "fragment": "2h",
+    "navigation": {
+      "previousRule": "603.2g",
+      "nextRule": "603.2i"
+    }
+  },
+  "603.2i": {
+    "ruleNumber": "603.2i",
+    "examples": null,
+    "ruleText": "A triggered ability may have an instruction followed by “Do this only once each turn.” This ability triggers only if its source’s controller has not yet taken the indicated action that turn.",
+    "fragment": "2i",
+    "navigation": {
+      "previousRule": "603.2h",
+      "nextRule": "603.3"
+    }
+  },
+  "603.3a": {
+    "ruleNumber": "603.3a",
+    "examples": null,
+    "ruleText": "A triggered ability is controlled by the player who controlled its source at the time it triggered, unless it’s a delayed triggered ability. To determine the controller of a delayed triggered ability, see rules 603.7d–f.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "603.3",
+      "nextRule": "603.3b"
+    }
+  },
+  "603.3b": {
+    "ruleNumber": "603.3b",
+    "examples": null,
+    "ruleText": "If multiple abilities have triggered since the last time a player received priority, the abilities are placed on the stack in a two-part process. First, each player, in APNAP order, puts each triggered ability they control with a trigger condition that isn’t another ability triggering on the stack in any order they choose. (See rule 101.4.) Second, each player, in APNAP order, puts all remaining triggered abilities they control on the stack in any order they choose. Then the game once again checks for and performs state-based actions until none are performed, then abilities that triggered during this process go on the stack. This process repeats until no new state-based actions are performed and no abilities trigger. Then the appropriate player gets priority.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "603.3a",
+      "nextRule": "603.3c"
+    }
+  },
+  "603.3c": {
+    "ruleNumber": "603.3c",
+    "examples": null,
+    "ruleText": "If a triggered ability is modal, its controller announces the mode choice when putting the ability on the stack. If one of the modes would be illegal (due to an inability to choose legal targets, for example), that mode can’t be chosen. If no mode is chosen, the ability is removed from the stack. (See rule 700.2.)",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "603.3b",
+      "nextRule": "603.3d"
+    }
+  },
+  "603.3d": {
+    "ruleNumber": "603.3d",
+    "examples": null,
+    "ruleText": "The remainder of the process for putting a triggered ability on the stack is identical to the process for casting a spell listed in rules 601.2c–d. If a choice is required when the triggered ability goes on the stack but no legal choices can be made for it, or if a rule or a continuous effect otherwise makes the ability illegal, the ability is simply removed from the stack.",
+    "fragment": "3d",
+    "navigation": {
+      "previousRule": "603.3c",
+      "nextRule": "603.4"
+    }
+  },
+  "603.6a": {
+    "ruleNumber": "603.6a",
+    "examples": null,
+    "ruleText": "Enters-the-battlefield abilities trigger when a permanent enters the battlefield. These are written, “When [this object] enters the battlefield, . . . “ or “Whenever a [type] enters the battlefield, . . .” Each time an event puts one or more permanents onto the battlefield, all permanents on the battlefield (including the newcomers) are checked for any enters-the-battlefield triggers that match the event.",
+    "fragment": "6a",
+    "navigation": {
+      "previousRule": "603.6",
+      "nextRule": "603.6b"
+    }
+  },
+  "603.6b": {
+    "ruleNumber": "603.6b",
+    "examples": [
+      "If an effect reads “All lands are creatures” and a land card is played, the effect makes the land card into a creature the moment it enters the battlefield, so it would trigger abilities that trigger when a creature enters the battlefield. Conversely, if an effect reads “All creatures lose all abilities” and a creature card with an enters-the-battlefield triggered ability enters the battlefield, that effect will cause it to lose its abilities the moment it enters the battlefield, so the enters-the-battlefield ability won’t trigger."
+    ],
+    "ruleText": "Continuous effects that modify characteristics of a permanent do so the moment the permanent is on the battlefield (and not before then). The permanent is never on the battlefield with its unmodified characteristics. Continuous effects don’t apply before the permanent is on the battlefield, however (see rule 603.6d).",
+    "fragment": "6b",
+    "navigation": {
+      "previousRule": "603.6a",
+      "nextRule": "603.6c"
+    }
+  },
+  "603.6c": {
+    "ruleNumber": "603.6c",
+    "examples": null,
+    "ruleText": "Leaves-the-battlefield abilities trigger when a permanent moves from the battlefield to another zone, or when a phased-in permanent leaves the game because its owner leaves the game. These are written as, but aren’t limited to, “When [this object] leaves the battlefield, . . .” or “Whenever [something] is put into a graveyard from the battlefield, . . . .” (See also rule 603.10.) An ability that attempts to do something to the card that left the battlefield checks for it only in the first zone that it went to. An ability that triggers when a card is put into a certain zone “from anywhere” is never treated as a leaves-the-battlefield ability, even if an object is put into that zone from the battlefield.",
+    "fragment": "6c",
+    "navigation": {
+      "previousRule": "603.6b",
+      "nextRule": "603.6d"
+    }
+  },
+  "603.6d": {
+    "ruleNumber": "603.6d",
+    "examples": null,
+    "ruleText": "Some permanents have text that reads “[This permanent] enters the battlefield with . . . ,” “As [this permanent] enters the battlefield . . . ,” “[This permanent] enters the battlefield as . . . ,” or “[This permanent] enters the battlefield tapped.” Such text is a static ability—not a triggered ability—whose effect occurs as part of the event that puts the permanent onto the battlefield.",
+    "fragment": "6d",
+    "navigation": {
+      "previousRule": "603.6c",
+      "nextRule": "603.6e"
+    }
+  },
+  "603.6e": {
+    "ruleNumber": "603.6e",
+    "examples": null,
+    "ruleText": "Some Auras have triggered abilities that trigger on the enchanted permanent leaving the battlefield. These triggered abilities can find the new object that permanent card became in the zone it moved to; they can also find the new object the Aura card became in its owner’s graveyard after state-based actions have been checked. See rule 400.7.",
+    "fragment": "6e",
+    "navigation": {
+      "previousRule": "603.6d",
+      "nextRule": "603.7"
+    }
+  },
+  "603.7a": {
+    "ruleNumber": "603.7a",
+    "examples": [
+      "Part of an effect reads “When this creature leaves the battlefield,” but the creature in question leaves the battlefield before the spell or ability creating the effect resolves. In this case, the delayed ability never triggers.",
+      "If an effect reads “When this creature becomes untapped” and the named creature becomes untapped before the effect resolves, the ability waits for the next time that creature untaps."
+    ],
+    "ruleText": "Delayed triggered abilities are created during the resolution of spells or abilities, as the result of a replacement effect being applied, or as a result of a static ability that allows a player to take an action. A delayed triggered ability won’t trigger until it has actually been created, even if its trigger event occurred just beforehand. Other events that happen earlier may make the trigger event impossible.",
+    "fragment": "7a",
+    "navigation": {
+      "previousRule": "603.7",
+      "nextRule": "603.7b"
+    }
+  },
+  "603.7b": {
+    "ruleNumber": "603.7b",
+    "examples": null,
+    "ruleText": "A delayed triggered ability will trigger only once—the next time its trigger event occurs—unless it has a stated duration, such as “this turn.” If its trigger event occurs more than once simultaneously and the ability doesn’t have a stated duration, the controller of the delayed triggered ability chooses which event causes the ability to trigger.",
+    "fragment": "7b",
+    "navigation": {
+      "previousRule": "603.7a",
+      "nextRule": "603.7c"
+    }
+  },
+  "603.7c": {
+    "ruleNumber": "603.7c",
+    "examples": [
+      "An ability that reads “Exile this creature at the beginning of the next end step” will exile the permanent even if it’s no longer a creature during the next end step. However, it won’t do anything if the permanent left the battlefield before then."
+    ],
+    "ruleText": "A delayed triggered ability that refers to a particular object still affects it even if the object changes characteristics. However, if that object is no longer in the zone it’s expected to be in at the time the delayed triggered ability resolves, the ability won’t affect it. (Note that if that object left that zone and then returned, it’s a new object and thus won’t be affected. See rule 400.7.)",
+    "fragment": "7c",
+    "navigation": {
+      "previousRule": "603.7b",
+      "nextRule": "603.7d"
+    }
+  },
+  "603.7d": {
+    "ruleNumber": "603.7d",
+    "examples": null,
+    "ruleText": "If a spell creates a delayed triggered ability, the source of that delayed triggered ability is that spell. The controller of that delayed triggered ability is the player who controlled that spell as it resolved.",
+    "fragment": "7d",
+    "navigation": {
+      "previousRule": "603.7c",
+      "nextRule": "603.7e"
+    }
+  },
+  "603.7e": {
+    "ruleNumber": "603.7e",
+    "examples": null,
+    "ruleText": "If an activated or triggered ability creates a delayed triggered ability, the source of that delayed triggered ability is the same as the source of that other ability. The controller of that delayed triggered ability is the player who controlled that other ability as it resolved.",
+    "fragment": "7e",
+    "navigation": {
+      "previousRule": "603.7d",
+      "nextRule": "603.7f"
+    }
+  },
+  "603.7f": {
+    "ruleNumber": "603.7f",
+    "examples": null,
+    "ruleText": "If a static ability generates a replacement effect which causes a delayed triggered ability to be created, the source of that delayed triggered ability is the object with that static ability. The controller of that delayed triggered ability is the same as the controller of that object at the time the replacement effect was applied.",
+    "fragment": "7f",
+    "navigation": {
+      "previousRule": "603.7e",
+      "nextRule": "603.7g"
+    }
+  },
+  "603.7g": {
+    "ruleNumber": "603.7g",
+    "examples": null,
+    "ruleText": "If a static ability allows a player to take an action and creates a delayed triggered ability if that player does so, the source of that delayed triggered ability is the object with that static ability. The controller of that delayed triggered ability is the same as the controller of that object at the time the action was taken.",
+    "fragment": "7g",
+    "navigation": {
+      "previousRule": "603.7f",
+      "nextRule": "603.8"
+    }
+  },
+  "604.3a": {
+    "ruleNumber": "604.3a",
+    "examples": null,
+    "ruleText": "A static ability is a characteristic-defining ability if it meets the following criteria: (1) It defines an object’s colors, subtypes, power, or toughness; (2) it is printed on the card it affects, it was granted to the token it affects by the effect that created the token, or it was acquired by the object it affects as the result of a copy effect or text-changing effect; (3) it does not directly affect the characteristics of any other objects; (4) it is not an ability that an object grants to itself; and (5) it does not set the values of such characteristics only if certain conditions are met.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "604.3",
+      "nextRule": "604.4"
+    }
+  },
+  "605.1a": {
+    "ruleNumber": "605.1a",
+    "examples": null,
+    "ruleText": "An activated ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule 115.6), it could add mana to a player’s mana pool when it resolves, and it’s not a loyalty ability. (See rule 606, “Loyalty Abilities.”)",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "605.1",
+      "nextRule": "605.1b"
+    }
+  },
+  "605.1b": {
+    "ruleNumber": "605.1b",
+    "examples": null,
+    "ruleText": "A triggered ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule 115.6), it triggers from the activation or resolution of an activated mana ability (see rule 605.1a) or from mana being added to a player’s mana pool, and it could add mana to a player’s mana pool when it resolves.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "605.1a",
+      "nextRule": "605.2"
+    }
+  },
+  "605.3a": {
+    "ruleNumber": "605.3a",
+    "examples": null,
+    "ruleText": "A player may activate an activated mana ability whenever they have priority, whenever they are casting a spell or activating an ability that requires a mana payment, or whenever a rule or effect asks for a mana payment, even if it’s in the middle of casting or resolving a spell or activating or resolving an ability.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "605.3",
+      "nextRule": "605.3b"
+    }
+  },
+  "605.3b": {
+    "ruleNumber": "605.3b",
+    "examples": null,
+    "ruleText": "An activated mana ability doesn’t go on the stack, so it can’t be targeted, countered, or otherwise responded to. Rather, it resolves immediately after it is activated. (See rule 405.6c.)",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "605.3a",
+      "nextRule": "605.3c"
+    }
+  },
+  "605.3c": {
+    "ruleNumber": "605.3c",
+    "examples": null,
+    "ruleText": "Once a player begins to activate a mana ability, that ability can’t be activated again until it has resolved.",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "605.3b",
+      "nextRule": "605.4"
+    }
+  },
+  "605.4a": {
+    "ruleNumber": "605.4a",
+    "examples": [
+      "An enchantment reads, “Whenever a player taps a land for mana, that player adds one mana of any type that land produced.” If a player taps lands for mana while casting a spell, the additional mana is added immediately and can be used to pay for the spell."
+    ],
+    "ruleText": "A triggered mana ability doesn’t go on the stack, so it can’t be targeted, countered, or otherwise responded to. Rather, it resolves immediately after the mana ability that triggered it, without waiting for priority.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "605.4",
+      "nextRule": "605.5"
+    }
+  },
+  "605.5a": {
+    "ruleNumber": "605.5a",
+    "examples": null,
+    "ruleText": "An ability with a target is not a mana ability, even if it could put mana into a player’s mana pool when it resolves. The same is true for a triggered ability that could produce mana but triggers from an event other than activating a mana ability, or a triggered ability that triggers from activating a mana ability but couldn’t produce mana. These follow the normal rules for activated or triggered abilities, as appropriate.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "605.5",
+      "nextRule": "605.5b"
+    }
+  },
+  "605.5b": {
+    "ruleNumber": "605.5b",
+    "examples": null,
+    "ruleText": "A spell can never be a mana ability, even if it could put mana into a player’s mana pool when it resolves. It’s cast and resolves just like any other spell. Some older cards were printed with the card type “mana source”; these cards have received errata in the Oracle card reference and are now instants.",
+    "fragment": "5b",
+    "navigation": {
+      "previousRule": "605.5a",
+      "nextRule": null
+    }
+  },
+  "607.1a": {
+    "ruleNumber": "607.1a",
+    "examples": null,
+    "ruleText": "An ability printed on an object within another ability that grants that ability to that object is considered to be “printed on” that object for these purposes.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "607.1",
+      "nextRule": "607.1b"
+    }
+  },
+  "607.1b": {
+    "ruleNumber": "607.1b",
+    "examples": null,
+    "ruleText": "An ability printed on either face of a transforming double-faced card (see rule 712) is considered to be “printed on” that object for these purposes, regardless of which face is up.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "607.1a",
+      "nextRule": "607.1c"
+    }
+  },
+  "607.1c": {
+    "ruleNumber": "607.1c",
+    "examples": null,
+    "ruleText": "An ability printed on an object that fulfills both criteria described in rule 607.1 is linked to itself.",
+    "fragment": "1c",
+    "navigation": {
+      "previousRule": "607.1b",
+      "nextRule": "607.1d"
+    }
+  },
+  "607.1d": {
+    "ruleNumber": "607.1d",
+    "examples": null,
+    "ruleText": "Abilities printed on two objects can be linked if one object is a token, emblem, or nontoken permanent and the second object was the source of the ability that either created the token or emblem or put that nontoken permanent onto the battlefield. In these cases, the abilities fit the criteria listed for one of the different kinds of linked abilities in rule 607.2 except they are printed on two objects rather than one.",
+    "fragment": "1d",
+    "navigation": {
+      "previousRule": "607.1c",
+      "nextRule": "607.2"
+    }
+  },
+  "607.2a": {
+    "ruleNumber": "607.2a",
+    "examples": null,
+    "ruleText": "If an object has an activated or triggered ability printed on it that instructs a player to exile one or more cards and an ability printed on it that refers either to “the exiled cards” or to cards “exiled with [this object],” these abilities are linked. The second ability refers only to cards in the exile zone that were put there as a result of an instruction to exile them in the first ability.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "607.2",
+      "nextRule": "607.2b"
+    }
+  },
+  "607.2b": {
+    "ruleNumber": "607.2b",
+    "examples": null,
+    "ruleText": "If an object has an ability printed on it that generates a replacement effect which causes one or more cards to be exiled and an ability printed on it that refers either to “the exiled cards” or to cards “exiled with [this object],” these abilities are linked. The second ability refers only to cards in the exile zone that were put there as a direct result of a replacement event caused by the first ability. See rule 614, “Replacement Effects.”",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "607.2a",
+      "nextRule": "607.2c"
+    }
+  },
+  "607.2c": {
+    "ruleNumber": "607.2c",
+    "examples": null,
+    "ruleText": "If an object has an activated or triggered ability printed on it that puts one or more objects onto the battlefield and an ability printed on it that refers to objects “put onto the battlefield with [this object]” or “created with [this object],” those abilities are linked. The second can refer only to objects put onto the battlefield as a result of the first.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "607.2b",
+      "nextRule": "607.2d"
+    }
+  },
+  "607.2d": {
+    "ruleNumber": "607.2d",
+    "examples": null,
+    "ruleText": "If an object has an ability printed on it that causes a player to “choose a [value]” and an ability printed on it that refers to “the chosen [value],” “the last chosen [value],” or similar, those abilities are linked. The second ability refers only to a choice made as a result of the first ability.",
+    "fragment": "2d",
+    "navigation": {
+      "previousRule": "607.2c",
+      "nextRule": "607.2e"
+    }
+  },
+  "607.2e": {
+    "ruleNumber": "607.2e",
+    "examples": null,
+    "ruleText": "If an object has an ability printed on it that allows some information to be noted and another ability which refers to information noted for that object, those abilities are linked. The second ability refers only to information noted as a result of the first ability.",
+    "fragment": "2e",
+    "navigation": {
+      "previousRule": "607.2d",
+      "nextRule": "607.2f"
+    }
+  },
+  "607.2f": {
+    "ruleNumber": "607.2f",
+    "examples": null,
+    "ruleText": "If an object has an ability printed on it that causes a player to choose from between two or more words that otherwise have no rules meaning and an ability printed on it that refers to a choice involving one or more of those words, those abilities are linked. The second can refer only to a choice made as a result of the first ability.",
+    "fragment": "2f",
+    "navigation": {
+      "previousRule": "607.2e",
+      "nextRule": "607.2g"
+    }
+  },
+  "607.2g": {
+    "ruleNumber": "607.2g",
+    "examples": null,
+    "ruleText": "If an object has an ability printed on it that causes a player to pay a cost as it enters the battlefield and an ability printed on it that refers to the cost paid “as [this object] entered the battlefield,” these abilities are linked. The second ability refers only to a cost paid as a result of the first ability.",
+    "fragment": "2g",
+    "navigation": {
+      "previousRule": "607.2f",
+      "nextRule": "607.2h"
+    }
+  },
+  "607.2h": {
+    "ruleNumber": "607.2h",
+    "examples": null,
+    "ruleText": "If an object has both a static ability and one or more triggered abilities printed on it in the same paragraph, each of those triggered abilities is linked to the static ability. Each triggered ability refers only to actions taken as a result of the static ability. See rule 603.11.",
+    "fragment": "2h",
+    "navigation": {
+      "previousRule": "607.2g",
+      "nextRule": "607.2i"
+    }
+  },
+  "607.2i": {
+    "ruleNumber": "607.2i",
+    "examples": null,
+    "ruleText": "If an object has a kicker ability printed on it and an ability printed on it that refers to whether that object was kicked, those abilities are linked. The second refers only to whether the intent to pay the kicker cost listed in the first was declared as the object was cast as a spell. If a kicker ability lists multiple costs, it will have multiple abilities linked to it. Each of those abilities will specify which kicker cost it refers to. See rule 702.33, “Kicker.”",
+    "fragment": "2i",
+    "navigation": {
+      "previousRule": "607.2h",
+      "nextRule": "607.2j"
+    }
+  },
+  "607.2j": {
+    "ruleNumber": "607.2j",
+    "examples": null,
+    "ruleText": "If an object has an ability printed on it that causes a player to pay a variable additional cost as it’s cast and an ability printed on it that refers to the cost paid “as [this object] was cast,” these abilities are linked. The second refers only to the value chosen for the cost listed in the first as the object was cast as a spell. See rule 601.2b.",
+    "fragment": "2j",
+    "navigation": {
+      "previousRule": "607.2i",
+      "nextRule": "607.2k"
+    }
+  },
+  "607.2k": {
+    "ruleNumber": "607.2k",
+    "examples": null,
+    "ruleText": "The two abilities represented by the champion keyword are linked abilities. See rule 702.72, “Champion.”",
+    "fragment": "2k",
+    "navigation": {
+      "previousRule": "607.2j",
+      "nextRule": "607.2m"
+    }
+  },
+  "607.2m": {
+    "ruleNumber": "607.2m",
+    "examples": null,
+    "ruleText": "Abilities preceded by an anchor word are linked to the ability that allows a player to choose that anchor word. See rule 614.12b.",
+    "fragment": "2m",
+    "navigation": {
+      "previousRule": "607.2k",
+      "nextRule": "607.2n"
+    }
+  },
+  "607.2n": {
+    "ruleNumber": "607.2n",
+    "examples": null,
+    "ruleText": "If an object has a static ability printed on it that allows a player to exile one or more cards “before you shuffle your deck to start the game” and an ability printed on it that refers to cards “exiled with cards named [this object’s name],” the second ability is linked to the first ability of any objects that had the specified name before the game began.",
+    "fragment": "2n",
+    "navigation": {
+      "previousRule": "607.2m",
+      "nextRule": "607.2p"
+    }
+  },
+  "607.2p": {
+    "ruleNumber": "607.2p",
+    "examples": null,
+    "ruleText": "If an object has both a static ability that causes a player to make a choice for a characteristic-defining ability before the game begins and that characteristic-defining ability printed on it in the same paragraph, those abilities are linked. The second ability refers only to the choice made as a result of the first ability and continues to refer to that choice as the object changes zones during the game.",
+    "fragment": "2p",
+    "navigation": {
+      "previousRule": "607.2n",
+      "nextRule": "607.2q"
+    }
+  },
+  "607.2q": {
+    "ruleNumber": "607.2q",
+    "examples": null,
+    "ruleText": "If a permanent spell has an ability printed on it that allows one or more cards to be exiled while paying a cost to cast it and the permanent that spell becomes has an ability that refers to cards “exiled with [this object],” those abilities are linked. The second ability refers only to cards exiled to pay the cost of the spell that became that permanent.",
+    "fragment": "2q",
+    "navigation": {
+      "previousRule": "607.2p",
+      "nextRule": "607.3"
+    }
+  },
+  "607.5a": {
+    "ruleNumber": "607.5a",
+    "examples": [
+      "Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as Voice of All so it doesn’t gain a protection ability.",
+      "A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “{T}: Add one mana of the chosen color.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana."
+    ],
+    "ruleText": "If an object gains an ability that refers to a choice, but either (a) doesn’t copy that ability’s linked ability or (b) does copy the linked ability but no choice is made for it, then the choice is considered to be “undefined.” If an ability refers to an undefined choice, that part of the ability won’t do anything.",
+    "fragment": "5a",
+    "navigation": {
+      "previousRule": "607.5",
+      "nextRule": null
+    }
+  },
+  "608.2a": {
+    "ruleNumber": "608.2a",
+    "examples": null,
+    "ruleText": "If a triggered ability has an intervening “if” clause, it checks whether the clause’s condition is true. If it isn’t, the ability is removed from the stack and does nothing. Otherwise, it continues to resolve. See rule 603.4.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "608.2",
+      "nextRule": "608.2b"
+    }
+  },
+  "608.2b": {
+    "ruleNumber": "608.2b",
+    "examples": [
+      "Sorin’s Thirst is a black instant that reads, “Sorin’s Thirst deals 2 damage to target creature and you gain 2 life.” If the creature isn’t a legal target during the resolution of Sorin’s Thirst (say, if the creature has gained protection from black or left the battlefield), then Sorin’s Thirst doesn’t resolve. Its controller doesn’t gain any life.",
+      "Plague Spores reads, “Destroy target nonblack creature and target land. They can’t be regenerated.” Suppose the same creature land is chosen both as the nonblack creature and as the land, and the color of the creature land is changed to black before Plague Spores resolves. Plague Spores still resolves because the black creature land is still a legal target for the “target land” part of the spell. The “destroy target nonblack creature” part of the spell won’t affect that permanent, but the “destroy target land” part of the spell will still destroy it. It can’t be regenerated."
+    ],
+    "ruleText": "If the spell or ability specifies targets, it checks whether the targets are still legal. A target that’s no longer in the zone it was in when it was targeted is illegal. Other changes to the game state may cause a target to no longer be legal; for example, its characteristics may have changed or an effect may have changed the text of the spell. If the source of an ability has left the zone it was in, its last known information is used during this process. If all its targets, for every instance of the word “target,” are now illegal, the spell or ability doesn’t resolve. It’s removed from the stack and, if it’s a spell, put into its owner’s graveyard. Otherwise, the spell or ability will resolve normally. Illegal targets, if any, won’t be affected by parts of a resolving spell’s effect for which they’re illegal. Other parts of the effect for which those targets are not illegal may still affect them. If the spell or ability creates any continuous effects that affect game rules (see rule 613.11), those effects don’t apply to illegal targets. If part of the effect requires information about an illegal target, it fails to determine any such information. Any part of the effect that requires that information won’t happen.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "608.2a",
+      "nextRule": "608.2c"
+    }
+  },
+  "608.2c": {
+    "ruleNumber": "608.2c",
+    "examples": null,
+    "ruleText": "The controller of the spell or ability follows its instructions in the order written. However, replacement effects may modify these actions. In some cases, later text on the card may modify the meaning of earlier text (for example, “Destroy target creature. It can’t be regenerated” or “Counter target spell. If that spell is countered this way, put it on top of its owner’s library instead of into its owner’s graveyard.”) Don’t just apply effects step by step without thinking in these cases—read the whole text and apply the rules of English to the text.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "608.2b",
+      "nextRule": "608.2d"
+    }
+  },
+  "608.2d": {
+    "ruleNumber": "608.2d",
+    "examples": [
+      "A spell’s instruction reads, “You may sacrifice a creature. If you don’t, you lose 4 life.” A player who controls no creatures can’t choose the sacrifice option."
+    ],
+    "ruleText": "If an effect of a spell or ability offers any choices other than choices already made as part of casting the spell, activating the ability, or otherwise putting the spell or ability on the stack, the player announces these while applying the effect. The player can’t choose an option that’s illegal or impossible, with the exception that having a library with no cards in it doesn’t make drawing a card an impossible action (see rule 121.3). If an effect divides or distributes something, such as damage or counters, as a player chooses among any number of untargeted players and/or objects, the player chooses the amount and division such that each chosen player or object receives at least one of whatever is being divided. (Note that if an effect divides or distributes something, such as damage or counters, as a player chooses among some number of target objects and/or players, the amount and division were determined as the spell or ability was put onto the stack rather than at this time; see rule 601.2d.)",
+    "fragment": "2d",
+    "navigation": {
+      "previousRule": "608.2c",
+      "nextRule": "608.2e"
+    }
+  },
+  "608.2e": {
+    "ruleNumber": "608.2e",
+    "examples": null,
+    "ruleText": "Some spells and abilities have multiple steps or actions, denoted by separate sentences or clauses, that involve multiple players. In these cases, the choices for the first action are made in APNAP order, and then the first action is processed simultaneously. Then the choices for the second action are made in APNAP order, and then that action is processed simultaneously, and so on. See rule 101.4.",
+    "fragment": "2e",
+    "navigation": {
+      "previousRule": "608.2d",
+      "nextRule": "608.2f"
+    }
+  },
+  "608.2f": {
+    "ruleNumber": "608.2f",
+    "examples": [
+      "Blatant Thievery says “For each opponent, gain control of target permanent that player controls.” As Blatant Thievery resolves, its controller gains control of all permanents chosen as targets simultaneously.",
+      "Soulfire Eruption says, in part, “Choose any number of target creatures, planeswalkers, and/or players. For each of them, exile the top card of your library, then Soulfire Eruption deals damage equal to that card’s mana value to that permanent or player.” A player casts Soulfire Eruption targeting an opponent and a creature that opponent controls. As Soulfire Eruption resolves, the player can’t exile the top card of their library multiple times at the same time, so they first choose which target they are considering, then they exile the top card of their library, and finally Soulfire Eruption deals damage to that target. They then repeat this process for the remaining target. "
+    ],
+    "ruleText": "Some spells and abilities include actions taken on multiple players and/or objects. In most cases, each such action is processed simultaneously. If the action can’t be processed simultaneously, it’s instead processed considering each affected player or object individually. APNAP order is used to make the primary determination of the order of those actions. Secondarily, if the action is to be taken on both a player and an object they control or on multiple objects controlled by the same player, the player who controls the resolving spell or ability chooses the relative order of those actions.",
+    "fragment": "2f",
+    "navigation": {
+      "previousRule": "608.2e",
+      "nextRule": "608.2g"
+    }
+  },
+  "608.2g": {
+    "ruleNumber": "608.2g",
+    "examples": null,
+    "ruleText": "If an effect gives a player the option to pay mana, they may activate mana abilities before taking that action. If an effect specifically instructs or allows a player to cast a spell during resolution, they do so by following the steps in rules 601.2a–i, except no player receives priority after it’s cast. That spell becomes the topmost object on the stack, and the currently resolving spell or ability continues to resolve, which may include casting other spells this way. No other spells can normally be cast and no other abilities can normally be activated during resolution.",
+    "fragment": "2g",
+    "navigation": {
+      "previousRule": "608.2f",
+      "nextRule": "608.2h"
+    }
+  },
+  "608.2h": {
+    "ruleNumber": "608.2h",
+    "examples": null,
+    "ruleText": "If an effect requires information from the game (such as the number of creatures on the battlefield), the answer is determined only once, when the effect is applied. If the effect requires information from a specific object, including the source of the ability itself, the effect uses the current information of that object if it’s in the public zone it was expected to be in; if it’s no longer in that zone, or if the effect has moved it from a public zone to a hidden zone, the effect uses the object’s last known information. See rule 113.7a. If an ability states that an object does something, it’s the object as it exists—or as it most recently existed—that does it, not the ability.",
+    "fragment": "2h",
+    "navigation": {
+      "previousRule": "608.2g",
+      "nextRule": "608.2i"
+    }
+  },
+  "608.2i": {
+    "ruleNumber": "608.2i",
+    "examples": [
+      "An effect that reads “Destroy all black creatures” destroys a white-and-black creature, but one that reads “Destroy all nonblack creatures” doesn’t."
+    ],
+    "ruleText": "If an effect refers to certain characteristics, it checks only for the value of the specified characteristics, regardless of any related ones an object may also have.",
+    "fragment": "2i",
+    "navigation": {
+      "previousRule": "608.2h",
+      "nextRule": "608.2j"
+    }
+  },
+  "608.2j": {
+    "ruleNumber": "608.2j",
+    "examples": [
+      "Wall of Tears says “Whenever Wall of Tears blocks a creature, return that creature to its owner’s hand at end of combat.” If Wall of Tears blocks a creature, then that creature ceases to be a creature before the triggered ability resolves, the permanent will still be returned to its owner’s hand."
+    ],
+    "ruleText": "If an ability’s effect refers to a specific untargeted object that has been previously referred to by that ability’s cost or trigger condition, it still affects that object even if the object has changed characteristics.",
+    "fragment": "2j",
+    "navigation": {
+      "previousRule": "608.2i",
+      "nextRule": "608.2k"
+    }
+  },
+  "608.2k": {
+    "ruleNumber": "608.2k",
+    "examples": null,
+    "ruleText": "If an instant spell, sorcery spell, or ability that can legally resolve leaves the stack once it starts to resolve, it will continue to resolve fully.",
+    "fragment": "2k",
+    "navigation": {
+      "previousRule": "608.2j",
+      "nextRule": "608.2m"
+    }
+  },
+  "608.2m": {
+    "ruleNumber": "608.2m",
+    "examples": null,
+    "ruleText": "As the final part of an instant or sorcery spell’s resolution, the spell is put into its owner’s graveyard. As the final part of an ability’s resolution, the ability is removed from the stack and ceases to exist.",
+    "fragment": "2m",
+    "navigation": {
+      "previousRule": "608.2k",
+      "nextRule": "608.3"
+    }
+  },
+  "608.3a": {
+    "ruleNumber": "608.3a",
+    "examples": null,
+    "ruleText": "If the object that’s resolving has no targets, it becomes a permanent and enters the battlefield under the control of the spell’s controller.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "608.3",
+      "nextRule": "608.3b"
+    }
+  },
+  "608.3b": {
+    "ruleNumber": "608.3b",
+    "examples": null,
+    "ruleText": "If the object that’s resolving has a target, it checks whether the target is still legal, as described in 608.2b. If a spell with an illegal target is a bestowed Aura spell (see rule 702.103e) or a mutating creature spell (see rule 702.140b), it becomes a creature spell and will resolve as described in rule 608.3a. Otherwise, the spell doesn’t resolve. It is removed from the stack and put into its owner’s graveyard.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "608.3a",
+      "nextRule": "608.3c"
+    }
+  },
+  "608.3c": {
+    "ruleNumber": "608.3c",
+    "examples": null,
+    "ruleText": "If the object that’s resolving is an Aura spell, it becomes a permanent and is put onto the battlefield under the control of the spell’s controller attached to the player or object it was targeting.",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "608.3b",
+      "nextRule": "608.3d"
+    }
+  },
+  "608.3d": {
+    "ruleNumber": "608.3d",
+    "examples": null,
+    "ruleText": "If the object that’s resolving is a mutating creature spell, the object representing that spell merges with the permanent it is targeting (see rule 726, “Merging with Permanents”).",
+    "fragment": "3d",
+    "navigation": {
+      "previousRule": "608.3c",
+      "nextRule": "608.3e"
+    }
+  },
+  "608.3e": {
+    "ruleNumber": "608.3e",
+    "examples": [
+      "Worms of the Earth has the ability “Lands can’t enter the battlefield.” Clone says “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” If a player casts Clone and chooses to copy Dryad Arbor (a land creature) while Worms of the Earth is on the battlefield, Clone can’t enter the battlefield from the stack. It’s put into its owner’s graveyard."
+    ],
+    "ruleText": "If a permanent spell resolves but its controller can’t put it onto the battlefield, that player puts it into its owner’s graveyard.",
+    "fragment": "3e",
+    "navigation": {
+      "previousRule": "608.3d",
+      "nextRule": "608.3f"
+    }
+  },
+  "608.3f": {
+    "ruleNumber": "608.3f",
+    "examples": null,
+    "ruleText": "If the object that’s resolving is a copy of a permanent spell, it will become a token permanent as it is put onto the battlefield in any of the steps above. A token put onto the battlefield this way is no longer a copy of a spell and is not “created” for the purposes of any rules or effects that refer to creating a token.",
+    "fragment": "3f",
+    "navigation": {
+      "previousRule": "608.3e",
+      "nextRule": "608.3g"
+    }
+  },
+  "608.3g": {
+    "ruleNumber": "608.3g",
+    "examples": null,
+    "ruleText": "If the object that’s resolving has a static ability that functions on the stack and creates a delayed triggered ability, that delayed triggered ability is created as that permanent is put onto the battlefield in any of the steps above. (See rules 702.109, “Dash,” and rule 702.152, “Blitz.”)",
+    "fragment": "3g",
+    "navigation": {
+      "previousRule": "608.3f",
+      "nextRule": null
+    }
+  },
+  "609.4a": {
+    "ruleNumber": "609.4a",
+    "examples": [
+      "A player controls Vedalken Orrery, an artifact that says “You may cast spells as though they had flash.” That player casts Shaman’s Trance, an instant that says, in part, “You may play lands and cast spells from other players’ graveyards this turn as though those cards were in your graveyard.” The player may cast a sorcery with flashback from another player’s graveyard as though it were in that player’s graveyard and as though it had flash."
+    ],
+    "ruleText": "If two effects state that a player may (or a creature can) do the same thing “as though” different conditions were true, both conditions could apply. If one “as though” effect satisfies the requirements for another “as though” effect, then both effects will apply.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "609.4",
+      "nextRule": "609.4b"
+    }
+  },
+  "609.4b": {
+    "ruleNumber": "609.4b",
+    "examples": null,
+    "ruleText": "If an effect allows a player to spend mana “as though it were mana of any [type or color],” this affects only how the player may pay a cost. It doesn’t change that cost, and it doesn’t change what mana was actually spent to pay that cost.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "609.4a",
+      "nextRule": "609.5"
+    }
+  },
+  "609.7a": {
+    "ruleNumber": "609.7a",
+    "examples": null,
+    "ruleText": "If an effect requires a player to choose a source of damage, they may choose a permanent; a spell on the stack (including a permanent spell); any object referred to by an object on the stack, by a replacement or prevention effect that’s waiting to apply, or by a delayed triggered ability that’s waiting to trigger (even if that object is no longer in the zone it used to be in); or a face-up object in the command zone. A source doesn’t need to be capable of dealing damage to be a legal choice. The source is chosen when the effect is created. If the player chooses a permanent, the effect will apply to the next damage dealt by that permanent, regardless of whether it’s combat damage or damage dealt as the result of a spell or ability. If the player chooses a permanent spell, the effect will apply to any damage dealt by that spell and any damage dealt by the permanent that spell becomes when it resolves.",
+    "fragment": "7a",
+    "navigation": {
+      "previousRule": "609.7",
+      "nextRule": "609.7b"
+    }
+  },
+  "609.7b": {
+    "ruleNumber": "609.7b",
+    "examples": null,
+    "ruleText": "Some effects from resolved spells and abilities prevent or replace damage from sources with certain properties, such as a creature or a source of a particular color. When the source would deal damage, the “shield” rechecks the source’s properties. If the properties no longer match, the damage isn’t prevented or replaced. If for any reason the shield prevents no damage or replaces no damage, the shield isn’t used up.",
+    "fragment": "7b",
+    "navigation": {
+      "previousRule": "609.7a",
+      "nextRule": "609.7c"
+    }
+  },
+  "609.7c": {
+    "ruleNumber": "609.7c",
+    "examples": null,
+    "ruleText": "Some effects from static abilities prevent or replace damage from sources with certain properties. For these effects, the prevention or replacement applies to sources that are permanents with that property and to any sources that aren’t on the battlefield that have that property.",
+    "fragment": "7c",
+    "navigation": {
+      "previousRule": "609.7b",
+      "nextRule": "609.8"
+    }
+  },
+  "610.3a": {
+    "ruleNumber": "610.3a",
+    "examples": null,
+    "ruleText": "If a resolving spell or activated ability creates the initial one-shot effect that causes the object to change zones, and the specified event has already occurred before that one-shot effect would occur but after that spell or ability was put onto the stack, the object doesn’t move.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "610.3",
+      "nextRule": "610.3b"
+    }
+  },
+  "610.3b": {
+    "ruleNumber": "610.3b",
+    "examples": null,
+    "ruleText": "If a resolving triggered ability creates the initial one-shot effect that causes the object to change zones, and the specified event has already occurred before that one-shot effect would occur but after that ability triggered, the object doesn’t move.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "610.3a",
+      "nextRule": "610.3c"
+    }
+  },
+  "610.3c": {
+    "ruleNumber": "610.3c",
+    "examples": null,
+    "ruleText": "An object returned to the battlefield this way returns under its owner’s control unless otherwise specified.",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "610.3b",
+      "nextRule": "610.3d"
+    }
+  },
+  "610.3d": {
+    "ruleNumber": "610.3d",
+    "examples": [
+      "Two Banisher Priests have each exiled a card. All creatures are destroyed at the same time by Day of Judgment. The two exiled cards are returned to the battlefield at the same time."
+    ],
+    "ruleText": "If multiple one-shot effects are created this way immediately after one or more simultaneous events, those one-shot effects are also simultaneous.",
+    "fragment": "3d",
+    "navigation": {
+      "previousRule": "610.3c",
+      "nextRule": "610.4"
+    }
+  },
+  "610.4a": {
+    "ruleNumber": "610.4a",
+    "examples": null,
+    "ruleText": "A permanent phased out this way doesn’t phase in as a result of the turn-based action during a player’s untap step (see rule 502.1). Other effects may cause it to phase in. If a permanent phased out this way phases in due to another effect, the second one-shot effect doesn’t happen, even if that permanent has phased out again.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "610.4",
+      "nextRule": "610.4b"
+    }
+  },
+  "610.4b": {
+    "ruleNumber": "610.4b",
+    "examples": null,
+    "ruleText": "If a resolving spell or activated ability creates the initial one-shot effect that causes the permanent to phase out, and the specified event has already occurred before that one-shot effect would occur but after that spell or ability was put onto the stack, the permanent doesn’t phase out.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "610.4a",
+      "nextRule": "610.4c"
+    }
+  },
+  "610.4c": {
+    "ruleNumber": "610.4c",
+    "examples": null,
+    "ruleText": "If a resolving triggered ability creates the initial one-shot effect that causes the permanent to phase out, and the specified event has already occurred before that one-shot effect would occur but after that ability triggered, the permanent doesn’t phase out.",
+    "fragment": "4c",
+    "navigation": {
+      "previousRule": "610.4b",
+      "nextRule": "610.4d"
+    }
+  },
+  "610.4d": {
+    "ruleNumber": "610.4d",
+    "examples": null,
+    "ruleText": "If multiple one-shot effects are created this way immediately after one or more simultaneous events, those one-shot effects are also simultaneous.",
+    "fragment": "4d",
+    "navigation": {
+      "previousRule": "610.4c",
+      "nextRule": null
+    }
+  },
+  "611.2a": {
+    "ruleNumber": "611.2a",
+    "examples": null,
+    "ruleText": "A continuous effect generated by the resolution of a spell or ability lasts as long as stated by the spell or ability creating it (such as “until end of turn”). If no duration is stated, it lasts until the end of the game.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "611.2",
+      "nextRule": "611.2b"
+    }
+  },
+  "611.2b": {
+    "ruleNumber": "611.2b",
+    "examples": [
+      "Master Thief has the ability “When Master Thief enters the battlefield, gain control of target artifact for as long as you control Master Thief.” If you lose control of Master Thief before the ability resolves, it does nothing, because its duration—as long as you control Master Thief—was over before the effect began."
+    ],
+    "ruleText": "Some continuous effects generated by the resolution of a spell or ability have durations worded “for as long as . . . .” If the “for as long as” duration never starts, or it ends before the moment the effect would first be applied, the effect does nothing. It doesn’t start and immediately stop again, and it doesn’t last forever.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "611.2a",
+      "nextRule": "611.2c"
+    }
+  },
+  "611.2c": {
+    "ruleNumber": "611.2c",
+    "examples": [
+      "An effect that reads “All white creatures get +1/+1 until end of turn” gives the bonus to all permanents that are white creatures when the spell or ability resolves—even if they change color later—and doesn’t affect those that enter the battlefield or turn white afterward.",
+      "An effect that reads “Prevent all damage creatures would deal this turn” doesn’t modify any object’s characteristics, so it’s modifying the rules of the game. That means the effect will apply even to damage from creatures that weren’t on the battlefield when the continuous effect began. It also affects damage from permanents that become creatures later in the turn."
+    ],
+    "ruleText": "If a continuous effect generated by the resolution of a spell or ability modifies the characteristics or changes the controller of any objects, the set of objects it affects is determined when that continuous effect begins. After that point, the set won’t change. (Note that this works differently than a continuous effect from a static ability.) A continuous effect generated by the resolution of a spell or ability that doesn’t modify the characteristics or change the controller of any objects modifies the rules of the game, so it can affect objects that weren’t affected when that continuous effect began. If a single continuous effect has parts that modify the characteristics or changes the controller of any objects and other parts that don’t, the set of objects each part applies to is determined independently.",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "611.2b",
+      "nextRule": "611.2d"
+    }
+  },
+  "611.2d": {
+    "ruleNumber": "611.2d",
+    "examples": null,
+    "ruleText": "If a resolving spell or ability that creates a continuous effect contains a variable such as X, the value of that variable is determined only once, on resolution. See rule 608.2h.",
+    "fragment": "2d",
+    "navigation": {
+      "previousRule": "611.2c",
+      "nextRule": "611.2e"
+    }
+  },
+  "611.2e": {
+    "ruleNumber": "611.2e",
+    "examples": [
+      "Arbiter of the Ideal puts an artifact, creature, or land card onto the battlefield and says, in part, “That permanent is an enchantment in addition to its other types.” An ability that triggers whenever an enchantment enters the battlefield would trigger. The permanent doesn’t enter the battlefield and then become an enchantment."
+    ],
+    "ruleText": "If a resolving spell or ability both puts a nontoken permanent onto the battlefield and creates a continuous effect stating that the permanent “is [characteristic],” that continuous effect applies simultaneously with the permanent entering the battlefield. This characteristic is usually a color or a creature type. If the continuous effect says the permanent “becomes [characteristic]” or “gains [an ability],” that effect applies after the permanent is on the battlefield.",
+    "fragment": "2e",
+    "navigation": {
+      "previousRule": "611.2d",
+      "nextRule": "611.2f"
+    }
+  },
+  "611.2f": {
+    "ruleNumber": "611.2f",
+    "examples": null,
+    "ruleText": "Some spells and abilities generate a continuous effect that modifies the characteristics of the next spell a player casts, the next spell that fulfills certain conditions a player casts during some duration, or similar. These effects do not begin immediately. Rather, they begin to apply at the time that player next puts an appropriate spell on the stack, and they apply to that spell. See rule 601.2a.",
+    "fragment": "2f",
+    "navigation": {
+      "previousRule": "611.2e",
+      "nextRule": "611.3"
+    }
+  },
+  "611.3a": {
+    "ruleNumber": "611.3a",
+    "examples": null,
+    "ruleText": "A continuous effect generated by a static ability isn’t “locked in”; it applies at any given moment to whatever its text indicates.",
+    "fragment": "3a",
+    "navigation": {
+      "previousRule": "611.3",
+      "nextRule": "611.3b"
+    }
+  },
+  "611.3b": {
+    "ruleNumber": "611.3b",
+    "examples": [
+      "A permanent with the static ability “All white creatures get +1/+1” generates an effect that continuously gives +1/+1 to each white creature on the battlefield. If a creature becomes white, it gets this bonus; a creature that stops being white loses it."
+    ],
+    "ruleText": "The effect applies at all times that the permanent generating it is on the battlefield or the object generating it is in the appropriate zone.",
+    "fragment": "3b",
+    "navigation": {
+      "previousRule": "611.3a",
+      "nextRule": "611.3c"
+    }
+  },
+  "611.3c": {
+    "ruleNumber": "611.3c",
+    "examples": [
+      "A permanent with the static ability “All white creatures get +1/+1” is on the battlefield. A creature spell that would normally create a 1/1 white creature instead creates a 2/2 white creature. The creature doesn’t enter the battlefield as 1/1 and then change to 2/2."
+    ],
+    "ruleText": "Continuous effects that modify characteristics of permanents do so simultaneously with the permanent entering the battlefield. They don’t wait until the permanent is on the battlefield and then change it. Because such effects apply as the permanent enters the battlefield, they are applied before determining whether the permanent will cause an ability to trigger when it enters the battlefield.",
+    "fragment": "3c",
+    "navigation": {
+      "previousRule": "611.3b",
+      "nextRule": "611.3d"
+    }
+  },
+  "611.3d": {
+    "ruleNumber": "611.3d",
+    "examples": null,
+    "ruleText": "Continuous effects from static abilities may allow a player to play a land or cast a permanent spell, or may grant an ability to a permanent spell or card that allows it to be cast. If the effect also grants that object an ability that functions only on the battlefield, that ability lasts as long as stated by the effect granting that permission or ability. If no duration is stated, it lasts until the end of the game. This is an exception to rules 611.3a–b.",
+    "fragment": "3d",
+    "navigation": {
+      "previousRule": "611.3c",
+      "nextRule": null
+    }
+  },
+  "612.10": {
+    "ruleNumber": "612.10",
+    "examples": null,
+    "ruleText": "A splice ability changes a spell’s text by adding the rules text of the card with splice to the spell, following that spell’s own rules text. It doesn’t modify or replace any of that spell’s own text. (See rule 702.47, “Splice.”)",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "612.9",
+      "nextRule": null
+    }
+  },
+  "612.2a": {
+    "ruleNumber": "612.2a",
+    "examples": null,
+    "ruleText": "Most spells and abilities that create creature tokens use creature types to define both the creature types and the names of the tokens. A text-changing effect that affects such a spell or an object with such an ability can change these words because they’re being used as creature types, even though they’re also being used as names.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "612.2",
+      "nextRule": "612.3"
+    }
+  },
+  "613.10": {
+    "ruleNumber": "613.10",
+    "examples": null,
+    "ruleText": "Some continuous effects affect players rather than objects. For example, an effect might give a player protection from red. All such effects are applied in timestamp order after the determination of objects’ characteristics. See also the rules for timestamp order and dependency (rules 613.7 and 613.8).",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "613.9",
+      "nextRule": "613.11"
+    }
+  },
+  "613.11": {
+    "ruleNumber": "613.11",
+    "examples": null,
+    "ruleText": "Some continuous effects affect game rules rather than objects. For example, effects may modify a player’s maximum hand size, or say that a creature must attack this turn if able. These effects are applied after all other continuous effects have been applied. Continuous effects that affect the costs of spells or abilities are applied according to the order specified in rule 601.2f. All other such effects are applied in timestamp order. See also the rules for timestamp order and dependency (rules 613.7 and 613.8).",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "613.10",
+      "nextRule": null
+    }
+  },
+  "613.1a": {
+    "ruleNumber": "613.1a",
+    "examples": null,
+    "ruleText": "Layer 1: Rules and effects that modify copiable values are applied.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "613.1",
+      "nextRule": "613.1b"
+    }
+  },
+  "613.1b": {
+    "ruleNumber": "613.1b",
+    "examples": null,
+    "ruleText": "Layer 2: Control-changing effects are applied.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "613.1a",
+      "nextRule": "613.1c"
+    }
+  },
+  "613.1c": {
+    "ruleNumber": "613.1c",
+    "examples": null,
+    "ruleText": "Layer 3: Text-changing effects are applied. See rule 612, “Text-Changing Effects.”",
+    "fragment": "1c",
+    "navigation": {
+      "previousRule": "613.1b",
+      "nextRule": "613.1d"
+    }
+  },
+  "613.1d": {
+    "ruleNumber": "613.1d",
+    "examples": null,
+    "ruleText": "Layer 4: Type-changing effects are applied. These include effects that change an object’s card type, subtype, and/or supertype.",
+    "fragment": "1d",
+    "navigation": {
+      "previousRule": "613.1c",
+      "nextRule": "613.1e"
+    }
+  },
+  "613.1e": {
+    "ruleNumber": "613.1e",
+    "examples": null,
+    "ruleText": "Layer 5: Color-changing effects are applied.",
+    "fragment": "1e",
+    "navigation": {
+      "previousRule": "613.1d",
+      "nextRule": "613.1f"
+    }
+  },
+  "613.1f": {
+    "ruleNumber": "613.1f",
+    "examples": null,
+    "ruleText": "Layer 6: Ability-adding effects, keyword counters, ability-removing effects, and effects that say an object can’t have an ability are applied.",
+    "fragment": "1f",
+    "navigation": {
+      "previousRule": "613.1e",
+      "nextRule": "613.1g"
+    }
+  },
+  "613.1g": {
+    "ruleNumber": "613.1g",
+    "examples": null,
+    "ruleText": "Layer 7: Power- and/or toughness-changing effects are applied.",
+    "fragment": "1g",
+    "navigation": {
+      "previousRule": "613.1f",
+      "nextRule": "613.2"
+    }
+  },
+  "613.2a": {
+    "ruleNumber": "613.2a",
+    "examples": null,
+    "ruleText": "Layer 1a: Copiable effects are applied. This includes copy effects (see rule 707, “Copying Objects”) and changes to an object’s characteristics determined by merging an object with a permanent (see rule 726, “Merging with Permanents”). “As . . . enters the battlefield” and “as . . . is turned face up” abilities generate copiable effects if they set power and toughness, even if they also define other characteristics.",
+    "fragment": "2a",
+    "navigation": {
+      "previousRule": "613.2",
+      "nextRule": "613.2b"
+    }
+  },
+  "613.2b": {
+    "ruleNumber": "613.2b",
+    "examples": null,
+    "ruleText": "Layer 1b: Face-down spells and permanents have their characteristics modified as defined in rule 708.2.",
+    "fragment": "2b",
+    "navigation": {
+      "previousRule": "613.2a",
+      "nextRule": "613.2c"
+    }
+  },
+  "613.2c": {
+    "ruleNumber": "613.2c",
+    "examples": null,
+    "ruleText": "After all rules and effects in layer 1 have been applied, the object’s characteristics are its copiable values. (See rule 707.2.)",
+    "fragment": "2c",
+    "navigation": {
+      "previousRule": "613.2b",
+      "nextRule": "613.3"
+    }
+  },
+  "613.4a": {
+    "ruleNumber": "613.4a",
+    "examples": null,
+    "ruleText": "Layer 7a: Effects from characteristic-defining abilities that define power and/or toughness are applied. See rule 604.3.",
+    "fragment": "4a",
+    "navigation": {
+      "previousRule": "613.4",
+      "nextRule": "613.4b"
+    }
+  },
+  "613.4b": {
+    "ruleNumber": "613.4b",
+    "examples": null,
+    "ruleText": "Layer 7b: Effects that set power and/or toughness to a specific number or value are applied. Effects that refer to the base power and/or toughness of a creature apply in this layer.",
+    "fragment": "4b",
+    "navigation": {
+      "previousRule": "613.4a",
+      "nextRule": "613.4c"
+    }
+  },
+  "613.4c": {
+    "ruleNumber": "613.4c",
+    "examples": null,
+    "ruleText": "Layer 7c: Effects and counters that modify power and/or toughness (but don’t set power and/or toughness to a specific number or value) are applied.",
+    "fragment": "4c",
+    "navigation": {
+      "previousRule": "613.4b",
+      "nextRule": "613.4d"
+    }
+  },
+  "613.4d": {
+    "ruleNumber": "613.4d",
+    "examples": [
+      "A 1/3 creature is given +0/+1 by an effect. Then another effect switches the creature’s power and toughness. Its new power and toughness is 4/1. A new effect gives the creature +5/+0. Its “unswitched” power and toughness would be 6/4, so its actual power and toughness is 4/6.",
+      "A 1/3 creature is given +0/+1 by an effect. Then another effect switches the creature’s power and toughness. Its new power and toughness is 4/1. If the +0/+1 effect ends before the switch effect ends, the creature becomes 3/1.",
+      "A 1/3 creature is given +0/+1 by an effect. Then another effect switches the creature’s power and toughness. Then another effect switches its power and toughness again. The two switches essentially cancel each other, and the creature becomes 1/4."
+    ],
+    "ruleText": "Layer 7d: Effects that switch a creature’s power and toughness are applied. Such effects take the value of power and apply it to the creature’s toughness, and take the value of toughness and apply it to the creature’s power.",
+    "fragment": "4d",
+    "navigation": {
+      "previousRule": "613.4c",
+      "nextRule": "613.5"
+    }
+  },
+  "613.7a": {
+    "ruleNumber": "613.7a",
+    "examples": [
+      "Rune of Flight is an Aura that grants enchanted Equipment “Equipped creature has flying.” A player attaches Rune of Flight to Colossus Hammer, an Equipment with “Equipped creature gets +10/+10 and loses flying.” The ability granted by Rune of Flight shares Rune of Flight’s timestamp because it is later than Colossus Hammer’s timestamp. If Colossus Hammer becomes attached to a creature, both of its abilities receive new timestamps (see rule 613.7e), but the relative order of those timestamps remains the same."
+    ],
+    "ruleText": "A continuous effect generated by a static ability has the same timestamp as the object the static ability is on, or the timestamp of the effect that created the ability, whichever is later. If the effect that created the ability has the later timestamp and the object the ability is on receives a new timestamp, each continuous effect generated by static abilities of that object receives a new timestamp as well, but the relative order of those timestamps remains the same.",
+    "fragment": "7a",
+    "navigation": {
+      "previousRule": "613.7",
+      "nextRule": "613.7b"
+    }
+  },
+  "613.7b": {
+    "ruleNumber": "613.7b",
+    "examples": null,
+    "ruleText": "A continuous effect generated by the resolution of a spell or ability receives a timestamp at the time it’s created.",
+    "fragment": "7b",
+    "navigation": {
+      "previousRule": "613.7a",
+      "nextRule": "613.7c"
+    }
+  },
+  "613.7c": {
+    "ruleNumber": "613.7c",
+    "examples": null,
+    "ruleText": "Each counter receives a timestamp as it’s put on an object or player. If that object or player already has a counter of that kind on it, each counter of that kind receives a new timestamp identical to that of the new counter.",
+    "fragment": "7c",
+    "navigation": {
+      "previousRule": "613.7b",
+      "nextRule": "613.7d"
+    }
+  },
+  "613.7d": {
+    "ruleNumber": "613.7d",
+    "examples": null,
+    "ruleText": "An object receives a timestamp at the time it enters a zone.",
+    "fragment": "7d",
+    "navigation": {
+      "previousRule": "613.7c",
+      "nextRule": "613.7e"
+    }
+  },
+  "613.7e": {
+    "ruleNumber": "613.7e",
+    "examples": null,
+    "ruleText": "An Aura, Equipment, or Fortification receives a new timestamp each time it becomes attached to an object or player.",
+    "fragment": "7e",
+    "navigation": {
+      "previousRule": "613.7d",
+      "nextRule": "613.7f"
+    }
+  },
+  "613.7f": {
+    "ruleNumber": "613.7f",
+    "examples": null,
+    "ruleText": "A permanent receives a new timestamp each time it turns face up or face down.",
+    "fragment": "7f",
+    "navigation": {
+      "previousRule": "613.7e",
+      "nextRule": "613.7g"
+    }
+  },
+  "613.7g": {
+    "ruleNumber": "613.7g",
+    "examples": null,
+    "ruleText": "A transforming double-faced permanent receives a new timestamp each time it transforms or converts.",
+    "fragment": "7g",
+    "navigation": {
+      "previousRule": "613.7f",
+      "nextRule": "613.7h"
+    }
+  },
+  "613.7h": {
+    "ruleNumber": "613.7h",
+    "examples": null,
+    "ruleText": "A face-up plane card, phenomenon card, or scheme card receives a timestamp at the time it’s turned face up.",
+    "fragment": "7h",
+    "navigation": {
+      "previousRule": "613.7g",
+      "nextRule": "613.7i"
+    }
+  },
+  "613.7i": {
+    "ruleNumber": "613.7i",
+    "examples": null,
+    "ruleText": "A face-up vanguard card receives a timestamp at the beginning of the game.",
+    "fragment": "7i",
+    "navigation": {
+      "previousRule": "613.7h",
+      "nextRule": "613.7j"
+    }
+  },
+  "613.7j": {
+    "ruleNumber": "613.7j",
+    "examples": null,
+    "ruleText": "A conspiracy card receives a timestamp at the beginning of the game. If it’s face down, it receives a new timestamp at the time it turns face up.",
+    "fragment": "7j",
+    "navigation": {
+      "previousRule": "613.7i",
+      "nextRule": "613.7k"
+    }
+  },
+  "613.7k": {
+    "ruleNumber": "613.7k",
+    "examples": null,
+    "ruleText": "A sticker receives a new timestamp each time it’s put on an object. If the object a sticker is on receives a new timestamp, the sticker receives a new timestamp immediately after that one. If the object a sticker is on becomes part of a merged permanent on the battlefield, the sticker receives a new timestamp at that time. If an object has more than one sticker on it as it enters a zone or becomes part of a merged permanent, the relative timestamp order of those stickers remains unchanged.",
+    "fragment": "7k",
+    "navigation": {
+      "previousRule": "613.7j",
+      "nextRule": "613.7m"
+    }
+  },
+  "613.7m": {
+    "ruleNumber": "613.7m",
+    "examples": null,
+    "ruleText": "If two or more objects would receive a timestamp simultaneously, such as by entering a zone simultaneously or becoming attached simultaneously, their relative timestamps are determined in APNAP order (see rule 101.4). Objects controlled by the active player (or owned by the active player, if they have no controller) have an earlier relative timestamp in the order of that player’s choice, followed by each other player in turn order.",
+    "fragment": "7m",
+    "navigation": {
+      "previousRule": "613.7k",
+      "nextRule": "613.8"
+    }
+  },
+  "613.8a": {
+    "ruleNumber": "613.8a",
+    "examples": null,
+    "ruleText": "An effect is said to “depend on” another if (a) it’s applied in the same layer (and, if applicable, sublayer) as the other effect; (b) applying the other would change the text or the existence of the first effect, what it applies to, or what it does to any of the things it applies to; and (c) neither effect is from a characteristic-defining ability or both effects are from characteristic-defining abilities. Otherwise, the effect is considered to be independent of the other effect.",
+    "fragment": "8a",
+    "navigation": {
+      "previousRule": "613.8",
+      "nextRule": "613.8b"
+    }
+  },
+  "613.8b": {
+    "ruleNumber": "613.8b",
+    "examples": null,
+    "ruleText": "An effect dependent on one or more other effects waits to apply until just after all of those effects have been applied. If multiple dependent effects would apply simultaneously in this way, they’re applied in timestamp order relative to each other. If several dependent effects form a dependency loop, then this rule is ignored and the effects in the dependency loop are applied in timestamp order.",
+    "fragment": "8b",
+    "navigation": {
+      "previousRule": "613.8a",
+      "nextRule": "613.8c"
+    }
+  },
+  "613.8c": {
+    "ruleNumber": "613.8c",
+    "examples": null,
+    "ruleText": "After each effect is applied, the order of remaining effects is reevaluated and may change if an effect that has not yet been applied becomes dependent on or independent of one or more other effects that have not yet been applied.",
+    "fragment": "8c",
+    "navigation": {
+      "previousRule": "613.8b",
+      "nextRule": "613.9"
+    }
+  },
+  "614.10": {
+    "ruleNumber": "614.10",
+    "examples": null,
+    "ruleText": "An effect that causes a player to skip an event, step, phase, or turn is a replacement effect. “Skip [something]” is the same as “Instead of doing [something], do nothing.” Once a step, phase, or turn has started, it can no longer be skipped—any skip effects will wait until the next occurrence.",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "614.9",
+      "nextRule": "614.10a"
+    }
+  },
+  "614.11": {
+    "ruleNumber": "614.11",
+    "examples": null,
+    "ruleText": "Some effects replace card draws. These effects are applied even if no cards could be drawn because there are no cards in the affected player’s library.",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "614.10b",
+      "nextRule": "614.11a"
+    }
+  },
+  "614.12": {
+    "ruleNumber": "614.12",
+    "examples": [
+      "Voice of All says “As Voice of All enters the battlefield, choose a color” and “Voice of All has protection from the chosen color.” An effect creates a token that’s a copy of Voice of All. As that token is created, the token’s controller chooses a color for it.",
+      "Yixlid Jailer says “Cards in graveyards lose all abilities.” Scarwood Treefolk says “Scarwood Treefolk enters the battlefield tapped.” A Scarwood Treefolk that’s put onto the battlefield from a graveyard enters the battlefield tapped.",
+      "Orb of Dreams is an artifact that says “Permanents enter the battlefield tapped.” It won’t affect itself, so Orb of Dreams enters the battlefield untapped."
+    ],
+    "ruleText": "Some replacement effects modify how a permanent enters the battlefield. (See rules 614.1c–d.) Such effects may come from the permanent itself if they affect only that permanent (as opposed to a general subset of permanents that includes it). They may also come from other sources. To determine which replacement effects apply and how they apply, check the characteristics of the permanent as it would exist on the battlefield, taking into account replacement effects that have already modified how it enters the battlefield (see rule 616.1), continuous effects from the permanent’s own static abilities that would apply to it once it’s on the battlefield, and continuous effects that already exist and would apply to the permanent.",
+    "fragment": "12",
+    "navigation": {
+      "previousRule": "614.11b",
+      "nextRule": "614.12a"
+    }
+  },
+  "614.13": {
+    "ruleNumber": "614.13",
+    "examples": null,
+    "ruleText": "An effect that modifies how a permanent enters the battlefield may cause other objects to change zones.",
+    "fragment": "13",
+    "navigation": {
+      "previousRule": "614.12b",
+      "nextRule": "614.13a"
+    }
+  },
+  "614.14": {
+    "ruleNumber": "614.14",
+    "examples": null,
+    "ruleText": "An object may have one ability printed on it that generates a replacement effect which causes one or more cards to be exiled, and another ability that refers either to “the exiled cards” or to cards “exiled with [this object].” These abilities are linked: the second refers only to cards in the exile zone that were put there as a direct result of the replacement event caused by the first. If another object gains a pair of linked abilities, the abilities will be similarly linked on that object. They can’t be linked to any other ability, regardless of what other abilities the object may currently have or may have had in the past. See rule 607, “Linked Abilities.”",
+    "fragment": "14",
+    "navigation": {
+      "previousRule": "614.13b",
+      "nextRule": "614.15"
+    }
+  },
+  "614.15": {
+    "ruleNumber": "614.15",
+    "examples": null,
+    "ruleText": "Some replacement effects are not continuous effects. Rather, they are an effect of a resolving spell or ability that replace part or all of that spell or ability’s own effect(s). Such effects are called self-replacement effects. The text creating a self-replacement effect is usually part of the ability whose effect is being replaced, but the text can be a separate ability, particularly when preceded by an ability word. When applying replacement effects to an event, self-replacement effects are applied before other replacement effects.",
+    "fragment": "15",
+    "navigation": {
+      "previousRule": "614.14",
+      "nextRule": "614.16"
+    }
+  },
+  "614.16": {
+    "ruleNumber": "614.16",
+    "examples": null,
+    "ruleText": "Some replacement effects apply “if an effect would create one or more tokens” or “if an effect would put one or more counters on a permanent.” These replacement effects apply if the effect of a resolving spell or ability creates a token or puts a counter on a permanent, and they also apply if another replacement or prevention effect does so, even if the original event being modified wasn’t itself an effect. ",
+    "fragment": "16",
+    "navigation": {
+      "previousRule": "614.15",
+      "nextRule": "614.17"
+    }
+  },
+  "614.17": {
+    "ruleNumber": "614.17",
+    "examples": null,
+    "ruleText": "Some effects state that something can’t happen. These effects aren’t replacement effects, but follow similar rules.",
+    "fragment": "17",
+    "navigation": {
+      "previousRule": "614.16",
+      "nextRule": "614.17a"
+    }
+  },
+  "614.1a": {
+    "ruleNumber": "614.1a",
+    "examples": null,
+    "ruleText": "Effects that use the word “instead” are replacement effects. Most replacement effects use the word “instead” to indicate what events will be replaced with other events.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "614.1",
+      "nextRule": "614.1b"
+    }
+  },
+  "614.1b": {
+    "ruleNumber": "614.1b",
+    "examples": null,
+    "ruleText": "Effects that use the word “skip” are replacement effects. These replacement effects use the word “skip” to indicate what events, steps, phases, or turns will be replaced with nothing.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "614.1a",
+      "nextRule": "614.1c"
+    }
+  },
+  "614.1c": {
+    "ruleNumber": "614.1c",
+    "examples": null,
+    "ruleText": "Effects that read “[This permanent] enters the battlefield with . . . ,” “As [this permanent] enters the battlefield . . . ,” or “[This permanent] enters the battlefield as . . . “ are replacement effects.",
+    "fragment": "1c",
+    "navigation": {
+      "previousRule": "614.1b",
+      "nextRule": "614.1d"
+    }
+  },
+  "614.1d": {
+    "ruleNumber": "614.1d",
+    "examples": null,
+    "ruleText": "Continuous effects that read “[This permanent] enters the battlefield . . .” or “[Objects] enter the battlefield . . .” are replacement effects.",
+    "fragment": "1d",
+    "navigation": {
+      "previousRule": "614.1c",
+      "nextRule": "614.1e"
+    }
+  },
+  "614.1e": {
+    "ruleNumber": "614.1e",
+    "examples": null,
+    "ruleText": "Effects that read “As [this permanent] is turned face up . . . ,” are replacement effects.",
+    "fragment": "1e",
+    "navigation": {
+      "previousRule": "614.1d",
+      "nextRule": "614.2"
+    }
+  },
+  "614.7a": {
+    "ruleNumber": "614.7a",
+    "examples": null,
+    "ruleText": "If a source would deal 0 damage, it does not deal damage at all. Replacement effects that would increase the damage dealt by that source, or would have that source deal that damage to a different object or player, have no event to replace, so they have no effect.",
+    "fragment": "7a",
+    "navigation": {
+      "previousRule": "614.7",
+      "nextRule": "614.8"
+    }
+  },
+  "615.10": {
+    "ruleNumber": "615.10",
+    "examples": [
+      "Daunting Defender says “If a source would deal damage to a Cleric creature you control, prevent 1 of that damage.” Pyroclasm says “Pyroclasm deals 2 damage to each creature.” Pyroclasm will deal 1 damage to each Cleric creature controlled by Daunting Defender’s controller. It will deal 2 damage to each other creature."
+    ],
+    "ruleText": "Some prevention effects generated by static abilities refer to a specific amount of damage—for example, “If a source would deal damage to you, prevent 1 of that damage.” Such an effect prevents only the indicated amount of damage in any applicable damage event at any given time. It will apply separately to damage from other applicable events that would happen at the same time, or at a different time.",
+    "fragment": "10",
+    "navigation": {
+      "previousRule": "615.9",
+      "nextRule": "615.11"
+    }
+  },
+  "615.11": {
+    "ruleNumber": "615.11",
+    "examples": [
+      "Wojek Apothecary has an ability that says “{T}: Prevent the next 1 damage that would be dealt to target creature and each other creature that shares a color with it this turn.” When the ability resolves, it gives the target creature and each other creature on the battlefield that shares a color with it at that time a shield preventing the next 1 damage that would be dealt to it. Changing creatures’ colors after the ability resolves doesn’t add or remove shields, and creatures that enter the battlefield later in the turn don’t get the shield."
+    ],
+    "ruleText": "Some prevention effects prevent the next N damage that would be dealt to each of a number of untargeted creatures. Such an effect creates a prevention shield for each applicable creature when the spell or ability that generates that effect resolves.",
+    "fragment": "11",
+    "navigation": {
+      "previousRule": "615.10",
+      "nextRule": "615.12"
+    }
+  },
+  "615.12": {
+    "ruleNumber": "615.12",
+    "examples": null,
+    "ruleText": "Some effects state that damage “can’t be prevented.” If unpreventable damage would be dealt, any applicable prevention effects are still applied to it. Those effects won’t prevent any damage, but any additional effects they have will take place. Existing damage prevention shields won’t be reduced by damage that can’t be prevented.",
+    "fragment": "12",
+    "navigation": {
+      "previousRule": "615.11",
+      "nextRule": "615.12a"
+    }
+  },
+  "615.13": {
+    "ruleNumber": "615.13",
+    "examples": null,
+    "ruleText": "Some triggered abilities trigger when damage that would be dealt is prevented. Such an ability triggers each time a prevention effect is applied to one or more simultaneous damage events and prevents some or all of that damage.",
+    "fragment": "13",
+    "navigation": {
+      "previousRule": "615.12a",
+      "nextRule": null
+    }
+  },
+  "615.1a": {
+    "ruleNumber": "615.1a",
+    "examples": null,
+    "ruleText": "Effects that use the word “prevent” are prevention effects. Prevention effects use “prevent” to indicate what damage will not be dealt.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "615.1",
+      "nextRule": "615.2"
+    }
+  },
+  "616.1a": {
+    "ruleNumber": "616.1a",
+    "examples": null,
+    "ruleText": "If any of the replacement and/or prevention effects are self-replacement effects (see rule 614.15), one of them must be chosen. If not, proceed to rule 616.1b.",
+    "fragment": "1a",
+    "navigation": {
+      "previousRule": "616.1",
+      "nextRule": "616.1b"
+    }
+  },
+  "616.1b": {
+    "ruleNumber": "616.1b",
+    "examples": null,
+    "ruleText": "If any of the replacement and/or prevention effects would modify under whose control an object would enter the battlefield, one of them must be chosen. If not, proceed to rule 616.1c.",
+    "fragment": "1b",
+    "navigation": {
+      "previousRule": "616.1a",
+      "nextRule": "616.1c"
+    }
+  },
+  "616.1c": {
+    "ruleNumber": "616.1c",
+    "examples": null,
+    "ruleText": "If any of the replacement and/or prevention effects would cause an object to become a copy of another object as it enters the battlefield, one of them must be chosen. If not, proceed to rule 616.1d.",
+    "fragment": "1c",
+    "navigation": {
+      "previousRule": "616.1b",
+      "nextRule": "616.1d"
+    }
+  },
+  "616.1d": {
+    "ruleNumber": "616.1d",
+    "examples": null,
+    "ruleText": "If any of the replacement and/or prevention effects would cause a card to enter the battlefield with its back face up, one of them must be chosen (See rule 701.28, “Transform,” and rule 701.50, “Convert.”). If not, proceed to 616.1e.",
+    "fragment": "1d",
+    "navigation": {
+      "previousRule": "616.1c",
+      "nextRule": "616.1e"
+    }
+  },
+  "616.1e": {
+    "ruleNumber": "616.1e",
+    "examples": null,
+    "ruleText": "Any of the applicable replacement and/or prevention effects may be chosen.",
+    "fragment": "1e",
+    "navigation": {
+      "previousRule": "616.1d",
+      "nextRule": "616.1f"
+    }
+  },
+  "616.1f": {
+    "ruleNumber": "616.1f",
+    "examples": [
+      "Two permanents are on the battlefield. One is an enchantment that reads “If a card would be put into a graveyard from anywhere, instead exile it,” and the other is a creature that reads “If [this creature] would die, instead shuffle it into its owner’s library.” If the creature is destroyed, its controller decides which replacement to apply first; the other does nothing.",
+      "Essence of the Wild reads “Creatures you control enter the battlefield as a copy of Essence of the Wild.” A player who controls Essence of the Wild casts Rusted Sentinel, which normally enters the battlefield tapped. As it enters the battlefield, the copy effect from Essence of the Wild is applied first. As a result, it no longer has the ability that causes it to enter the battlefield tapped. Rusted Sentinel will enter the battlefield as an untapped copy of Essence of the Wild."
+    ],
+    "ruleText": "Once the chosen effect has been applied, this process is repeated (taking into account only replacement or prevention effects that would now be applicable) until there are no more left to apply.",
+    "fragment": "1f",
+    "navigation": {
+      "previousRule": "616.1e",
+      "nextRule": "616.1g"
+    }
+  },
+  "616.1g": {
+    "ruleNumber": "616.1g",
+    "examples": [
+      "A player is instructed to create a token that’s a copy of Voice of All, which has the ability “As Voice of All enters the battlefield, choose a color.” Doubling Season has an ability that reads “If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.” Because entering the battlefield is an event contained within the event of creating a token, the effect of Doubling Season must be applied first, and then the effects of the two Voice of All tokens may be applied in either order."
+    ],
+    "ruleText": "While following the steps in 616.1a–f, one replacement or prevention effect may apply to an event, and another may apply to an event contained within the first event. In this case, the second effect can’t be chosen until after the first effect has been chosen.",
+    "fragment": "1g",
+    "navigation": {
+      "previousRule": "616.1f",
+      "nextRule": "616.2"
+    }
+  },
+  "603.10a": {
+    "ruleNumber": "603.10a",
+    "examples": [
+      "Two creatures are on the battlefield along with an artifact that has the ability “Whenever a creature dies, you gain 1 life.” Someone casts a spell that destroys all artifacts, creatures, and enchantments. The artifact’s ability triggers twice, even though the artifact goes to its owner’s graveyard at the same time as the creatures."
+    ],
+    "ruleText": "Some zone-change triggers look back in time. These are leaves-the-battlefield abilities, abilities that trigger when a card leaves a graveyard, and abilities that trigger when an object that all players can see is put into a hand or library.",
+    "fragment": "10a",
+    "navigation": {
+      "previousRule": "603.10",
+      "nextRule": "603.10b"
+    }
+  },
+  "603.10b": {
+    "ruleNumber": "603.10b",
+    "examples": null,
+    "ruleText": "Abilities that trigger when a permanent phases out look back in time.",
+    "fragment": "10b",
+    "navigation": {
+      "previousRule": "603.10a",
+      "nextRule": "603.10c"
+    }
+  },
+  "603.10c": {
+    "ruleNumber": "603.10c",
+    "examples": null,
+    "ruleText": "Abilities that trigger specifically when an object becomes unattached look back in time.",
+    "fragment": "10c",
+    "navigation": {
+      "previousRule": "603.10b",
+      "nextRule": "603.10d"
+    }
+  },
+  "603.10d": {
+    "ruleNumber": "603.10d",
+    "examples": null,
+    "ruleText": "Abilities that trigger when a player loses control of an object look back in time.",
+    "fragment": "10d",
+    "navigation": {
+      "previousRule": "603.10c",
+      "nextRule": "603.10e"
+    }
+  },
+  "603.10e": {
+    "ruleNumber": "603.10e",
+    "examples": null,
+    "ruleText": "Abilities that trigger when a spell is countered look back in time.",
+    "fragment": "10e",
+    "navigation": {
+      "previousRule": "603.10d",
+      "nextRule": "603.10f"
+    }
+  },
+  "603.10f": {
+    "ruleNumber": "603.10f",
+    "examples": null,
+    "ruleText": "Abilities that trigger when a player loses the game look back in time.",
+    "fragment": "10f",
+    "navigation": {
+      "previousRule": "603.10e",
+      "nextRule": "603.10g"
+    }
+  },
+  "603.10g": {
+    "ruleNumber": "603.10g",
+    "examples": null,
+    "ruleText": "Abilities that trigger when a player planeswalks away from a plane look back in time.",
+    "fragment": "10g",
+    "navigation": {
+      "previousRule": "603.10f",
+      "nextRule": "603.11"
+    }
+  },
+  "603.12a": {
+    "ruleNumber": "603.12a",
+    "examples": null,
+    "ruleText": "Normally, if the trigger event or events occur multiple times during the resolution of the spell or ability that created it, the reflexive triggered ability will trigger once for each of those times. However, if a resolving spell or ability includes a choice to pay a cost “any number of times” and creates a triggered ability that triggers “when [a player] pays [that cost] one or more times,” paying that cost one or more times causes the reflexive triggered ability to trigger only once.",
+    "fragment": "12a",
+    "navigation": {
+      "previousRule": "603.12",
+      "nextRule": null
+    }
+  },
+  "614.10a": {
+    "ruleNumber": "614.10a",
+    "examples": null,
+    "ruleText": "Anything scheduled for a skipped step, phase, or turn won’t happen. Anything scheduled for the “next” occurrence of something waits for the first occurrence that isn’t skipped. If two effects each cause a player to skip their next occurrence, that player must skip the next two; one effect will be satisfied in skipping the first occurrence, while the other will remain until another occurrence can be skipped.",
+    "fragment": "10a",
+    "navigation": {
+      "previousRule": "614.10",
+      "nextRule": "614.10b"
+    }
+  },
+  "614.10b": {
+    "ruleNumber": "614.10b",
+    "examples": null,
+    "ruleText": "Some effects cause a player to skip a step, phase, or turn, then take another action. That action is considered to be the first thing that happens during the next step, phase, or turn to actually occur.",
+    "fragment": "10b",
+    "navigation": {
+      "previousRule": "614.10a",
+      "nextRule": "614.11"
+    }
+  },
+  "614.11a": {
+    "ruleNumber": "614.11a",
+    "examples": null,
+    "ruleText": "If an effect replaces a draw within a sequence of card draws, all actions required by the replacement are completed, if possible, before resuming the sequence.",
+    "fragment": "11a",
+    "navigation": {
+      "previousRule": "614.11",
+      "nextRule": "614.11b"
+    }
+  },
+  "614.11b": {
+    "ruleNumber": "614.11b",
+    "examples": null,
+    "ruleText": "If an effect would have a player both draw a card and perform an additional action on that card, and the draw is replaced, the additional action is not performed on any cards that are drawn as a result of that replacement effect.",
+    "fragment": "11b",
+    "navigation": {
+      "previousRule": "614.11a",
+      "nextRule": "614.12"
+    }
+  },
+  "614.12a": {
+    "ruleNumber": "614.12a",
+    "examples": null,
+    "ruleText": "If a replacement effect that modifies how a permanent enters the battlefield requires a choice, that choice is made before the permanent enters the battlefield.",
+    "fragment": "12a",
+    "navigation": {
+      "previousRule": "614.12",
+      "nextRule": "614.12b"
+    }
+  },
+  "614.12b": {
+    "ruleNumber": "614.12b",
+    "examples": null,
+    "ruleText": "Some replacement effects cause a permanent to enter the battlefield with its controller’s choice of one of two abilities, each marked with an anchor word and preceded by a bullet point. “[Anchor word] — [ability]” means “As long as [anchor word] was chosen as this permanent entered the battlefield, this permanent has [ability].” The abilities preceded by anchor words are each linked to the ability that causes a player to choose between them. See rule 607, “Linked Abilities.”",
+    "fragment": "12b",
+    "navigation": {
+      "previousRule": "614.12a",
+      "nextRule": "614.13"
+    }
+  },
+  "614.13a": {
+    "ruleNumber": "614.13a",
+    "examples": [
+      "Sutured Ghoul says, in part, “As Sutured Ghoul enters the battlefield, exile any number of creature cards from your graveyard.” If Sutured Ghoul and Runeclaw Bear enter the battlefield from your graveyard at the same time, you can’t choose to exile either of them when applying Sutured Ghoul’s replacement effect."
+    ],
+    "ruleText": "While applying an effect that modifies how a permanent enters the battlefield, you may have to choose a number of objects that will also change zones. You can’t choose the object that will become that permanent or any other object entering the battlefield at the same time as that object.",
+    "fragment": "13a",
+    "navigation": {
+      "previousRule": "614.13",
+      "nextRule": "614.13b"
+    }
+  },
+  "614.13b": {
+    "ruleNumber": "614.13b",
+    "examples": [
+      "Jund (a plane card) says, “Whenever a player casts a black, red, or green creature spell, it gains devour 5.” A player controls Runeclaw Bear and casts Thunder-Thrash Elder, a red creature spell with devour 3. As Thunder-Thrash Elder enters the battlefield, its controller can choose to sacrifice Runeclaw Bear when applying the devour 3 effect or when applying the devour 5 effect, but not both. Thunder-Thrash Elder will enter the battlefield with zero, three, or five +1/+1 counters, depending on this choice."
+    ],
+    "ruleText": "The same object can’t be chosen to change zones more than once when applying replacement effects that modify how a single permanent enters the battlefield.",
+    "fragment": "13b",
+    "navigation": {
+      "previousRule": "614.13a",
+      "nextRule": "614.14"
+    }
+  },
+  "614.17a": {
+    "ruleNumber": "614.17a",
+    "examples": null,
+    "ruleText": "“Can’t” effects must exist before the appropriate event occurs—they can’t “go back in time” and change something that’s already happened.",
+    "fragment": "17a",
+    "navigation": {
+      "previousRule": "614.17",
+      "nextRule": "614.17b"
+    }
+  },
+  "614.17b": {
+    "ruleNumber": "614.17b",
+    "examples": null,
+    "ruleText": "If an event can’t happen, a player can’t choose to pay a cost that includes that event.",
+    "fragment": "17b",
+    "navigation": {
+      "previousRule": "614.17a",
+      "nextRule": "614.17c"
+    }
+  },
+  "614.17c": {
+    "ruleNumber": "614.17c",
+    "examples": null,
+    "ruleText": "If an event can’t happen, it can only be replaced by a self-replacement effect (see rule 614.15). Other replacement and/or prevention effects can’t modify or replace it.",
+    "fragment": "17c",
+    "navigation": {
+      "previousRule": "614.17b",
+      "nextRule": "614.17d"
+    }
+  },
+  "614.17d": {
+    "ruleNumber": "614.17d",
+    "examples": null,
+    "ruleText": "Some “can’t” effects modify how a permanent enters the battlefield or whether it can enter the battlefield. Such effects may come from the permanent itself if they affect only that permanent (as opposed to a general subset of permanents that includes it). They may also come from other sources. To determine which “can’t” effects apply, check the characteristics of the permanent as it would exist on the battlefield, taking into account replacement effects that have already modified how it enters the battlefield (see rule 616.1), continuous effects from the permanent’s own static abilities that would apply to it once it’s on the battlefield, and continuous effects that already exist and would apply to the permanent.",
+    "fragment": "17d",
+    "navigation": {
+      "previousRule": "614.17c",
+      "nextRule": null
+    }
+  },
+  "615.12a": {
+    "ruleNumber": "615.12a",
+    "examples": null,
+    "ruleText": "A prevention effect is applied to any particular unpreventable damage event just once. It won’t invoke itself repeatedly trying to prevent that damage.",
+    "fragment": "12a",
+    "navigation": {
+      "previousRule": "615.12",
+      "nextRule": "615.13"
+    }
+  }
+}

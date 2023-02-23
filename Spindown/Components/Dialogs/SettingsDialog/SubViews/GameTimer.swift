@@ -148,6 +148,7 @@ struct GameTimer: View {
     
     func resetTimer() -> Void {
         withAnimation {
+            self.focused = nil
             self.hours = ""
             self.minutes = "30"
             self.seconds = ""
