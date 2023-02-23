@@ -160,6 +160,14 @@
 			path = Rules;
 			sourceTree = "<group>";
 		};
+		DB2960C829A7DE5800852A5F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B8F562986E2CB0023A84B /* Persistence.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		DB41B19C298AD7350000EC42 /* GameBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +196,7 @@
 		DB41B1AC298C01810000EC42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DBF1306C299BE19100B9E19A /* Store.swift */,
 				DB8B8F6E298767390023A84B /* Participant.swift */,
 				DBF1306E299BE1F100B9E19A /* Error.swift */,
 			);
@@ -197,6 +206,7 @@
 		DB41B1AD298C018C0000EC42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
 				DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */,
 				DB41B1AA298BF3970000EC42 /* SplashScreen.swift */,
 				DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */,
@@ -242,11 +252,9 @@
 				DB41B19C298AD7350000EC42 /* GameBoard */,
 				DB41B1AD298C018C0000EC42 /* Views */,
 				DB41B1AC298C01810000EC42 /* Models */,
+				DB2960C829A7DE5800852A5F /* Controllers */,
 				DB41B1A7298AF4A30000EC42 /* Components */,
 				DB8B8F542986E2CB0023A84B /* SpindownApp.swift */,
-				DBF1306C299BE19100B9E19A /* Store.swift */,
-				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
-				DB8B8F562986E2CB0023A84B /* Persistence.swift */,
 				DB8B8F5D2986E2CC0023A84B /* Assets.xcassets */,
 				DB8B8F5F2986E2CC0023A84B /* Spindown.entitlements */,
 				DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */,
