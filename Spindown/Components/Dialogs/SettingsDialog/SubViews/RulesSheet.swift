@@ -27,9 +27,14 @@ public struct RulesNavigation: Codable {
     public let nextRule: String?
 }
 
-public struct RulesBody: Codable, Equatable {
+public struct RulesBody: Codable, Equatable, Hashable {
     public static func == (lhs: RulesBody, rhs: RulesBody) -> Bool {
         return lhs.ruleNumber == rhs.ruleNumber
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ruleNumber)
+        hasher.combine(ruleText)
     }
     
     public let ruleNumber: String?
@@ -83,56 +88,26 @@ extension AnyView {
 
 struct RulesSheet: View {
     @State private var isFetchingRules: Bool = false
-    @State private var rules: [String:RulesBody] = [:]
+
+    @State private var rules: [RulesBody] = []
     
     let letters = NSCharacterSet.letters
 
     var body: some View {
         VStack {
-            if (isFetchingRules == false) {
-                let keys = rules.map{ $0.key }.sorted()
-                let values = rules.map { $0.value }
-
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 15) {
-                        HStack {
-                            Text("Rulebook")
-                                .font(.system(size: 48, weight: .black))
-                            Spacer()
-                        }
-
-                        ForEach(Array(keys.indices[0 ..< 100]), id: \.self) { index in
-                            let target = values.firstIndex { $0.ruleNumber == keys[index] }
-                            VStack(alignment: .leading, spacing: 5) {
-                                let data = target != nil ? values[target!] : nil
-                                if (data != nil) {
-                                    HStack(alignment: .top, spacing: 0) {
-                                        Text(keys[index])
-                                            .font(.system(size: 18, weight: .bold))
-                                            .frame(width: 75, alignment: .leading)
-                                        
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            Text(data?.ruleText ?? "")
-                                                .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray5))
-                                            
-//                                            LinkedRuleNodes(nodes: nodes)
-                                            
-                                            if (data?.examples != nil) {
-                                                RuleExamples(examples: (data?.examples!)!)
-                                            }
-                                        }
-                                        Spacer()
-                                    }
-                                    .padding(.leading, keys[index].rangeOfCharacter(from: letters) != nil ? 75 : 0)
-                                }
-                            }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            HStack {
+                Text("Rulebook")
+                    .font(.system(size: 48, weight: .black))
+                Spacer()
+            }
+            ScrollView {
+                ForEach(rules, id: \.self) { rule in
+                    VStack {
+                        Text(rule.ruleNumber!)
+                        Text(rule.ruleText!)
                     }
-                    .padding()
+                    
                 }
-            } else {
-                Text("Fethcing Rules... Please hold.")
             }
         }
         .foregroundColor(Color.white)
@@ -141,26 +116,27 @@ struct RulesSheet: View {
         .onAppear {
             getRules()
         }
-        .onChange(of: self.rules) { newState in
-            if newState.count > 0 {
-                self.isFetchingRules = false
-                print("fetched rules")
-            }
-        }
     }
     
     func getRules() {
-        print("fetching rules")
-        let url = URL(string: "https://api.academyruins.com/allrules")!
-
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else { return }
-            let decoder = JSONDecoder()
-            let dRes = try! decoder.decode([String:RulesBody].self, from: data)
-            self.rules = dRes
+        if let path = Bundle.main.path(forResource: "100", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
+                    for (_, rule) in jsonResult {
+                        let obj = rule as? RulesBody ?? nil
+                        // rule needs to be decoded into the object structure. this currently always returns nil
+                        
+                        if obj != nil {
+                            self.rules.append((rule as? RulesBody)!)
+                        }
+                    }
+                }
+            } catch {
+               // handle error
+            }
         }
-
-        task.resume()
     }
 }
 

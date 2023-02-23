@@ -90,6 +90,9 @@ struct GameSettingsHomeView: View {
                 )
             }
         }
+        .sheet(isPresented: $showRulesSheet) {
+            RulesSheet()
+        }
         .transition(
             .asymmetric(
                 insertion: .push(from: .leading).combined(with: .opacity),
