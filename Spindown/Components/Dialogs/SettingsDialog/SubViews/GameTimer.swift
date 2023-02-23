@@ -45,10 +45,10 @@ struct GameTimer: View {
                             .focused($focused, equals: .hours)
                     }
                     .padding()
-                    .background(Color(UIColor(named: "DeepGray")!))
+                    .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
                     .cornerRadius(4)
                     .padding(4)
-                    .background(.black)
+                    .background(Color(UIColor(named: "DeepGray")!))
                     .cornerRadius(6)
                     .padding(4)
                     .background(
@@ -76,10 +76,10 @@ struct GameTimer: View {
                             .focused($focused, equals: .minutes)
                     }
                     .padding()
-                    .background(Color(UIColor(named: "DeepGray")!))
+                    .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
                     .cornerRadius(4)
                     .padding(4)
-                    .background(.black)
+                    .background(Color(UIColor(named: "DeepGray")!))
                     .cornerRadius(6)
                     .padding(4)
                     .background(
@@ -107,10 +107,10 @@ struct GameTimer: View {
                             .focused($focused, equals: .seconds)
                     }
                     .padding()
-                    .background(Color(UIColor(named: "DeepGray")!))
+                    .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
                     .cornerRadius(4)
                     .padding(4)
-                    .background(.black)
+                    .background(Color(UIColor(named: "DeepGray")!))
                     .cornerRadius(6)
                     .padding(4)
                     .background(
@@ -126,10 +126,10 @@ struct GameTimer: View {
             
             VStack(spacing: 20) {
                 HStack(spacing: 20) {
-                    UIButtonOutlined(text: "Reset", fill: .black, color: UIColor(named: "AccentGray")!, action: resetTimer)
                     UIButton(text: "Start Timer", color: UIColor(named: "PrimaryRed")!, action: {})
+                    UIButtonOutlined(text: "Reset", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGray")!, action: resetTimer)
                 }
-                UIButtonOutlined(text: "Go Back", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
+                UIButtonOutlined(text: "Go Back", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
                     withAnimation {
                         self.activeView = .home
                     }
