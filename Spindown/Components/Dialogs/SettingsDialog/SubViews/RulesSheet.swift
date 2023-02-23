@@ -8,88 +8,34 @@
 import Foundation
 import SwiftUI
 
-extension String {
-    func markdownToAttributed() -> AttributedString {
-        do {
-            return try AttributedString(markdown: self)
-        } catch {
-            return AttributedString("Error parsing markdown: \(error)")
-        }
-    }
-}
-
-public struct RulesResponse: Codable {
-    public let rules: [String:[RulesBody]]
-}
-
 public struct RulesNavigation: Codable {
     public let previousRule: String?
     public let nextRule: String?
 }
 
-public struct RulesBody: Codable, Equatable, Hashable {
-    public static func == (lhs: RulesBody, rhs: RulesBody) -> Bool {
-        return lhs.ruleNumber == rhs.ruleNumber
+class Rule: ObservableObject, Equatable, Identifiable, Hashable {
+    var uid: UUID = UUID()
+    
+    @Published public var ruleNumber: String = ""
+    @Published public var examples: [String?]?
+    @Published public var ruleText: String = ""
+    @Published public var fragment: String?
+    @Published public var navigation: RulesNavigation?
+    
+    static func == (lhs: Rule, rhs: Rule) -> Bool {
+        return lhs.uid == rhs.uid
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(ruleNumber)
-        hasher.combine(ruleText)
-    }
-    
-    public let ruleNumber: String?
-    public let examples: [String?]?
-    public let ruleText: String?
-    public let fragment: String?
-    public let navigation: RulesNavigation?
-}
-
-struct LinkedRuleNodes: View {
-    var nodes: [String]
-
-    var body: some View {
-        VStack {
-            ForEach(nodes.indices, id: \.self) { j in
-                Text(nodes[j])
-                    .foregroundColor(Color.red)
-            }
-        }
-    }
-}
-
-struct RuleExamples: View {
-    var examples: [String?]
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("Examples")
-                .font(.system(size: 18, weight: .bold))
-            VStack(spacing: 5) {
-                ForEach(examples, id: \.self) { example in
-                    Text(example!)
-                        .italic()
-                        .foregroundColor(Color(UIColor(named: "AccentGray") ?? .systemGray5))
-                }
-            }
-        }
-    }
-}
-
-extension AnyView {
-    static func + (left: AnyView, right: AnyView) -> AnyView{
-        return AnyView(
-            HStack(spacing: 0) {
-                left.fixedSize(horizontal: false, vertical: false)
-                right.fixedSize(horizontal: false, vertical: false)
-            }
-        )
+    public func hash(into hasher: inout Hasher) -> Void {
+        hasher.combine(uid)
     }
 }
 
 struct RulesSheet: View {
     @State private var isFetchingRules: Bool = false
 
-    @State private var rules: [RulesBody] = []
+    @State private var rules: [Rule] = []
+    @State private var currentPage: Int = 1
     
     let letters = NSCharacterSet.letters
 
@@ -97,16 +43,60 @@ struct RulesSheet: View {
         VStack {
             HStack {
                 Text("Rulebook")
-                    .font(.system(size: 48, weight: .black))
+                    .font(.system(size: 32, weight: .black))
                 Spacer()
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search for a rule")
+                }
             }
             ScrollView {
-                ForEach(rules, id: \.self) { rule in
-                    VStack {
-                        Text(rule.ruleNumber!)
-                        Text(rule.ruleText!)
+                VStack(spacing: 20) {
+                    ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
+                        HStack(alignment: .top, spacing: 0) {
+                            let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
+                            
+                            if (subrule == nil) {
+                                HStack {
+                                    Text(rule.ruleNumber)
+                                        .font(.system(size: 18, weight: .black))
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                }
+                                .frame(width: 80)
+                            } else {
+                                Text(rule.ruleNumber)
+                                    .font(.system(size: 18, weight: .bold))
+                                    .padding(.leading, 100)
+                                    .padding(.trailing, 20)
+                                    .multilineTextAlignment(.leading)
+                            }
+                            Text(rule.ruleText)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            
+            HStack {
+                Button(action: {
+                    if (self.currentPage != 1) {
+                        self.currentPage -= 1
+                    }
+                }) {
+                    Text("Prev Page")
+                }
+                
+                Spacer()
+
+                Button(action: {
+                    if (self.currentPage != 9) {
+                        self.currentPage += 1
                     }
                     
+                }) {
+                    Text("Next Page")
                 }
             }
         }
@@ -116,21 +106,28 @@ struct RulesSheet: View {
         .onAppear {
             getRules()
         }
+        .onChange(of: currentPage) { newState in
+            getRules()
+        }
     }
     
     func getRules() {
-        if let path = Bundle.main.path(forResource: "100", ofType: "json") {
+        self.rules = []
+        print("fetch ruleset \(self.currentPage)00")
+        if let path = Bundle.main.path(forResource: "\(self.currentPage)00", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                 if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
                     for (_, rule) in jsonResult {
-                        let obj = rule as? RulesBody ?? nil
-                        // rule needs to be decoded into the object structure. this currently always returns nil
+                        let obj = Rule()
+                        obj.ruleNumber = (rule["ruleNumber"] as? String)!
+                        obj.examples = rule["examples"] as? [String?]
+                        obj.ruleText = (rule["ruleText"] as? String)!
+                        obj.fragment = rule["fragment"] as? String
+                        obj.navigation = rule["navigation"] as? RulesNavigation
                         
-                        if obj != nil {
-                            self.rules.append((rule as? RulesBody)!)
-                        }
+                        self.rules.append(obj)
                     }
                 }
             } catch {

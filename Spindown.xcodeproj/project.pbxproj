@@ -11,13 +11,13 @@
 		DB1D3A072991566400A741DC /* PlayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A062991566400A741DC /* PlayerList.swift */; };
 		DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */; };
 		DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */; };
+		DB22346529A8016A006316CE /* 700.json in Resources */ = {isa = PBXBuildFile; fileRef = DB22346429A8016A006316CE /* 700.json */; };
 		DB2960B529A7D7D800852A5F /* 100.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B429A7D7D800852A5F /* 100.json */; };
 		DB2960B729A7D84200852A5F /* 200.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B629A7D84200852A5F /* 200.json */; };
 		DB2960B929A7D84B00852A5F /* 300.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B829A7D84B00852A5F /* 300.json */; };
 		DB2960BB29A7D85200852A5F /* 400.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960BA29A7D85200852A5F /* 400.json */; };
 		DB2960BD29A7D85C00852A5F /* 500.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960BC29A7D85C00852A5F /* 500.json */; };
 		DB2960BF29A7D86B00852A5F /* 600.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960BE29A7D86B00852A5F /* 600.json */; };
-		DB2960C129A7D87700852A5F /* 700.json in Sources */ = {isa = PBXBuildFile; fileRef = DB2960C029A7D87700852A5F /* 700.json */; };
 		DB2960C529A7D9CD00852A5F /* 800.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960C429A7D9CD00852A5F /* 800.json */; };
 		DB2960C729A7D9D800852A5F /* 900.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960C629A7D9D800852A5F /* 900.json */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
@@ -60,13 +60,13 @@
 		DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPlayersSelector.swift; sourceTree = "<group>"; };
 		DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTotalCalculatorDialog.swift; sourceTree = "<group>"; };
 		DB1F08F0299C1C6100A057CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB22346429A8016A006316CE /* 700.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 700.json; sourceTree = "<group>"; };
 		DB2960B429A7D7D800852A5F /* 100.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 100.json; sourceTree = "<group>"; };
 		DB2960B629A7D84200852A5F /* 200.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 200.json; sourceTree = "<group>"; };
 		DB2960B829A7D84B00852A5F /* 300.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 300.json; sourceTree = "<group>"; };
 		DB2960BA29A7D85200852A5F /* 400.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 400.json; sourceTree = "<group>"; };
 		DB2960BC29A7D85C00852A5F /* 500.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 500.json; sourceTree = "<group>"; };
 		DB2960BE29A7D86B00852A5F /* 600.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 600.json; sourceTree = "<group>"; };
-		DB2960C029A7D87700852A5F /* 700.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 700.json; sourceTree = "<group>"; };
 		DB2960C429A7D9CD00852A5F /* 800.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 800.json; sourceTree = "<group>"; };
 		DB2960C629A7D9D800852A5F /* 900.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 900.json; sourceTree = "<group>"; };
 		DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerDialog.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 				DB2960BA29A7D85200852A5F /* 400.json */,
 				DB2960BC29A7D85C00852A5F /* 500.json */,
 				DB2960BE29A7D86B00852A5F /* 600.json */,
-				DB2960C029A7D87700852A5F /* 700.json */,
+				DB22346429A8016A006316CE /* 700.json */,
 				DB2960C429A7D9CD00852A5F /* 800.json */,
 				DB2960C629A7D9D800852A5F /* 900.json */,
 			);
@@ -341,6 +341,7 @@
 				DB2960BF29A7D86B00852A5F /* 600.json in Resources */,
 				DB2960B529A7D7D800852A5F /* 100.json in Resources */,
 				DB2960C729A7D9D800852A5F /* 900.json in Resources */,
+				DB22346529A8016A006316CE /* 700.json in Resources */,
 				DB2960B729A7D84200852A5F /* 200.json in Resources */,
 				DB8B8F622986E2CC0023A84B /* Preview Assets.xcassets in Resources */,
 				DB2960BB29A7D85200852A5F /* 400.json in Resources */,
@@ -367,7 +368,6 @@
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
 				DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */,
-				DB2960C129A7D87700852A5F /* 700.json in Sources */,
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
 				DB8B8F71298767670023A84B /* StartingLifeTotalSelector.swift in Sources */,
 				DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */,
