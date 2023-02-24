@@ -25,13 +25,6 @@ enum LifeTotalCalculatorSelection {
     case subtract
 }
 
-enum FocusField {
-    case quantity
-    case hours
-    case minutes
-    case seconds
-}
-
 struct LifeTotalCalculatorDialog: View {
     @Binding var open: Bool
     @Binding var selectedPlayer: Participant?

@@ -130,6 +130,10 @@ struct PlayerSelectorView: View {
     func addPlayer(_ player: Participant) -> Void {
         let index = self.localPlayerList.firstIndex(where: { $0.id == player.id })
         
-        self.players.insert(player, at: index!)
+        if (index != nil && index! < players.count) {
+            self.players.insert(player, at: index!)
+        } else if (index != nil && index! > players.count) {
+            self.players.append(player)
+        }
     }
 }

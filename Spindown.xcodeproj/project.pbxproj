@@ -12,6 +12,8 @@
 		DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */; };
 		DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */; };
 		DB22346529A8016A006316CE /* 700.json in Resources */ = {isa = PBXBuildFile; fileRef = DB22346429A8016A006316CE /* 700.json */; };
+		DB22346729A8024A006316CE /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB22346629A8024A006316CE /* Rule.swift */; };
+		DB22346929A848E4006316CE /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB22346829A848E4006316CE /* FocusField.swift */; };
 		DB2960B529A7D7D800852A5F /* 100.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B429A7D7D800852A5F /* 100.json */; };
 		DB2960B729A7D84200852A5F /* 200.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B629A7D84200852A5F /* 200.json */; };
 		DB2960B929A7D84B00852A5F /* 300.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B829A7D84B00852A5F /* 300.json */; };
@@ -61,6 +63,8 @@
 		DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTotalCalculatorDialog.swift; sourceTree = "<group>"; };
 		DB1F08F0299C1C6100A057CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB22346429A8016A006316CE /* 700.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 700.json; sourceTree = "<group>"; };
+		DB22346629A8024A006316CE /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		DB22346829A848E4006316CE /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
 		DB2960B429A7D7D800852A5F /* 100.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 100.json; sourceTree = "<group>"; };
 		DB2960B629A7D84200852A5F /* 200.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 200.json; sourceTree = "<group>"; };
 		DB2960B829A7D84B00852A5F /* 300.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 300.json; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				DBF1306C299BE19100B9E19A /* Store.swift */,
 				DB8B8F6E298767390023A84B /* Participant.swift */,
 				DBF1306E299BE1F100B9E19A /* Error.swift */,
+				DB22346629A8024A006316CE /* Rule.swift */,
+				DB22346829A848E4006316CE /* FocusField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				DB8B8F69298766BD0023A84B /* GameOverDialog.swift in Sources */,
 				DB8A3252298CB2DF00FB7658 /* ChangeLayout.swift in Sources */,
 				DB1D3A072991566400A741DC /* PlayerList.swift in Sources */,
+				DB22346729A8024A006316CE /* Rule.swift in Sources */,
 				DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */,
 				DBF1306D299BE19100B9E19A /* Store.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
@@ -371,6 +378,7 @@
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
 				DB8B8F71298767670023A84B /* StartingLifeTotalSelector.swift in Sources */,
 				DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */,
+				DB22346929A848E4006316CE /* FocusField.swift in Sources */,
 				DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */,
 				DB69EC8C29A7088300D4EB3F /* Players.swift in Sources */,
 				DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */,

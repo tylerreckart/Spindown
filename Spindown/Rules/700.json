@@ -11,7 +11,7 @@
       "nextRule": "700.2"
     }
   },
-    "700.2": {
+  "700.2": {
     "ruleNumber": "700.2",
     "examples": null,
     "ruleText": "A spell or ability is modal if it has two or more options in a bulleted list preceded by instructions for a player to choose a number of those options, such as “Choose one —.” Each of those options is a mode. Modal cards printed prior to the Khans of Tarkir® set didn’t use bulleted lists for the modes; these cards have received errata in the Oracle card reference so the modes do appear in a bulleted list.",
