@@ -91,8 +91,6 @@ struct SubscriptionView: View {
     @State private var hasPurchased: Bool = false
     // Sheet views.
     @State private var showManageSubscriptions: Bool = false
-    @State private var showTermsSheet: Bool = false
-    @State private var showPrivacySheet: Bool = false
     // Error handling.
     @State private var errorMessage: String?
     @State private var showErrorAlert: Bool = false
@@ -191,14 +189,18 @@ struct SubscriptionView: View {
                         fill: UIColor(named: "DeepGray")!,
                         color: UIColor(named: "AccentGrayDarker")!,
                         action: {
-                            self.showTermsSheet.toggle()
+                            if let url = URL(string: "https://haptic.software/terms") {
+                                UIApplication.shared.open(url)
+                            }
                         })
                     UIButtonOutlined(
                         text: "Privacy Policy",
                         fill: UIColor(named: "DeepGray")!,
                         color: UIColor(named: "AccentGrayDarker")!,
                         action: {
-                            self.showPrivacySheet.toggle()
+                            if let url = URL(string: "https://haptic.software/privacy") {
+                                UIApplication.shared.open(url)
+                            }
                         }
                     )
                 }
@@ -208,12 +210,6 @@ struct SubscriptionView: View {
         .foregroundColor(.white)
         .background(Color(UIColor(named: "DeepGray")!))
         .interactiveDismissDisabled(true)
-        .sheet(isPresented: $showTermsSheet) {
-            TermsOfUseView()
-        }
-        .sheet(isPresented: $showPrivacySheet) {
-            PrivacyPolicyView()
-        }
         .alert(isPresented: $showErrorAlert, error: ValidationError.NaN) {_ in
             Button(action: {
                 showErrorAlert = false

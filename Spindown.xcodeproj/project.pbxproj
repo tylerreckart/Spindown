@@ -22,6 +22,8 @@
 		DB2960BF29A7D86B00852A5F /* 600.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960BE29A7D86B00852A5F /* 600.json */; };
 		DB2960C529A7D9CD00852A5F /* 800.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960C429A7D9CD00852A5F /* 800.json */; };
 		DB2960C729A7D9D800852A5F /* 900.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960C629A7D9D800852A5F /* 900.json */; };
+		DB38DDB229A92BCC000D8796 /* Terms.md in Resources */ = {isa = PBXBuildFile; fileRef = DB69EC81299D1D4D00D4EB3F /* Terms.md */; };
+		DB38DDB329A92BD5000D8796 /* Privacy.md in Resources */ = {isa = PBXBuildFile; fileRef = DB69EC82299D1D9E00D4EB3F /* Privacy.md */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
 		DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */; };
@@ -32,8 +34,6 @@
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
 		DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* Dialog.swift */; };
 		DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */; };
-		DB69EC84299D1DDD00D4EB3F /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC83299D1DDD00D4EB3F /* PrivacyPolicy.swift */; };
-		DB69EC86299D1DF900D4EB3F /* TermsOfUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC85299D1DF900D4EB3F /* TermsOfUse.swift */; };
 		DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */; };
 		DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8929A7087500D4EB3F /* DiceRoll.swift */; };
 		DB69EC8C29A7088300D4EB3F /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8B29A7088300D4EB3F /* Players.swift */; };
@@ -86,8 +86,6 @@
 		DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDialog.swift; sourceTree = "<group>"; };
 		DB69EC81299D1D4D00D4EB3F /* Terms.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.md; sourceTree = "<group>"; };
 		DB69EC82299D1D9E00D4EB3F /* Privacy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Privacy.md; sourceTree = "<group>"; };
-		DB69EC83299D1DDD00D4EB3F /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
-		DB69EC85299D1DF900D4EB3F /* TermsOfUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUse.swift; sourceTree = "<group>"; };
 		DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Spindown/Views/AppSettings.swift; sourceTree = SOURCE_ROOT; };
 		DB69EC8929A7087500D4EB3F /* DiceRoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRoll.swift; sourceTree = "<group>"; };
 		DB69EC8B29A7088300D4EB3F /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
@@ -218,8 +216,6 @@
 				DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */,
 				DB8B8F72298767890023A84B /* PlayersSelector.swift */,
 				DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */,
-				DB69EC83299D1DDD00D4EB3F /* PrivacyPolicy.swift */,
-				DB69EC85299D1DF900D4EB3F /* TermsOfUse.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,6 +338,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB38DDB329A92BD5000D8796 /* Privacy.md in Resources */,
+				DB38DDB229A92BCC000D8796 /* Terms.md in Resources */,
 				DB2960C529A7D9CD00852A5F /* 800.json in Resources */,
 				DB2960BD29A7D85C00852A5F /* 500.json in Resources */,
 				DB2960BF29A7D86B00852A5F /* 600.json in Resources */,
@@ -383,13 +381,11 @@
 				DB69EC8C29A7088300D4EB3F /* Players.swift in Sources */,
 				DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */,
 				DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */,
-				DB69EC84299D1DDD00D4EB3F /* PrivacyPolicy.swift in Sources */,
 				DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */,
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
 				DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */,
 				DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */,
 				DBF1306F299BE1F100B9E19A /* Error.swift in Sources */,
-				DB69EC86299D1DF900D4EB3F /* TermsOfUse.swift in Sources */,
 				DB8B8F6D298767100023A84B /* PlayerTile.swift in Sources */,
 				DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */,
 				DB8B8F6F298767390023A84B /* Participant.swift in Sources */,

@@ -12,17 +12,16 @@ struct AboutView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Image("PC")
+                Image("SpindownIcon")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 250)
-                    .padding(.top, 50)
+                    .frame(maxWidth: 100, maxHeight: 100)
+                    .padding(.top, 75)
                 Text("Hi, I'm Tyler. I run Haptic Software as a one-man development studio without employees or outside funding.")
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: 320)
+                    .padding(.horizontal)
                 Text("This app would not be possible without the love and support of my wife, son, and our two dogs.")
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: 320)
+                    .padding(.horizontal)
                 
                 List {
                     Section(header: Text("Follow Us")) {
@@ -129,38 +128,38 @@ struct AppSettingsView: View {
             ScrollView {
                 List {
                     Section(header: Text("General")) {
-                        NavigationLink(destination: EmptyView()) {
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "PrimaryRed")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    Image(systemName: "textformat")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 16, weight: .bold))
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                }
-                                Text("Display")
-                            }
-                            .padding([.top, .bottom], 2)
-                        }
-                        NavigationLink(destination: EmptyView()) {
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "PrimaryBlue")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    Image(systemName: "note.text")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 16, weight: .bold))
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                }
-                                Text("Game History")
-                            }
-                            .padding([.top, .bottom], 2)
-                        }
+//                        NavigationLink(destination: EmptyView()) {
+//                            HStack {
+//                                ZStack {
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .fill(Color(UIColor(named: "PrimaryRed")!))
+//                                        .frame(width: 30, height: 30)
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//                                    Image(systemName: "textformat")
+//                                        .foregroundColor(.white)
+//                                        .font(.system(size: 16, weight: .bold))
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//                                }
+//                                Text("Display")
+//                            }
+//                            .padding([.top, .bottom], 2)
+//                        }
+//                        NavigationLink(destination: EmptyView()) {
+//                            HStack {
+//                                ZStack {
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .fill(Color(UIColor(named: "PrimaryBlue")!))
+//                                        .frame(width: 30, height: 30)
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//                                    Image(systemName: "note.text")
+//                                        .foregroundColor(.white)
+//                                        .font(.system(size: 16, weight: .bold))
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//                                }
+//                                Text("Game History")
+//                            }
+//                            .padding([.top, .bottom], 2)
+//                        }
                         NavigationLink(destination: EmptyView()) {
                             HStack {
                                 ZStack {
@@ -215,23 +214,27 @@ struct AppSettingsView: View {
                     .listRowSeparatorTint(Color.white.opacity(0.15))
                     
                     Section(header: Text("About")) {
-                        Button(action: { self.showManageSubscriptions.toggle() }) {
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    Image(systemName: "creditcard.fill")
-                                        .foregroundColor(.white)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                }
-                                Text("Manage Subscription")
-                                    .foregroundColor(.white)
+                        //                        Button(action: { self.showManageSubscriptions.toggle() }) {
+                        //                            HStack {
+                        //                                ZStack {
+                        //                                    RoundedRectangle(cornerRadius: 8)
+                        //                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
+                        //                                        .frame(width: 30, height: 30)
+                        //                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                        //                                    Image(systemName: "creditcard.fill")
+                        //                                        .foregroundColor(.white)
+                        //                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                        //                                }
+                        //                                Text("Manage Subscription")
+                        //                                    .foregroundColor(.white)
+                        //                            }
+                        //                            .padding([.top, .bottom], 2)
+                        //                        }
+                        Button(action: {
+                            if let url = URL(string: "https://haptic.software/terms") {
+                                UIApplication.shared.open(url)
                             }
-                            .padding([.top, .bottom], 2)
-                        }
-                        NavigationLink(destination: TermsOfUseView()) {
+                        }) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
@@ -246,7 +249,11 @@ struct AppSettingsView: View {
                             }
                             .padding([.top, .bottom], 2)
                         }
-                        NavigationLink(destination: PrivacyPolicyView()) {
+                        Button(action: {
+                            if let url = URL(string: "https://haptic.software/privacy") {
+                                UIApplication.shared.open(url)
+                            }
+                        }) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
@@ -277,7 +284,7 @@ struct AppSettingsView: View {
                         }
                     }
                 }
-                .frame(height: 460)
+                .frame(height: 325)
                 .background(Color(UIColor(named: "AlmostBlack")!))
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)

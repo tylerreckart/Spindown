@@ -66,11 +66,12 @@ struct SplashScreen: View {
             // Set a 1/4 second delay to allow for the store to populate subscriptions
             // and purchases async. This prevents the sheet/dialog from showing to
             // existing subscribers.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                if (newState.count > 0 && store.purchasedSubscriptions.isEmpty) {
-                    self.showOnboardingSheet.toggle()
-                }
-            }
+            // TODO: Re-enable me after successful beta
+            // DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            //     if (newState.count > 0 && store.purchasedSubscriptions.isEmpty) {
+            //         self.showOnboardingSheet.toggle()
+            //     }
+            // }
         }
         .onChange(of: store.purchasedSubscriptions) { newState in
             // Ensure that the onboarding dialog/sheet does not show to existing subscribers.

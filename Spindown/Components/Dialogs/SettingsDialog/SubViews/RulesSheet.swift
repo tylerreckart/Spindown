@@ -43,7 +43,7 @@ struct SearchDialog: View {
             .onAppear {
                 self.focused = .search
             }
-        }, maxWidth: screenWidth - 100, open: $open)
+        }, maxWidth: 500, open: $open)
     }
 }
 
@@ -79,28 +79,21 @@ struct RulesSheet: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
-                            HStack(alignment: .top, spacing: 0) {
+                            VStack(alignment: .leading, spacing: 0) {
                                 let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
                                 
-                                if (subrule == nil) {
-                                    HStack {
-                                        Text(rule.ruleNumber)
-                                            .font(.system(size: 18, weight: .black))
-                                            .multilineTextAlignment(.leading)
-                                        Spacer()
-                                    }
-                                    .frame(width: 80)
-                                } else {
-                                    Text(rule.ruleNumber)
-                                        .font(.system(size: 18, weight: .bold))
-                                        .padding(.leading, 100)
-                                        .padding(.trailing, 20)
-                                        .multilineTextAlignment(.leading)
-                                }
-                                Text(rule.ruleText)
+                                Text(rule.ruleNumber)
+                                    .font(.system(size: 18, weight: .black))
+                                    .padding(.leading, subrule != nil ? 50 : 0)
                                     .multilineTextAlignment(.leading)
-                                Spacer()
+                                HStack {
+                                    Text(rule.ruleText)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(.leading, subrule != nil ? 50 : 0)
+                                    Spacer()
+                                }
                             }
+                            .frame(maxWidth: .infinity)
                         }
                     }
                 }
@@ -126,6 +119,7 @@ struct RulesSheet: View {
                     }
                 }
             }
+            .padding()
             .padding()
             
             SearchDialog(open: $showSearchDialog)
