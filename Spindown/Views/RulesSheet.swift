@@ -29,9 +29,29 @@ struct RuleContext: View {
                         .font(.system(size: 18, weight: .black))
                 }
             }
-            Text(selectedRule?.ruleText ?? "")
-                .multilineTextAlignment(.leading)
-                .padding(.top, 10)
+
+            ScrollView {
+                Text(selectedRule?.ruleText ?? "")
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 10)
+                
+                if (selectedRule?.examples != nil) {
+                    HStack {
+                        Text("Examples")
+                            .font(.system(size: 16, weight: .black))
+                            .padding(.top)
+                            .padding(.bottom, 10)
+                        Spacer()
+                    }
+                    VStack(spacing: 20) {
+                        ForEach((selectedRule?.examples!)!, id: \.self) { example in
+                            Text(example!)
+                                .foregroundColor(Color(UIColor(named: "AccentGray")!))
+                                .italic()
+                        }
+                    }
+                }
+            }
         }
         .transition(
             .asymmetric(
