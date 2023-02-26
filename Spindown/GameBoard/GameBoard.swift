@@ -8,12 +8,12 @@
 import SwiftUI
 
 var colors: [UIColor] = [
-    UIColor(named: "PrimaryPurple") ?? .systemGray,
-    UIColor(named: "PrimaryBlue") ?? .systemGray,
-    UIColor(named: "PrimaryGreen") ?? .systemGray,
-    UIColor(named: "PrimaryYellow") ?? .systemGray,
-    UIColor(named: "PrimaryOrange") ?? .systemGray,
-    UIColor(named: "PrimaryRed") ?? .systemGray
+    UIColor(named: "PrimaryPurple")!,
+    UIColor(named: "PrimaryBlue")!,
+    UIColor(named: "PrimaryGreen")!,
+    UIColor(named: "PrimaryYellow")!,
+    UIColor(named: "PrimaryOrange")!,
+    UIColor(named: "PrimaryRed")!
 ]
 
 struct GameBoard: View {

@@ -113,7 +113,7 @@ struct PlayerSelectorView: View {
             let player = Participant()
             player.name = "Player \(count + 1)"
             player.lifeTotal = players[0].lifeTotal
-            player.color = colors[count - 1]
+            player.color = colors[count]
             withAnimation {
                 self.players.append(player)
             }

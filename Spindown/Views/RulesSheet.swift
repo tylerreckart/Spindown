@@ -10,39 +10,78 @@ import SwiftUI
 
 struct SearchDialog: View {
     @Binding var open: Bool
-
+    @Binding var searchText: String
+    @Binding var results: [Rule]
     @FocusState private var focused: FocusField?
-    @State private var searchQuery: String = ""
 
     var screenWidth = UIScreen.main.bounds.width
 
     var body: some View {
         Dialog(content: {
-            HStack {
-                TextField("", text: $searchQuery)
-                    .placeholder(when: searchQuery.isEmpty) {
-                        Text("Search...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                            .font(.system(size: 20, weight: .bold))
+            VStack(spacing: 20) {
+                HStack {
+                    TextField("", text: $searchText)
+                        .placeholder(when: self.searchText.isEmpty) {
+                            Text("Search...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
+                                .font(.system(size: 20, weight: .bold))
+                        }
+                        .keyboardType(.default)
+                        .font(.system(size: 20, weight: .black))
+                        .focused($focused, equals: .search)
+                }
+                .padding()
+                .background(Color(UIColor(named: "DeepGray")!))
+                .cornerRadius(4)
+                .padding(4)
+                .background(Color(UIColor(named: "DeepGray")!))
+                .cornerRadius(6)
+                .padding(4)
+                .background(
+                    Color(UIColor(named: "AccentGrayDarker")!)
+                )
+                .cornerRadius(8)
+                .onAppear {
+                    self.focused = .search
+                }
+                
+                if (self.searchText.count > 0) {
+                    Text("Showing results for \(self.searchText)...")
+                        .font(.system(size: 14))
+                        .italic()
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
+                }
+                
+                if (self.searchText.count > 0 && self.results.count == 0) {
+                    Text("No results found for \(self.searchText)")
+                        .font(.system(size: 12))
+                        .italic()
+                        .foregroundColor(Color(UIColor(named: "AccentGray")!))
+                }
+                
+                if (self.results.count > 0) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(self.results, id: \.self) { result in
+                            VStack(alignment: .leading) {
+                                Text("(\(result.ruleNumber))")
+                                    .font(.system(size: 14, weight: .bold))
+                                HStack {
+                                    Text("\(String(result.ruleText.prefix(80)))...")
+                                        .italic()
+                                        .foregroundColor(Color(UIColor(named: "AccentGray")!))
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                }
+                            }
+                        }
                     }
-                    .keyboardType(.default)
-                    .font(.system(size: 20, weight: .black))
-                    .focused($focused, equals: .search)
+                }
             }
-            .padding()
-            .background(Color(UIColor(named: "DeepGray")!))
-            .cornerRadius(4)
-            .padding(4)
-            .background(Color(UIColor(named: "DeepGray")!))
-            .cornerRadius(6)
-            .padding(4)
-            .background(
-                Color(UIColor(named: "AccentGrayDarker")!)
-            )
-            .cornerRadius(8)
-            .onAppear {
-                self.focused = .search
-            }
-        }, maxWidth: screenWidth - 100, open: $open, placement: .top)
+        },
+           maxWidth: UIScreen.main.bounds.width - 100,
+           open: $open,
+           placement: .top
+        )
     }
 }
 
@@ -55,6 +94,8 @@ struct RulesSheet: View {
     let letters = NSCharacterSet.letters
     
     @State private var showSearchDialog: Bool = false
+    @State private var searchText: String = ""
+    @State private var searchResults: [Rule] = []
     @State private var spinning: Bool = false
 
     var body: some View {
@@ -114,10 +155,6 @@ struct RulesSheet: View {
                 .padding([.top, .bottom], -16)
                 .padding([.leading, .trailing])
                 
-                if (self.spinning) {
-                    Spinner()
-                }
-                
                 Divider()
                     .frame(height: 4)
                     .background(Color(UIColor(named: "AccentGrayDarker")!))
@@ -148,7 +185,11 @@ struct RulesSheet: View {
                 .background(Color(UIColor(named: "NotAsDeepGray")!).opacity(0.75))
             }
             
-            SearchDialog(open: $showSearchDialog)
+            SearchDialog(
+                open: $showSearchDialog,
+                searchText: $searchText,
+                results: $searchResults
+            )
         }
         .foregroundColor(Color.white)
         .background(Color(UIColor(named: "DeepGray")!))
@@ -158,6 +199,14 @@ struct RulesSheet: View {
         }
         .onChange(of: currentPage) { newState in
             getRules()
+        }
+        .onChange(of: searchText) { newState in
+            search()
+        }
+        .onChange(of: showSearchDialog) { newState in
+            if (newState == false && self.searchText.count > 0) {
+                self.searchText = ""
+            }
         }
     }
     
@@ -188,6 +237,21 @@ struct RulesSheet: View {
             }
         }
     }
+    
+    func search() {
+        self.searchResults = []
+
+        let matches = self.rules.filter({
+            $0.ruleNumber.lowercased().contains(self.searchText.lowercased()) ||
+            $0.ruleText.lowercased().contains(self.searchText.lowercased())
+        })
+        
+        for (index, match) in matches.enumerated() {
+            if (index <= 4) {
+                self.searchResults.append(match)
+            }
+        }
+    }
 }
 
 struct RulesSheet_Previews: PreviewProvider {
@@ -199,7 +263,8 @@ struct RulesSheet_Previews: PreviewProvider {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
         .sheet(isPresented: $showRulesSheet) {
-            RulesSheet().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            RulesSheet()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .background(.black)
         }
     }
