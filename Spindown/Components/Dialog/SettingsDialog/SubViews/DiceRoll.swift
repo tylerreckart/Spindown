@@ -11,7 +11,6 @@ struct DiceRollView: View {
     @Binding var activeView: ActiveSettingsView
 
     @State private var rolling: Bool = false
-    @State private var spinning: Bool = false
     @State private var result: Int? = nil
     @State private var chosenDie: Int? = nil
 
@@ -81,17 +80,7 @@ struct DiceRollView: View {
             }
             
             if (self.rolling) {
-                Image("Spinner")
-                    .resizable()
-                    .frame(width: 32, height: 32)
-                    .rotationEffect(Angle.degrees(spinning ? 360 : 0))
-                    .animation(.linear(duration: 1).repeatForever(autoreverses: false))
-                    .onAppear {
-                        self.spinning = true
-                    }
-                    .onDisappear {
-                        self.spinning = false
-                    }
+                Spinner()
             }
             
             if (!self.rolling && self.result != nil) {

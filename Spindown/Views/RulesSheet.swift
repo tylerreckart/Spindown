@@ -55,6 +55,7 @@ struct RulesSheet: View {
     let letters = NSCharacterSet.letters
     
     @State private var showSearchDialog: Bool = false
+    @State private var spinning: Bool = false
 
     var body: some View {
         ZStack {
@@ -113,6 +114,10 @@ struct RulesSheet: View {
                 .padding([.top, .bottom], -16)
                 .padding([.leading, .trailing])
                 
+                if (self.spinning) {
+                    Spinner()
+                }
+                
                 Divider()
                     .frame(height: 4)
                     .background(Color(UIColor(named: "AccentGrayDarker")!))
@@ -157,6 +162,7 @@ struct RulesSheet: View {
     }
     
     func getRules() {
+        self.spinning = true
         self.rules = []
 
         if let path = Bundle.main.path(forResource: "\(self.currentPage)00", ofType: "json") {
@@ -174,6 +180,8 @@ struct RulesSheet: View {
                         
                         self.rules.append(obj)
                     }
+                    
+                    self.spinning = false
                 }
             } catch {
                // handle error
