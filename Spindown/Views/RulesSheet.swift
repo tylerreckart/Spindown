@@ -24,8 +24,7 @@ struct SearchDialog: View {
                         Text("Search...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
                             .font(.system(size: 20, weight: .bold))
                     }
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.leading)
+                    .keyboardType(.default)
                     .font(.system(size: 20, weight: .black))
                     .focused($focused, equals: .search)
             }
@@ -43,7 +42,7 @@ struct SearchDialog: View {
             .onAppear {
                 self.focused = .search
             }
-        }, maxWidth: 500, open: $open)
+        }, maxWidth: screenWidth - 100, open: $open, placement: .top)
     }
 }
 
@@ -61,21 +60,34 @@ struct RulesSheet: View {
         ZStack {
             VStack {
                 HStack {
+                    Image(systemName: "book")
+                        .font(.system(size: 24, weight: .black))
                     Text("Rulebook")
-                        .font(.system(size: 32, weight: .black))
+                        .font(.system(size: 28, weight: .black))
                     Spacer()
                     
-                    Button(action: {
-                        withAnimation {
-                            self.showSearchDialog.toggle()
+                    UIButtonOutlined(
+                        text: "Search",
+                        symbol: "magnifyingglass",
+                        fill: UIColor(named: "NotAsDeepGray")!,
+                        color: UIColor(named: "AccentGray")!,
+                        action: {
+                            withAnimation {
+                                self.showSearchDialog.toggle()
+                            }
                         }
-                    }) {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            Text("Search for a rule")
-                        }
-                    }
+                    )
+                    .frame(maxWidth: 125, maxHeight: 50)
                 }
+                .padding()
+                .background(Color(UIColor(named: "NotAsDeepGray")!).opacity(0.75))
+
+                Divider()
+                    .frame(height: 4)
+                    .background(Color(UIColor(named: "AccentGrayDarker")!))
+                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                    .offset(y: -8)
+
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
@@ -96,7 +108,16 @@ struct RulesSheet: View {
                             .frame(maxWidth: .infinity)
                         }
                     }
+                    .padding([.top, .bottom])
                 }
+                .padding([.top, .bottom], -16)
+                .padding([.leading, .trailing])
+                
+                Divider()
+                    .frame(height: 4)
+                    .background(Color(UIColor(named: "AccentGrayDarker")!))
+                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                    .offset(y: 8)
                 
                 HStack {
                     Button(action: {
@@ -118,16 +139,15 @@ struct RulesSheet: View {
                         Text("Next Page")
                     }
                 }
+                .padding([.leading, .trailing, .top])
+                .background(Color(UIColor(named: "NotAsDeepGray")!).opacity(0.75))
             }
-            .padding()
-            .padding()
             
             SearchDialog(open: $showSearchDialog)
         }
         .foregroundColor(Color.white)
         .background(Color(UIColor(named: "DeepGray")!))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
         .onAppear {
             getRules()
         }
@@ -163,8 +183,16 @@ struct RulesSheet: View {
 }
 
 struct RulesSheet_Previews: PreviewProvider {
+    @State private static var showRulesSheet: Bool = true
     static var previews: some View {
-        RulesSheet().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .background(.black)
+        VStack {
+            Text("Hello, World")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
+        .sheet(isPresented: $showRulesSheet) {
+            RulesSheet().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .background(.black)
+        }
     }
 }

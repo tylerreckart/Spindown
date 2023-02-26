@@ -60,10 +60,10 @@ struct LifeTotalCalculatorDialog: View {
                         .focused($focused, equals: .quantity)
                 }
                 .padding()
-                .background(Color(UIColor(named: "DeepGray")!))
+                .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
                 .cornerRadius(4)
                 .padding(4)
-                .background(.black)
+                .background(Color(UIColor(named: "DeepGray")!))
                 .cornerRadius(6)
                 .padding(4)
                 .background(
@@ -75,7 +75,7 @@ struct LifeTotalCalculatorDialog: View {
                     UIButtonOutlined(
                         text: "Add",
                         symbol: "plus",
-                        fill: .black,
+                        fill: UIColor(named: "DeepGray")!,
                         color:
                             self.activeSelection == .add ?
                             .white :
@@ -87,7 +87,7 @@ struct LifeTotalCalculatorDialog: View {
                     UIButtonOutlined(
                         text: "Subtract",
                         symbol: "minus",
-                        fill: .black,
+                        fill: UIColor(named: "DeepGray")!,
                         color:
                             self.activeSelection == .subtract ?
                             .white :

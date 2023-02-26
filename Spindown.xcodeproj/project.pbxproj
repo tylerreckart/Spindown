@@ -24,6 +24,7 @@
 		DB2960C729A7D9D800852A5F /* 900.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960C629A7D9D800852A5F /* 900.json */; };
 		DB38DDB229A92BCC000D8796 /* Terms.md in Resources */ = {isa = PBXBuildFile; fileRef = DB69EC81299D1D4D00D4EB3F /* Terms.md */; };
 		DB38DDB329A92BD5000D8796 /* Privacy.md in Resources */ = {isa = PBXBuildFile; fileRef = DB69EC82299D1D9E00D4EB3F /* Privacy.md */; };
+		DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB38DDB429A95225000D8796 /* DialogPlacement.swift */; };
 		DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */; };
 		DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */; };
 		DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */; };
@@ -73,6 +74,7 @@
 		DB2960BE29A7D86B00852A5F /* 600.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 600.json; sourceTree = "<group>"; };
 		DB2960C429A7D9CD00852A5F /* 800.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 800.json; sourceTree = "<group>"; };
 		DB2960C629A7D9D800852A5F /* 900.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 900.json; sourceTree = "<group>"; };
+		DB38DDB429A95225000D8796 /* DialogPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPlacement.swift; sourceTree = "<group>"; };
 		DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPlayerDialog.swift; sourceTree = "<group>"; };
 		DB41B19D298AD7480000EC42 /* TwoPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B19F298AD7760000EC42 /* ThreePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreePlayerBoard.swift; sourceTree = "<group>"; };
@@ -125,7 +127,6 @@
 		DB1D3A0C29915CEF00A741DC /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				DB1D39FB298D60D400A741DC /* RulesSheet.swift */,
 				DB8A3251298CB2DF00FB7658 /* ChangeLayout.swift */,
 				DBF130682996AAE100B9E19A /* GameTimer.swift */,
 				DB69EC8929A7087500D4EB3F /* DiceRoll.swift */,
@@ -134,7 +135,7 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		DB1F08F3299C29B600A057CC /* Dialogs */ = {
+		DB1F08F3299C29B600A057CC /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
 				DB8A3250298CB2BC00FB7658 /* SettingsDialog */,
@@ -142,8 +143,9 @@
 				DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */,
 				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
 				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
+				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
 			);
-			path = Dialogs;
+			path = Dialog;
 			sourceTree = "<group>";
 		};
 		DB2960B329A7D6F000852A5F /* Rules */ = {
@@ -186,10 +188,9 @@
 		DB41B1A7298AF4A30000EC42 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DB1F08F3299C29B600A057CC /* Dialogs */,
+				DB1F08F3299C29B600A057CC /* Dialog */,
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
 				DB41B1A8298AF4B00000EC42 /* Button.swift */,
-				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
 			);
 			path = Components;
@@ -203,6 +204,7 @@
 				DBF1306E299BE1F100B9E19A /* Error.swift */,
 				DB22346629A8024A006316CE /* Rule.swift */,
 				DB22346829A848E4006316CE /* FocusField.swift */,
+				DB38DDB429A95225000D8796 /* DialogPlacement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +218,7 @@
 				DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */,
 				DB8B8F72298767890023A84B /* PlayersSelector.swift */,
 				DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */,
+				DB1D39FB298D60D400A741DC /* RulesSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
 				DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */,
 				DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */,
+				DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,
 				DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */,
 				DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */,

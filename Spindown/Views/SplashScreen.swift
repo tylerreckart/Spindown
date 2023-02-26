@@ -16,6 +16,8 @@ struct SplashScreen: View {
     @State private var showOnboardingSheet: Bool = false
     @State private var showSettingsSheet: Bool = false
     @State private var showManageSubscriptions: Bool = false
+    @State private var showRulesSheet: Bool = false
+    @State private var showHistorySheet: Bool = false
     
     @State private var selectedOffer: Product?
     @State private var hasPurchased: Bool = false
@@ -41,6 +43,26 @@ struct SplashScreen: View {
                         color: UIColor(named: "PrimaryBlue")!,
                         action: { showNextPage() }
                     )
+                    
+                    UIButtonOutlined(
+                        text: "Game History",
+                        symbol: "bookmark",
+                        fill: .black,
+                        color: .white,
+                        action: {
+                            self.showHistorySheet.toggle()
+                        }
+                    )
+                    
+                    UIButtonOutlined(
+                        text: "Rulebook",
+                        symbol: "book",
+                        fill: .black,
+                        color: .white,
+                        action: {
+                            self.showRulesSheet.toggle()
+                        }
+                    )
 
                     UIButtonOutlined(
                         text: "Settings",
@@ -49,7 +71,8 @@ struct SplashScreen: View {
                         color: .white,
                         action: {
                             self.showSettingsSheet.toggle()
-                        })
+                        }
+                    )
                 }
                 .frame(maxWidth: 300)
                 Spacer()
@@ -89,6 +112,9 @@ struct SplashScreen: View {
         }
         .sheet(isPresented: $showOnboardingSheet) {
             SubscriptionView(store: store)
+        }
+        .sheet(isPresented: $showRulesSheet) {
+            RulesSheet()
         }
         .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
     }

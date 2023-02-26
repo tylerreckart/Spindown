@@ -15,9 +15,12 @@ struct Dialog<Content: View>: View {
     
     @State private var overlayOpacity: CGFloat = 0
     
+    var placement: DialogPlacement = .center
+    
     var body: some View {
         ZStack {
             Color.black.opacity(overlayOpacity)
+                .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     withAnimation(.easeInOut(duration: 0.4)) {
                         self.open.toggle()
@@ -26,7 +29,9 @@ struct Dialog<Content: View>: View {
     
             if (open) {
                 VStack {
-                    Spacer()
+                    if (placement == .bottom || placement == .center) {
+                        Spacer()
+                    }
                     
                     content
                         .frame(maxWidth: maxWidth)
@@ -35,8 +40,15 @@ struct Dialog<Content: View>: View {
                         .cornerRadius(16)
                         .shadow(color: Color.black.opacity(0.1), radius: 15)
                     
-                    Spacer()
+                    if (placement == .top || placement == .center) {
+                        Spacer()
+                    }
                 }
+                .padding(
+                    placement == .top ? .top :
+                        placement == .bottom ? .bottom : .all,
+                    placement == .top || placement == .bottom ? 25 : 0
+                )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .transition(
                     .asymmetric(

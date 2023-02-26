@@ -294,6 +294,7 @@ struct AppSettingsView: View {
                     .foregroundColor(Color(UIColor(named: "AccentGray")!))
                     .padding(.bottom)
             }
+            .foregroundColor(.white)
             .background(Color(UIColor(named: "AlmostBlack")!))
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)

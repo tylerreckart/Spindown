@@ -48,9 +48,11 @@ struct PlayersSelector: View {
                     UIButtonTile(text: "2", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(2)
                     })
-                    UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                        setNumPlayers(3)
-                    })
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            setNumPlayers(3)
+                        })
+                    }
                 }
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     HStack(spacing: 20) {
@@ -62,6 +64,17 @@ struct PlayersSelector: View {
                         })
                         UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                             setNumPlayers(6)
+                        })
+                    }
+                }
+                if UIDevice.current.userInterfaceIdiom == .phone {
+                    HStack(spacing: 20) {
+                        UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            setNumPlayers(3)
+                        })
+
+                        UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            setNumPlayers(4)
                         })
                     }
                 }
