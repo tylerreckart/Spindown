@@ -8,60 +8,96 @@
 import Foundation
 import SwiftUI
 
-struct SearchDialog: View {
-    @Binding var open: Bool
-    @Binding var searchText: String
-    @Binding var results: [Rule]
-    @FocusState private var focused: FocusField?
-
-    var screenWidth = UIScreen.main.bounds.width
+struct RuleContext: View {
+    @Binding var selectedRule: Rule?
 
     var body: some View {
-        Dialog(content: {
-            VStack(spacing: 20) {
+        VStack(alignment: .leading) {
+            Button(action: {
+                withAnimation {
+                    self.selectedRule = nil
+                }
+            }) {
                 HStack {
-                    TextField("", text: $searchText)
-                        .placeholder(when: self.searchText.isEmpty) {
-                            Text("Search...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                                .font(.system(size: 20, weight: .bold))
-                        }
-                        .keyboardType(.default)
-                        .font(.system(size: 20, weight: .black))
-                        .focused($focused, equals: .search)
+                    Text("Rule \(selectedRule?.ruleNumber ?? "")")
+                        .font(.system(size: 18, weight: .black))
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                    Image(systemName: "arrow.backward")
+                        .font(.system(size: 18, weight: .black))
+                    Text("Go Back")
+                        .font(.system(size: 18, weight: .black))
                 }
-                .padding()
-                .background(Color(UIColor(named: "DeepGray")!))
-                .cornerRadius(4)
-                .padding(4)
-                .background(Color(UIColor(named: "DeepGray")!))
-                .cornerRadius(6)
-                .padding(4)
-                .background(
-                    Color(UIColor(named: "AccentGrayDarker")!)
-                )
-                .cornerRadius(8)
-                .onAppear {
-                    self.focused = .search
-                }
-                
-                if (self.searchText.count > 0) {
-                    Text("Showing results for \(self.searchText)...")
-                        .font(.system(size: 14))
-                        .italic()
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                }
-                
-                if (self.searchText.count > 0 && self.results.count == 0) {
-                    Text("No results found for \(self.searchText)")
-                        .font(.system(size: 12))
-                        .italic()
-                        .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                }
-                
-                if (self.results.count > 0) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(self.results, id: \.self) { result in
+            }
+            Text(selectedRule?.ruleText ?? "")
+                .multilineTextAlignment(.leading)
+                .padding(.top, 10)
+        }
+        .transition(
+            .asymmetric(
+                insertion: .push(from: .trailing).combined(with: .opacity),
+                removal: .push(from: .leading).combined(with: .opacity)
+            )
+        )
+    }
+}
+
+struct SearchDialogContent: View {
+    @Binding var searchText: String
+    @Binding var results: [Rule]
+    @Binding var selectedRule: Rule?
+    @FocusState private var focused: FocusField?
+
+    var body: some View {
+        VStack(spacing: 20) {
+            HStack {
+                TextField("", text: $searchText)
+                    .placeholder(when: self.searchText.isEmpty) {
+                        Text("Search...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
+                            .font(.system(size: 20, weight: .bold))
+                    }
+                    .keyboardType(.default)
+                    .font(.system(size: 20, weight: .black))
+                    .focused($focused, equals: .search)
+            }
+            .padding()
+            .background(Color(UIColor(named: "DeepGray")!))
+            .cornerRadius(4)
+            .padding(4)
+            .background(Color(UIColor(named: "DeepGray")!))
+            .cornerRadius(6)
+            .padding(4)
+            .background(
+                Color(UIColor(named: "AccentGrayDarker")!)
+            )
+            .cornerRadius(8)
+            .onAppear {
+                self.focused = .search
+            }
+            
+            if (self.searchText.count > 0) {
+                Text("Showing results for \(self.searchText)...")
+                    .font(.system(size: 14))
+                    .italic()
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
+            }
+            
+            if (self.searchText.count > 0 && self.results.count == 0) {
+                Text("No results found for \(self.searchText)")
+                    .font(.system(size: 12))
+                    .italic()
+                    .foregroundColor(Color(UIColor(named: "AccentGray")!))
+            }
+            
+            if (self.results.count > 0) {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(self.results, id: \.self) { result in
+                        Button(action: {
+                            withAnimation {
+                                self.selectedRule = result
+                            }
+                        }) {
                             VStack(alignment: .leading) {
                                 Text("(\(result.ruleNumber))")
                                     .font(.system(size: 14, weight: .bold))
@@ -76,6 +112,30 @@ struct SearchDialog: View {
                         }
                     }
                 }
+            }
+        }
+        .transition(
+            .asymmetric(
+                insertion: .push(from: .trailing).combined(with: .opacity),
+                removal: .push(from: .leading).combined(with: .opacity)
+            )
+        )
+    }
+}
+
+struct SearchDialog: View {
+    @Binding var open: Bool
+    @Binding var searchText: String
+    @Binding var results: [Rule]
+    @State private var selectedRule: Rule?
+
+    var body: some View {
+        Dialog(content: {
+            switch (selectedRule) {
+                case nil:
+                    SearchDialogContent(searchText: $searchText, results: $results, selectedRule: $selectedRule)
+                default:
+                    RuleContext(selectedRule: $selectedRule)
             }
         },
            maxWidth: UIScreen.main.bounds.width - 100,
