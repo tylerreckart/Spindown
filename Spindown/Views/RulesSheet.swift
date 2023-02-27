@@ -70,30 +70,7 @@ struct SearchDialogContent: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            HStack {
-                TextField("", text: $searchText)
-                    .placeholder(when: self.searchText.isEmpty) {
-                        Text("Search...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                            .font(.system(size: 20, weight: .bold))
-                    }
-                    .keyboardType(.default)
-                    .font(.system(size: 20, weight: .black))
-                    .focused($focused, equals: .search)
-            }
-            .padding()
-            .background(Color(UIColor(named: "DeepGray")!))
-            .cornerRadius(4)
-            .padding(4)
-            .background(Color(UIColor(named: "DeepGray")!))
-            .cornerRadius(6)
-            .padding(4)
-            .background(
-                Color(UIColor(named: "AccentGrayDarker")!)
-            )
-            .cornerRadius(8)
-            .onAppear {
-                self.focused = .search
-            }
+            StyledTextField(placeholderText: "Search", text: $searchText, field: .search, focusOnAppear: true, fontSize: 20)
             
             if (self.searchText.count > 0) {
                 Text("Showing results for \(self.searchText)...")

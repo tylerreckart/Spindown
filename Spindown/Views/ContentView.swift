@@ -56,11 +56,11 @@ struct ContentView: View {
         case .home:
             SplashScreen(showNextPage: showNextPage)
         case .lifeTotal:
-            StartingLifeTotalSelector(setStartingLifeTotal: setStartingLifeTotal)
+            StartingLifeTotalSelector(currentPage: $currentPage, setStartingLifeTotal: setStartingLifeTotal)
         case .players:
-            PlayersSelector(setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
+            PlayersSelector(currentPage: $currentPage, setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
         case .savedPlayers:
-            SavedPlayersSelector(setPlayers: {})
+            SavedPlayersSelector(currentPage: $currentPage, setPlayers: {})
         case .gameBoard:
             if (players.count > 0) {
                 ZStack {

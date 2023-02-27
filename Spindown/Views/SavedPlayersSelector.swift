@@ -118,6 +118,8 @@ struct PlayerCustomizationDialog: View {
 }
 
 struct SavedPlayersSelector: View {
+    @Binding var currentPage: Page
+
     var setPlayers: () -> ()
     
     @State private var players: [Participant] = []
@@ -126,6 +128,22 @@ struct SavedPlayersSelector: View {
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 0) {
+                HStack {
+                    Button(action: {
+                        withAnimation {
+                            self.currentPage = .players
+                        }
+                    }) {
+                        Image(systemName: "arrow.backward")
+                            .font(.system(size: 18, weight: .black))
+                        Text("Go Back")
+                            .font(.system(size: 18, weight: .black))
+                    }
+                    Spacer()
+                }
+                .foregroundColor(.white)
+                .padding()
+
                 Spacer()
                 
                 VStack {
@@ -180,11 +198,13 @@ struct SavedPlayersSelector: View {
 
 struct SavedPlayersSelector_Previews: PreviewProvider {
     @State private static var setupStep: Double = 0
+    @State private static var currentPage: Page = .savedPlayers
     
     static func setPlayers() {}
 
     static var previews: some View {
         SavedPlayersSelector(
+            currentPage: $currentPage,
             setPlayers: setPlayers
         ).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

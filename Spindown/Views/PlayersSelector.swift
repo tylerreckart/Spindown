@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct PlayersSelector: View {
+    @Binding var currentPage: Page
+
     var setNumPlayers: (Int) -> ()
     var setUsedSavedPlayers: () -> ()
     
     var body: some View {
         VStack {
+            HStack {
+                Button(action: {
+                    withAnimation {
+                        self.currentPage = .lifeTotal
+                    }
+                }) {
+                    Image(systemName: "arrow.backward")
+                        .font(.system(size: 18, weight: .black))
+                    Text("Go Back")
+                        .font(.system(size: 18, weight: .black))
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding()
+    
             Spacer()
 
             VStack {

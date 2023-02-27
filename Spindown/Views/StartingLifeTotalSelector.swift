@@ -8,10 +8,28 @@
 import SwiftUI
 
 struct StartingLifeTotalSelector: View {
+    @Binding var currentPage: Page
+
     var setStartingLifeTotal: (Int) -> ()
     
     var body: some View {
         VStack {
+            HStack {
+                Button(action: {
+                    withAnimation {
+                        self.currentPage = .home
+                    }
+                }) {
+                    Image(systemName: "arrow.backward")
+                        .font(.system(size: 18, weight: .black))
+                    Text("Go Back")
+                        .font(.system(size: 18, weight: .black))
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding()
+
             Spacer()
 
             VStack {

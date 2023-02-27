@@ -13,18 +13,32 @@ struct StyledTextField: View {
     var field: FocusField
     @FocusState private var focused: FocusField?
     var focusOnAppear: Bool = false
+    var fontSize: CGFloat = 24
 
     var body: some View {
-        HStack {
+        ZStack {
             TextField("", text: $text)
                 .placeholder(when: text.isEmpty) {
                     Text(placeholderText).foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                        .font(.system(size: 24, weight: .bold))
+                        .font(.system(size: fontSize, weight: .bold))
                 }
                 .keyboardType(.numberPad)
                 .multilineTextAlignment(.leading)
-                .font(.system(size: 24, weight: .black))
+                .font(.system(size: fontSize, weight: .black))
                 .focused($focused, equals: field)
+            
+            if (!self.text.isEmpty) {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.text = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
+                            .font(.system(size: 20, weight: .black))
+                    }
+                }
+            }
         }
         .padding()
         .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
