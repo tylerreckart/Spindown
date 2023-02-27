@@ -10,6 +10,7 @@ import SwiftUI
 struct PlayerSelectorView: View {
     @Binding var activeView: ActiveSettingsView
     @Binding var players: [Participant]
+    @Binding var selectedPlayer: Participant?
     
     @State private var localPlayerList: [Participant] = []
 
@@ -51,9 +52,17 @@ struct PlayerSelectorView: View {
                                             .foregroundColor(Color.white)
                                         Spacer()
                                     }
-                                    Image(systemName: "pencil.circle.fill")
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size: 18, weight: .black))
+                                    
+                                    Button(action: {
+                                        withAnimation {
+                                            self.activeView = .playerCustomization
+                                            self.selectedPlayer = player
+                                        }
+                                    }) {
+                                        Image(systemName: "pencil.circle.fill")
+                                            .foregroundColor(Color.white)
+                                            .font(.system(size: 18, weight: .black))
+                                    }
                                 }
                                 .font(.system(size: 18, weight: .black))
                                 .padding()

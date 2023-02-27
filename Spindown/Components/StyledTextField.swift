@@ -19,11 +19,11 @@ struct StyledTextField: View {
             TextField("", text: $text)
                 .placeholder(when: text.isEmpty) {
                     Text(placeholderText).foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                        .font(.system(size: 28, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                 }
                 .keyboardType(.numberPad)
                 .multilineTextAlignment(.leading)
-                .font(.system(size: 28, weight: .black))
+                .font(.system(size: 24, weight: .black))
                 .focused($focused, equals: field)
         }
         .padding()

@@ -13,6 +13,7 @@ enum ActiveSettingsView {
     case timer
     case layout
     case player
+    case playerCustomization
 }
 
 struct HorizontalControlRow: View {
@@ -114,6 +115,7 @@ struct GameSettingsDialog: View {
     @State private var dialogOffset: CGFloat = 0.75
     
     @State private var activeView: ActiveSettingsView = .home
+    @State private var selectedPlayer: Participant?
     
     var body: some View {
         Dialog(content: {
@@ -136,12 +138,46 @@ struct GameSettingsDialog: View {
                             playerCount: self.players.count
                         )
                     case .player:
-                        PlayerSelectorView(activeView: $activeView, players: $players)
+                        PlayerSelectorView(
+                            activeView: $activeView,
+                            players: $players,
+                            selectedPlayer: $selectedPlayer
+                        )
+                case .playerCustomization:
+                        PlayerCustomizationContext(
+                            customize: true,
+                            savePlayer: savePlayer,
+                            dismiss: dismissPlayerCustomizer,
+                            selectedPlayer: selectedPlayer
+                        )
                 }
             }
             .onDisappear {
                 self.activeView = .home
             }
         }, maxWidth: 300, open: $open)
+    }
+    
+    func savePlayer(name: String, color: UIColor) -> Void {
+        if (self.selectedPlayer != nil) {
+            var index = self.players.firstIndex(where: { $0.uid == self.selectedPlayer!.uid })
+
+            self.selectedPlayer!.name = name
+            self.selectedPlayer!.color = color
+            
+            withAnimation {
+                self.players[index!] = self.selectedPlayer!
+            }
+        }
+        
+        withAnimation {
+            self.activeView = .player
+        }
+    }
+
+    func dismissPlayerCustomizer() -> Void {
+        withAnimation {
+            self.activeView = .player
+        }
     }
 }
