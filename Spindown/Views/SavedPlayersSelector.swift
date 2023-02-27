@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct SavedPlayersSelector: View {
-    @Binding var setupStep: Double
-    
     var setPlayers: () -> ()
     
     @State private var players: [Participant] = []
@@ -20,23 +18,34 @@ struct SavedPlayersSelector: View {
 
             VStack {
                 Text("Saved Players")
-                    .font(.system(size: 64, weight: .black))
+                    .font(.system(size: UIDevice.current.userInterfaceIdiom == .pad ? 64 : 48, weight: .black))
                     .foregroundColor(.white)
                     .padding(.bottom, 5)
-                Text("Select or create saved players.")
-                    .font(.system(size: 20))
+                Text("Select or add saved players.")
+                    .font(.system(size: UIDevice.current.userInterfaceIdiom == .pad ? 20 : 16))
                     .foregroundColor(Color(.systemGray))
                     .multilineTextAlignment(.center)
                     .lineSpacing(6)
             }
-            .padding(.bottom, 25)
+            .padding(.bottom, 20)
             
             VStack(spacing: 20) {
                 PlayerList(players: $players)
                 
-                UIButtonOutlined(text: "Add Player", symbol: "plus", fill: .black, color: UIColor(named: "AccentGray") ?? .systemGray, action: {})
-                UIButton(text: "Start Game", symbol: "play", color: UIColor(named: "PrimaryRed") ?? .systemGray, action: {})
-                    .padding(.bottom, 5)
+                UIButtonOutlined(
+                    text: "Add Player",
+                    symbol: "plus",
+                    fill: .black,
+                    color: UIColor(named: "AccentGray")!,
+                    action: {}
+                )
+                UIButton(
+                    text: "Start Game",
+                    color: players.count > 0 ? UIColor(named: "PrimaryBlue")! : UIColor(named: "AccentGrayDarker")!,
+                    action: {}
+                )
+                .opacity(players.count > 0 ? 1 : 0.5)
+                .disabled(players.count == 0)
             }
             .frame(maxWidth: 400)
 
@@ -46,6 +55,7 @@ struct SavedPlayersSelector: View {
         .foregroundColor(Color.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
+        .padding(.horizontal)
     }
 }
 
@@ -56,7 +66,6 @@ struct SavedPlayersSelector_Previews: PreviewProvider {
 
     static var previews: some View {
         SavedPlayersSelector(
-            setupStep: $setupStep,
             setPlayers: setPlayers
         ).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

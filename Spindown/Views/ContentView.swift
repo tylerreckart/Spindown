@@ -12,6 +12,7 @@ enum Page {
     case home
     case lifeTotal
     case players
+    case savedPlayers
     case gameBoard
 }
 
@@ -57,7 +58,9 @@ struct ContentView: View {
         case .lifeTotal:
             StartingLifeTotalSelector(setStartingLifeTotal: setStartingLifeTotal)
         case .players:
-            PlayersSelector(setNumPlayers: setPlayerCount)
+            PlayersSelector(setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
+        case .savedPlayers:
+            SavedPlayersSelector(setPlayers: {})
         case .gameBoard:
             if (players.count > 0) {
                 ZStack {
@@ -85,6 +88,12 @@ struct ContentView: View {
         }
         withAnimation(.easeInOut(duration: 0.4)) {
             currentPage = pages[currentIndex + 1]
+        }
+    }
+    
+    private func setUsedSavedPlayers() {
+        withAnimation(.easeInOut(duration: 0.4)) {
+            currentPage = .savedPlayers
         }
     }
     

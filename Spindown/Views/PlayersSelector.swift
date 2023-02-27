@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayersSelector: View {
     var setNumPlayers: (Int) -> ()
+    var setUsedSavedPlayers: () -> ()
     
     var body: some View {
         VStack {
@@ -48,36 +49,34 @@ struct PlayersSelector: View {
                     UIButtonTile(text: "2", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
                         setNumPlayers(2)
                     })
-                    if UIDevice.current.userInterfaceIdiom == .pad {
-                        UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                            setNumPlayers(3)
-                        })
-                    }
+                    UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setNumPlayers(3)
+                    })
                 }
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    HStack(spacing: 20) {
-                        UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                            setNumPlayers(4)
-                        })
-                        UIButtonTile(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                            setNumPlayers(5)
-                        })
-                        UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                            setNumPlayers(6)
-                        })
-                    }
+                HStack(spacing: 20) {
+                    UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setNumPlayers(4)
+                    })
+                    UIButtonTile(text: "5", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setNumPlayers(5)
+                    })
+                    UIButtonTile(text: "6", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
+                        setNumPlayers(6)
+                    })
                 }
-                if UIDevice.current.userInterfaceIdiom == .phone {
-                    HStack(spacing: 20) {
-                        UIButtonTile(text: "3", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                            setNumPlayers(3)
-                        })
-
-                        UIButtonTile(text: "4", symbol: nil, color: UIColor(named: "AccentGrayDarker")!, action: {
-                            setNumPlayers(4)
-                        })
-                    }
-                }
+                Text("Select or add saved players.")
+                    .font(.system(size: 16))
+                    .foregroundColor(Color(.systemGray))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(6)
+                UIButtonOutlined(
+                    text: "Saved Players",
+                    fill: .black,
+                    color: UIColor(named: "AccentGray")!,
+                    action: setUsedSavedPlayers
+                )
+                .frame(maxWidth: .infinity)
+                .padding(0)
             }
             .frame(maxWidth: 300)
             
