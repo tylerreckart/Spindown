@@ -48,28 +48,7 @@ struct LifeTotalCalculatorDialog: View {
                     Spacer()
                 }
                 
-                HStack {
-                    TextField("", text: $lifeTotal)
-                        .placeholder(when: lifeTotal.isEmpty) {
-                            Text("Quantity...").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                                .font(.system(size: 28, weight: .bold))
-                        }
-                        .keyboardType(.numberPad)
-                        .multilineTextAlignment(.leading)
-                        .font(.system(size: 28, weight: .black))
-                        .focused($focused, equals: .quantity)
-                }
-                .padding()
-                .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
-                .cornerRadius(4)
-                .padding(4)
-                .background(Color(UIColor(named: "DeepGray")!))
-                .cornerRadius(6)
-                .padding(4)
-                .background(
-                    Color(UIColor(named: "AccentGrayDarker")!)
-                )
-                .cornerRadius(8)
+                StyledTextField(placeholderText: "Quantity...",  text: $lifeTotal, field: .quantity, focusOnAppear: true)
                 
                 HStack(spacing: 20) {
                     UIButtonOutlined(

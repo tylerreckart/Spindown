@@ -11,4 +11,5 @@ enum FocusField {
     case minutes
     case seconds
     case search
+    case name
 }

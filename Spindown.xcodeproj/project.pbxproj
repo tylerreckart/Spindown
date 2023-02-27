@@ -52,6 +52,7 @@
 		DB8B8F71298767670023A84B /* StartingLifeTotalSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */; };
 		DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F72298767890023A84B /* PlayersSelector.swift */; };
 		DBE49FA429AB9260008B0648 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA329AB9260008B0648 /* Spinner.swift */; };
+		DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA529ACF597008B0648 /* StyledTextField.swift */; };
 		DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF130682996AAE100B9E19A /* GameTimer.swift */; };
 		DBF1306B299BE04100B9E19A /* SubscriptionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */; };
 		DBF1306D299BE19100B9E19A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306C299BE19100B9E19A /* Store.swift */; };
@@ -108,6 +109,7 @@
 		DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLifeTotalSelector.swift; sourceTree = "<group>"; };
 		DB8B8F72298767890023A84B /* PlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersSelector.swift; sourceTree = "<group>"; };
 		DBE49FA329AB9260008B0648 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		DBE49FA529ACF597008B0648 /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		DBF130682996AAE100B9E19A /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDialog.swift; sourceTree = "<group>"; };
 		DBF1306C299BE19100B9E19A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				DB41B1A8298AF4B00000EC42 /* Button.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
 				DBE49FA329AB9260008B0648 /* Spinner.swift */,
+				DBE49FA529ACF597008B0648 /* StyledTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				DBE49FA429AB9260008B0648 /* Spinner.swift in Sources */,
 				DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */,
 				DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */,
+				DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */,
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
 				DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */,
 				DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */,
