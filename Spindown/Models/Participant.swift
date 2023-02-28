@@ -9,13 +9,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-enum Counter {
-    case poison
-    case experience
-    case energy
-    case tickets
-}
-
 class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     // Unique Identifier
     var uid: UUID = UUID()
@@ -62,6 +55,8 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
                 self.experience += 1
             case .tickets:
                 self.tickets += 1
+            case .lifeTotal:
+                return
         }
     }
     
@@ -75,6 +70,8 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
                 self.experience -= 1
             case .tickets:
                 self.tickets -= 1
+            case .lifeTotal:
+                return
         }
     }
 }

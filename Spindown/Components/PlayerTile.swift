@@ -6,98 +6,17 @@
 //
 
 import SwiftUI
-import UIKit
-
-enum TileOrientation {
-    case landscape
-    case landscapeReverse
-    case portrait
-}
-
-enum ActiveSum {
-    case lifeTotal
-    case poison
-    case energy
-    case experience
-    case tickets
-}
-
-struct PlayerTileControls: View {
-    @ObservedObject var player: Participant
-    @Binding var activeSum: ActiveSum
-    var orientation: TileOrientation
-
-    var body: some View {
-        if (self.orientation == .portrait) {
-            VStack(spacing: 0) {
-                Button(action: { increment() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-                
-                Button(action: { decrement() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-            }
-        } else if (self.orientation == .landscape) {
-            HStack(spacing: 0) {
-                Button(action: { increment() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-                
-                Button(action: { decrement() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-            }
-        } else if (self.orientation == .landscapeReverse) {
-            HStack(spacing: 0) {
-                Button(action: { decrement() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-                
-                Button(action: { increment() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-            }
-        }
-    }
-    
-    func increment() -> Void {
-        if (self.activeSum == .lifeTotal) {
-            player.incrementLifeTotal()
-        } else if (self.activeSum == .poison) {
-            player.addCounter(.poison)
-        } else if (self.activeSum == .energy) {
-            player.addCounter(.energy)
-        } else if (self.activeSum == .experience) {
-            player.addCounter(.experience)
-        } else if (self.activeSum == .tickets) {
-            player.addCounter(.tickets)
-        }
-    }
-    
-    func decrement() -> Void {
-        if (self.activeSum == .lifeTotal) {
-            player.decrementLifeTotal()
-        } else if (self.activeSum == .poison) {
-            player.removeCounter(.poison)
-        } else if (self.activeSum == .energy) {
-            player.removeCounter(.energy)
-        } else if (self.activeSum == .experience) {
-            player.removeCounter(.experience)
-        } else if (self.activeSum == .tickets) {
-            player.removeCounter(.tickets)
-        }
-    }
-}
 
 struct PlayerTile: View {
     @ObservedObject var player: Participant
+
     var updateLifeTotal: (Participant, Int) -> Void
     var orientation: TileOrientation = .portrait
     var showLifeTotalCalculator: () -> ()
+
     @Binding var selectedPlayer: Participant?
     
-    @State private var activeSum: ActiveSum = .lifeTotal
+    @State private var activeSum: Counter = .lifeTotal
     
     public var fontSize: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -114,7 +33,8 @@ struct PlayerTile: View {
             VStack(spacing: 0) {
                 Spacer()
                 VStack(spacing: 0) {
-                        if (self.activeSum == .lifeTotal) {
+                    switch (self.activeSum) {
+                        case .lifeTotal:
                             HStack(spacing: 0) {
                                 Spacer()
                                 VStack(spacing: 0) {
@@ -147,107 +67,39 @@ struct PlayerTile: View {
                                 )
                                 Spacer()
                             }
-                        } else if (self.activeSum == .poison) {
-                            HStack(spacing: 0) {
-                                Spacer()
-                                VStack(spacing: 0) {
-                                    Text("Poison")
-                                        .font(.system(size: 20, weight: .regular))
-                                    Text("\(player.poison)")
-                                        .font(.system(size: fontSize, weight: .black))
-                                    Button(action: {
-                                        withAnimation(.linear(duration: 0.2)) {
-                                            self.activeSum = .energy
-                                        }
-                                    }) {
-                                        Image("ToxicSymbol")
-                                            .resizable()
-                                            .frame(width: 18.67, height: 28)
-                                    }
-                                }
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .scale.combined(with: .opacity),
-                                        removal: .scale.combined(with: .opacity)
-                                    )
-                                )
-                                Spacer()
-                            }
-                        } else if (self.activeSum == .energy) {
-                            HStack(spacing: 0) {
-                                Spacer()
-                                VStack(spacing: 0) {
-                                    Text("Energy")
-                                        .font(.system(size: 20, weight: .regular))
-                                    Text("\(player.energy)")
-                                        .font(.system(size: fontSize, weight: .black))
-                                    Button(action: {
-                                        withAnimation {
-                                            self.activeSum = .experience
-                                        }
-                                    }) {
-                                        Image(systemName: "bolt.fill")
-                                            .font(.system(size: 24, weight: .black))
-                                    }
-                                }
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .scale.combined(with: .opacity),
-                                        removal: .scale.combined(with: .opacity)
-                                    )
-                                )
-                                Spacer()
-                            }
-                        } else if (self.activeSum == .experience) {
-                            HStack(spacing: 0) {
-                                Spacer()
-                                VStack(spacing: 0) {
-                                    Text("Experience")
-                                        .font(.system(size: 20, weight: .regular))
-                                    Text("\(player.experience)")
-                                        .font(.system(size: fontSize, weight: .black))
-                                    Button(action: {
-                                        withAnimation {
-                                            self.activeSum = .tickets
-                                        }
-                                    }) {
-                                        Image(systemName: "magazine.fill")
-                                            .font(.system(size: 24, weight: .bold))
-                                    }
-                                }
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .scale.combined(with: .opacity),
-                                        removal: .scale.combined(with: .opacity)
-                                    )
-                                )
-                                Spacer()
-                            }
-                        } else if (self.activeSum == .tickets) {
-                            HStack(spacing: 0) {
-                                Spacer()
-                                VStack(spacing: 0) {
-                                    Text("Tickets")
-                                        .font(.system(size: 20, weight: .regular))
-                                    Text("\(player.tickets)")
-                                        .font(.system(size: fontSize, weight: .black))
-                                    Button(action: {
-                                        withAnimation {
-                                            self.activeSum = .lifeTotal
-                                        }
-                                    }) {
-                                        Image(systemName: "ticket.fill")
-                                            .font(.system(size: 24, weight: .bold))
-                                    }
-                                }
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .scale.combined(with: .opacity),
-                                        removal: .scale(scale: 0.8).combined(with: .opacity)
-                                    )
-                                )
-                                Spacer()
-                            }
+                        case .poison:
+                            PlayerTileData(
+                                activeSum: $activeSum,
+                                value: player.poison,
+                                label: "Posison",
+                                symbol: "ToxicSymbol",
+                                useCustomSymbol: true,
+                                nextTile: .energy
+                            )
+                        case .energy:
+                            PlayerTileData(
+                                activeSum: $activeSum,
+                                value: player.energy,
+                                label: "Energy",
+                                symbol: "bolt.fill",
+                                nextTile: .experience
+                            )
+                        case .experience:
+                            PlayerTileData(
+                                activeSum: $activeSum,
+                                value: player.experience,
+                                label: "Experience",
+                                symbol: "magazine.fill",
+                                nextTile: .tickets
+                            )
+                        case .tickets:
+                            PlayerTileData(
+                                activeSum: $activeSum,
+                                value: player.tickets,
+                                label: "Tickets",
+                                symbol: "ticket.fill",
+                                nextTile: .lifeTotal
+                            )
                         }
                     }
                     .rotationEffect(

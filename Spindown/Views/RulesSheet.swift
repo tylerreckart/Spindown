@@ -8,140 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct RuleContext: View {
-    @Binding var selectedRule: Rule?
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Button(action: {
-                withAnimation {
-                    self.selectedRule = nil
-                }
-            }) {
-                HStack {
-                    Text("Rule \(selectedRule?.ruleNumber ?? "")")
-                        .font(.system(size: 18, weight: .black))
-                        .multilineTextAlignment(.leading)
-                    Spacer()
-                    Image(systemName: "arrow.backward")
-                        .font(.system(size: 18, weight: .black))
-                    Text("Go Back")
-                        .font(.system(size: 18, weight: .black))
-                }
-            }
-
-            ScrollView {
-                Text(selectedRule?.ruleText ?? "")
-                    .multilineTextAlignment(.leading)
-                    .padding(.top, 10)
-                
-                if (selectedRule?.examples != nil) {
-                    HStack {
-                        Text("Examples")
-                            .font(.system(size: 16, weight: .black))
-                            .padding(.top)
-                            .padding(.bottom, 10)
-                        Spacer()
-                    }
-                    VStack(spacing: 20) {
-                        ForEach((selectedRule?.examples!)!, id: \.self) { example in
-                            Text(example!)
-                                .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                                .italic()
-                        }
-                    }
-                }
-            }
-        }
-        .transition(
-            .asymmetric(
-                insertion: .push(from: .trailing).combined(with: .opacity),
-                removal: .push(from: .leading).combined(with: .opacity)
-            )
-        )
-    }
-}
-
-struct SearchDialogContent: View {
-    @Binding var searchText: String
-    @Binding var results: [Rule]
-    @Binding var selectedRule: Rule?
-    @FocusState private var focused: FocusField?
-
-    var body: some View {
-        VStack(spacing: 20) {
-            StyledTextField(placeholderText: "Search", text: $searchText, field: .search, focusOnAppear: true, fontSize: 20)
-            
-            if (self.searchText.count > 0) {
-                Text("Showing results for \(self.searchText)...")
-                    .font(.system(size: 14))
-                    .italic()
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-            }
-            
-            if (self.searchText.count > 0 && self.results.count == 0) {
-                Text("No results found for \(self.searchText)")
-                    .font(.system(size: 12))
-                    .italic()
-                    .foregroundColor(Color(UIColor(named: "AccentGray")!))
-            }
-            
-            if (self.results.count > 0) {
-                VStack(alignment: .leading, spacing: 10) {
-                    ForEach(self.results, id: \.self) { result in
-                        Button(action: {
-                            withAnimation {
-                                self.selectedRule = result
-                            }
-                        }) {
-                            VStack(alignment: .leading) {
-                                Text("(\(result.ruleNumber))")
-                                    .font(.system(size: 14, weight: .bold))
-                                HStack {
-                                    Text("\(String(result.ruleText.prefix(80)))...")
-                                        .italic()
-                                        .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                                        .multilineTextAlignment(.leading)
-                                    Spacer()
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .transition(
-            .asymmetric(
-                insertion: .push(from: .trailing).combined(with: .opacity),
-                removal: .push(from: .leading).combined(with: .opacity)
-            )
-        )
-    }
-}
-
-struct SearchDialog: View {
-    @Binding var open: Bool
-    @Binding var searchText: String
-    @Binding var results: [Rule]
-    @State private var selectedRule: Rule?
-
-    var body: some View {
-        Dialog(content: {
-            switch (selectedRule) {
-                case nil:
-                    SearchDialogContent(searchText: $searchText, results: $results, selectedRule: $selectedRule)
-                default:
-                    RuleContext(selectedRule: $selectedRule)
-            }
-        },
-           maxWidth: UIScreen.main.bounds.width - 100,
-           open: $open,
-           placement: .top
-        )
-    }
-}
-
 struct RulesSheet: View {
     @State private var isFetchingRules: Bool = false
 
@@ -271,26 +137,28 @@ struct RulesSheet: View {
         self.spinning = true
         self.rules = []
 
-        if let path = Bundle.main.path(forResource: "\(self.currentPage)00", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
-                    for (_, rule) in jsonResult {
-                        let obj = Rule()
-                        obj.ruleNumber = (rule["ruleNumber"] as? String)!
-                        obj.examples = rule["examples"] as? [String?]
-                        obj.ruleText = (rule["ruleText"] as? String)!
-                        obj.fragment = rule["fragment"] as? String
-                        obj.navigation = rule["navigation"] as? RulesNavigation
+        for page in 1...9 {
+            if let path = Bundle.main.path(forResource: "\(page)00", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                    if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
+                        for (_, rule) in jsonResult {
+                            let obj = Rule()
+                            obj.ruleNumber = (rule["ruleNumber"] as? String)!
+                            obj.examples = rule["examples"] as? [String?]
+                            obj.ruleText = (rule["ruleText"] as? String)!
+                            obj.fragment = rule["fragment"] as? String
+                            obj.navigation = rule["navigation"] as? RulesNavigation
+                            
+                            self.rules.append(obj)
+                        }
                         
-                        self.rules.append(obj)
+                        self.spinning = false
                     }
-                    
-                    self.spinning = false
+                } catch {
+                    // handle error
                 }
-            } catch {
-               // handle error
             }
         }
     }
@@ -307,22 +175,6 @@ struct RulesSheet: View {
             if (index <= 4) {
                 self.searchResults.append(match)
             }
-        }
-    }
-}
-
-struct RulesSheet_Previews: PreviewProvider {
-    @State private static var showRulesSheet: Bool = true
-    static var previews: some View {
-        VStack {
-            Text("Hello, World")
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black)
-        .sheet(isPresented: $showRulesSheet) {
-            RulesSheet()
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                .background(.black)
         }
     }
 }

@@ -13,7 +13,6 @@
 		DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */; };
 		DB22346529A8016A006316CE /* 700.json in Resources */ = {isa = PBXBuildFile; fileRef = DB22346429A8016A006316CE /* 700.json */; };
 		DB22346729A8024A006316CE /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB22346629A8024A006316CE /* Rule.swift */; };
-		DB22346929A848E4006316CE /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB22346829A848E4006316CE /* FocusField.swift */; };
 		DB2960B529A7D7D800852A5F /* 100.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B429A7D7D800852A5F /* 100.json */; };
 		DB2960B729A7D84200852A5F /* 200.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B629A7D84200852A5F /* 200.json */; };
 		DB2960B929A7D84B00852A5F /* 300.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2960B829A7D84B00852A5F /* 300.json */; };
@@ -31,7 +30,7 @@
 		DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A1298AD8C60000EC42 /* FourPlayerBoard.swift */; };
 		DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A3298AD9770000EC42 /* FivePlayerBoard.swift */; };
 		DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A5298ADA3C0000EC42 /* SixPlayerBoard.swift */; };
-		DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A8298AF4B00000EC42 /* Button.swift */; };
+		DB41B1A9298AF4B00000EC42 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A8298AF4B00000EC42 /* UIButton.swift */; };
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
 		DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* Dialog.swift */; };
 		DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */; };
@@ -53,6 +52,19 @@
 		DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F72298767890023A84B /* PlayersSelector.swift */; };
 		DBE49FA429AB9260008B0648 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA329AB9260008B0648 /* Spinner.swift */; };
 		DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA529ACF597008B0648 /* StyledTextField.swift */; };
+		DBE49FAA29AD83FC008B0648 /* OnboardingBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */; };
+		DBE49FAC29AD847B008B0648 /* UIButtonOutlined.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FAB29AD847B008B0648 /* UIButtonOutlined.swift */; };
+		DBE49FAE29AD8499008B0648 /* UIButtonStacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FAD29AD8499008B0648 /* UIButtonStacked.swift */; };
+		DBE49FB029AD84B0008B0648 /* UIButtonTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FAF29AD84B0008B0648 /* UIButtonTile.swift */; };
+		DBE49FB629AD8531008B0648 /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FB529AD8531008B0648 /* FocusField.swift */; };
+		DBE49FB829AD8565008B0648 /* PlayerCustomizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FB729AD8565008B0648 /* PlayerCustomizationContext.swift */; };
+		DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */; };
+		DBE49FBC29AD85BD008B0648 /* TileOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FBB29AD85BD008B0648 /* TileOrientation.swift */; };
+		DBE49FBE29AD85DC008B0648 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FBD29AD85DC008B0648 /* Counter.swift */; };
+		DBE49FC029AD861F008B0648 /* PlayerTileControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FBF29AD861F008B0648 /* PlayerTileControls.swift */; };
+		DBE49FC229AD87A5008B0648 /* PlayerTileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */; };
+		DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC329AD8A0D008B0648 /* RuleContext.swift */; };
+		DBE49FC629AD8A3E008B0648 /* SearchDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */; };
 		DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF130682996AAE100B9E19A /* GameTimer.swift */; };
 		DBF1306B299BE04100B9E19A /* SubscriptionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */; };
 		DBF1306D299BE19100B9E19A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306C299BE19100B9E19A /* Store.swift */; };
@@ -67,7 +79,6 @@
 		DB1F08F0299C1C6100A057CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB22346429A8016A006316CE /* 700.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 700.json; sourceTree = "<group>"; };
 		DB22346629A8024A006316CE /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
-		DB22346829A848E4006316CE /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
 		DB2960B429A7D7D800852A5F /* 100.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 100.json; sourceTree = "<group>"; };
 		DB2960B629A7D84200852A5F /* 200.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 200.json; sourceTree = "<group>"; };
 		DB2960B829A7D84B00852A5F /* 300.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 300.json; sourceTree = "<group>"; };
@@ -83,7 +94,7 @@
 		DB41B1A1298AD8C60000EC42 /* FourPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourPlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B1A3298AD9770000EC42 /* FivePlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivePlayerBoard.swift; sourceTree = "<group>"; };
 		DB41B1A5298ADA3C0000EC42 /* SixPlayerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixPlayerBoard.swift; sourceTree = "<group>"; };
-		DB41B1A8298AF4B00000EC42 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		DB41B1A8298AF4B00000EC42 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		DB41B1AA298BF3970000EC42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		DB41B1B0298C059D0000EC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DB41B1B1298C07CF0000EC42 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
@@ -110,6 +121,19 @@
 		DB8B8F72298767890023A84B /* PlayersSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersSelector.swift; sourceTree = "<group>"; };
 		DBE49FA329AB9260008B0648 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		DBE49FA529ACF597008B0648 /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
+		DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackButton.swift; sourceTree = "<group>"; };
+		DBE49FAB29AD847B008B0648 /* UIButtonOutlined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonOutlined.swift; sourceTree = "<group>"; };
+		DBE49FAD29AD8499008B0648 /* UIButtonStacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonStacked.swift; sourceTree = "<group>"; };
+		DBE49FAF29AD84B0008B0648 /* UIButtonTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTile.swift; sourceTree = "<group>"; };
+		DBE49FB529AD8531008B0648 /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
+		DBE49FB729AD8565008B0648 /* PlayerCustomizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomizationContext.swift; sourceTree = "<group>"; };
+		DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomizationDialog.swift; sourceTree = "<group>"; };
+		DBE49FBB29AD85BD008B0648 /* TileOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileOrientation.swift; sourceTree = "<group>"; };
+		DBE49FBD29AD85DC008B0648 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		DBE49FBF29AD861F008B0648 /* PlayerTileControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileControls.swift; sourceTree = "<group>"; };
+		DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileData.swift; sourceTree = "<group>"; };
+		DBE49FC329AD8A0D008B0648 /* RuleContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleContext.swift; sourceTree = "<group>"; };
+		DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDialog.swift; sourceTree = "<group>"; };
 		DBF130682996AAE100B9E19A /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDialog.swift; sourceTree = "<group>"; };
 		DBF1306C299BE19100B9E19A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -139,7 +163,7 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		DB1F08F3299C29B600A057CC /* Dialog */ = {
+		DB1F08F3299C29B600A057CC /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
 				DB8A3250298CB2BC00FB7658 /* SettingsDialog */,
@@ -147,9 +171,11 @@
 				DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */,
 				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
 				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
+				DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */,
+				DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */,
 				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
 			);
-			path = Dialog;
+			path = Dialogs;
 			sourceTree = "<group>";
 		};
 		DB2960B329A7D6F000852A5F /* Rules */ = {
@@ -192,12 +218,15 @@
 		DB41B1A7298AF4A30000EC42 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DB1F08F3299C29B600A057CC /* Dialog */,
+				DBE49FB129AD84D9008B0648 /* Forms */,
+				DBE49FA829AD83F0008B0648 /* Buttons */,
+				DB1F08F3299C29B600A057CC /* Dialogs */,
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
-				DB41B1A8298AF4B00000EC42 /* Button.swift */,
+				DBE49FBF29AD861F008B0648 /* PlayerTileControls.swift */,
+				DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
 				DBE49FA329AB9260008B0648 /* Spinner.swift */,
-				DBE49FA529ACF597008B0648 /* StyledTextField.swift */,
+				DBE49FC329AD8A0D008B0648 /* RuleContext.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -209,8 +238,6 @@
 				DB8B8F6E298767390023A84B /* Participant.swift */,
 				DBF1306E299BE1F100B9E19A /* Error.swift */,
 				DB22346629A8024A006316CE /* Rule.swift */,
-				DB22346829A848E4006316CE /* FocusField.swift */,
-				DB38DDB429A95225000D8796 /* DialogPlacement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,12 +245,9 @@
 		DB41B1AD298C018C0000EC42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DBE49FA729AD81CA008B0648 /* Onboarding */,
 				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
 				DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */,
-				DB41B1AA298BF3970000EC42 /* SplashScreen.swift */,
-				DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */,
-				DB8B8F72298767890023A84B /* PlayersSelector.swift */,
-				DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */,
 				DB1D39FB298D60D400A741DC /* RulesSheet.swift */,
 			);
 			path = Views;
@@ -258,8 +282,7 @@
 		DB8B8F532986E2CB0023A84B /* Spindown */ = {
 			isa = PBXGroup;
 			children = (
-				DB1F08F0299C1C6100A057CC /* Info.plist */,
-				DB2960B329A7D6F000852A5F /* Rules */,
+				DBE49FB229AD84FB008B0648 /* Contstants */,
 				DB41B19C298AD7350000EC42 /* GameBoard */,
 				DB41B1AD298C018C0000EC42 /* Views */,
 				DB41B1AC298C01810000EC42 /* Models */,
@@ -272,6 +295,7 @@
 				DBF13070299BECBB00B9E19A /* Subscriptions.storekit */,
 				DB69EC81299D1D4D00D4EB3F /* Terms.md */,
 				DB69EC82299D1D9E00D4EB3F /* Privacy.md */,
+				DB1F08F0299C1C6100A057CC /* Info.plist */,
 				DB8B8F602986E2CC0023A84B /* Preview Content */,
 			);
 			path = Spindown;
@@ -283,6 +307,50 @@
 				DB8B8F612986E2CC0023A84B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DBE49FA729AD81CA008B0648 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DB41B1AA298BF3970000EC42 /* SplashScreen.swift */,
+				DB8B8F70298767670023A84B /* StartingLifeTotalSelector.swift */,
+				DB8B8F72298767890023A84B /* PlayersSelector.swift */,
+				DB1D3A082991572300A741DC /* SavedPlayersSelector.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DBE49FA829AD83F0008B0648 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */,
+				DBE49FAB29AD847B008B0648 /* UIButtonOutlined.swift */,
+				DBE49FAD29AD8499008B0648 /* UIButtonStacked.swift */,
+				DBE49FAF29AD84B0008B0648 /* UIButtonTile.swift */,
+				DB41B1A8298AF4B00000EC42 /* UIButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		DBE49FB129AD84D9008B0648 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				DBE49FA529ACF597008B0648 /* StyledTextField.swift */,
+				DBE49FB729AD8565008B0648 /* PlayerCustomizationContext.swift */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		DBE49FB229AD84FB008B0648 /* Contstants */ = {
+			isa = PBXGroup;
+			children = (
+				DB2960B329A7D6F000852A5F /* Rules */,
+				DBE49FB529AD8531008B0648 /* FocusField.swift */,
+				DB38DDB429A95225000D8796 /* DialogPlacement.swift */,
+				DBE49FBB29AD85BD008B0648 /* TileOrientation.swift */,
+				DBE49FBD29AD85DC008B0648 /* Counter.swift */,
+			);
+			path = Contstants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,32 +446,44 @@
 				DB1D3A072991566400A741DC /* PlayerList.swift in Sources */,
 				DB22346729A8024A006316CE /* Rule.swift in Sources */,
 				DB1D3A092991572300A741DC /* SavedPlayersSelector.swift in Sources */,
+				DBE49FB829AD8565008B0648 /* PlayerCustomizationContext.swift in Sources */,
 				DBF1306D299BE19100B9E19A /* Store.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
+				DBE49FC229AD87A5008B0648 /* PlayerTileData.swift in Sources */,
+				DBE49FC029AD861F008B0648 /* PlayerTileControls.swift in Sources */,
 				DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */,
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
 				DB8B8F71298767670023A84B /* StartingLifeTotalSelector.swift in Sources */,
-				DB41B1A9298AF4B00000EC42 /* Button.swift in Sources */,
-				DB22346929A848E4006316CE /* FocusField.swift in Sources */,
+				DB41B1A9298AF4B00000EC42 /* UIButton.swift in Sources */,
 				DB41B1A0298AD7760000EC42 /* ThreePlayerBoard.swift in Sources */,
 				DB69EC8C29A7088300D4EB3F /* Players.swift in Sources */,
 				DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */,
+				DBE49FBE29AD85DC008B0648 /* Counter.swift in Sources */,
 				DBE49FA429AB9260008B0648 /* Spinner.swift in Sources */,
 				DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */,
 				DB8B8F73298767890023A84B /* PlayersSelector.swift in Sources */,
+				DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */,
 				DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */,
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
 				DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */,
+				DBE49FAE29AD8499008B0648 /* UIButtonStacked.swift in Sources */,
 				DB1D3A0E29915F9900A741DC /* LifeTotalCalculatorDialog.swift in Sources */,
 				DBF1306F299BE1F100B9E19A /* Error.swift in Sources */,
+				DBE49FB029AD84B0008B0648 /* UIButtonTile.swift in Sources */,
+				DBE49FC629AD8A3E008B0648 /* SearchDialog.swift in Sources */,
 				DB8B8F6D298767100023A84B /* PlayerTile.swift in Sources */,
+				DBE49FBC29AD85BD008B0648 /* TileOrientation.swift in Sources */,
 				DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */,
 				DB8B8F6F298767390023A84B /* Participant.swift in Sources */,
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
 				DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */,
 				DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */,
+				DBE49FAC29AD847B008B0648 /* UIButtonOutlined.swift in Sources */,
+				DBE49FAA29AD83FC008B0648 /* OnboardingBackButton.swift in Sources */,
+				DBE49FB629AD8531008B0648 /* FocusField.swift in Sources */,
 				DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */,
+				DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,
 				DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */,
 				DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */,

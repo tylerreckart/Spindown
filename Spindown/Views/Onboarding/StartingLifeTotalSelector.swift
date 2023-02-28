@@ -12,23 +12,16 @@ struct StartingLifeTotalSelector: View {
 
     var setStartingLifeTotal: (Int) -> ()
     
+    @State private var reverseAnimation: Bool = false
+    
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    withAnimation {
-                        self.currentPage = .home
-                    }
-                }) {
-                    Image(systemName: "arrow.backward")
-                        .font(.system(size: 18, weight: .black))
-                    Text("Go Back")
-                        .font(.system(size: 18, weight: .black))
+            OnboardingBackButton(action: {
+                self.reverseAnimation.toggle()
+                withAnimation {
+                    self.currentPage = .home
                 }
-                Spacer()
-            }
-            .foregroundColor(.white)
-            .padding()
+            })
 
             Spacer()
 
@@ -85,7 +78,12 @@ struct StartingLifeTotalSelector: View {
             
             Spacer()
         }
-        .transition(.push(from: .trailing))
+        .transition(
+            .asymmetric(
+                insertion: .push(from: self.reverseAnimation != true ? .trailing : .leading),
+                removal: .push(from: .trailing)
+            )
+        )
     }
 }
 

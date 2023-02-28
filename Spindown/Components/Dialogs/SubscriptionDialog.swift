@@ -24,6 +24,7 @@ struct SubscriptionTile: View {
                     VStack(spacing: 0) {
                         Text("\(sub?.displayPrice ?? "$0.99")")
                             .font(.system(size: 18, weight: .bold))
+                            .padding(.bottom, 5)
                         Text("Cancel anytime")
                             .font(.caption)
                     }
@@ -54,7 +55,7 @@ struct Pitch: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            Text("Development of this app would not be possible without our subscribers. Show your support and help fund the development of new features by subscribing today.")
+            Text("Development of this app would not be possible without our subscribers. To continue using Spindown, show your support and help fund the development of new features by subscribing today.")
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 5)
                 .padding(.bottom)
@@ -103,7 +104,8 @@ struct SubscriptionView: View {
                         .resizable()
                         .frame(maxWidth: 64, maxHeight: 64)
                 }
-                .padding([.top, .bottom])
+                .padding(.top, 30)
+                .padding(.bottom)
                 
                 VStack {
                     HStack(alignment: .center) {
@@ -136,15 +138,7 @@ struct SubscriptionView: View {
                 VStack(spacing: 20) {
                     if !store.subscriptions.isEmpty {
                         if !hasPurchased {
-                            Text("Try Spindown completely free for two weeks. Cancel anytime.")
-                                .font(.system(size: 12))
-                                .foregroundColor(Color(.systemGray))
-                                .padding(.bottom, 10)
-                                .padding(.horizontal)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
-                            
-                            UIButton(text: "Start Your Free Trial", color: UIColor(named: "PrimaryRed")!, action: {
+                            UIButton(text: "Subscribe", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
                                     await buy()
                                 }
