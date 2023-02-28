@@ -20,7 +20,7 @@ struct PlayersSelector: View {
             OnboardingBackButton(action: {
                 self.reverseAnimation.toggle()
                 withAnimation {
-                    self.currentPage = .home
+                    self.currentPage = .lifeTotal
                 }
             })
     

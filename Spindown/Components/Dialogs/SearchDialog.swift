@@ -69,7 +69,8 @@ struct SearchDialog: View {
     @Binding var open: Bool
     @Binding var searchText: String
     @Binding var results: [Rule]
-    @State private var selectedRule: Rule?
+    @Binding var selectedRule: Rule?
+    var subrules: [Rule]
 
     var body: some View {
         Dialog(content: {
@@ -77,7 +78,7 @@ struct SearchDialog: View {
                 case nil:
                     SearchDialogContent(searchText: $searchText, results: $results, selectedRule: $selectedRule)
                 default:
-                    RuleContext(selectedRule: $selectedRule)
+                    RuleContext(selectedRule: $selectedRule, subrules: subrules)
             }
         },
            maxWidth: UIScreen.main.bounds.width - 100,

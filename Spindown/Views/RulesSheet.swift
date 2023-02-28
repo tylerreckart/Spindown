@@ -20,6 +20,8 @@ struct RulesSheet: View {
     @State private var searchText: String = ""
     @State private var searchResults: [Rule] = []
     @State private var spinning: Bool = false
+    @State private var selectedRule: Rule?
+    @State private var selectedRuleSubrules: [Rule] = []
 
     var body: some View {
         ZStack {
@@ -73,45 +75,17 @@ struct RulesSheet: View {
                             .frame(maxWidth: .infinity)
                         }
                     }
-                    .padding([.top, .bottom])
+                    .padding()
                 }
                 .padding([.top, .bottom], -16)
-                .padding([.leading, .trailing])
-                
-                Divider()
-                    .frame(height: 4)
-                    .background(Color(UIColor(named: "AccentGrayDarker")!))
-                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                    .offset(y: 8)
-                
-                HStack {
-                    Button(action: {
-                        if (self.currentPage != 1) {
-                            self.currentPage -= 1
-                        }
-                    }) {
-                        Text("Prev Page")
-                    }
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        if (self.currentPage != 9) {
-                            self.currentPage += 1
-                        }
-                        
-                    }) {
-                        Text("Next Page")
-                    }
-                }
-                .padding([.leading, .trailing, .top])
-                .background(Color(UIColor(named: "NotAsDeepGray")!).opacity(0.75))
             }
             
             SearchDialog(
                 open: $showSearchDialog,
                 searchText: $searchText,
-                results: $searchResults
+                results: $searchResults,
+                selectedRule: $selectedRule,
+                subrules: selectedRuleSubrules
             )
         }
         .foregroundColor(Color.white)
@@ -126,6 +100,18 @@ struct RulesSheet: View {
         .onChange(of: searchText) { newState in
             search()
         }
+        .onChange(of: selectedRule) { newState in
+            if (self.selectedRule != nil) {
+                let subruleMatches = self.rules.filter({
+                    $0.ruleNumber.lowercased() != self.selectedRule?.ruleNumber.lowercased() &&
+                    $0.ruleNumber.lowercased().contains((self.selectedRule?.ruleNumber.lowercased())!)
+                })
+                
+                self.selectedRuleSubrules = subruleMatches
+            } else {
+                self.selectedRuleSubrules = []
+            }
+        }
         .onChange(of: showSearchDialog) { newState in
             if (newState == false && self.searchText.count > 0) {
                 self.searchText = ""
@@ -137,27 +123,29 @@ struct RulesSheet: View {
         self.spinning = true
         self.rules = []
 
-        for page in 1...9 {
-            if let path = Bundle.main.path(forResource: "\(page)00", ofType: "json") {
-                do {
-                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                    if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
-                        for (_, rule) in jsonResult {
-                            let obj = Rule()
-                            obj.ruleNumber = (rule["ruleNumber"] as? String)!
-                            obj.examples = rule["examples"] as? [String?]
-                            obj.ruleText = (rule["ruleText"] as? String)!
-                            obj.fragment = rule["fragment"] as? String
-                            obj.navigation = rule["navigation"] as? RulesNavigation
+        DispatchQueue.main.async {
+            for page in 1...9 {
+                if let path = Bundle.main.path(forResource: "\(page)00", ofType: "json") {
+                    do {
+                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                        let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                        if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
+                            for (_, rule) in jsonResult {
+                                let obj = Rule()
+                                obj.ruleNumber = (rule["ruleNumber"] as? String)!
+                                obj.examples = rule["examples"] as? [String?]
+                                obj.ruleText = (rule["ruleText"] as? String)!
+                                obj.fragment = rule["fragment"] as? String
+                                obj.navigation = rule["navigation"] as? RulesNavigation
+                                
+                                self.rules.append(obj)
+                            }
                             
-                            self.rules.append(obj)
+                            self.spinning = false
                         }
-                        
-                        self.spinning = false
+                    } catch {
+                        // handle error
                     }
-                } catch {
-                    // handle error
                 }
             }
         }
@@ -171,7 +159,11 @@ struct RulesSheet: View {
             $0.ruleText.lowercased().contains(self.searchText.lowercased())
         })
         
-        for (index, match) in matches.enumerated() {
+        let filteredMatches = matches.filter({
+            $0.ruleNumber.rangeOfCharacter(from: letters) == nil
+        })
+        
+        for (index, match) in filteredMatches.enumerated() {
             if (index <= 4) {
                 self.searchResults.append(match)
             }

@@ -22,7 +22,7 @@ struct SavedPlayersSelector: View {
                 OnboardingBackButton(action: {
                     self.reverseAnimation.toggle()
                     withAnimation {
-                        self.currentPage = .home
+                        self.currentPage = .players
                     }
                 })
 
