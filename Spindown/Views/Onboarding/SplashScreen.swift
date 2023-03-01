@@ -45,16 +45,6 @@ struct SplashScreen: View {
                     )
                     
                     UIButtonOutlined(
-                        text: "Game History",
-                        symbol: "bookmark",
-                        fill: .black,
-                        color: .white,
-                        action: {
-                            self.showHistorySheet.toggle()
-                        }
-                    )
-                    
-                    UIButtonOutlined(
                         text: "Rulebook",
                         symbol: "book",
                         fill: .black,

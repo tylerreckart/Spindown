@@ -15,52 +15,64 @@ struct PlayerList: View {
     @Binding var showDialog: Bool
     
     @State private var showMaxPlayerCountAlert: Bool = false
+    @State private var contentSize: CGSize?
 
     var body: some View {
         VStack {
             if (savedPlayers.count > 0) {
                 ScrollView {
-                    VStack(spacing: 0) {
-                        ForEach(self.savedPlayers, id: \.self) { player in
-                            let activeIndex = self.players.firstIndex(where: { $0.uid == player.uid })
-
-                            Button(action: {
-                                if (activeIndex == nil) {
-                                    mapSavedPlayerToParticipantModel(player)
-                                } else {
-                                    removeSavedPlayerFromParticipantModel(player)
-                                }
-                            }) {
-                                HStack {
+                        VStack(spacing: 0) {
+                            ForEach(self.savedPlayers, id: \.self) { player in
+                                let activeIndex = self.players.firstIndex(where: { $0.uid == player.uid })
+                                
+                                Button(action: {
                                     if (activeIndex == nil) {
-                                        Image(systemName: "circle")
-                                            .foregroundColor(Color.white)
+                                        mapSavedPlayerToParticipantModel(player)
                                     } else {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(Color.white)
+                                        removeSavedPlayerFromParticipantModel(player)
                                     }
-                                    Text(player.name!)
-                                        .foregroundColor(Color.white)
-                                    Spacer()
-                                    Button(action: {
-                                        self.selectedPlayer = player
-                                        withAnimation {
-                                            self.showDialog.toggle()
+                                }) {
+                                    HStack {
+                                        if (activeIndex == nil) {
+                                            Image(systemName: "circle")
+                                                .foregroundColor(Color.white)
+                                        } else {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .foregroundColor(Color.white)
                                         }
-                                    }) {
-                                        Image(systemName: "pencil.circle.fill")
+                                        Text(player.name!)
                                             .foregroundColor(Color.white)
+                                        Spacer()
+                                        Button(action: {
+                                            self.selectedPlayer = player
+                                            withAnimation {
+                                                self.showDialog.toggle()
+                                            }
+                                        }) {
+                                            Image(systemName: "pencil.circle.fill")
+                                                .foregroundColor(Color.white)
+                                        }
                                     }
+                                    .font(.system(size: 18, weight: .black))
+                                    .padding()
+                                    .background(Color(UIColor(named: "DeepGray") ?? .systemGray5))
                                 }
-                                .font(.system(size: 18, weight: .black))
-                                .padding()
-                                .background(Color(UIColor(named: "DeepGray") ?? .systemGray5))
                             }
                         }
-                    }
-                    .cornerRadius(4)
+                        .cornerRadius(4)
+                        .overlay(
+                            GeometryReader { geo in
+                                Color.clear
+                                    .onAppear {
+                                        contentSize = geo.size
+                                    }
+                                    .onChange(of: savedPlayers.count) { newState in
+                                        contentSize = geo.size
+                                    }
+                            }
+                        )
                 }
-                .frame(maxWidth: .infinity, maxHeight: 200)
+                .frame(maxWidth: .infinity, maxHeight: self.savedPlayers.count > 3 ? 200 : contentSize?.height)
                 .padding(6)
                 .background(.black)
                 .cornerRadius(8)

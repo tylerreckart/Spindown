@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Game" representedClassName="Game" isAbstract="YES" syncable="YES" codeGenerationType="class">
-        <attribute name="startineLifeTotal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="uid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="gamesPlayed" inverseEntity="Player"/>
-        <relationship name="winningPlayer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="gamesWon" inverseEntity="Player"/>
-    </entity>
     <entity name="Player" representedClassName="Player" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="Binary"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="uid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="gamesPlayed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="players" inverseEntity="Game"/>
-        <relationship name="gamesWon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="winningPlayer" inverseEntity="Game"/>
     </entity>
 </model>

@@ -16,11 +16,8 @@ struct AboutView: View {
                     .resizable()
                     .frame(maxWidth: 100, maxHeight: 100)
                     .padding(.top, 75)
-                Text("Hi, I'm Tyler. I run Haptic Software as a one-man development studio without employees or outside funding.")
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-                Text("This app would not be possible without the love and support of my wife, son, and our two dogs.")
-                    .multilineTextAlignment(.center)
+                Text("Hi, I'm Tyler. I run Haptic Software as a one-man development studio without employees or outside funding.\n\nThis app would not be possible without the love and support of my wife, son, and our two dogs.")
+                    .multilineTextAlignment(.leading)
                     .padding(.horizontal)
                 
                 List {
@@ -37,7 +34,7 @@ struct AboutView: View {
                                         .frame(width: 30, height: 30)
                                     Image("HapticLogo")
                                         .resizable()
-                                        .frame(width: 14, height: 14)
+                                        .frame(width: 18, height: 18)
                                 }
                                 
                                 VStack(alignment: .leading) {
@@ -94,6 +91,7 @@ struct AboutView: View {
                             .frame(height: 40)
                         }
                     }
+                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
                     
                     Section {
                         Button(action: {
@@ -104,9 +102,10 @@ struct AboutView: View {
                             Text("Rate Spindown on the App Store")
                         }
                     }
+                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
                 }
                 .frame(height: 350)
-                .background(Color(UIColor(named: "AlmostBlack")!))
+                .background(Color(UIColor(named: "DeepGray")!))
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)
                 .foregroundColor(.white)
@@ -114,7 +113,7 @@ struct AboutView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .edgesIgnoringSafeArea(.all)
-        .background(Color(UIColor(named: "AlmostBlack")!))
+        .background(Color(UIColor(named: "DeepGray")!))
     }
 }
 
@@ -128,43 +127,11 @@ struct AppSettingsView: View {
             ScrollView {
                 List {
                     Section(header: Text("General")) {
-//                        NavigationLink(destination: EmptyView()) {
-//                            HStack {
-//                                ZStack {
-//                                    RoundedRectangle(cornerRadius: 8)
-//                                        .fill(Color(UIColor(named: "PrimaryRed")!))
-//                                        .frame(width: 30, height: 30)
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//                                    Image(systemName: "textformat")
-//                                        .foregroundColor(.white)
-//                                        .font(.system(size: 16, weight: .bold))
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//                                }
-//                                Text("Display")
-//                            }
-//                            .padding([.top, .bottom], 2)
-//                        }
-//                        NavigationLink(destination: EmptyView()) {
-//                            HStack {
-//                                ZStack {
-//                                    RoundedRectangle(cornerRadius: 8)
-//                                        .fill(Color(UIColor(named: "PrimaryBlue")!))
-//                                        .frame(width: 30, height: 30)
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//                                    Image(systemName: "note.text")
-//                                        .foregroundColor(.white)
-//                                        .font(.system(size: 16, weight: .bold))
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//                                }
-//                                Text("Game History")
-//                            }
-//                            .padding([.top, .bottom], 2)
-//                        }
                         NavigationLink(destination: EmptyView()) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
+                                        .fill(Color(UIColor(named: "PrimaryRed")!))
                                         .frame(width: 30, height: 30)
                                         .shadow(color: Color.black.opacity(0.1), radius: 3)
                                     Image(systemName: "person.fill")
@@ -211,25 +178,26 @@ struct AppSettingsView: View {
                             .padding([.top, .bottom], 2)
                         }
                     }
+                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
                     .listRowSeparatorTint(Color.white.opacity(0.15))
                     
                     Section(header: Text("About")) {
-                        //                        Button(action: { self.showManageSubscriptions.toggle() }) {
-                        //                            HStack {
-                        //                                ZStack {
-                        //                                    RoundedRectangle(cornerRadius: 8)
-                        //                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
-                        //                                        .frame(width: 30, height: 30)
-                        //                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                        //                                    Image(systemName: "creditcard.fill")
-                        //                                        .foregroundColor(.white)
-                        //                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                        //                                }
-                        //                                Text("Manage Subscription")
-                        //                                    .foregroundColor(.white)
-                        //                            }
-                        //                            .padding([.top, .bottom], 2)
-                        //                        }
+                        Button(action: { self.showManageSubscriptions.toggle() }) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
+                                        .frame(width: 30, height: 30)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Image(systemName: "creditcard.fill")
+                                        .foregroundColor(.white)
+                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                }
+                                Text("Manage Subscription")
+                                    .foregroundColor(.white)
+                            }
+                            .padding([.top, .bottom], 2)
+                        }
                         Button(action: {
                             if let url = URL(string: "https://haptic.software/terms") {
                                 UIApplication.shared.open(url)
@@ -276,26 +244,27 @@ struct AppSettingsView: View {
                                         .frame(width: 30, height: 30)
                                     Image("HapticLogo")
                                         .resizable()
-                                        .frame(width: 15, height: 15)
+                                        .frame(width: 18, height: 18)
                                 }
                                 Text("Haptic Software")
                             }
                             .padding([.top, .bottom], 2)
                         }
                     }
+                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
                 }
-                .frame(height: 325)
-                .background(Color(UIColor(named: "AlmostBlack")!))
+                .frame(height: 375)
+                .background(Color(UIColor(named: "DeepGray")!))
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)
                 
-                Text("© 2023 Haptic Software LLC. Spindown 1.0.1")
+                Text("© 2023 Haptic Software LLC. Spindown \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
                     .font(.system(size: 12))
                     .foregroundColor(Color(UIColor(named: "AccentGray")!))
                     .padding(.bottom)
             }
             .foregroundColor(.white)
-            .background(Color(UIColor(named: "AlmostBlack")!))
+            .background(Color(UIColor(named: "DeepGray")!))
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
