@@ -13,7 +13,8 @@ struct PlayerCustomizationDialog: View {
     @Binding var isOpen: Bool
 
     var customize: Bool = false
-    var selectedPlayer: Participant? = nil
+    @Binding var selectedPlayer: Participant?
+    var savedPlayerList: FetchedResults<Player>
 
     var body: some View {
         Dialog(
@@ -30,36 +31,43 @@ struct PlayerCustomizationDialog: View {
         )
     }
     
-    func save(name: String, color: UIColor) -> Void {
-        let target = Player(context: managedObjectContext)
-        target.uid = UUID()
-        target.name = name
-        target.color = NSKeyedArchiver.archivedData(withRootObject: color)
+    func save(uid: UUID, name: String, color: UIColor) -> Void {
+        let targetIndex = savedPlayerList.firstIndex(where: { $0.uid == uid })
+        
+        if (targetIndex != nil) {
+            let target = savedPlayerList[targetIndex!]
+            target.setValue(name, forKey: "name")
+            target.setValue(NSKeyedArchiver.archivedData(withRootObject: color), forKey: "color")
+        } else {
+            let target = Player(context: managedObjectContext)
+            target.uid = uid
+            target.name = name
+            target.color = NSKeyedArchiver.archivedData(withRootObject: color)
+        }
 
         saveContext()
     }
     
     func delete(_ player: Participant) {
-        let target = Player(context: managedObjectContext)
-        target.uid = player.uid
+        let targetIndex = savedPlayerList.firstIndex(where: { $0.uid == player.uid })
         
-        managedObjectContext.delete(target)
+        managedObjectContext.delete(savedPlayerList[targetIndex!])
         
-        withAnimation {
-            self.isOpen.toggle()
-        }
+        saveContext()
     }
        
     func saveContext() {
-       do {
-           try managedObjectContext.save()
+        self.selectedPlayer = nil
 
-           withAnimation {
-               self.isOpen.toggle()
-           }
-       } catch {
-           print("Error saving managed object context: \(error)")
-       }
+        do {
+            try managedObjectContext.save()
+
+            withAnimation {
+                self.isOpen.toggle()
+            }
+        } catch {
+            print("Error saving managed object context: \(error)")
+        }
     }
     
     func dismiss() -> Void {

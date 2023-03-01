@@ -65,21 +65,21 @@ struct PlayerSelectorViewPlayerList: View {
                     }
                 }
                 .cornerRadius(4)
-                .overlay(
-                    GeometryReader { geo in
-                        Color.clear
-                            .onAppear {
-                                contentSize = geo.size
-                            }
-                            .onChange(of: players.count) { newState in
-                                contentSize = geo.size
-                            }
-                    }
-                )
             }
             .padding(6)
             .background(Color(UIColor(named: "DeepGray")!))
             .cornerRadius(8)
+            .overlay(
+                GeometryReader { geo in
+                    Color.clear
+                        .onAppear {
+                            contentSize = geo.size
+                        }
+                        .onChange(of: players.count) { newState in
+                            contentSize = geo.size
+                        }
+                }
+            )
         }
         .padding(4)
         .background(Color(UIColor(named: "AccentGrayDarker")!))

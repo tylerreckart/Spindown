@@ -92,7 +92,8 @@ struct SavedPlayersSelector: View {
             PlayerCustomizationDialog(
                 isOpen: $showCustomizationDialog,
                 customize: self.selectedPlayer != nil,
-                selectedPlayer: selectedPlayer
+                selectedPlayer: $selectedPlayer,
+                savedPlayerList: savedPlayers
             )
             .padding(.horizontal)
         }
@@ -102,5 +103,10 @@ struct SavedPlayersSelector: View {
                 removal: .push(from: .trailing)
             )
         )
+        .onChange(of: savedPlayers.count) { newState in
+            if (self.selectedPlayer != nil) {
+                self.selectedPlayer = nil
+            }
+        }
     }
 }

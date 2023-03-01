@@ -25,48 +25,44 @@ struct SplashScreen: View {
     @State private var showErrorAlert: Bool = false
 
     var body: some View {
-        HStack {
+        VStack {
             Spacer()
-            VStack {
-                Spacer()
-                VStack(spacing: 0) {
-                    Image("SpindownIcon")
-                        .resizable()
-                        .frame(maxWidth: 100, maxHeight: 100)
-                }
-                .padding(.bottom, 35)
-                
-                VStack(spacing: 20) {
-                    UIButton(
-                        text: "Setup Game",
-                        symbol: "dice.fill",
-                        color: UIColor(named: "PrimaryBlue")!,
-                        action: { showNextPage() }
-                    )
-                    
-                    UIButtonOutlined(
-                        text: "Rulebook",
-                        symbol: "book",
-                        fill: .black,
-                        color: .white,
-                        action: {
-                            self.showRulesSheet.toggle()
-                        }
-                    )
-
-                    UIButtonOutlined(
-                        text: "Settings",
-                        symbol: "gearshape",
-                        fill: .black,
-                        color: .white,
-                        action: {
-                            self.showSettingsSheet.toggle()
-                        }
-                    )
-                }
-                .frame(maxWidth: 300)
-                Spacer()
+            VStack(alignment: .center, spacing: 0) {
+                Image("SpindownIcon")
+                    .resizable()
+                    .frame(maxWidth: 100, maxHeight: 100)
             }
+            .padding(.bottom, 35)
+            
+            VStack(spacing: 20) {
+                UIButton(
+                    text: "Setup Game",
+                    symbol: "dice.fill",
+                    color: UIColor(named: "PrimaryBlue")!,
+                    action: { showNextPage() }
+                )
+                
+                UIButtonOutlined(
+                    text: "Rulebook",
+                    symbol: "book",
+                    fill: .black,
+                    color: .white,
+                    action: {
+                        self.showRulesSheet.toggle()
+                    }
+                )
+
+                UIButtonOutlined(
+                    text: "Settings",
+                    symbol: "gearshape",
+                    fill: .black,
+                    color: .white,
+                    action: {
+                        self.showSettingsSheet.toggle()
+                    }
+                )
+            }
+            .frame(maxWidth: 300)
             Spacer()
         }
         .background(Color(.black))

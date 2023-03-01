@@ -16,12 +16,16 @@ struct AboutView: View {
                     .resizable()
                     .frame(maxWidth: 100, maxHeight: 100)
                     .padding(.top, 75)
-                Text("Hi, I'm Tyler. I run Haptic Software as a one-man development studio without employees or outside funding.\n\nThis app would not be possible without the love and support of my wife, son, and our two dogs.")
-                    .multilineTextAlignment(.leading)
+                Text("Hi, I'm Tyler. I run Haptic, the development studio behind Spindown, as a one-person shop without employees or outside funding.\n\nThis app would not be possible without the love and support of my family and our two dogs.")
+                    .multilineTextAlignment(.center)
                     .padding(.horizontal)
                 
                 List {
-                    Section(header: Text("Follow Us")) {
+                    Section(header:
+                        Text("Follow Us")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundColor(Color(UIColor(named: "AccentGray")!))
+                    ) {
                         Button(action: {
                             if let url = URL(string: "https://mastodon.social/@haptic") {
                                 UIApplication.shared.open(url)
@@ -126,60 +130,60 @@ struct AppSettingsView: View {
         NavigationStack {
             ScrollView {
                 List {
-                    Section(header: Text("General")) {
-                        NavigationLink(destination: EmptyView()) {
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "PrimaryRed")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(.white)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                }
-                                Text("Players")
-                            }
-                            .padding([.top, .bottom], 2)
-                        }
-                        NavigationLink(destination: EmptyView()) {
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "AccentGrayDarker")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    
-                                    VStack(spacing: 4) {
-                                        HStack(spacing: 4) {
-                                            RoundedRectangle(cornerRadius: 2)
-                                                .fill(Color(UIColor(named: "AccentGray")!))
-                                                .frame(width: 8, height: 8)
-                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
-                                            RoundedRectangle(cornerRadius: 2)
-                                                .fill(Color(UIColor(named: "AccentGray")!))
-                                                .frame(width: 8, height: 8)
-                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
-                                        }
-                                        HStack(spacing: 4) {
-                                            RoundedRectangle(cornerRadius: 2)
-                                                .fill(Color(UIColor(named: "PrimaryBlue")!))
-                                                .frame(width: 8, height: 8)
-                                                .shadow(color: Color.black.opacity(0.1), radius: 1)
-                                            RoundedRectangle(cornerRadius: 2)
-                                                .fill(Color(UIColor(named: "AccentGray")!))
-                                                .frame(width: 8, height: 8)
-                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
-                                        }
-                                    }
-                                }
-                                Text("App Icon")
-                            }
-                            .padding([.top, .bottom], 2)
-                        }
-                    }
-                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
-                    .listRowSeparatorTint(Color.white.opacity(0.15))
+//                    Section(header: Text("General")) {
+//                        NavigationLink(destination: EmptyView()) {
+//                            HStack {
+//                                ZStack {
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .fill(Color(UIColor(named: "PrimaryRed")!))
+//                                        .frame(width: 30, height: 30)
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//                                    Image(systemName: "person.fill")
+//                                        .foregroundColor(.white)
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//                                }
+//                                Text("Players")
+//                            }
+//                            .padding([.top, .bottom], 2)
+//                        }
+//                        NavigationLink(destination: EmptyView()) {
+//                            HStack {
+//                                ZStack {
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .fill(Color(UIColor(named: "AccentGrayDarker")!))
+//                                        .frame(width: 30, height: 30)
+//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+//
+//                                    VStack(spacing: 4) {
+//                                        HStack(spacing: 4) {
+//                                            RoundedRectangle(cornerRadius: 2)
+//                                                .fill(Color(UIColor(named: "AccentGray")!))
+//                                                .frame(width: 8, height: 8)
+//                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
+//                                            RoundedRectangle(cornerRadius: 2)
+//                                                .fill(Color(UIColor(named: "AccentGray")!))
+//                                                .frame(width: 8, height: 8)
+//                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
+//                                        }
+//                                        HStack(spacing: 4) {
+//                                            RoundedRectangle(cornerRadius: 2)
+//                                                .fill(Color(UIColor(named: "PrimaryBlue")!))
+//                                                .frame(width: 8, height: 8)
+//                                                .shadow(color: Color.black.opacity(0.1), radius: 1)
+//                                            RoundedRectangle(cornerRadius: 2)
+//                                                .fill(Color(UIColor(named: "AccentGray")!))
+//                                                .frame(width: 8, height: 8)
+//                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
+//                                        }
+//                                    }
+//                                }
+//                                Text("App Icon")
+//                            }
+//                            .padding([.top, .bottom], 2)
+//                        }
+//                    }
+//                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
+//                    .listRowSeparatorTint(Color.white.opacity(0.15))
                     
                     Section(header: Text("About")) {
                         Button(action: { self.showManageSubscriptions.toggle() }) {
@@ -253,7 +257,7 @@ struct AppSettingsView: View {
                     }
                     .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
                 }
-                .frame(height: 375)
+                .frame(height: 225)
                 .background(Color(UIColor(named: "DeepGray")!))
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)

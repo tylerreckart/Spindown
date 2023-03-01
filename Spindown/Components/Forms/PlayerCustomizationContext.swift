@@ -13,7 +13,7 @@ struct PlayerCustomizationContext: View {
     
     var customize: Bool = false
 
-    var savePlayer: (_ name: String, _ color: UIColor) -> Void
+    var savePlayer: (_ uid: UUID, _ name: String, _ color: UIColor) -> Void
     var dismiss: () -> Void
     var delete: (_ player: Participant) -> Void = { player in
         return
@@ -67,7 +67,11 @@ struct PlayerCustomizationContext: View {
                     text: "Save Player",
                     color: (self.name.count != 0 ? UIColor(named: "PrimaryRed")! : UIColor(named: "AccentGrayDarker"))!,
                     action: {
-                        savePlayer(self.name, self.selectedColor)
+                        savePlayer(
+                            selectedPlayer != nil ? selectedPlayer!.uid : UUID(),
+                            self.name,
+                            self.selectedColor
+                        )
                     }
                 )
                 .opacity(self.name.count != 0 ? 1 : 0.5)
@@ -106,7 +110,6 @@ struct PlayerCustomizationContext: View {
                       Text("Delete"),
                       action: {
                           delete(selectedPlayer!)
-                          dismiss()
                       }
                   )
             )

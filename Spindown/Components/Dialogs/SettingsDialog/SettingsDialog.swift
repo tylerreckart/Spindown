@@ -158,7 +158,7 @@ struct GameSettingsDialog: View {
         }, maxWidth: 300, open: $open)
     }
     
-    func savePlayer(name: String, color: UIColor) -> Void {
+    func savePlayer(uid: UUID, name: String, color: UIColor) -> Void {
         if (self.selectedPlayer != nil) {
             var index = self.players.firstIndex(where: { $0.uid == self.selectedPlayer!.uid })
 
