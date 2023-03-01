@@ -22,6 +22,8 @@ struct SavedPlayersSelector: View {
     
     @State private var showCustomizationDialog: Bool = false
     @State private var reverseAnimation: Bool = false
+    @State private var isEditingExistingPlayer: Bool = false
+    @State private var selectedPlayer: Player?
 
     var body: some View {
         ZStack {
@@ -49,7 +51,13 @@ struct SavedPlayersSelector: View {
                 .padding(.bottom, 20)
                 
                 VStack(spacing: 20) {
-                    PlayerList(players: $players, startingLifeTotal: $startingLifeTotal, savedPlayers: savedPlayers)
+                    PlayerList(
+                        players: $players,
+                        startingLifeTotal: $startingLifeTotal,
+                        savedPlayers: savedPlayers,
+                        selectedPlayer: $selectedPlayer,
+                        showDialog: $showCustomizationDialog
+                    )
                     
                     UIButtonOutlined(
                         text: "Add Player",
@@ -79,7 +87,11 @@ struct SavedPlayersSelector: View {
             .background(Color.black)
             .padding(.horizontal)
             
-            PlayerCustomizationDialog(isOpen: $showCustomizationDialog)
+            PlayerCustomizationDialog(
+                isOpen: $showCustomizationDialog,
+                customize: self.selectedPlayer != nil,
+                selectedPlayer: selectedPlayer as? Participant
+            )
         }
         .transition(
             .asymmetric(

@@ -13,11 +13,12 @@ struct PlayerCustomizationDialog: View {
     @Binding var isOpen: Bool
 
     var customize: Bool = false
+    var selectedPlayer: Participant? = nil
 
     var body: some View {
         Dialog(
             content: {
-                PlayerCustomizationContext(customize: customize, savePlayer: save, dismiss: dismiss)
+                PlayerCustomizationContext(customize: customize, savePlayer: save, dismiss: dismiss, selectedPlayer: selectedPlayer)
             },
             open: $isOpen
         )

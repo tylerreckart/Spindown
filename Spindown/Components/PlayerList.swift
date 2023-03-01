@@ -11,6 +11,10 @@ struct PlayerList: View {
     @Binding var players: [Participant]
     @Binding var startingLifeTotal: Int
     var savedPlayers: FetchedResults<Player>
+    @Binding var selectedPlayer: Player?
+    @Binding var showDialog: Bool
+    
+    @State private var showMaxPlayerCountAlert: Bool = false
 
     var body: some View {
         VStack {
@@ -38,6 +42,15 @@ struct PlayerList: View {
                                     Text(player.name!)
                                         .foregroundColor(Color.white)
                                     Spacer()
+                                    Button(action: {
+                                        self.selectedPlayer = player
+                                        withAnimation {
+                                            self.showDialog.toggle()
+                                        }
+                                    }) {
+                                        Image(systemName: "pencil.circle.fill")
+                                            .foregroundColor(Color.white)
+                                    }
                                 }
                                 .font(.system(size: 18, weight: .black))
                                 .padding()
@@ -68,6 +81,11 @@ struct PlayerList: View {
         .padding(4)
         .background(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
         .cornerRadius(12)
+        .alert(isPresented: $showMaxPlayerCountAlert) {
+            Alert(title: Text("Oops!"),
+                  message: Text("Spindown only supports up to six active players in a single game. To add more players, please remove existing selected players."),
+                  dismissButton: .default(Text("OK")))
+        }
     }
     
     func removeSavedPlayerFromParticipantModel(_ savedPlayer: Player) {
@@ -79,12 +97,16 @@ struct PlayerList: View {
     }
     
     func mapSavedPlayerToParticipantModel(_ savedPlayer: Player) {
-        let player = Participant()
-        player.uid = savedPlayer.uid!
-        player.name = savedPlayer.name!
-        player.lifeTotal = self.startingLifeTotal
-        player.color = NSKeyedUnarchiver.unarchiveObject(with: savedPlayer.color!) as! UIColor
-        self.players.append(player)
+        if (self.players.count == 6) {
+            self.showMaxPlayerCountAlert.toggle()
+        } else {
+            let player = Participant()
+            player.uid = savedPlayer.uid!
+            player.name = savedPlayer.name!
+            player.lifeTotal = self.startingLifeTotal
+            player.color = NSKeyedUnarchiver.unarchiveObject(with: savedPlayer.color!) as! UIColor
+            self.players.append(player)
+        }
     }
 }
 
