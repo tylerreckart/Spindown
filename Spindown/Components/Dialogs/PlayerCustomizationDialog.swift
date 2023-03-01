@@ -8,23 +8,38 @@
 import SwiftUI
 
 struct PlayerCustomizationDialog: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+
     @Binding var isOpen: Bool
-    
-    @State private var name: String = ""
-    @State private var selectedColor: UIColor = UIColor(named: "PrimaryPurple")!
-    
+
     var customize: Bool = false
 
     var body: some View {
         Dialog(
             content: {
-                PlayerCustomizationContext(customize: customize, savePlayer: savePlayer, dismiss: dismiss)
+                PlayerCustomizationContext(customize: customize, savePlayer: save, dismiss: dismiss)
             },
             open: $isOpen
         )
     }
     
-    func savePlayer(name: String, color: UIColor) -> Void {}
+    func save(name: String, color: UIColor) -> Void {
+        let target = Player(context: managedObjectContext)
+        target.uid = UUID()
+        target.name = name
+        target.color = NSKeyedArchiver.archivedData(withRootObject: color)
+
+        saveContext()
+    }
+       
+    func saveContext() {
+       do {
+           try managedObjectContext.save()
+           self.isOpen.toggle()
+       } catch {
+           print("Error saving managed object context: \(error)")
+       }
+    }
     
     func dismiss() -> Void {
         withAnimation {

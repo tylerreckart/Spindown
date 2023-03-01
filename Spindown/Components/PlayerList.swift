@@ -9,22 +9,35 @@ import SwiftUI
 
 struct PlayerList: View {
     @Binding var players: [Participant]
+    @Binding var startingLifeTotal: Int
+    var savedPlayers: FetchedResults<Player>
 
     var body: some View {
         VStack {
-            if (players.count > 0) {
+            if (savedPlayers.count > 0) {
                 ScrollView {
                     VStack(spacing: 0) {
-                        ForEach(self.players, id: \.self) { player in
-                            Button(action: {}) {
+                        ForEach(self.savedPlayers, id: \.self) { player in
+                            let activeIndex = self.players.firstIndex(where: { $0.uid == player.uid })
+
+                            Button(action: {
+                                if (activeIndex == nil) {
+                                    mapSavedPlayerToParticipantModel(player)
+                                } else {
+                                    removeSavedPlayerFromParticipantModel(player)
+                                }
+                            }) {
                                 HStack {
-                                    Image(systemName: "person.circle.fill")
-                                        .foregroundColor(Color.white)
-                                    Text(player.name)
+                                    if (activeIndex == nil) {
+                                        Image(systemName: "circle")
+                                            .foregroundColor(Color.white)
+                                    } else {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundColor(Color.white)
+                                    }
+                                    Text(player.name!)
                                         .foregroundColor(Color.white)
                                     Spacer()
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(Color.white)
                                 }
                                 .font(.system(size: 18, weight: .black))
                                 .padding()
@@ -34,7 +47,7 @@ struct PlayerList: View {
                     }
                     .cornerRadius(4)
                 }
-                .frame(maxWidth: .infinity, maxHeight: 60)
+                .frame(maxWidth: .infinity, maxHeight: 200)
                 .padding(6)
                 .background(.black)
                 .cornerRadius(8)
@@ -55,6 +68,23 @@ struct PlayerList: View {
         .padding(4)
         .background(Color(UIColor(named: "AccentGrayDarker") ?? .systemGray))
         .cornerRadius(12)
+    }
+    
+    func removeSavedPlayerFromParticipantModel(_ savedPlayer: Player) {
+        let targetIndex = self.players.firstIndex(where: { $0.uid == savedPlayer.uid })
+        
+        if (targetIndex != nil) {
+            self.players.remove(at: targetIndex!)
+        }
+    }
+    
+    func mapSavedPlayerToParticipantModel(_ savedPlayer: Player) {
+        let player = Participant()
+        player.uid = savedPlayer.uid!
+        player.name = savedPlayer.name!
+        player.lifeTotal = self.startingLifeTotal
+        player.color = NSKeyedUnarchiver.unarchiveObject(with: savedPlayer.color!) as! UIColor
+        self.players.append(player)
     }
 }
 

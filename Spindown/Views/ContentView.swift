@@ -60,7 +60,12 @@ struct ContentView: View {
         case .players:
             PlayersSelector(currentPage: $currentPage, setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
         case .savedPlayers:
-            SavedPlayersSelector(currentPage: $currentPage, setPlayers: {})
+            SavedPlayersSelector(
+                currentPage: $currentPage,
+                startingLifeTotal: $startingLifeTotal,
+                players: $players,
+                startGame: chooseAndAdvance
+            )
         case .gameBoard:
             if (players.count > 0) {
                 ZStack {
@@ -83,11 +88,17 @@ struct ContentView: View {
     }
     
     private func showNextPage() {
-        guard let currentIndex = pages.firstIndex(of: currentPage), pages.count > currentIndex + 1 else {
-            return
-        }
-        withAnimation(.easeInOut(duration: 0.4)) {
-            currentPage = pages[currentIndex + 1]
+        if (self.currentPage == .savedPlayers) {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                currentPage = .gameBoard
+            }
+        } else {
+            guard let currentIndex = pages.firstIndex(of: currentPage), pages.count > currentIndex + 1 else {
+                return
+            }
+            withAnimation(.easeInOut(duration: 0.4)) {
+                currentPage = pages[currentIndex + 1]
+            }
         }
     }
     
@@ -115,10 +126,13 @@ struct ContentView: View {
             self.players.append(player)
         }
         
+        chooseAndAdvance()
+    }
+    
+    func chooseAndAdvance() {
         // Select the starting player.
         chooseStartingPlayer()
-
-        self.numPlayersRemaining = numPlayers
+        self.numPlayersRemaining = self.playerCount
         showNextPage()
     }
     

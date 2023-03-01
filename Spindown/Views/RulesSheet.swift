@@ -12,14 +12,12 @@ struct RulesSheet: View {
     @State private var isFetchingRules: Bool = false
 
     @State private var rules: [Rule] = []
-    @State private var currentPage: Int = 1
     
     let letters = NSCharacterSet.letters
     
     @State private var showSearchDialog: Bool = false
     @State private var searchText: String = ""
     @State private var searchResults: [Rule] = []
-    @State private var spinning: Bool = false
     @State private var selectedRule: Rule?
     @State private var selectedRuleSubrules: [Rule] = []
 
@@ -55,29 +53,32 @@ struct RulesSheet: View {
                     .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
                     .offset(y: -8)
 
-                ScrollView {
-                    VStack(spacing: 20) {
-                        ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
-                            VStack(alignment: .leading, spacing: 0) {
-                                let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
-                                
-                                Text(rule.ruleNumber)
-                                    .font(.system(size: 18, weight: .black))
-                                    .padding(.leading, subrule != nil ? 50 : 0)
-                                    .multilineTextAlignment(.leading)
-                                HStack {
-                                    Text(rule.ruleText)
-                                        .multilineTextAlignment(.leading)
+                ZStack {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
+                                VStack(alignment: .leading, spacing: 0) {
+                                    let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
+                                    
+                                    Text(rule.ruleNumber)
+                                        .font(.system(size: 18, weight: .black))
                                         .padding(.leading, subrule != nil ? 50 : 0)
-                                    Spacer()
+                                        .multilineTextAlignment(.leading)
+                                    HStack {
+                                        Text(rule.ruleText)
+                                            .multilineTextAlignment(.leading)
+                                            .padding(.leading, subrule != nil ? 50 : 0)
+                                        Spacer()
+                                    }
                                 }
+                                .frame(maxWidth: .infinity)
                             }
-                            .frame(maxWidth: .infinity)
                         }
+                        .padding()
                     }
-                    .padding()
+                    .padding([.top, .bottom], -16)
+                    .transition(.push(from: .bottom))
                 }
-                .padding([.top, .bottom], -16)
             }
             
             SearchDialog(
@@ -91,11 +92,10 @@ struct RulesSheet: View {
         .foregroundColor(Color.white)
         .background(Color(UIColor(named: "DeepGray")!))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear {
-            getRules()
-        }
-        .onChange(of: currentPage) { newState in
-            getRules()
+        .task {
+            if (self.rules == []) {
+                await getRules()
+            }
         }
         .onChange(of: searchText) { newState in
             search()
@@ -119,34 +119,42 @@ struct RulesSheet: View {
         }
     }
     
-    func getRules() {
-        self.spinning = true
-        self.rules = []
-
-        DispatchQueue.main.async {
-            for page in 1...9 {
-                if let path = Bundle.main.path(forResource: "\(page)00", ofType: "json") {
-                    do {
-                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                        let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                        if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
-                            for (_, rule) in jsonResult {
-                                let obj = Rule()
-                                obj.ruleNumber = (rule["ruleNumber"] as? String)!
-                                obj.examples = rule["examples"] as? [String?]
-                                obj.ruleText = (rule["ruleText"] as? String)!
-                                obj.fragment = rule["fragment"] as? String
-                                obj.navigation = rule["navigation"] as? RulesNavigation
-                                
-                                self.rules.append(obj)
-                            }
-                            
-                            self.spinning = false
-                        }
-                    } catch {
-                        // handle error
+    func mapRuleResponseToModel(_ rule: AnyObject) -> Rule {
+        let obj = Rule()
+        obj.ruleNumber = (rule["ruleNumber"] as? String)!
+        obj.examples = rule["examples"] as? [String?]
+        obj.ruleText = (rule["ruleText"] as? String)!
+        obj.fragment = rule["fragment"] as? String
+        obj.navigation = rule["navigation"] as? RulesNavigation
+        return obj
+    }
+    
+    func fetchRulesetForPage(page: Int) async {
+        if let path = Bundle.main.path(forResource: "\(page)00", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
+                    for (_, rule) in jsonResult {
+                        let data = mapRuleResponseToModel(rule)
+                        self.rules.append(data)
                     }
                 }
+            } catch {
+                // handle error
+            }
+        }
+    }
+    
+    func getRules() async {
+        // Preload first page
+        Task {
+            await fetchRulesetForPage(page: 1)
+        }
+        // Fetch the rest of the rules in the background.
+        Task.detached(priority: .userInitiated) {
+            for page in 2...9 {
+                await fetchRulesetForPage(page: page)
             }
         }
     }

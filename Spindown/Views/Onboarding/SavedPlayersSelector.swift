@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct SavedPlayersSelector: View {
-    @Binding var currentPage: Page
+    @FetchRequest(
+      entity: Player.entity(),
+      sortDescriptors: [
+        NSSortDescriptor(keyPath: \Player.uid, ascending: true)
+      ]
+    ) var savedPlayers: FetchedResults<Player>
 
-    var setPlayers: () -> ()
+    @Binding var currentPage: Page
+    @Binding var startingLifeTotal: Int
+    @Binding var players: [Participant]
+    var startGame: () -> ()
     
-    @State private var players: [Participant] = []
     @State private var showCustomizationDialog: Bool = false
     @State private var reverseAnimation: Bool = false
 
@@ -42,7 +49,7 @@ struct SavedPlayersSelector: View {
                 .padding(.bottom, 20)
                 
                 VStack(spacing: 20) {
-                    PlayerList(players: $players)
+                    PlayerList(players: $players, startingLifeTotal: $startingLifeTotal, savedPlayers: savedPlayers)
                     
                     UIButtonOutlined(
                         text: "Add Player",
@@ -58,13 +65,12 @@ struct SavedPlayersSelector: View {
                     UIButton(
                         text: "Start Game",
                         color: players.count > 0 ? UIColor(named: "PrimaryBlue")! : UIColor(named: "AccentGrayDarker")!,
-                        action: {}
+                        action: startGame
                     )
                     .opacity(players.count > 0 ? 1 : 0.5)
                     .disabled(players.count == 0)
                 }
                 .frame(maxWidth: 400)
-                
                 
                 Spacer()
             }
