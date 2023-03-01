@@ -23,8 +23,6 @@ struct StartingLifeTotalSelector: View {
                 }
             })
 
-            Spacer()
-
             VStack {
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     Text("Starting Life")

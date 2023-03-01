@@ -11,7 +11,7 @@ struct PlayerList: View {
     @Binding var players: [Participant]
     @Binding var startingLifeTotal: Int
     var savedPlayers: FetchedResults<Player>
-    @Binding var selectedPlayer: Player?
+    @Binding var selectedPlayer: Participant?
     @Binding var showDialog: Bool
     
     @State private var showMaxPlayerCountAlert: Bool = false
@@ -23,6 +23,7 @@ struct PlayerList: View {
                 ScrollView {
                         VStack(spacing: 0) {
                             ForEach(self.savedPlayers, id: \.self) { player in
+                                let index = self.savedPlayers.firstIndex(where: { $0.uid == player.uid })
                                 let activeIndex = self.players.firstIndex(where: { $0.uid == player.uid })
                                 
                                 Button(action: {
@@ -44,7 +45,11 @@ struct PlayerList: View {
                                             .foregroundColor(Color.white)
                                         Spacer()
                                         Button(action: {
-                                            self.selectedPlayer = player
+                                            let remappedTarget = Participant()
+                                            remappedTarget.uid = player.uid!
+                                            remappedTarget.name = player.name!
+                                            remappedTarget.color = NSKeyedUnarchiver.unarchiveObject(with: player.color!) as! UIColor
+                                            self.selectedPlayer = remappedTarget
                                             withAnimation {
                                                 self.showDialog.toggle()
                                             }
@@ -55,7 +60,11 @@ struct PlayerList: View {
                                     }
                                     .font(.system(size: 18, weight: .black))
                                     .padding()
-                                    .background(Color(UIColor(named: "DeepGray") ?? .systemGray5))
+                                    .background(
+                                        (index ?? 0) % 2 == 0
+                                        ? Color(UIColor(named: "AccentGray")!).opacity(0.25)
+                                        : Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25)
+                                    )
                                 }
                             }
                         }

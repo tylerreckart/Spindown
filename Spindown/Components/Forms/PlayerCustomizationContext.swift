@@ -15,8 +15,13 @@ struct PlayerCustomizationContext: View {
 
     var savePlayer: (_ name: String, _ color: UIColor) -> Void
     var dismiss: () -> Void
+    var delete: (_ player: Participant) -> Void = { player in
+        return
+    }
     
     var selectedPlayer: Participant? = nil
+    
+    @State private var showDeletePlayerAlert: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -57,7 +62,7 @@ struct PlayerCustomizationContext: View {
                 }
             }
             
-            HStack(spacing: 20) {
+            VStack(spacing: 20) {
                 UIButton(
                     text: "Save Player",
                     color: (self.name.count != 0 ? UIColor(named: "PrimaryRed")! : UIColor(named: "AccentGrayDarker"))!,
@@ -66,6 +71,17 @@ struct PlayerCustomizationContext: View {
                     }
                 )
                 .opacity(self.name.count != 0 ? 1 : 0.5)
+                
+                if (self.customize) {
+                    UIButtonOutlined(
+                        text: "Delete Player",
+                        fill: UIColor(named: "DeepGray")!,
+                        color: UIColor(named: "AccentGray")!,
+                        action: {
+                            self.showDeletePlayerAlert.toggle()
+                        }
+                    )
+                }
                 
                 UIButtonOutlined(
                     text: "Cancel",
@@ -81,6 +97,19 @@ struct PlayerCustomizationContext: View {
                 self.name = self.selectedPlayer!.name
                 self.selectedColor = self.selectedPlayer!.color
             }
+        }
+        .alert(isPresented: $showDeletePlayerAlert) {
+            Alert(title: Text("Delete Player"),
+                  message: Text("Are you sure you want to delete this player? This action cannot be undone."),
+                  primaryButton: .default(Text("Cancel")),
+                  secondaryButton: .destructive(
+                      Text("Delete"),
+                      action: {
+                          delete(selectedPlayer!)
+                          dismiss()
+                      }
+                  )
+            )
         }
     }
 }

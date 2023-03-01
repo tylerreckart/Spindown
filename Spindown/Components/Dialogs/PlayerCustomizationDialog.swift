@@ -18,7 +18,13 @@ struct PlayerCustomizationDialog: View {
     var body: some View {
         Dialog(
             content: {
-                PlayerCustomizationContext(customize: customize, savePlayer: save, dismiss: dismiss, selectedPlayer: selectedPlayer)
+                PlayerCustomizationContext(
+                    customize: customize,
+                    savePlayer: save,
+                    dismiss: dismiss,
+                    delete: delete,
+                    selectedPlayer: selectedPlayer
+                )
             },
             open: $isOpen
         )
@@ -32,11 +38,25 @@ struct PlayerCustomizationDialog: View {
 
         saveContext()
     }
+    
+    func delete(_ player: Participant) {
+        let target = Player(context: managedObjectContext)
+        target.uid = player.uid
+        
+        managedObjectContext.delete(target)
+        
+        withAnimation {
+            self.isOpen.toggle()
+        }
+    }
        
     func saveContext() {
        do {
            try managedObjectContext.save()
-           self.isOpen.toggle()
+
+           withAnimation {
+               self.isOpen.toggle()
+           }
        } catch {
            print("Error saving managed object context: \(error)")
        }

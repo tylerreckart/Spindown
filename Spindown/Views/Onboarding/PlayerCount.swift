@@ -23,8 +23,6 @@ struct PlayersSelector: View {
                     self.currentPage = .lifeTotal
                 }
             })
-    
-            Spacer()
 
             VStack {
                 if UIDevice.current.userInterfaceIdiom == .pad {
@@ -75,6 +73,12 @@ struct PlayersSelector: View {
                         setNumPlayers(6)
                     })
                 }
+            }
+            .frame(maxWidth: 300)
+            
+            Spacer()
+            
+            VStack {
                 Text("Select or add saved players.")
                     .font(.system(size: 16))
                     .foregroundColor(Color(.systemGray))
@@ -86,12 +90,8 @@ struct PlayersSelector: View {
                     color: UIColor(named: "AccentGray")!,
                     action: setUsedSavedPlayers
                 )
-                .frame(maxWidth: .infinity)
-                .padding(0)
             }
-            .frame(maxWidth: 300)
-            
-            Spacer()
+            .padding(.horizontal)
         }
         .transition(
             .asymmetric(

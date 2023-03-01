@@ -23,19 +23,18 @@ struct SavedPlayersSelector: View {
     @State private var showCustomizationDialog: Bool = false
     @State private var reverseAnimation: Bool = false
     @State private var isEditingExistingPlayer: Bool = false
-    @State private var selectedPlayer: Player?
+    @State private var selectedPlayer: Participant?
 
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 0) {
                 OnboardingBackButton(action: {
                     self.reverseAnimation.toggle()
+
                     withAnimation {
                         self.currentPage = .players
                     }
                 })
-
-                Spacer()
                 
                 VStack {
                     Text("Saved Players")
@@ -49,6 +48,7 @@ struct SavedPlayersSelector: View {
                         .lineSpacing(6)
                 }
                 .padding(.bottom, 20)
+                .padding(.horizontal)
                 
                 VStack(spacing: 20) {
                     PlayerList(
@@ -58,6 +58,8 @@ struct SavedPlayersSelector: View {
                         selectedPlayer: $selectedPlayer,
                         showDialog: $showCustomizationDialog
                     )
+                    
+                    Spacer()
                     
                     UIButtonOutlined(
                         text: "Add Player",
@@ -72,26 +74,27 @@ struct SavedPlayersSelector: View {
                     )
                     UIButton(
                         text: "Start Game",
-                        color: players.count > 0 ? UIColor(named: "PrimaryBlue")! : UIColor(named: "AccentGrayDarker")!,
+                        color: players.count > 0 ? UIColor(named: "PrimaryRed")! : UIColor(named: "AccentGrayDarker")!,
                         action: startGame
                     )
                     .opacity(players.count > 0 ? 1 : 0.5)
                     .disabled(players.count == 0)
                 }
                 .frame(maxWidth: 400)
+                .padding(.horizontal)
                 
                 Spacer()
             }
             .foregroundColor(Color.white)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.black)
-            .padding(.horizontal)
             
             PlayerCustomizationDialog(
                 isOpen: $showCustomizationDialog,
                 customize: self.selectedPlayer != nil,
-                selectedPlayer: selectedPlayer as? Participant
+                selectedPlayer: selectedPlayer
             )
+            .padding(.horizontal)
         }
         .transition(
             .asymmetric(
