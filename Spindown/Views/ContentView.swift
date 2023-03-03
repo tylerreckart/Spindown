@@ -84,6 +84,12 @@ struct ContentView: View {
                         startGame: startGame,
                         chooseStartingPlayer: chooseStartingPlayer
                     )
+                    
+                    OutOfTimeDialog(
+                        open: $timerModel.showDialog,
+                        endGame: endGame,
+                        dismiss: timerModel.reset
+                    )
                 }
             }
         }
@@ -206,9 +212,11 @@ class GameTimerModel: ObservableObject {
         let diff = endDate.timeIntervalSince1970 - now.timeIntervalSince1970
         
         if (diff <= 0) {
-            self.running = false
-            self.minutes = 0
-            self.showDialog = true
+            withAnimation {
+                self.running = false
+                self.minutes = 0
+                self.showDialog = true
+            }
         }
         
         let date = Date(timeIntervalSince1970: diff)
@@ -222,7 +230,10 @@ class GameTimerModel: ObservableObject {
     }
     
     public func reset() -> Void {
-        self.running = false
-        self.minutes = 30.0
+        withAnimation {
+            self.showDialog = false
+            self.running = false
+            self.minutes = 30.0
+        }
     }
 }

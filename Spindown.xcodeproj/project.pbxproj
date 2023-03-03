@@ -50,6 +50,7 @@
 		DB8B8F6F298767390023A84B /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F6E298767390023A84B /* Participant.swift */; };
 		DB8B8F71298767670023A84B /* StartingLifeTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F70298767670023A84B /* StartingLifeTotal.swift */; };
 		DB8B8F73298767890023A84B /* PlayerCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F72298767890023A84B /* PlayerCount.swift */; };
+		DBB64A3629B281C900438AAE /* OutOfTimeDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */; };
 		DBE49FA429AB9260008B0648 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA329AB9260008B0648 /* Spinner.swift */; };
 		DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA529ACF597008B0648 /* StyledTextField.swift */; };
 		DBE49FAA29AD83FC008B0648 /* OnboardingBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */; };
@@ -119,6 +120,7 @@
 		DB8B8F6E298767390023A84B /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		DB8B8F70298767670023A84B /* StartingLifeTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLifeTotal.swift; sourceTree = "<group>"; };
 		DB8B8F72298767890023A84B /* PlayerCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCount.swift; sourceTree = "<group>"; };
+		DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfTimeDialog.swift; sourceTree = "<group>"; };
 		DBE49FA329AB9260008B0648 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		DBE49FA529ACF597008B0648 /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackButton.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */,
 				DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */,
 				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
+				DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */,
 			);
 			path = Dialogs;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				DB8B8F552986E2CB0023A84B /* SpindownApp.swift in Sources */,
 				DB8B8F73298767890023A84B /* PlayerCount.swift in Sources */,
 				DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */,
+				DBB64A3629B281C900438AAE /* OutOfTimeDialog.swift in Sources */,
 				DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */,
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
 				DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */,

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GameTimer: View {
     @EnvironmentObject var timerModel: GameTimerModel
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @FocusState private var focused: FocusField?
     @State private var minutes: Float = 30.0
     @Binding var activeView: ActiveSettingsView
@@ -29,9 +28,9 @@ struct GameTimer: View {
             HStack {
                 VStack {
                     HStack {
-                        Text("\(Int(self.minutes)):00")
+                        Text(timerModel.running ? timerModel.time : "\(Int(self.minutes)):00")
                             .multilineTextAlignment(.center)
-                            .font(.system(size: 28, weight: .black))
+                            .font(.system(size: 32, weight: .black))
                             .focused($focused, equals: .minutes)
                     }
                     .padding()
@@ -45,11 +44,8 @@ struct GameTimer: View {
                         self.focused == .minutes ? .white : Color(UIColor(named: "AccentGrayDarker")!)
                     )
                     .cornerRadius(8)
-                    
-                    Text("Minutes")
-                        .font(.caption)
-                    
-                    Slider(value: $minutes, in: 1...100)
+
+                    Slider(value: $minutes, in: 1...120)
                 }
             }
             .padding(.bottom, 15)
@@ -89,14 +85,8 @@ struct GameTimer: View {
                 removal: .push(from: .leading).combined(with: .opacity)
             )
         )
-        .onReceive(timer) { _ in
+        .onAppear {
             timerModel.update()
         }
     }
 }
-
-//struct GameTimer_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameTimer().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//    }
-//}

@@ -17,6 +17,10 @@ var colors: [UIColor] = [
 ]
 
 struct GameBoard: View {
+    @EnvironmentObject var timerModel: GameTimerModel
+
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
     @Binding var activePlayer: Participant?
@@ -140,6 +144,9 @@ struct GameBoard: View {
         .onDisappear {
             // Re-enable the system idle timer when this view unmounts.
             UIApplication.shared.isIdleTimerDisabled = false
+        }
+        .onReceive(timer) { _ in
+            timerModel.update()
         }
     }
     
