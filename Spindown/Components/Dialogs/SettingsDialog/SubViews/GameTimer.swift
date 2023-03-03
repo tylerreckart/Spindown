@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct GameTimer: View {
-    @Binding var activeView: ActiveSettingsView
-
+    @EnvironmentObject var timerModel: GameTimerModel
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @FocusState private var focused: FocusField?
-
-    @State private var hours: String = ""
-    @State private var minutes: String = "30"
-    @State private var seconds: String = ""
+    @State private var minutes: Float = 30.0
+    @Binding var activeView: ActiveSettingsView
     
     var body: some View {
         VStack {
@@ -31,46 +29,7 @@ struct GameTimer: View {
             HStack {
                 VStack {
                     HStack {
-                        TextField("", text: $hours)
-                            .placeholder(when: self.hours.isEmpty) {
-                                VStack(alignment: .center) {
-                                    Text("00").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                                        .font(.system(size: 28, weight: .bold))
-                                }
-                                .frame(maxWidth: .infinity)
-                            }
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 28, weight: .black))
-                            .focused($focused, equals: .hours)
-                    }
-                    .padding()
-                    .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
-                    .cornerRadius(4)
-                    .padding(4)
-                    .background(Color(UIColor(named: "DeepGray")!))
-                    .cornerRadius(6)
-                    .padding(4)
-                    .background(
-                        self.focused == .hours ? .white : Color(UIColor(named: "AccentGrayDarker")!)
-                    )
-                    .cornerRadius(8)
-                    
-                    Text("Hours")
-                        .font(.caption)
-                }
-                Spacer()
-                VStack {
-                    HStack {
-                        TextField("", text: $minutes)
-                            .placeholder(when: self.minutes.isEmpty) {
-                                VStack(alignment: .center) {
-                                    Text("00").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                                        .font(.system(size: 28, weight: .bold))
-                                }
-                                .frame(maxWidth: .infinity)
-                            }
-                            .keyboardType(.numberPad)
+                        Text("\(Int(self.minutes)):00")
                             .multilineTextAlignment(.center)
                             .font(.system(size: 28, weight: .black))
                             .focused($focused, equals: .minutes)
@@ -89,51 +48,37 @@ struct GameTimer: View {
                     
                     Text("Minutes")
                         .font(.caption)
-                }
-                Spacer()
-                VStack {
-                    HStack {
-                        TextField("", text: $seconds)
-                            .placeholder(when: self.seconds.isEmpty) {
-                                VStack(alignment: .center) {
-                                    Text("00").foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
-                                        .font(.system(size: 28, weight: .bold))
-                                }
-                                .frame(maxWidth: .infinity)
-                            }
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 28, weight: .black))
-                            .focused($focused, equals: .seconds)
-                    }
-                    .padding()
-                    .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
-                    .cornerRadius(4)
-                    .padding(4)
-                    .background(Color(UIColor(named: "DeepGray")!))
-                    .cornerRadius(6)
-                    .padding(4)
-                    .background(
-                        self.focused == .seconds ? .white : Color(UIColor(named: "AccentGrayDarker")!)
-                    )
-                    .cornerRadius(8)
                     
-                    Text("Seconds")
-                        .font(.caption)
+                    Slider(value: $minutes, in: 1...100)
                 }
             }
             .padding(.bottom, 15)
             
             VStack(spacing: 20) {
                 HStack(spacing: 20) {
-                    UIButton(text: "Start Timer", color: UIColor(named: "PrimaryRed")!, action: {})
-                    UIButtonOutlined(text: "Reset", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGray")!, action: resetTimer)
+                    UIButton(
+                        text: "Start Timer",
+                        color: UIColor(named: "PrimaryRed")!,
+                        action: { timerModel.start(self.minutes) }
+                    )
+                    UIButtonOutlined(
+                        text: "Reset",
+                        fill: UIColor(named: "DeepGray")!,
+                        color: UIColor(named: "AccentGray")!,
+                        action: timerModel.reset
+                    )
                 }
-                UIButtonOutlined(text: "Go Back", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGray") ?? .systemGray, action: {
-                    withAnimation {
-                        self.activeView = .home
+
+                UIButtonOutlined(
+                    text: "Go Back",
+                    fill: UIColor(named: "DeepGray")!,
+                    color: UIColor(named: "AccentGray")!,
+                    action: {
+                        withAnimation {
+                            self.activeView = .home
+                        }
                     }
-                })
+                )
             }
         }
         .foregroundColor(.white)
@@ -144,14 +89,8 @@ struct GameTimer: View {
                 removal: .push(from: .leading).combined(with: .opacity)
             )
         )
-    }
-    
-    func resetTimer() -> Void {
-        withAnimation {
-            self.focused = nil
-            self.hours = ""
-            self.minutes = "30"
-            self.seconds = ""
+        .onReceive(timer) { _ in
+            timerModel.update()
         }
     }
 }
