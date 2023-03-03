@@ -76,8 +76,7 @@ struct SplashScreen: View {
             // and purchases async. This prevents the sheet/dialog from showing to
             // existing subscribers.
              DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                 let sessionCount = UserDefaults.standard.integer(forKey: "sessionCount")
-                 if (sessionCount > 5 && newState.count > 0 && store.purchasedSubscriptions.isEmpty) {
+                 if (newState.count > 0 && store.purchasedSubscriptions.isEmpty) {
                      self.showOnboardingSheet.toggle()
                  }
              }

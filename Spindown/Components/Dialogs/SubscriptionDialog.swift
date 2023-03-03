@@ -55,7 +55,7 @@ struct Pitch: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            Text("Development of this app would not be possible without our subscribers. To continue using Spindown, show your support and help fund the development of new features by subscribing today.")
+            Text("Development of this app would not be possible without our subscribers. Show your support and help fund the development of new features by subscribing today.\n\nBoth plans offer a free 2-week trial. You may cancel anytime before the trial ends and you won't be charged.")
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 5)
                 .padding(.bottom)
