@@ -14,6 +14,7 @@ struct StyledTextField: View {
     @FocusState private var focused: FocusField?
     var focusOnAppear: Bool = false
     var fontSize: CGFloat = 24
+    var keyboardType: UIKeyboardType = .default
 
     var body: some View {
         ZStack {
@@ -22,10 +23,10 @@ struct StyledTextField: View {
                     Text(placeholderText).foregroundColor(Color(UIColor(named: "AccentGrayDarker")!))
                         .font(.system(size: fontSize, weight: .bold))
                 }
-                .keyboardType(.numberPad)
                 .multilineTextAlignment(.leading)
                 .font(.system(size: fontSize, weight: .black))
                 .focused($focused, equals: field)
+                .keyboardType(keyboardType)
             
             if (!self.text.isEmpty) {
                 HStack {

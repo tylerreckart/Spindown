@@ -71,7 +71,7 @@ struct PlayerTile: View {
                             PlayerTileData(
                                 activeSum: $activeSum,
                                 value: player.poison,
-                                label: "Posison",
+                                label: "Poison",
                                 symbol: "ToxicSymbol",
                                 useCustomSymbol: true,
                                 nextTile: .energy

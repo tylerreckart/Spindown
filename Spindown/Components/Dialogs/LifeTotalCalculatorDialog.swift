@@ -48,7 +48,13 @@ struct LifeTotalCalculatorDialog: View {
                     Spacer()
                 }
                 
-                StyledTextField(placeholderText: "Quantity...",  text: $lifeTotal, field: .quantity, focusOnAppear: true)
+                StyledTextField(
+                    placeholderText: "Quantity...",
+                    text: $lifeTotal,
+                    field: .quantity,
+                    focusOnAppear: true,
+                    keyboardType: .numberPad
+                )
                 
                 HStack(spacing: 20) {
                     UIButtonOutlined(

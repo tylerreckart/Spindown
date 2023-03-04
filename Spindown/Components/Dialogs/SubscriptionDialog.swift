@@ -86,23 +86,41 @@ struct Pitch: View {
 }
 
 struct SubscriptionView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     var store: Store
     // Store data.
     @State private var selectedOffer: Product?
+    @State private var isPurchasing: Bool = false
     @State private var hasPurchased: Bool = false
     // Sheet views.
     @State private var showManageSubscriptions: Bool = false
     // Error handling.
     @State private var errorMessage: String?
     @State private var showErrorAlert: Bool = false
+    
+    var icon: UIImage? {
+        guard let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? NSDictionary,
+            let primaryIconsDictionary = iconsDictionary["CFBundlePrimaryIcon"] as? NSDictionary,
+            let iconFiles = primaryIconsDictionary["CFBundleIconFiles"] as? NSArray,
+            // First will be smallest for the device class, last will be the largest for device class
+            let lastIcon = iconFiles.lastObject as? String,
+            let icon = UIImage(named: lastIcon) else {
+                return nil
+        }
+
+        return icon
+    }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 0) {
                 VStack(spacing: 0) {
-                    Image("SpindownIcon")
+                    Image(uiImage: icon!)
                         .resizable()
-                        .frame(maxWidth: 64, maxHeight: 64)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 72)
+                        .cornerRadius(20)
                 }
                 .padding(.top, 30)
                 .padding(.bottom)
@@ -138,11 +156,15 @@ struct SubscriptionView: View {
                 VStack(spacing: 20) {
                     if !store.subscriptions.isEmpty {
                         if !hasPurchased {
-                            UIButton(text: "Subscribe", color: UIColor(named: "PrimaryRed")!, action: {
-                                Task {
-                                    await buy()
-                                }
-                            })
+                            if !isPurchasing {
+                                UIButton(text: "Subscribe", color: UIColor(named: "PrimaryRed")!, action: {
+                                    Task {
+                                        await buy()
+                                    }
+                                })
+                            } else {
+                                Spinner()
+                            }
                         } else {
                             UIButton(text: "Change or Cancel Subscription", color: UIColor(named: "PrimaryRed")!, action: {
                                 Task {
@@ -204,6 +226,9 @@ struct SubscriptionView: View {
         .foregroundColor(.white)
         .background(Color(UIColor(named: "DeepGray")!))
         .interactiveDismissDisabled(true)
+        .onChange(of: store.purchasedSubscriptions) { purchases in
+            
+        }
         .alert(isPresented: $showErrorAlert, error: ValidationError.NaN) {_ in
             Button(action: {
                 showErrorAlert = false
@@ -217,11 +242,14 @@ struct SubscriptionView: View {
     
     func buy() async {
         do {
-            print(selectedOffer as Any)
-            print(store.subscriptions)
+            withAnimation {
+                self.isPurchasing = true
+            }
             if try await store.purchase(selectedOffer!) != nil {
                 withAnimation {
-                    hasPurchased = true
+                    self.isPurchasing = false
+                    self.hasPurchased = true
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
         } catch StoreError.failedVerification {

@@ -75,9 +75,13 @@ class Store: ObservableObject {
     @MainActor
     func requestProducts() async {
         do {
-            let keys = ["com.Spindown.subscription.yearly", "com.Spindown.subscription.monthly"]
+            let keys = [
+                "com.Spindown.subscription.yearly",
+                "com.Spindown.subscription.monthly"
+            ]
+
             let products = try await Product.products(for: keys)
-            print(products)
+
             subscriptions = products
         } catch {
             print("Failed product request from the App Store server: \(error)")

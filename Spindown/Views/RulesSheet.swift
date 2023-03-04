@@ -27,7 +27,7 @@ struct RulesSheet: View {
                 HStack {
                     Image(systemName: "book")
                         .font(.system(size: 24, weight: .black))
-                    Text("Rulebook")
+                    Text("Rule Book")
                         .font(.system(size: 28, weight: .black))
                     Spacer()
                     
@@ -54,30 +54,38 @@ struct RulesSheet: View {
                     .offset(y: -8)
 
                 ZStack {
-                    ScrollView {
-                        VStack(spacing: 20) {
-                            ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
-                                VStack(alignment: .leading, spacing: 0) {
-                                    let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
-                                    
-                                    Text(rule.ruleNumber)
-                                        .font(.system(size: 18, weight: .black))
-                                        .padding(.leading, subrule != nil ? 50 : 0)
-                                        .multilineTextAlignment(.leading)
-                                    HStack {
-                                        Text(rule.ruleText)
-                                            .multilineTextAlignment(.leading)
-                                            .padding(.leading, subrule != nil ? 50 : 0)
-                                        Spacer()
-                                    }
-                                }
-                                .frame(maxWidth: .infinity)
-                            }
+                    if (self.isFetchingRules) {
+                        VStack {
+                            Spacer()
+                            Spinner()
+                            Spacer()
                         }
-                        .padding()
+                    } else {
+                        ScrollView {
+                            VStack(spacing: 20) {
+                                ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
+                                        
+                                        Text(rule.ruleNumber)
+                                            .font(.system(size: 18, weight: .black))
+                                            .padding(.leading, subrule != nil ? 50 : 0)
+                                            .multilineTextAlignment(.leading)
+                                        HStack {
+                                            Text(rule.ruleText)
+                                                .multilineTextAlignment(.leading)
+                                                .padding(.leading, subrule != nil ? 50 : 0)
+                                            Spacer()
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
+                            }
+                            .padding()
+                        }
+                        .padding([.top, .bottom], -16)
+                        .transition(.push(from: .bottom))
                     }
-                    .padding([.top, .bottom], -16)
-                    .transition(.push(from: .bottom))
                 }
             }
             
@@ -137,7 +145,12 @@ struct RulesSheet: View {
                 if let jsonResult = jsonResult as? Dictionary<String, AnyObject> {
                     for (_, rule) in jsonResult {
                         let data = mapRuleResponseToModel(rule)
-                        self.rules.append(data)
+
+                        Task.detached(priority: .background) {
+                            if (data.ruleNumber.rangeOfCharacter(from: letters) == nil) {
+                                self.rules.append(data)
+                            }
+                        }
                     }
                 }
             } catch {
@@ -147,14 +160,19 @@ struct RulesSheet: View {
     }
     
     func getRules() async {
-        // Preload first page
-        Task {
-            await fetchRulesetForPage(page: 1)
+        withAnimation {
+            self.isFetchingRules = true
         }
-        // Fetch the rest of the rules in the background.
-        Task.detached(priority: .userInitiated) {
-            for page in 2...9 {
+
+        Task.detached(priority: .background) {
+            for page in 1...9 {
                 await fetchRulesetForPage(page: page)
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            withAnimation {
+                self.isFetchingRules = false
             }
         }
     }

@@ -17,6 +17,10 @@ enum Page {
 }
 
 struct ContentView: View {
+    @EnvironmentObject var store: Store
+    
+    @State private var showOnboardingSheet: Bool = false
+
     @State private var playerCount: Int = 0
     @State private var players: [Participant] = []
     @State private var numPlayersRemaining: Int = 0
@@ -53,45 +57,57 @@ struct ContentView: View {
     }
 
     var body: some View {
-        switch (currentPage) {
-        case .home:
-            SplashScreen(showNextPage: showNextPage)
-        case .lifeTotal:
-            StartingLifeTotalSelector(currentPage: $currentPage, setStartingLifeTotal: setStartingLifeTotal)
-        case .players:
-            PlayersSelector(currentPage: $currentPage, setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
-        case .savedPlayers:
-            SavedPlayersSelector(
-                currentPage: $currentPage,
-                startingLifeTotal: $startingLifeTotal,
-                players: $players,
-                startGame: chooseAndAdvance
-            )
-        case .gameBoard:
-            if (players.count > 0) {
-                ZStack {
-                    GameBoard(
-                        players: $players,
-                        numPlayersRemaining: $numPlayersRemaining,
-                        activePlayer: $activePlayer,
-                        endGame: endGame
-                    )
-                    .environmentObject(timerModel)
-                    
-                    StartingPlayerDialog(
-                        open: $showStartOverlay,
-                        activePlayer: $activePlayer,
-                        startGame: startGame,
-                        chooseStartingPlayer: chooseStartingPlayer
-                    )
-                    
-                    OutOfTimeDialog(
-                        open: $timerModel.showDialog,
-                        endGame: endGame,
-                        dismiss: timerModel.reset
-                    )
+        ZStack {
+            switch (currentPage) {
+            case .home:
+                SplashScreen(showNextPage: showNextPage)
+            case .lifeTotal:
+                StartingLifeTotalSelector(currentPage: $currentPage, setStartingLifeTotal: setStartingLifeTotal)
+            case .players:
+                PlayersSelector(currentPage: $currentPage, setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
+            case .savedPlayers:
+                SavedPlayersSelector(
+                    currentPage: $currentPage,
+                    startingLifeTotal: $startingLifeTotal,
+                    players: $players,
+                    startGame: chooseAndAdvance
+                )
+            case .gameBoard:
+                if (players.count > 0) {
+                    ZStack {
+                        GameBoard(
+                            players: $players,
+                            numPlayersRemaining: $numPlayersRemaining,
+                            activePlayer: $activePlayer,
+                            endGame: endGame
+                        )
+                        .environmentObject(timerModel)
+                        
+                        StartingPlayerDialog(
+                            open: $showStartOverlay,
+                            activePlayer: $activePlayer,
+                            startGame: startGame,
+                            chooseStartingPlayer: chooseStartingPlayer
+                        )
+                        
+                        OutOfTimeDialog(
+                            open: $timerModel.showDialog,
+                            endGame: endGame,
+                            dismiss: timerModel.reset
+                        )
+                    }
                 }
             }
+        }
+        .onChange(of: store.subscriptions) { subscriptions in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if (subscriptions.count > 0 && store.purchasedSubscriptions.count <= 0) {
+                    self.showOnboardingSheet.toggle()
+                }
+            }
+        }
+        .sheet(isPresented: $showOnboardingSheet) {
+            SubscriptionView(store: store)
         }
     }
     
