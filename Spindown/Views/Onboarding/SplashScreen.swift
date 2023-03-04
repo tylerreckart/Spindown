@@ -40,7 +40,7 @@ struct SplashScreen: View {
                 )
                 
                 UIButtonOutlined(
-                    text: "Rule Book",
+                    text: "Rulebook",
                     symbol: "book",
                     fill: .black,
                     color: .white,

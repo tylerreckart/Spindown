@@ -8,10 +8,164 @@
 import Foundation
 import SwiftUI
 
+struct EdgeBorder: Shape {
+    var width: CGFloat
+    var edges: [Edge]
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        for edge in edges {
+            var x: CGFloat {
+                switch edge {
+                case .top, .bottom, .leading: return rect.minX
+                case .trailing: return rect.maxX - width
+                }
+            }
+
+            var y: CGFloat {
+                switch edge {
+                case .top, .leading, .trailing: return rect.minY
+                case .bottom: return rect.maxY - width
+                }
+            }
+
+            var w: CGFloat {
+                switch edge {
+                case .top, .bottom: return rect.width
+                case .leading, .trailing: return width
+                }
+            }
+
+            var h: CGFloat {
+                switch edge {
+                case .top, .bottom: return width
+                case .leading, .trailing: return rect.height
+                }
+            }
+            path.addRect(CGRect(x: x, y: y, width: w, height: h))
+        }
+        return path
+    }
+}
+
+extension View {
+    func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
+        overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))
+    }
+}
+
+struct SubruleContainer: View {
+    var subrules: [Rule]
+    
+    @State private var isOpen: Bool = false
+
+    var body: some View {
+        if (subrules.count > 0) {
+            VStack {
+                Button(action: {
+                    withAnimation {
+                        self.isOpen.toggle()
+                    }
+                }) {
+                    HStack {
+                        Text("Subrules")
+                            .font(.system(size: 16, weight: .black))
+                            .multilineTextAlignment(.leading)
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 14, weight: .black))
+                            .multilineTextAlignment(.leading)
+                            .rotationEffect(Angle(degrees: self.isOpen ? 90 : 0))
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom, self.isOpen ? 5 : 0)
+                }
+                
+                if (self.isOpen) {
+                    VStack(spacing: 20) {
+                        ForEach(subrules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { subrule in
+                            VStack {
+                                HStack {
+                                    Text(subrule.ruleNumber)
+                                        .font(.system(size: 18, weight: .black))
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                }
+                                
+                                HStack {
+                                    Text(subrule.ruleText)
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                }
+                                
+                                ExamplesContainer(examples: subrule.examples ?? [])
+                                    .padding(.top, 10)
+                            }
+                        }
+                        .transition(.opacity)
+                        .padding(.leading, 20)
+                    }
+                    .border(width: 4, edges: [.leading], color: Color(UIColor(named: "NotAsDeepGray")!))
+                }
+            }
+        }
+    }
+}
+
+struct ExamplesContainer: View {
+    var examples: [String?]
+    
+    @State private var isOpen: Bool = false
+
+    var body: some View {
+        if (examples.count > 0) {
+            VStack {
+                Button(action: {
+                    withAnimation {
+                        self.isOpen.toggle()
+                    }
+                }) {
+                    HStack {
+                        Text("Examples")
+                            .font(.system(size: 16, weight: .black))
+                            .multilineTextAlignment(.leading)
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 14, weight: .black))
+                            .multilineTextAlignment(.leading)
+                            .rotationEffect(Angle(degrees: self.isOpen ? 90 : 0))
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom, self.isOpen ? 5 : 0)
+                }
+                
+                if (self.isOpen) {
+                    VStack(spacing: 20) {
+                        ForEach(examples, id: \.self) { example in
+                            HStack {
+                                Text(example!)
+                                    .foregroundColor(Color(UIColor(named: "AccentGray")!))
+                                    .italic()
+                                Spacer()
+                            }
+                        }
+                        .transition(.opacity)
+                        .padding(.leading, 20)
+                    }
+                    .border(width: 4, edges: [.leading], color: Color(UIColor(named: "NotAsDeepGray")!))
+                }
+            }
+        }
+    }
+}
+
 struct RulesSheet: View {
-    @State private var isFetchingRules: Bool = false
+    @State private var isFetchingRules: Bool = true
 
     @State private var rules: [Rule] = []
+    @State private var subrules: [Rule] = []
     
     let letters = NSCharacterSet.letters
     
@@ -20,14 +174,28 @@ struct RulesSheet: View {
     @State private var searchResults: [Rule] = []
     @State private var selectedRule: Rule?
     @State private var selectedRuleSubrules: [Rule] = []
+    
+    var dict: [String: String] = [
+        "100": "Game Concepts",
+        "200": "Parts of a Card",
+        "300": "Card Types",
+        "400": "Zones",
+        "500": "Turn Structure",
+        "600": "Spells, Abilities, and Effects",
+        "700": "Additional Rules",
+        "800": "Multiplayer Rules",
+        "900": "Casual Variants"
+    ]
+    
+    @State private var currentPage: String = "100"
 
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Image(systemName: "book")
                         .font(.system(size: 24, weight: .black))
-                    Text("Rule Book")
+                    Text("Rulebook")
                         .font(.system(size: 28, weight: .black))
                     Spacer()
                     
@@ -51,7 +219,6 @@ struct RulesSheet: View {
                     .frame(height: 4)
                     .background(Color(UIColor(named: "AccentGrayDarker")!))
                     .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                    .offset(y: -8)
 
                 ZStack {
                     if (self.isFetchingRules) {
@@ -61,30 +228,87 @@ struct RulesSheet: View {
                             Spacer()
                         }
                     } else {
-                        ScrollView {
-                            VStack(spacing: 20) {
-                                ForEach(rules.sorted { $0.ruleNumber < $1.ruleNumber }, id: \.self) { rule in
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        let subrule = rule.ruleNumber.rangeOfCharacter(from: letters)
-                                        
-                                        Text(rule.ruleNumber)
-                                            .font(.system(size: 18, weight: .black))
-                                            .padding(.leading, subrule != nil ? 50 : 0)
-                                            .multilineTextAlignment(.leading)
-                                        HStack {
-                                            Text(rule.ruleText)
+                        VStack {
+                            ScrollView {
+                                let entry = dict.first(where: { (key, _) in key.contains(self.currentPage) })
+                                
+                                HStack {
+                                    Text(entry!.value)
+                                        .font(.system(size: 28, weight: .black))
+                                        .padding([.top, .leading, .trailing])
+                                        .padding(.bottom, -10)
+                                    Spacer()
+                                }
+
+                                VStack(spacing: 20) {
+                                    ForEach(
+                                        rules
+                                            .filter({ $0.ruleNumber.prefix(1) == self.currentPage.prefix(1) })
+                                            .sorted { $0.ruleNumber < $1.ruleNumber },
+                                        id: \.self
+                                    ) { rule in
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text(rule.ruleNumber)
+                                                .font(.system(size: 18, weight: .black))
                                                 .multilineTextAlignment(.leading)
-                                                .padding(.leading, subrule != nil ? 50 : 0)
-                                            Spacer()
+                                            HStack {
+                                                Text(rule.ruleText)
+                                                    .multilineTextAlignment(.leading)
+                                                Spacer()
+                                            }
+                                            
+                                            ExamplesContainer(examples: rule.examples ?? [])
+                                                .padding(.top, 10)
+                                            SubruleContainer(subrules: subrules.filter({ $0.ruleNumber.contains(rule.ruleNumber) }))
+                                                .padding(.top, 10)
                                         }
+                                        .frame(maxWidth: .infinity)
                                     }
-                                    .frame(maxWidth: .infinity)
+                                }
+                                .padding()
+                            }
+                            .padding(.bottom, 55)
+                            .transition(.push(from: .bottom))
+                        }
+                        
+                        VStack(spacing: 0) {
+                            Spacer()
+                            Divider()
+                                .frame(height: 4)
+                                .background(Color(UIColor(named: "AccentGrayDarker")!))
+                                .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                            
+                            HStack {
+                                let keys = Array(dict.keys).sorted()
+                                let currentIndex = keys.firstIndex(where: { $0 == self.currentPage })
+                                
+                                Button(action: {
+                                    self.currentPage = keys[currentIndex! - 1]
+                                }) {
+                                    HStack {
+                                        Image(systemName: "chevron.left")
+                                        Text("Prev")
+                                    }
+                                    .font(.system(size: 16, weight: .black))
+                                }
+                                .disabled(currentIndex == 0)
+                                
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    self.currentPage = keys[currentIndex! + 1]
+                                }) {
+                                    HStack {
+                                        Text("Next")
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .font(.system(size: 16, weight: .black))
                                 }
                             }
                             .padding()
+                            .background(Color(UIColor(named: "NotAsDeepGray")!).opacity(0.75))
                         }
-                        .padding([.top, .bottom], -16)
-                        .transition(.push(from: .bottom))
                     }
                 }
             }
@@ -149,6 +373,8 @@ struct RulesSheet: View {
                         Task.detached(priority: .background) {
                             if (data.ruleNumber.rangeOfCharacter(from: letters) == nil) {
                                 self.rules.append(data)
+                            } else {
+                                self.subrules.append(data)
                             }
                         }
                     }
@@ -168,11 +394,11 @@ struct RulesSheet: View {
             for page in 1...9 {
                 await fetchRulesetForPage(page: page)
             }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            withAnimation {
-                self.isFetchingRules = false
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    self.isFetchingRules = false
+                }
             }
         }
     }
