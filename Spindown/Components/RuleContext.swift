@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-struct Examples: View {
-    var examples: [String?]
-
-    var body: some View {
-        HStack {
-            Text("Examples")
-                .font(.system(size: 16, weight: .black))
-                .padding(.top)
-                .padding(.bottom, 10)
-            Spacer()
-        }
-        VStack(spacing: 20) {
-            ForEach(examples, id: \.self) { example in
-                Text(example!)
-                    .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                    .italic()
-            }
-        }
-    }
-}
-
 struct RuleContext: View {
     @Binding var selectedRule: Rule?
 
@@ -47,7 +26,7 @@ struct RuleContext: View {
                         .font(.system(size: 18, weight: .black))
                         .multilineTextAlignment(.leading)
                     Spacer()
-                    Image(systemName: "arrow.backward")
+                    Image(systemName: "arrow.uturn.left")
                         .font(.system(size: 18, weight: .black))
                     Text("Go Back")
                         .font(.system(size: 18, weight: .black))
@@ -55,10 +34,65 @@ struct RuleContext: View {
             }
 
             if (self.selectedRule != nil) {
-                RuleBody(rule: self.selectedRule!, subrules: subrules)
+                ScrollView {
+                    VStack {
+                        if ((selectedRule?.ruleText.split(separator: " ").count)! <= 2) {
+                            HStack {
+                                Text(selectedRule?.ruleText ?? "")
+                                    .font(.system(size: 28, weight: .black))
+                                    .multilineTextAlignment(.leading)
+                                    .padding(.top, 10)
+                                Spacer()
+                            }
+                        } else {
+                            HStack {
+                                Text(selectedRule?.ruleText ?? "")
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.top, 10)
+                                Spacer()
+                            }
+                        }
+                        
+                        if (selectedRule?.examples != nil) {
+                            ExamplesContainer(examples: selectedRule?.examples ?? [])
+                        }
+                        
+                        if (self.subrules.count > 0) {
+                            VStack(alignment: .leading, spacing: 20) {
+                                ForEach(self.subrules.sorted { $0.ruleNumber < $1.ruleNumber }) { subrule in
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(subrule.ruleNumber)
+                                            .font(.system(size: 18, weight: .black))
+                                            .multilineTextAlignment(.leading)
+                                        HStack {
+                                            Text(subrule.ruleText)
+                                                .multilineTextAlignment(.leading)
+                                            Spacer()
+                                        }
+                                        
+                                        if (subrule.examples != nil) {
+                                            ExamplesContainer(examples: subrule.examples ?? [])
+                                        }
+                                    }
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 5)
+                        }
+                    }
+                    .overlay(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    contentSize = geo.size
+                                }
+                        }
+                    )
+                }
             }
         }
-        .frame(maxHeight: contentSize?.height ?? 200)
+        .frame(maxHeight: (contentSize?.height ?? 200) + 40)
         .transition(
             .asymmetric(
                 insertion: .push(from: .trailing).combined(with: .opacity),

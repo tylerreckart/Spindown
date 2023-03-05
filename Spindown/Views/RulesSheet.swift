@@ -336,7 +336,7 @@ struct RulesSheet: View {
                 searchText: $searchText,
                 results: $searchResults,
                 selectedRule: $selectedRule,
-                subrules: subrules
+                subrules: subrules.filter({ $0.ruleNumber.contains(self.selectedRule?.ruleNumber ?? "") })
             )
         }
         .foregroundColor(Color.white)
