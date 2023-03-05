@@ -34,10 +34,15 @@ struct ContentView: View {
     @State private var currentPage: Page = .home
     var pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
     
+    @State private var countIncremented: Bool = false
+    
     init() {
         // If the app doesn't store the count, this returns 0.
         var count = UserDefaults.standard.integer(forKey: "sessionCount")
-        count += 1
+        if (self.countIncremented != true) {
+            count += 1
+            self.countIncremented = true
+        }
         UserDefaults.standard.set(count, forKey: "sessionCount")
         print("player session logged: \(count)")
 
@@ -49,7 +54,7 @@ struct ContentView: View {
         guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
             else { fatalError("Expected to find a bundle version in the info dictionary.") }
          // Verify the user completes the process several times and doesn’t receive a prompt for this app version.
-         if count >= 4 && currentVersion != lastVersionPromptedForReview {
+         if count >= 8 && currentVersion != lastVersionPromptedForReview {
              let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
              
              if (windowScene != nil) {
