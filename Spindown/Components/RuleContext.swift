@@ -32,6 +32,8 @@ struct RuleContext: View {
     @Binding var selectedRule: Rule?
 
     var subrules: [Rule] = []
+    
+    @State private var contentSize: CGSize? = nil
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -53,48 +55,10 @@ struct RuleContext: View {
             }
 
             if (self.selectedRule != nil) {
-                ScrollView {
-                    if ((selectedRule?.ruleText.split(separator: " ").count)! <= 2) {
-                        Text(selectedRule?.ruleText ?? "")
-                            .font(.system(size: 24, weight: .black))
-                            .multilineTextAlignment(.leading)
-                            .padding(.top, 10)
-                    } else {
-                        Text(selectedRule?.ruleText ?? "")
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity)
-                            .padding(.top, 10)
-                    }
-                    
-                    if (selectedRule?.examples != nil) {
-                        Examples(examples: (selectedRule?.examples!)!)
-                    }
-                    
-                    if (self.subrules.count > 0) {
-                        VStack(alignment: .leading, spacing: 20) {
-                            ForEach(self.subrules) { subrule in
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text(subrule.ruleNumber)
-                                        .font(.system(size: 18, weight: .black))
-                                        .multilineTextAlignment(.leading)
-                                    HStack {
-                                        Text(subrule.ruleText)
-                                            .multilineTextAlignment(.leading)
-                                        Spacer()
-                                    }
-                                    
-                                    if (subrule.examples != nil) {
-                                        Examples(examples: (subrule.examples!))
-                                    }
-                                }
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, 5)
-                    }
-                }
+                RuleBody(rule: self.selectedRule!, subrules: subrules)
             }
         }
+        .frame(maxHeight: contentSize?.height ?? 200)
         .transition(
             .asymmetric(
                 insertion: .push(from: .trailing).combined(with: .opacity),

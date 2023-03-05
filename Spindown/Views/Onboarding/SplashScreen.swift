@@ -59,7 +59,6 @@ struct SplashScreen: View {
                     }
                 )
             }
-            .frame(maxWidth: 300)
             Spacer()
         }
         .background(Color(.black))
@@ -80,5 +79,6 @@ struct SplashScreen: View {
             RulesSheet()
         }
         .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
+        .frame(maxWidth: 340)
     }
 }

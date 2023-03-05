@@ -80,7 +80,7 @@ struct SavedPlayersSelector: View {
                     .opacity(players.count > 0 ? 1 : 0.5)
                     .disabled(players.count == 0)
                 }
-                .frame(maxWidth: 400)
+                .frame(maxWidth: 340)
                 .padding(.horizontal)
                 
                 Spacer()

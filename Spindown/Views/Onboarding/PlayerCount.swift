@@ -48,7 +48,7 @@ struct PlayersSelector: View {
                 }
             }
             .padding(.bottom)
-            .frame(maxWidth: 320)
+            .frame(maxWidth: 340)
 
             VStack(spacing: 20) {
                 HStack(spacing: 20) {
@@ -74,7 +74,6 @@ struct PlayersSelector: View {
                     })
                 }
             }
-            .frame(maxWidth: 300)
             
             Spacer()
             
@@ -91,7 +90,7 @@ struct PlayersSelector: View {
                     action: setUsedSavedPlayers
                 )
             }
-            .padding(.horizontal)
+            .frame(maxWidth: 340)
         }
         .transition(
             .asymmetric(

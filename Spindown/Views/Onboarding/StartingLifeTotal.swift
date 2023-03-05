@@ -47,7 +47,6 @@ struct StartingLifeTotalSelector: View {
                 }
             }
             .padding(.bottom)
-            .frame(maxWidth: 600)
 
             VStack(spacing: 20) {
                 HStack(spacing: 20) {

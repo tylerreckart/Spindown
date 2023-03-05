@@ -187,35 +187,3 @@ struct GameBoard: View {
         self.selectedPlayer = nil
     }
 }
-
-func buildTestPlayers() -> [Participant] {
-    var players: [Participant] = []
-
-    for index in 1..<3 {
-        let player = Participant()
-        player.name = "Player \(index)"
-        player.lifeTotal = 20
-        players.append(player)
-    }
-    
-    return players
-}
-
-
-struct GameBoard_Previews: PreviewProvider {
-    @State static var players: [Participant] = buildTestPlayers()
-    @State static var numPlayersRemaining: Int = 3
-    @State static var activePlayer: Participant? = buildTestPlayers()[0]
-    
-    static func endGame() -> Void {}
-    
-    static var previews: some View {
-        GameBoard(
-            players: $players,
-            numPlayersRemaining: $numPlayersRemaining,
-            activePlayer: $activePlayer,
-            endGame: endGame
-        ).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
-

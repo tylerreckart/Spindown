@@ -148,6 +148,7 @@ struct GameSettingsDialog: View {
                             customize: true,
                             savePlayer: savePlayer,
                             dismiss: dismissPlayerCustomizer,
+                            stateful: true,
                             selectedPlayer: selectedPlayer
                         )
                 }

@@ -161,6 +161,30 @@ struct ExamplesContainer: View {
     }
 }
 
+struct RuleBody: View {
+    var rule: Rule
+    var subrules: [Rule]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(rule.ruleNumber)
+                .font(.system(size: 18, weight: .black))
+                .multilineTextAlignment(.leading)
+            HStack {
+                Text(rule.ruleText)
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }
+            
+            ExamplesContainer(examples: rule.examples ?? [])
+                .padding(.top, 10)
+            SubruleContainer(subrules: subrules.filter({ $0.ruleNumber.contains(rule.ruleNumber) }))
+                .padding(.top, 10)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
 struct RulesSheet: View {
     @State private var isFetchingRules: Bool = true
 
@@ -218,7 +242,7 @@ struct RulesSheet: View {
                 Divider()
                     .frame(height: 4)
                     .background(Color(UIColor(named: "AccentGrayDarker")!))
-                    .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                    .overlay(LinearGradient(colors: [.white.opacity(0.05), .clear], startPoint: .top, endPoint: .bottom))
 
                 ZStack {
                     if (self.isFetchingRules) {
@@ -247,22 +271,7 @@ struct RulesSheet: View {
                                             .sorted { $0.ruleNumber < $1.ruleNumber },
                                         id: \.self
                                     ) { rule in
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            Text(rule.ruleNumber)
-                                                .font(.system(size: 18, weight: .black))
-                                                .multilineTextAlignment(.leading)
-                                            HStack {
-                                                Text(rule.ruleText)
-                                                    .multilineTextAlignment(.leading)
-                                                Spacer()
-                                            }
-                                            
-                                            ExamplesContainer(examples: rule.examples ?? [])
-                                                .padding(.top, 10)
-                                            SubruleContainer(subrules: subrules.filter({ $0.ruleNumber.contains(rule.ruleNumber) }))
-                                                .padding(.top, 10)
-                                        }
-                                        .frame(maxWidth: .infinity)
+                                        RuleBody(rule: rule, subrules: subrules)
                                     }
                                 }
                                 .padding()
@@ -276,14 +285,18 @@ struct RulesSheet: View {
                             Divider()
                                 .frame(height: 4)
                                 .background(Color(UIColor(named: "AccentGrayDarker")!))
-                                .overlay(LinearGradient(colors: [.white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
+                                .overlay(LinearGradient(colors: [.white.opacity(0.05), .clear], startPoint: .top, endPoint: .bottom))
                             
                             HStack {
                                 let keys = Array(dict.keys).sorted()
                                 let currentIndex = keys.firstIndex(where: { $0 == self.currentPage })
+                                let nextIndex = (currentIndex ?? 0) + 1
+                                let prevIndex = (currentIndex ?? 0) - 1
                                 
                                 Button(action: {
-                                    self.currentPage = keys[currentIndex! - 1]
+                                    if (prevIndex > -1) {
+                                        self.currentPage = keys[prevIndex]
+                                    }
                                 }) {
                                     HStack {
                                         Image(systemName: "chevron.left")
@@ -292,12 +305,15 @@ struct RulesSheet: View {
                                     .font(.system(size: 16, weight: .black))
                                 }
                                 .disabled(currentIndex == 0)
+                                .foregroundColor(prevIndex > -1 ? .white : Color(UIColor(named: "AccentGrayDarker")!))
                                 
                                 
                                 Spacer()
                                 
                                 Button(action: {
-                                    self.currentPage = keys[currentIndex! + 1]
+                                    if (nextIndex <= keys.count) {
+                                        self.currentPage = keys[nextIndex]
+                                    }
                                 }) {
                                     HStack {
                                         Text("Next")
@@ -305,6 +321,8 @@ struct RulesSheet: View {
                                     }
                                     .font(.system(size: 16, weight: .black))
                                 }
+                                .disabled(nextIndex == keys.count)
+                                .foregroundColor(currentIndex != keys.count - 1 ? .white : Color(UIColor(named: "AccentGrayDarker")!))
                             }
                             .padding()
                             .background(Color(UIColor(named: "NotAsDeepGray")!).opacity(0.75))
@@ -318,7 +336,7 @@ struct RulesSheet: View {
                 searchText: $searchText,
                 results: $searchResults,
                 selectedRule: $selectedRule,
-                subrules: selectedRuleSubrules
+                subrules: subrules
             )
         }
         .foregroundColor(Color.white)

@@ -18,6 +18,7 @@ struct PlayerCustomizationContext: View {
     var delete: (_ player: Participant) -> Void = { player in
         return
     }
+    var stateful: Bool = false
     
     var selectedPlayer: Participant? = nil
     
@@ -76,7 +77,7 @@ struct PlayerCustomizationContext: View {
                 )
                 .opacity(self.name.count != 0 ? 1 : 0.5)
                 
-                if (self.customize) {
+                if (self.customize && self.stateful != true) {
                     UIButtonOutlined(
                         text: "Delete Player",
                         fill: UIColor(named: "DeepGray")!,
