@@ -51,8 +51,11 @@ struct ContentView: View {
          // Verify the user completes the process several times and doesn’t receive a prompt for this app version.
          if count >= 4 && currentVersion != lastVersionPromptedForReview {
              let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-             SKStoreReviewController.requestReview(in: windowScene!)
-             UserDefaults.standard.set(currentVersion, forKey: "lastReviewedVersion")
+             
+             if (windowScene != nil) {
+                 SKStoreReviewController.requestReview(in: windowScene!)
+                 UserDefaults.standard.set(currentVersion, forKey: "lastReviewedVersion")
+             }
          }
     }
 

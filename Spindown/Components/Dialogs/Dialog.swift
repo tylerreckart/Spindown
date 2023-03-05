@@ -14,7 +14,7 @@ struct Dialog<Content: View>: View {
     @Binding var open: Bool
     
     @State private var overlayOpacity: CGFloat = 0
-    
+
     var placement: DialogPlacement = .center
     
     var body: some View {

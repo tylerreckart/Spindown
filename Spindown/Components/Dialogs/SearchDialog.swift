@@ -81,7 +81,7 @@ struct SearchDialog: View {
                     RuleContext(selectedRule: $selectedRule, subrules: subrules)
             }
         },
-           maxWidth: UIScreen.main.bounds.width - 100,
+           maxWidth: UIDevice.current.userInterfaceIdiom == .phone ? UIScreen.main.bounds.width - 100 : 500,
            open: $open,
            placement: .top
         )
