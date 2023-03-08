@@ -98,6 +98,9 @@ struct SubscriptionView: View {
     // Error handling.
     @State private var errorMessage: String?
     @State private var showErrorAlert: Bool = false
+    // Web views.
+    @State private var showPrivacyWebView: Bool = false
+    @State private var showTermsWebView: Bool = false
     
     var icon: UIImage? {
         guard let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? NSDictionary,
@@ -113,57 +116,55 @@ struct SubscriptionView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: 0) {
-                VStack(spacing: 0) {
-                    Image(uiImage: icon!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 72)
-                        .cornerRadius(20)
-                }
-                .padding(.top, 30)
-                .padding(.bottom)
-                
-                VStack {
-                    HStack(alignment: .center) {
-                        Text("Spindown")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .padding(.trailing, -5)
-                        Image(systemName: "plus.app")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(UIColor(named: "PrimaryBlue")!))
+        ZStack {
+            ScrollView {
+                VStack(alignment: .center, spacing: 0) {
+                    VStack(spacing: 0) {
+                        Image(uiImage: icon!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 72)
+                            .cornerRadius(18)
                     }
-                    .padding(.bottom, 5)
-                }
-                .padding(.horizontal)
-                
-                
-                if !hasPurchased {
-                    Pitch(store: store, selectedOffer: $selectedOffer)
-                        .padding(.bottom, 20)
-                } else {
+                    .padding(.top, 30)
+                    .padding(.bottom)
+                    
                     VStack {
-                        Text("Thank you for supporting Spindown as a premium subscriber. Your contributions help fund new features and cover the costs of development.")
-                            .padding(.bottom)
-                            .fixedSize(horizontal: false, vertical: true)
+                        HStack(alignment: .center) {
+                            Text("Spindown")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.trailing, -5)
+                            Image(systemName: "plus.app")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(UIColor(named: "PrimaryBlue")!))
+                        }
+                        .padding(.bottom, 5)
                     }
                     .padding(.horizontal)
-                }
-                
-                VStack(spacing: 20) {
-                    if !store.subscriptions.isEmpty {
-                        if !hasPurchased {
-                            if !isPurchasing {
+                    
+                    
+                    if !hasPurchased {
+                        Pitch(store: store, selectedOffer: $selectedOffer)
+                            .padding(.bottom, 20)
+                    } else {
+                        VStack {
+                            Text("Thank you for supporting Spindown as a premium subscriber. Your contributions help fund new features and cover the costs of development.")
+                                .padding(.bottom)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(.horizontal)
+                    }
+                    
+                    VStack(spacing: 20) {
+                        if !store.subscriptions.isEmpty {
+                            if !hasPurchased {
                                 UIButton(text: "Subscribe", color: UIColor(named: "PrimaryRed")!, action: {
                                     Task {
                                         await buy()
                                     }
                                 })
-                            } else {
-                                Spinner()
                             }
                         } else {
                             UIButton(text: "Change or Cancel Subscription", color: UIColor(named: "PrimaryRed")!, action: {
@@ -172,14 +173,14 @@ struct SubscriptionView: View {
                                 }
                             })
                         }
+                        
+                        
+                        UIButtonOutlined(text: "Restore Previous Purchases", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            Task {
+                                try? await AppStore.sync()
+                            }
+                        })
                     }
-                    
-                    
-                    UIButtonOutlined(text: "Restore Previous Purchases", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {
-                        Task {
-                            try? await AppStore.sync()
-                        }
-                    })
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -205,30 +206,30 @@ struct SubscriptionView: View {
                         fill: UIColor(named: "DeepGray")!,
                         color: UIColor(named: "AccentGrayDarker")!,
                         action: {
-                            if let url = URL(string: "https://haptic.software/terms") {
-                                UIApplication.shared.open(url)
-                            }
-                        })
+                            self.showTermsWebView.toggle()
+                        }
+                    )
                     UIButtonOutlined(
                         text: "Privacy Policy",
                         fill: UIColor(named: "DeepGray")!,
                         color: UIColor(named: "AccentGrayDarker")!,
                         action: {
-                            if let url = URL(string: "https://haptic.software/privacy") {
-                                UIApplication.shared.open(url)
-                            }
+                            self.showPrivacyWebView.toggle()
                         }
                     )
                 }
                 .padding()
             }
+            
+            if (self.isPurchasing) {
+                Color.black.opacity(0.2)
+                    .edgesIgnoringSafeArea(.all)
+                Spinner()
+            }
         }
         .foregroundColor(.white)
         .background(Color(UIColor(named: "DeepGray")!))
         .interactiveDismissDisabled(true)
-        .onChange(of: store.purchasedSubscriptions) { purchases in
-            
-        }
         .alert(isPresented: $showErrorAlert, error: ValidationError.NaN) {_ in
             Button(action: {
                 showErrorAlert = false
@@ -237,6 +238,12 @@ struct SubscriptionView: View {
             }
         } message: { error in
             Text(errorMessage ?? "Error. Please try again.")
+        }
+        .sheet(isPresented: $showTermsWebView) {
+            WebView(url: URL(string: "https://haptic.software/terms")!)
+        }
+        .sheet(isPresented: $showPrivacyWebView) {
+            WebView(url: URL(string: "https://haptic.software/privacy")!)
         }
     }
     

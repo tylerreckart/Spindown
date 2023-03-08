@@ -54,7 +54,7 @@ struct ContentView: View {
         guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
             else { fatalError("Expected to find a bundle version in the info dictionary.") }
          // Verify the user completes the process several times and doesn’t receive a prompt for this app version.
-         if count >= 8 && currentVersion != lastVersionPromptedForReview {
+         if count >= 16 && currentVersion != lastVersionPromptedForReview {
              let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
              
              if (windowScene != nil) {

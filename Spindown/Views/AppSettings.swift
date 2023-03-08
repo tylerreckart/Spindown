@@ -8,183 +8,18 @@
 import SwiftUI
 import StoreKit
 
-struct AboutView: View {
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                Image("SpindownIcon")
-                    .resizable()
-                    .frame(maxWidth: 100, maxHeight: 100)
-                    .padding(.top, 75)
-                Text("Hi, I'm Tyler. I run Haptic, the development studio behind Spindown, as a one-person shop without employees or outside funding.\n\nThis app would not be possible without the love and support of my family and our two dogs.")
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-                
-                List {
-                    Section(header:
-                        Text("Follow Us")
-                            .font(.system(size: 12, weight: .medium))
-                            .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                    ) {
-                        Button(action: {
-                            if let url = URL(string: "https://mastodon.social/@haptic") {
-                                UIApplication.shared.open(url)
-                            }
-                        }) {
-                            HStack(alignment: .center) {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .fill(Color(UIColor(named: "AlmostBlack")!))
-                                        .frame(width: 30, height: 30)
-                                    Image("HapticLogo")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Haptic")
-                                    Text("Company News and Updates")
-                                        .font(.caption)
-                                }
-                            }
-                            .frame(height: 40)
-                        }
-                        
-                                
-                        Button(action: {
-                            if let url = URL(string: "https://mastodon.social/@spindown") {
-                                UIApplication.shared.open(url)
-                            }
-                        }) {
-                            HStack(alignment: .center) {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .fill(Color(UIColor(named: "PrimaryRed")!))
-                                        .frame(width: 30, height: 30)
-                                    Image("SpindownIcon")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Spindown")
-                                    Text("App Updates and Feedback")
-                                        .font(.caption)
-                                }
-                            }
-                            .frame(height: 40)
-                        }
-                    
-                        Button(action: {
-                            if let url = URL(string: "https://mastodon.social/@tyler") {
-                                UIApplication.shared.open(url)
-                            }
-                        }) {
-                            HStack(alignment: .center) {
-                                Image("ProfilePhoto")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .cornerRadius(15)
-
-                                VStack(alignment: .leading) {
-                                    Text("Tyler Reckart")
-                                    Text("Developer")
-                                        .font(.caption)
-                                }
-                            }
-                            .frame(height: 40)
-                        }
-                    }
-                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
-                    
-                    Section {
-                        Button(action: {
-                            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                                SKStoreReviewController.requestReview(in: scene)
-                            }
-                        }) {
-                            Text("Rate Spindown on the App Store")
-                        }
-                    }
-                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
-                }
-                .frame(height: 350)
-                .background(Color(UIColor(named: "DeepGray")!))
-                .scrollContentBackground(.hidden)
-                .scrollDisabled(true)
-                .foregroundColor(.white)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
-        .background(Color(UIColor(named: "DeepGray")!))
-    }
-}
-
 struct AppSettingsView: View {
     var dismissModal: () -> ()
 
     @Binding var showManageSubscriptions: Bool
 
+    @State private var showPrivacyWebView: Bool = false
+    @State private var showTermsWebView: Bool = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 List {
-//                    Section(header: Text("General")) {
-//                        NavigationLink(destination: EmptyView()) {
-//                            HStack {
-//                                ZStack {
-//                                    RoundedRectangle(cornerRadius: 8)
-//                                        .fill(Color(UIColor(named: "PrimaryRed")!))
-//                                        .frame(width: 30, height: 30)
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//                                    Image(systemName: "person.fill")
-//                                        .foregroundColor(.white)
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//                                }
-//                                Text("Players")
-//                            }
-//                            .padding([.top, .bottom], 2)
-//                        }
-//                        NavigationLink(destination: EmptyView()) {
-//                            HStack {
-//                                ZStack {
-//                                    RoundedRectangle(cornerRadius: 8)
-//                                        .fill(Color(UIColor(named: "AccentGrayDarker")!))
-//                                        .frame(width: 30, height: 30)
-//                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-//
-//                                    VStack(spacing: 4) {
-//                                        HStack(spacing: 4) {
-//                                            RoundedRectangle(cornerRadius: 2)
-//                                                .fill(Color(UIColor(named: "AccentGray")!))
-//                                                .frame(width: 8, height: 8)
-//                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
-//                                            RoundedRectangle(cornerRadius: 2)
-//                                                .fill(Color(UIColor(named: "AccentGray")!))
-//                                                .frame(width: 8, height: 8)
-//                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
-//                                        }
-//                                        HStack(spacing: 4) {
-//                                            RoundedRectangle(cornerRadius: 2)
-//                                                .fill(Color(UIColor(named: "PrimaryBlue")!))
-//                                                .frame(width: 8, height: 8)
-//                                                .shadow(color: Color.black.opacity(0.1), radius: 1)
-//                                            RoundedRectangle(cornerRadius: 2)
-//                                                .fill(Color(UIColor(named: "AccentGray")!))
-//                                                .frame(width: 8, height: 8)
-//                                                .shadow(color: Color.black.opacity(0.05), radius: 1)
-//                                        }
-//                                    }
-//                                }
-//                                Text("App Icon")
-//                            }
-//                            .padding([.top, .bottom], 2)
-//                        }
-//                    }
-//                    .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
-//                    .listRowSeparatorTint(Color.white.opacity(0.15))
-                    
                     Section(header: Text("About")) {
                         Button(action: { self.showManageSubscriptions.toggle() }) {
                             HStack {
@@ -203,9 +38,7 @@ struct AppSettingsView: View {
                             .padding([.top, .bottom], 2)
                         }
                         Button(action: {
-                            if let url = URL(string: "https://haptic.software/terms") {
-                                UIApplication.shared.open(url)
-                            }
+                            self.showTermsWebView.toggle()
                         }) {
                             HStack {
                                 ZStack {
@@ -222,9 +55,7 @@ struct AppSettingsView: View {
                             .padding([.top, .bottom], 2)
                         }
                         Button(action: {
-                            if let url = URL(string: "https://haptic.software/privacy") {
-                                UIApplication.shared.open(url)
-                            }
+                            self.showPrivacyWebView.toggle()
                         }) {
                             HStack {
                                 ZStack {
@@ -280,6 +111,12 @@ struct AppSettingsView: View {
                             .foregroundColor(Color(UIColor(named: "PrimaryRed")!))
                     }
                 }
+            }
+            .sheet(isPresented: $showTermsWebView) {
+                WebView(url: URL(string: "https://haptic.software/terms")!)
+            }
+            .sheet(isPresented: $showPrivacyWebView) {
+                WebView(url: URL(string: "https://haptic.software/privacy")!)
             }
         }
     }

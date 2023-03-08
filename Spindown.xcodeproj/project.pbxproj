@@ -53,6 +53,8 @@
 		DBB64A3629B281C900438AAE /* OutOfTimeDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */; };
 		DBB64A3829B2853B00438AAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */; };
 		DBB64A3A29B2866300438AAE /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB64A3929B2866300438AAE /* Timer.swift */; };
+		DBE2E0F529B94A720035B9BC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F429B94A720035B9BC /* WebView.swift */; };
+		DBE2E0F729B94C790035B9BC /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F629B94C790035B9BC /* About.swift */; };
 		DBE49FA429AB9260008B0648 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA329AB9260008B0648 /* Spinner.swift */; };
 		DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA529ACF597008B0648 /* StyledTextField.swift */; };
 		DBE49FAA29AD83FC008B0648 /* OnboardingBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */; };
@@ -69,7 +71,7 @@
 		DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC329AD8A0D008B0648 /* RuleContext.swift */; };
 		DBE49FC629AD8A3E008B0648 /* SearchDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */; };
 		DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF130682996AAE100B9E19A /* GameTimer.swift */; };
-		DBF1306B299BE04100B9E19A /* SubscriptionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */; };
+		DBF1306B299BE04100B9E19A /* SubscriptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306A299BE04100B9E19A /* SubscriptionSheet.swift */; };
 		DBF1306D299BE19100B9E19A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306C299BE19100B9E19A /* Store.swift */; };
 		DBF1306F299BE1F100B9E19A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306E299BE1F100B9E19A /* Error.swift */; };
 /* End PBXBuildFile section */
@@ -125,6 +127,8 @@
 		DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfTimeDialog.swift; sourceTree = "<group>"; };
 		DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB64A3929B2866300438AAE /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		DBE2E0F429B94A720035B9BC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		DBE2E0F629B94C790035B9BC /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		DBE49FA329AB9260008B0648 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		DBE49FA529ACF597008B0648 /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		DBE49FA929AD83FC008B0648 /* OnboardingBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackButton.swift; sourceTree = "<group>"; };
@@ -141,7 +145,7 @@
 		DBE49FC329AD8A0D008B0648 /* RuleContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleContext.swift; sourceTree = "<group>"; };
 		DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDialog.swift; sourceTree = "<group>"; };
 		DBF130682996AAE100B9E19A /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
-		DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDialog.swift; sourceTree = "<group>"; };
+		DBF1306A299BE04100B9E19A /* SubscriptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSheet.swift; sourceTree = "<group>"; };
 		DBF1306C299BE19100B9E19A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DBF1306E299BE1F100B9E19A /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		DBF13070299BECBB00B9E19A /* Subscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subscriptions.storekit; sourceTree = "<group>"; };
@@ -174,7 +178,6 @@
 			children = (
 				DB8A3250298CB2BC00FB7658 /* SettingsDialog */,
 				DB1D3A0D29915F9900A741DC /* LifeTotalCalculatorDialog.swift */,
-				DBF1306A299BE04100B9E19A /* SubscriptionDialog.swift */,
 				DB41B198298AC29E0000EC42 /* StartingPlayerDialog.swift */,
 				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
 				DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */,
@@ -234,6 +237,7 @@
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
 				DBE49FA329AB9260008B0648 /* Spinner.swift */,
 				DBE49FC329AD8A0D008B0648 /* RuleContext.swift */,
+				DBE2E0F429B94A720035B9BC /* WebView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -258,6 +262,8 @@
 				DB8B8F5B2986E2CB0023A84B /* ContentView.swift */,
 				DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */,
 				DB1D39FB298D60D400A741DC /* RulesSheet.swift */,
+				DBF1306A299BE04100B9E19A /* SubscriptionSheet.swift */,
+				DBE2E0F629B94C790035B9BC /* About.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -449,7 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */,
-				DBF1306B299BE04100B9E19A /* SubscriptionDialog.swift in Sources */,
+				DBF1306B299BE04100B9E19A /* SubscriptionSheet.swift in Sources */,
 				DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */,
 				DB8B8F69298766BD0023A84B /* GameOverDialog.swift in Sources */,
 				DB8A3252298CB2DF00FB7658 /* ChangeLayout.swift in Sources */,
@@ -489,12 +495,14 @@
 				DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */,
 				DB8B8F6F298767390023A84B /* Participant.swift in Sources */,
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
+				DBE2E0F529B94A720035B9BC /* WebView.swift in Sources */,
 				DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */,
 				DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */,
 				DBE49FAC29AD847B008B0648 /* UIButtonOutlined.swift in Sources */,
 				DBE49FAA29AD83FC008B0648 /* OnboardingBackButton.swift in Sources */,
 				DBE49FB629AD8531008B0648 /* FocusField.swift in Sources */,
 				DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */,
+				DBE2E0F729B94C790035B9BC /* About.swift in Sources */,
 				DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,
 				DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */,
@@ -627,7 +635,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Spindown/Spindown.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Spindown/Preview Content\"";
 				DEVELOPMENT_TEAM = 78FCYG6ZD9;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -671,7 +679,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Spindown/Spindown.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Spindown/Preview Content\"";
 				DEVELOPMENT_TEAM = 78FCYG6ZD9;
 				ENABLE_HARDENED_RUNTIME = YES;
