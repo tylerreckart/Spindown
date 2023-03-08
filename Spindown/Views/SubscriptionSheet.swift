@@ -8,46 +8,6 @@
 import SwiftUI
 import StoreKit
 
-struct SubscriptionTile: View {
-    var sub: Product?
-    @Binding var selectedOffer: Product?
-
-    var body: some View {
-        Button(action: {
-            selectedOffer = sub
-        }) {
-            VStack {
-                VStack(spacing: 0) {
-                    Text(sub?.id == "com.Spindown.subscription.yearly" ? "Yearly" : "Monthly")
-                        .font(.system(size: 12, weight: .bold))
-                        .padding(.top, 6)
-                    VStack(spacing: 0) {
-                        Text("\(sub?.displayPrice ?? "$0.99")")
-                            .font(.system(size: 18, weight: .bold))
-                            .padding(.bottom, 5)
-                        Text("Cancel anytime")
-                            .font(.caption)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(UIColor(named: "DeepGray")!))
-                    .cornerRadius(6)
-                    .padding(4)
-                    .foregroundColor(.white)
-                }
-            }
-            .frame(width: 120, height: 120)
-            .foregroundColor(selectedOffer == sub ? .black : .white)
-            .background(selectedOffer == sub ? .white : Color(UIColor(named: "AccentGrayDarker")!))
-            .cornerRadius(8)
-        }
-        .onAppear {
-            if selectedOffer == nil && sub?.id == "com.Spindown.subscription.yearly" {
-                selectedOffer = sub
-            }
-        }
-    }
-}
-
 struct Pitch: View {
     var store: Store
 
@@ -98,6 +58,7 @@ struct SubscriptionView: View {
     // Error handling.
     @State private var errorMessage: String?
     @State private var showErrorAlert: Bool = false
+    @State private var showNoSubscriptionAlert: Bool = false
     // Web views.
     @State private var showPrivacyWebView: Bool = false
     @State private var showTermsWebView: Bool = false
@@ -145,39 +106,26 @@ struct SubscriptionView: View {
                     .padding(.horizontal)
                     
                     
-                    if !hasPurchased {
-                        Pitch(store: store, selectedOffer: $selectedOffer)
-                            .padding(.bottom, 20)
-                    } else {
-                        VStack {
-                            Text("Thank you for supporting Spindown as a premium subscriber. Your contributions help fund new features and cover the costs of development.")
-                                .padding(.bottom)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        .padding(.horizontal)
-                    }
+                    Pitch(store: store, selectedOffer: $selectedOffer)
+                        .padding(.bottom, 20)
                     
                     VStack(spacing: 20) {
-                        if !store.subscriptions.isEmpty {
-                            if !hasPurchased {
-                                UIButton(text: "Subscribe", color: UIColor(named: "PrimaryRed")!, action: {
-                                    Task {
-                                        await buy()
-                                    }
-                                })
+                        UIButton(text: "Subscribe", color: UIColor(named: "PrimaryRed")!, action: {
+                            Task {
+                                await buy()
                             }
-                        } else {
-                            UIButton(text: "Change or Cancel Subscription", color: UIColor(named: "PrimaryRed")!, action: {
-                                Task {
-                                    showManageSubscriptions.toggle()
-                                }
-                            })
-                        }
+                        })
                         
                         
                         UIButtonOutlined(text: "Restore Previous Purchases", fill: UIColor(named: "DeepGray")!, color: UIColor(named: "AccentGrayDarker")!, action: {
+                            self.isPurchasing.toggle()
                             Task {
                                 try? await AppStore.sync()
+                                self.isPurchasing.toggle()
+                                
+                                if (store.purchasedSubscriptions.isEmpty) {
+                                    self.showNoSubscriptionAlert.toggle()
+                                }
                             }
                         })
                     }
@@ -230,6 +178,14 @@ struct SubscriptionView: View {
         .foregroundColor(.white)
         .background(Color(UIColor(named: "DeepGray")!))
         .interactiveDismissDisabled(true)
+        .onChange(of: store.purchasedSubscriptions) { subscriptions in
+            if (subscriptions.count > 0) {
+                if (self.isPurchasing) {
+                    self.isPurchasing.toggle()
+                }
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
         .alert(isPresented: $showErrorAlert, error: ValidationError.NaN) {_ in
             Button(action: {
                 showErrorAlert = false
@@ -238,6 +194,15 @@ struct SubscriptionView: View {
             }
         } message: { error in
             Text(errorMessage ?? "Error. Please try again.")
+        }
+        .alert(isPresented: $showNoSubscriptionAlert, error: ValidationError.NaN) {_ in
+            Button(action: {
+                showNoSubscriptionAlert = false
+            }) {
+                Text("Ok")
+            }
+        } message: { error in
+            Text("No subscription found. Please choose a plan or contact support.")
         }
         .sheet(isPresented: $showTermsWebView) {
             WebView(url: URL(string: "https://haptic.software/terms")!)
