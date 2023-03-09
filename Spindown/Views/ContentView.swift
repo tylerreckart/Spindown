@@ -16,53 +16,61 @@ enum Page {
     case gameBoard
 }
 
-struct ContentView: View {
-    @EnvironmentObject var store: Store
-    
-    @State private var showOnboardingSheet: Bool = false
+func incrementReviewCounter() -> Void {
+    // If the app doesn't store the count, this returns 0.
+    var count = UserDefaults.standard.integer(forKey: "sessionCount")
+    count += 1
+    UserDefaults.standard.set(count, forKey: "sessionCount")
+    print("player session logged: \(count)")
 
+    // Keep track of the most recent app version that prompts the user for a review.
+    let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: "lastReviewedVersion")
+
+    // Get the current bundle version for the app.
+    let infoDictionaryKey = kCFBundleVersionKey as String
+    guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
+        else { fatalError("Expected to find a bundle version in the info dictionary.") }
+     // Verify the user completes the process several times and doesn’t receive a prompt for this app version.
+     if count >= 5 && currentVersion != lastVersionPromptedForReview {
+         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+         
+         if (windowScene != nil) {
+             SKStoreReviewController.requestReview(in: windowScene!)
+             UserDefaults.standard.set(currentVersion, forKey: "lastReviewedVersion")
+         }
+     }
+}
+
+struct ContentView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+
+    @StateObject var store: Store = Store()
+    
+    @FetchRequest(
+      entity: Account.entity(),
+      sortDescriptors: [
+        NSSortDescriptor(keyPath: \Account.uid, ascending: true)
+      ]
+    ) var playerAccount: FetchedResults<Account>
+    
+    var pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
+    
+    // Initialize global timer.
+    @StateObject var timerModel = GameTimerModel()
+    // Current board state.
+    @State private var currentPage: Page = .home
     @State private var playerCount: Int = 0
     @State private var players: [Participant] = []
     @State private var numPlayersRemaining: Int = 0
-    @State private var winner: Participant? = nil
     @State private var activePlayer: Participant?
+    @State private var startingLifeTotal: Int = 0
+    // Display.
     @State private var showStartOverlay: Bool = false
     @State private var gameBoardOpacity: CGFloat = 0
-    @State private var startingLifeTotal: Int = 0
-    @StateObject var timerModel = GameTimerModel()
+    // Sheets.
+    @State private var showOnboardingSheet: Bool = false
     
-    @State private var currentPage: Page = .home
-    var pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
-    
-    @State private var countIncremented: Bool = false
-    
-    init() {
-        // If the app doesn't store the count, this returns 0.
-        var count = UserDefaults.standard.integer(forKey: "sessionCount")
-        if (self.countIncremented != true) {
-            count += 1
-            self.countIncremented = true
-        }
-        UserDefaults.standard.set(count, forKey: "sessionCount")
-        print("player session logged: \(count)")
-
-        // Keep track of the most recent app version that prompts the user for a review.
-        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: "lastReviewedVersion")
-
-        // Get the current bundle version for the app.
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
-            else { fatalError("Expected to find a bundle version in the info dictionary.") }
-         // Verify the user completes the process several times and doesn’t receive a prompt for this app version.
-         if count >= 16 && currentVersion != lastVersionPromptedForReview {
-             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-             
-             if (windowScene != nil) {
-                 SKStoreReviewController.requestReview(in: windowScene!)
-                 UserDefaults.standard.set(currentVersion, forKey: "lastReviewedVersion")
-             }
-         }
-    }
+    init() { incrementReviewCounter() }
 
     var body: some View {
         ZStack {
@@ -107,15 +115,59 @@ struct ContentView: View {
                 }
             }
         }
-        .onChange(of: store.subscriptions) { subscriptions in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if (subscriptions.count > 0 && store.purchasedSubscriptions.count <= 0) {
+        .sheet(isPresented: $showOnboardingSheet) {
+            SubscriptionView(store: store, account: playerAccount.isEmpty ? nil : playerAccount[0])
+        }
+        .onChange(of: store.purchasedSubscriptions) { _ in
+            checkPlayerEntitlements()
+        }
+    }
+    
+    private func checkPlayerEntitlements() -> Void {
+        var account = !playerAccount.isEmpty ? playerAccount[0] : nil
+        let now = Date()
+
+        if (account != nil) {
+            if (!account!.isSubscribed) {
+                self.showOnboardingSheet.toggle()
+            } else if (account!.nextEntitlementCheck!.timeIntervalSince1970 - now.timeIntervalSince1970 <= 0) {
+                if (store.purchasedSubscriptions.isEmpty) {
                     self.showOnboardingSheet.toggle()
+                } else {
+                    let sub = store.purchasedSubscriptions[0]
+                    let period = sub.subscription?.subscriptionPeriod
+                    
+                    var nextEntitlementCheck = Date()
+                    var components = DateComponents()
+                    
+                    if (period!.unit == .year) {
+                        components.setValue(1, for: .year)
+                    } else if (period!.unit == .month) {
+                        components.setValue(1, for: .month)
+                    }
+
+                    nextEntitlementCheck = Calendar.current.date(byAdding: components, to: now)!
+                    
+                    account?.nextEntitlementCheck = nextEntitlementCheck
+                    
+                    do {
+                        try managedObjectContext.save()
+                        self.showOnboardingSheet.toggle()
+                    } catch {
+                        // handle error.
+                    }
                 }
             }
-        }
-        .sheet(isPresented: $showOnboardingSheet) {
-            SubscriptionView(store: store)
+        } else {
+            account = Account(context: managedObjectContext)
+            account!.uid = UUID()
+            
+            do {
+                try managedObjectContext.save()
+                self.showOnboardingSheet.toggle()
+            } catch {
+                // handle error.
+            }
         }
     }
     
@@ -188,15 +240,12 @@ struct ContentView: View {
         for player in self.players {
             player.lifeTotal = self.startingLifeTotal
         }
-        
-        self.winner = nil
     }
     
     private func endGame() {
         self.startingLifeTotal = 0
         self.playerCount = 0
         self.numPlayersRemaining = 0
-        self.winner = nil
 
         withAnimation(.easeInOut(duration: 0.4)) {
             self.currentPage = .home

@@ -8,47 +8,13 @@
 import SwiftUI
 import StoreKit
 
-struct Pitch: View {
-    var store: Store
-
-    @Binding var selectedOffer: Product?
-
-    var body: some View {
-        VStack(alignment: .center) {
-            Text("Development of this app would not be possible without our subscribers. Show your support and help fund the development of new features by subscribing today.\n\nBoth plans offer a free 2-week trial. You may cancel anytime before the trial ends and you won't be charged.")
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.top, 5)
-                .padding(.bottom)
-                .padding(.horizontal)
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color(UIColor(named: "AccentGray")!))
-
-            if !store.subscriptions.isEmpty {
-                VStack(alignment: .center) {
-                    HStack {
-                        Spacer()
-                        Text("Choose a Plan")
-                            .font(.system(size: 18))
-                            .fontWeight(.bold)
-                        Spacer()
-                    }
-                    HStack(spacing: 20) {
-                        ForEach(store.subscriptions) { sub in
-                            SubscriptionTile(sub: sub, selectedOffer: $selectedOffer)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.bottom, 10)
-                }
-            }
-        }
-    }
-}
-
 struct SubscriptionView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
 
     var store: Store
+    var account: Account?
+
     // Store data.
     @State private var selectedOffer: Product?
     @State private var isPurchasing: Bool = false
@@ -213,6 +179,16 @@ struct SubscriptionView: View {
     }
     
     func buy() async {
+        let introductoryOffers = selectedOffer?.subscription?.promotionalOffers ?? []
+        var nextEntitlementCheck = Date()
+        
+        if (!introductoryOffers.isEmpty) {
+            var components = DateComponents()
+            components.setValue(14, for: .day)
+            let date: Date = Date()
+            nextEntitlementCheck = Calendar.current.date(byAdding: components, to: date)!
+        }
+
         do {
             withAnimation {
                 self.isPurchasing = true
@@ -224,6 +200,13 @@ struct SubscriptionView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
+            
+            let account = Account(context: managedObjectContext)
+            account.uid = UUID()
+            account.nextEntitlementCheck = nextEntitlementCheck
+            account.isSubscribed = true
+            
+            try managedObjectContext.save()
         } catch StoreError.failedVerification {
             errorMessage = "Your purchase could not be verified by the App Store."
             showErrorAlert = true
