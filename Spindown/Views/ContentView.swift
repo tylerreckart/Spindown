@@ -119,42 +119,54 @@ struct ContentView: View {
             SubscriptionView(store: store, account: playerAccount.isEmpty ? nil : playerAccount[0])
         }
         .onChange(of: store.purchasedSubscriptions) { _ in
-            checkPlayerEntitlements()
+            Task {
+                await checkPlayerEntitlements()
+            }
         }
     }
     
-    private func checkPlayerEntitlements() -> Void {
+    private func checkPlayerEntitlements() async -> Void {
         var account = !playerAccount.isEmpty ? playerAccount[0] : nil
         let now = Date()
 
         if (account != nil) {
             if (!account!.isSubscribed) {
                 self.showOnboardingSheet.toggle()
-            } else if (account!.nextEntitlementCheck!.timeIntervalSince1970 - now.timeIntervalSince1970 <= 0) {
+            } else {
                 if (store.purchasedSubscriptions.isEmpty) {
                     self.showOnboardingSheet.toggle()
                 } else {
                     let sub = store.purchasedSubscriptions[0]
-                    let period = sub.subscription?.subscriptionPeriod
                     
-                    var nextEntitlementCheck = Date()
-                    var components = DateComponents()
+                    let status = try? await sub.subscription?.status[0] ?? nil
                     
-                    if (period!.unit == .year) {
-                        components.setValue(1, for: .year)
-                    } else if (period!.unit == .month) {
-                        components.setValue(1, for: .month)
-                    }
-
-                    nextEntitlementCheck = Calendar.current.date(byAdding: components, to: now)!
-                    
-                    account?.nextEntitlementCheck = nextEntitlementCheck
-                    
-                    do {
-                        try managedObjectContext.save()
+                    if (status != nil && status!.state == .expired) {
                         self.showOnboardingSheet.toggle()
-                    } catch {
-                        // handle error.
+                        return
+                    }
+                    
+                    if (account!.nextEntitlementCheck!.timeIntervalSince1970 - now.timeIntervalSince1970 <= 0) {
+                        let period = sub.subscription?.subscriptionPeriod
+                        
+                        var nextEntitlementCheck = Date()
+                        var components = DateComponents()
+                        
+                        if (period!.unit == .year) {
+                            components.setValue(1, for: .year)
+                        } else if (period!.unit == .month) {
+                            components.setValue(1, for: .month)
+                        }
+                        
+                        nextEntitlementCheck = Calendar.current.date(byAdding: components, to: now)!
+                        
+                        account?.nextEntitlementCheck = nextEntitlementCheck
+                        
+                        do {
+                            try managedObjectContext.save()
+                            self.showOnboardingSheet.toggle()
+                        } catch {
+                            // handle error.
+                        }
                     }
                 }
             }
