@@ -179,16 +179,6 @@ struct SubscriptionView: View {
     }
     
     func buy() async {
-        let introductoryOffers = selectedOffer?.subscription?.promotionalOffers ?? []
-        var nextEntitlementCheck = Date()
-        
-        if (!introductoryOffers.isEmpty) {
-            var components = DateComponents()
-            components.setValue(14, for: .day)
-            let date: Date = Date()
-            nextEntitlementCheck = Calendar.current.date(byAdding: components, to: date)!
-        }
-
         do {
             withAnimation {
                 self.isPurchasing = true
@@ -203,7 +193,6 @@ struct SubscriptionView: View {
             
             let account = Account(context: managedObjectContext)
             account.uid = UUID()
-            account.nextEntitlementCheck = nextEntitlementCheck
             account.isSubscribed = true
             
             try managedObjectContext.save()

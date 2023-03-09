@@ -127,7 +127,6 @@ struct ContentView: View {
     
     private func checkPlayerEntitlements() async -> Void {
         var account = !playerAccount.isEmpty ? playerAccount[0] : nil
-        let now = Date()
 
         if (account != nil) {
             if (!account!.isSubscribed) {
@@ -139,37 +138,20 @@ struct ContentView: View {
                     return
                 } else {
                     let sub = store.purchasedSubscriptions[0]
-                    
                     let status = try? await sub.subscription?.status[0] ?? nil
                     
-                    if (status != nil && status!.state == .expired) {
-                        self.showOnboardingSheet.toggle()
-                        return
-                    }
-                    
-                    if (account!.nextEntitlementCheck!.timeIntervalSince1970 - now.timeIntervalSince1970 <= 0) {
-                        let period = sub.subscription?.subscriptionPeriod
-                        
-                        var nextEntitlementCheck = Date()
-                        var components = DateComponents()
-                        
-                        if (period!.unit == .year) {
-                            components.setValue(1, for: .year)
-                        } else if (period!.unit == .month) {
-                            components.setValue(1, for: .month)
-                        }
-                        
-                        nextEntitlementCheck = Calendar.current.date(byAdding: components, to: now)!
-                        
-                        account?.nextEntitlementCheck = nextEntitlementCheck
-                        
-                        do {
-                            try managedObjectContext.save()
+                    if (status != nil) {
+                        if (status!.state == .expired && (status!.state != .inGracePeriod || status!.state != .inBillingRetryPeriod)) {
+                            account?.isSubscribed = false
                             self.showOnboardingSheet.toggle()
-                        } catch {
-                            // handle error.
+                            return
                         }
-                        return
+                        
+                        if (status!.state == .revoked) {
+                            account?.isSubscribed = false
+                            self.showOnboardingSheet.toggle()
+                            return
+                        }
                     }
                 }
             }
