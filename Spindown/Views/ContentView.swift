@@ -132,9 +132,11 @@ struct ContentView: View {
         if (account != nil) {
             if (!account!.isSubscribed) {
                 self.showOnboardingSheet.toggle()
+                return
             } else {
                 if (store.purchasedSubscriptions.isEmpty) {
                     self.showOnboardingSheet.toggle()
+                    return
                 } else {
                     let sub = store.purchasedSubscriptions[0]
                     
@@ -167,6 +169,7 @@ struct ContentView: View {
                         } catch {
                             // handle error.
                         }
+                        return
                     }
                 }
             }
