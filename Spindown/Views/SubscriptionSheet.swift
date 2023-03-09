@@ -9,11 +9,9 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
 
     var store: Store
-    var account: Account?
 
     // Store data.
     @State private var selectedOffer: Product?
@@ -190,12 +188,6 @@ struct SubscriptionView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-            
-            let account = Account(context: managedObjectContext)
-            account.uid = UUID()
-            account.isSubscribed = true
-            
-            try managedObjectContext.save()
         } catch StoreError.failedVerification {
             errorMessage = "Your purchase could not be verified by the App Store."
             showErrorAlert = true

@@ -30,6 +30,7 @@ struct SavedPlayersSelector: View {
             VStack(alignment: .center, spacing: 0) {
                 OnboardingBackButton(action: {
                     self.reverseAnimation.toggle()
+                    self.players = []
 
                     withAnimation {
                         self.currentPage = .players

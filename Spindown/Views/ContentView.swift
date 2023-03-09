@@ -42,16 +42,7 @@ func incrementReviewCounter() -> Void {
 }
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-
     @StateObject var store: Store = Store()
-    
-    @FetchRequest(
-      entity: Account.entity(),
-      sortDescriptors: [
-        NSSortDescriptor(keyPath: \Account.uid, ascending: true)
-      ]
-    ) var playerAccount: FetchedResults<Account>
     
     var pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
     
@@ -116,9 +107,9 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $showOnboardingSheet) {
-            SubscriptionView(store: store, account: playerAccount.isEmpty ? nil : playerAccount[0])
+            SubscriptionView(store: store)
         }
-        .onChange(of: store.purchasedSubscriptions) { _ in
+        .onChange(of: store.initialized) { _ in
             Task {
                 await checkPlayerEntitlements()
             }
@@ -126,44 +117,24 @@ struct ContentView: View {
     }
     
     private func checkPlayerEntitlements() async -> Void {
-        var account = !playerAccount.isEmpty ? playerAccount[0] : nil
+        if (store.purchasedSubscriptions.isEmpty) {
+            self.showOnboardingSheet.toggle()
+            return
+        }
 
-        if (account != nil) {
-            if (!account!.isSubscribed) {
+        let sub = store.purchasedSubscriptions[0]
+        let status = try? await sub.subscription?.status[0] ?? nil
+        
+        if (status != nil) {
+            print(status!.state.localizedDescription)
+            if (status!.state == .expired && (status!.state != .inGracePeriod || status!.state != .inBillingRetryPeriod)) {
                 self.showOnboardingSheet.toggle()
                 return
-            } else {
-                if (store.purchasedSubscriptions.isEmpty) {
-                    self.showOnboardingSheet.toggle()
-                    return
-                } else {
-                    let sub = store.purchasedSubscriptions[0]
-                    let status = try? await sub.subscription?.status[0] ?? nil
-                    
-                    if (status != nil) {
-                        if (status!.state == .expired && (status!.state != .inGracePeriod || status!.state != .inBillingRetryPeriod)) {
-                            account?.isSubscribed = false
-                            self.showOnboardingSheet.toggle()
-                            return
-                        }
-                        
-                        if (status!.state == .revoked) {
-                            account?.isSubscribed = false
-                            self.showOnboardingSheet.toggle()
-                            return
-                        }
-                    }
-                }
             }
-        } else {
-            account = Account(context: managedObjectContext)
-            account!.uid = UUID()
             
-            do {
-                try managedObjectContext.save()
+            if (status!.state == .revoked) {
                 self.showOnboardingSheet.toggle()
-            } catch {
-                // handle error.
+                return
             }
         }
     }
