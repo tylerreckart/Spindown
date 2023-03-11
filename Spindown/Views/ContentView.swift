@@ -117,6 +117,10 @@ struct ContentView: View {
     }
     
     private func checkPlayerEntitlements() async -> Void {
+        if (store.subscriptions.isEmpty) {
+            return
+        }
+
         if (store.purchasedSubscriptions.isEmpty) {
             self.showOnboardingSheet.toggle()
             return
