@@ -35,38 +35,13 @@ struct PlayerTile: View {
                 VStack(spacing: 0) {
                     switch (self.activeSum) {
                         case .lifeTotal:
-                            HStack(spacing: 0) {
-                                Spacer()
-                                VStack(spacing: 0) {
-                                    Text(player.name)
-                                        .font(.system(size: 20, weight: .regular))
-                                    Button(action: {
-                                        selectedPlayer = player
-
-                                        withAnimation(.easeInOut) {
-                                            showLifeTotalCalculator()
-                                        }
-                                    }) {
-                                        Text("\(player.lifeTotal)")
-                                            .font(.system(size: fontSize, weight: .black))
-                                    }
-                                    Button(action: {
-                                        withAnimation(.linear(duration: 0.2)) {
-                                            self.activeSum = .poison
-                                        }
-                                    }) {
-                                        Image(systemName: "heart.fill")
-                                            .font(.system(size: 24))
-                                    }
-                                }
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .scale.combined(with: .opacity),
-                                        removal: .scale.combined(with: .opacity)
-                                    )
-                                )
-                                Spacer()
-                            }
+                            PlayerTileData(
+                                activeSum: $activeSum,
+                                value: player.lifeTotal,
+                                label: player.name,
+                                symbol: "heart.fill",
+                                nextTile: .poison
+                            )
                         case .poison:
                             PlayerTileData(
                                 activeSum: $activeSum,

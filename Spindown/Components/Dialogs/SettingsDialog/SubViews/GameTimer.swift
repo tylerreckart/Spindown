@@ -27,23 +27,17 @@ struct GameTimer: View {
             }
             HStack {
                 VStack {
-                    HStack {
+                    VStack {
                         Text(timerModel.running ? timerModel.time : "\(Int(self.minutes)):00")
                             .multilineTextAlignment(.center)
-                            .font(.system(size: 32, weight: .black))
+                            .font(.system(size: 52, weight: .black))
                             .focused($focused, equals: .minutes)
+                        Text("Minutes")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(Color(UIColor(named: "AccentGray")!))
                     }
-                    .padding()
-                    .background(Color(UIColor(named: "AccentGrayDarker")!).opacity(0.25))
-                    .cornerRadius(4)
-                    .padding(4)
-                    .background(Color(UIColor(named: "DeepGray")!))
-                    .cornerRadius(6)
-                    .padding(4)
-                    .background(
-                        self.focused == .minutes ? .white : Color(UIColor(named: "AccentGrayDarker")!)
-                    )
-                    .cornerRadius(8)
+                    .padding(.top, 5)
+                    .padding(.bottom, -1)
 
                     Slider(value: $minutes, in: 1...120)
                 }

@@ -22,9 +22,8 @@ class GameTimerModel: ObservableObject {
     public func start(_ minutes: Float) -> Void {
         self.minutes = minutes
         self.startTime = Int(self.minutes)
-        self.endDate = Date()
         self.running = true
-        self.endDate = Calendar.current.date(byAdding: .minute, value: self.startTime, to: self.endDate)!
+        self.endDate = Calendar.current.date(byAdding: .minute, value: self.startTime, to: Date())!
     }
     
     public func update() -> Void {
@@ -41,13 +40,13 @@ class GameTimerModel: ObservableObject {
             }
         }
         
-        let date = Date(timeIntervalSince1970: diff)
-        let calendar = Calendar.current
-        let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.minute, .second], from: now, to: endDate)
+        let minutes = components.minute
+        let seconds = components.second
         
-        self.minutes = Float(minutes)
-        self.time = String(format: "%d:%02d", minutes, seconds)
+        self.minutes = Float(minutes ?? 0)
+        self.time = String(format: "%d:%02d", minutes ?? 0, seconds ?? 0)
         print("Time Remaining: \(self.time)")
     }
     

@@ -37,15 +37,20 @@ struct PlayerTileData: View {
                         self.activeSum = nextTile
                     }
                 }) {
-                    if (self.useCustomSymbol) {
-                        Image(symbol)
-                            .resizable()
-                            .frame(width: 18.67, height: 28)
-                    } else {
-                        Image(systemName: symbol)
-                            .font(.system(size: 24, weight: .black))
+                    ZStack {
+                        Circle().fill(.clear).frame(width: 40, height: 40)
+
+                        if (self.useCustomSymbol) {
+                            Image(symbol)
+                                .resizable()
+                                .frame(width: 18.67, height: 28)
+                        } else {
+                            Image(systemName: symbol)
+                                .font(.system(size: 24, weight: .black))
+                        }
                     }
                 }
+                .padding(.top, -5)
             }
             .transition(
                 .asymmetric(

@@ -59,9 +59,12 @@ struct SplashScreen: View {
                     }
                 )
             }
+            .frame(maxWidth: 340)
+    
             Spacer()
         }
-        .background(Color(.black))
+        .frame(maxWidth: .infinity)
+        .background(.black)
         .transition(
             .asymmetric(
                 insertion: .push(from: .trailing),
@@ -79,6 +82,5 @@ struct SplashScreen: View {
             RulesSheet()
         }
         .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
-        .frame(maxWidth: 340)
     }
 }
