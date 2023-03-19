@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct PlayerSelectorViewPlayerList: View {
+    @AppStorage("isSubscribed") private var currentEntitlement: Bool = false
+
     @Binding var activeView: ActiveSettingsView
     @Binding var players: [Participant]
     @Binding var selectedPlayer: Participant?
     @Binding var localPlayerList: [Participant]
-
-    @State private var contentSize: CGSize?
     
     var removePlayer: (_ player: Participant) -> Void
     var addPlayer: (_ player: Participant) -> Void
+    var store: Store
+
+    @State private var contentSize: CGSize?
+    @State private var showOnboardingSheet: Bool = false
 
     var body: some View {
         VStack {
@@ -45,9 +49,13 @@ struct PlayerSelectorViewPlayerList: View {
                             }
                             
                             Button(action: {
-                                withAnimation {
-                                    self.activeView = .playerCustomization
-                                    self.selectedPlayer = player
+                                if (currentEntitlement == false) {
+                                    self.showOnboardingSheet.toggle()
+                                } else {
+                                    withAnimation {
+                                        self.activeView = .playerCustomization
+                                        self.selectedPlayer = player
+                                    }
                                 }
                             }) {
                                 Image(systemName: "pencil.circle.fill")
@@ -85,6 +93,9 @@ struct PlayerSelectorViewPlayerList: View {
         .background(Color(UIColor(named: "AccentGrayDarker")!))
         .cornerRadius(12)
         .frame(maxHeight: self.localPlayerList.count > 3 ? 200 : contentSize?.height ?? 200)
+        .sheet(isPresented: $showOnboardingSheet) {
+            SubscriptionView(store: store)
+        }
     }
 }
 
@@ -92,6 +103,7 @@ struct PlayerSelectorView: View {
     @Binding var activeView: ActiveSettingsView
     @Binding var players: [Participant]
     @Binding var selectedPlayer: Participant?
+    var store: Store
     
     @State private var localPlayerList: [Participant] = []
     @State private var contentSize: CGSize?
@@ -116,7 +128,8 @@ struct PlayerSelectorView: View {
                     selectedPlayer: $selectedPlayer,
                     localPlayerList: $localPlayerList,
                     removePlayer: removePlayer,
-                    addPlayer: addPlayer
+                    addPlayer: addPlayer,
+                    store: store
                 )
             }
             

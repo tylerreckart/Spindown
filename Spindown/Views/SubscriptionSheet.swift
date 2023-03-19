@@ -9,6 +9,8 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionView: View {
+    @AppStorage("isSubscribed") private var currentEntitlement: Bool = false
+
     @Environment(\.presentationMode) var presentationMode
 
     var store: Store
@@ -141,7 +143,6 @@ struct SubscriptionView: View {
         }
         .foregroundColor(.white)
         .background(Color(UIColor(named: "DeepGray")!))
-        .interactiveDismissDisabled(true)
         .onChange(of: store.purchasedSubscriptions) { subscriptions in
             if (subscriptions.count > 0) {
                 if (self.isPurchasing) {
@@ -186,6 +187,7 @@ struct SubscriptionView: View {
                     self.isPurchasing = false
                     self.hasPurchased = true
                     presentationMode.wrappedValue.dismiss()
+                    self.currentEntitlement = true
                 }
             }
         } catch StoreError.failedVerification {

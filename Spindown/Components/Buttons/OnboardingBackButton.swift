@@ -21,6 +21,6 @@ struct OnboardingBackButton: View {
             Spacer()
         }
         .foregroundColor(.white)
-        .padding(.vertical)
+        .padding()
     }
 }

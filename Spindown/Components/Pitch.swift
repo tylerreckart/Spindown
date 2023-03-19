@@ -15,7 +15,7 @@ struct Pitch: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            Text("Development of this app would not be possible without our subscribers. Show your support and help fund the development of new features by subscribing today.\n\nBoth plans offer a free 2-week trial. You may cancel anytime before the trial ends and you won't be charged.")
+            Text("Development of this app would not be possible without our subscribers. Gain access to additional features like **Saved Players**, **Player Counters**, **Game Timers** and more with a Spindown plus subscription.")
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 5)
                 .padding(.bottom)
@@ -24,22 +24,13 @@ struct Pitch: View {
                 .foregroundColor(Color(UIColor(named: "AccentGray")!))
 
             if !store.subscriptions.isEmpty {
-                VStack(alignment: .center) {
-                    HStack {
-                        Spacer()
-                        Text("Choose a Plan")
-                            .font(.system(size: 18))
-                            .fontWeight(.bold)
-                        Spacer()
+                HStack(spacing: 20) {
+                    ForEach(store.subscriptions) { sub in
+                        SubscriptionTile(sub: sub, selectedOffer: $selectedOffer)
                     }
-                    HStack(spacing: 20) {
-                        ForEach(store.subscriptions) { sub in
-                            SubscriptionTile(sub: sub, selectedOffer: $selectedOffer)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.bottom, 10)
                 }
+                .padding(.horizontal)
+                .padding(.bottom, 10)
             }
         }
     }

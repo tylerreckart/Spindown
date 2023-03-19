@@ -80,6 +80,40 @@
           "type" : "RecurringSubscription"
         }
       ]
+    },
+    {
+      "id" : "418C3466",
+      "localizations" : [
+
+      ],
+      "name" : "Spindown Plus",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "0981082F",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.spindown.plus.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Spindown Plus Yearly",
+          "subscriptionGroupID" : "418C3466",
+          "type" : "RecurringSubscription"
+        }
+      ]
     }
   ],
   "version" : {

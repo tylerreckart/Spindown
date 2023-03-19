@@ -79,10 +79,7 @@ class Store: ObservableObject {
     @MainActor
     func requestProducts() async {
         do {
-            let keys = [
-                "com.Spindown.subscription.yearly",
-                "com.Spindown.subscription.monthly"
-            ]
+            let keys = ["com.spindown.plus.yearly"]
 
             let products = try await Product.products(for: keys)
 

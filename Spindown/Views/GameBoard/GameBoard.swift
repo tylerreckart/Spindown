@@ -18,6 +18,7 @@ var colors: [UIColor] = [
 
 struct GameBoard: View {
     @EnvironmentObject var timerModel: GameTimerModel
+    var store: Store
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -116,7 +117,8 @@ struct GameBoard: View {
                 open: $showSettingsDialog,
                 selectedLayout: $selectedLayout,
                 players: $players,
-                endGame: endGame
+                endGame: endGame,
+                store: store
             )
             
             LifeTotalCalculatorDialog(

@@ -186,6 +186,10 @@ struct RuleBody: View {
 }
 
 struct RulesSheet: View {
+    @AppStorage("isSubscribed") private var currentEntitlement: Bool = false
+
+    var store: Store
+
     @State private var isFetchingRules: Bool = true
 
     @State private var rules: [Rule] = []
@@ -212,6 +216,8 @@ struct RulesSheet: View {
     ]
     
     @State private var currentPage: String = "100"
+    
+    @State private var showOnboardingSheet: Bool = false
 
     var body: some View {
         ZStack {
@@ -229,8 +235,12 @@ struct RulesSheet: View {
                         fill: UIColor(named: "NotAsDeepGray")!,
                         color: UIColor(named: "AccentGray")!,
                         action: {
-                            withAnimation {
-                                self.showSearchDialog.toggle()
+                            if (self.currentEntitlement == false) {
+                                self.showOnboardingSheet.toggle()
+                            } else {
+                                withAnimation {
+                                    self.showSearchDialog.toggle()
+                                }
                             }
                         }
                     )
@@ -366,6 +376,9 @@ struct RulesSheet: View {
             if (newState == false && self.searchText.count > 0) {
                 self.searchText = ""
             }
+        }
+        .sheet(isPresented: $showOnboardingSheet) {
+            SubscriptionView(store: store)
         }
     }
     

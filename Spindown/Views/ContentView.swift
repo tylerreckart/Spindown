@@ -42,6 +42,7 @@ func incrementReviewCounter() -> Void {
 }
 
 struct ContentView: View {
+    @AppStorage("isSubscribed") private var currentEntitlement: Bool = false
     @StateObject var store: Store = Store()
     
     var pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
@@ -67,7 +68,7 @@ struct ContentView: View {
         ZStack {
             switch (currentPage) {
             case .home:
-                SplashScreen(showNextPage: showNextPage)
+                SplashScreen(showNextPage: showNextPage, store: store)
             case .lifeTotal:
                 StartingLifeTotalSelector(currentPage: $currentPage, setStartingLifeTotal: setStartingLifeTotal)
             case .players:
@@ -83,6 +84,7 @@ struct ContentView: View {
                 if (players.count > 0) {
                     ZStack {
                         GameBoard(
+                            store: store,
                             players: $players,
                             numPlayersRemaining: $numPlayersRemaining,
                             activePlayer: $activePlayer,
@@ -122,7 +124,7 @@ struct ContentView: View {
         }
 
         if (store.purchasedSubscriptions.isEmpty) {
-            self.showOnboardingSheet.toggle()
+            self.currentEntitlement = false
             return
         }
 
@@ -132,13 +134,17 @@ struct ContentView: View {
         if (status != nil) {
             print(status!.state.localizedDescription)
             if (status!.state == .expired && (status!.state != .inGracePeriod || status!.state != .inBillingRetryPeriod)) {
-                self.showOnboardingSheet.toggle()
+                self.currentEntitlement = false
                 return
             }
             
             if (status!.state == .revoked) {
-                self.showOnboardingSheet.toggle()
+                self.currentEntitlement = false
                 return
+            }
+            
+            if (currentEntitlement == false) {
+                self.currentEntitlement = true
             }
         }
     }
@@ -159,8 +165,12 @@ struct ContentView: View {
     }
     
     private func setUsedSavedPlayers() {
-        withAnimation(.easeInOut(duration: 0.4)) {
-            currentPage = .savedPlayers
+        if (self.currentEntitlement) {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                currentPage = .savedPlayers
+            }
+        } else {
+            self.showOnboardingSheet.toggle()
         }
     }
     

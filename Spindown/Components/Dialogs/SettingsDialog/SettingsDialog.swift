@@ -17,19 +17,30 @@ enum ActiveSettingsView {
 }
 
 struct HorizontalControlRow: View {
+    @AppStorage("isSubscribed") private var currentEntitlement: Bool = false
     @Binding var activeView: ActiveSettingsView
     @Binding var showRulesSheet: Bool
+    @Binding var showOnboardingSheet: Bool
+    var store: Store
 
     var body: some View {
         HStack(spacing: 15) {
             UIButtonStacked(text: "Timer", symbol: "stopwatch", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
-                withAnimation {
-                    self.activeView = .timer
+                if (currentEntitlement == false) {
+                    self.showOnboardingSheet.toggle()
+                } else {
+                    withAnimation {
+                        self.activeView = .timer
+                    }
                 }
             })
             UIButtonStacked(text: "Roll Dice", symbol: "dice", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
-                withAnimation {
-                    self.activeView = .roll
+                if (currentEntitlement == false) {
+                    self.showOnboardingSheet.toggle()
+                } else {
+                    withAnimation {
+                        self.activeView = .roll
+                    }
                 }
             })
             UIButtonStacked(text: "Rules", symbol: "book", color: UIColor(named: "AccentGrayDarker") ?? .systemGray, action: {
@@ -41,12 +52,14 @@ struct HorizontalControlRow: View {
 
 struct GameSettingsHomeView: View {
     var endGame: () -> ()
+    var store: Store
     
     @Binding var activeView: ActiveSettingsView
     
     var playerCount: Int
     
     @State private var showRulesSheet: Bool = false
+    @State private var showOnboardingSheet: Bool = false
 
     var body: some View {
         VStack {
@@ -58,7 +71,12 @@ struct GameSettingsHomeView: View {
             }
             
             VStack(spacing: 15) {
-                HorizontalControlRow(activeView: $activeView, showRulesSheet: $showRulesSheet)
+                HorizontalControlRow(
+                    activeView: $activeView,
+                    showRulesSheet: $showRulesSheet,
+                    showOnboardingSheet: $showOnboardingSheet,
+                    store: store
+                )
                 if (self.playerCount != 1) {
                     UIButtonOutlined(
                         text: "Change Layout",
@@ -92,7 +110,10 @@ struct GameSettingsHomeView: View {
             }
         }
         .sheet(isPresented: $showRulesSheet) {
-            RulesSheet()
+            RulesSheet(store: store)
+        }
+        .sheet(isPresented: $showOnboardingSheet) {
+            SubscriptionView(store: store)
         }
         .transition(
             .asymmetric(
@@ -109,6 +130,7 @@ struct GameSettingsDialog: View {
     @Binding var players: [Participant]
     
     var endGame: () -> ()
+    var store: Store
 
     @State private var overlayOpacity: CGFloat = 0
     @State private var dialogOpacity: CGFloat = 0
@@ -124,6 +146,7 @@ struct GameSettingsDialog: View {
                     case .home:
                         GameSettingsHomeView(
                             endGame: endGame,
+                            store: store,
                             activeView: $activeView,
                             playerCount: self.players.count
                         )
@@ -141,7 +164,8 @@ struct GameSettingsDialog: View {
                         PlayerSelectorView(
                             activeView: $activeView,
                             players: $players,
-                            selectedPlayer: $selectedPlayer
+                            selectedPlayer: $selectedPlayer,
+                            store: store
                         )
                 case .playerCustomization:
                         PlayerCustomizationContext(

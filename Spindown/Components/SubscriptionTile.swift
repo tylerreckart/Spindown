@@ -18,15 +18,17 @@ struct SubscriptionTile: View {
         }) {
             VStack {
                 VStack(spacing: 0) {
-                    Text(sub?.id == "com.Spindown.subscription.yearly" ? "Yearly" : "Monthly")
+                    Text("Spindown Plus")
                         .font(.system(size: 12, weight: .bold))
                         .padding(.top, 6)
-                    VStack(spacing: 0) {
+                    VStack(spacing: 2) {
                         Text("\(sub?.displayPrice ?? "$0.99")")
                             .font(.system(size: 18, weight: .bold))
                             .padding(.bottom, 5)
-                        Text("Cancel anytime")
+
+                        Text("Yearly subscription\nCancel anytime")
                             .font(.caption)
+                            .foregroundColor(Color(UIColor(named: "AccentGray")!))
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(UIColor(named: "DeepGray")!))
@@ -35,13 +37,13 @@ struct SubscriptionTile: View {
                     .foregroundColor(.white)
                 }
             }
-            .frame(width: 120, height: 120)
+            .frame(width: 140, height: 120)
             .foregroundColor(selectedOffer == sub ? .black : .white)
             .background(selectedOffer == sub ? .white : Color(UIColor(named: "AccentGrayDarker")!))
             .cornerRadius(8)
         }
         .onAppear {
-            if selectedOffer == nil && sub?.id == "com.Spindown.subscription.yearly" {
+            if selectedOffer == nil && sub?.id == "com.spindown.plus.yearly" {
                 selectedOffer = sub
             }
         }

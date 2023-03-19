@@ -10,6 +10,7 @@ import StoreKit
 
 struct SplashScreen: View {
     var showNextPage: () -> Void
+    var store: Store
     // Sheet presentation.
     @State private var showSettingsSheet: Bool = false
     @State private var showManageSubscriptions: Bool = false
@@ -79,7 +80,7 @@ struct SplashScreen: View {
             )
         }
         .sheet(isPresented: $showRulesSheet) {
-            RulesSheet()
+            RulesSheet(store: store)
         }
         .manageSubscriptionsSheet(isPresented: $showManageSubscriptions)
     }
