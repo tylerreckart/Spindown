@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "tylerreckart_a_red_dragon_guarding_his_horde_of_gold_in_the_kee_5d5d2259-fa96-4fbb-89bc-fcfed4cbe902.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

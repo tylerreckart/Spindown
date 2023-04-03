@@ -16,31 +16,35 @@ struct PlayerTileControls: View {
         if (self.orientation == .portrait) {
             VStack(spacing: 0) {
                 Button(action: { increment() }) {
-                    Rectangle().fill(Color(player.color))
+                    Rectangle().fill(.clear)
                 }
                 
                 Button(action: { decrement() }) {
-                    Rectangle().fill(Color(player.color))
+                    Rectangle().fill(.clear)
                 }
             }
-        } else if (self.orientation == .landscape) {
+        } else {
             HStack(spacing: 0) {
-                Button(action: { increment() }) {
-                    Rectangle().fill(Color(player.color))
+                Button(action: {
+                    if (self.orientation == .landscape) {
+                        increment()
+                    } else {
+                        // self.orientation == .landscapeReverse
+                        decrement()
+                    }
+                }) {
+                    Rectangle().fill(.clear)
                 }
                 
-                Button(action: { decrement() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-            }
-        } else if (self.orientation == .landscapeReverse) {
-            HStack(spacing: 0) {
-                Button(action: { decrement() }) {
-                    Rectangle().fill(Color(player.color))
-                }
-                
-                Button(action: { increment() }) {
-                    Rectangle().fill(Color(player.color))
+                Button(action: {
+                    if (self.orientation == .landscape) {
+                        decrement()
+                    } else {
+                        // self.orientation == .landscapeReverse
+                        increment()
+                    }
+                }) {
+                    Rectangle().fill(.clear)
                 }
             }
         }

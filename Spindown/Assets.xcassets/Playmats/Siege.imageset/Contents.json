@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "tylerreckart_a_castle_under_siege._fantasy_oil_painting._tolkie_bf2a5660-66a4-497c-b8e3-7a325afbb935.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

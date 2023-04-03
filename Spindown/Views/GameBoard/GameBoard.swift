@@ -19,6 +19,8 @@ var colors: [UIColor] = [
 struct GameBoard: View {
     @EnvironmentObject var timerModel: GameTimerModel
     var store: Store
+    
+    @State private var theme = SpellbookTheme()
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -53,7 +55,8 @@ struct GameBoard: View {
                     selectedPlayer: $selectedPlayer,
                     selectedLayout: $selectedLayout,
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer,
-                    updateLifeTotal: updateLifeTotal
+                    updateLifeTotal: updateLifeTotal,
+                    showSettingsDialog: $showSettingsDialog
                 )
             } else if (players.count == 3) {
                 ThreePlayerGameBoard(
@@ -92,26 +95,6 @@ struct GameBoard: View {
                     showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
                 )
             }
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-
-                    Button(action: {
-                        withAnimation(.easeInOut(duration: 0.4)) {
-                            self.showSettingsDialog.toggle()
-                        }
-                    }) {
-                        Image(systemName: "gearshape.circle.fill")
-                            .font(.system(size: 32))
-                            .foregroundColor(.white)
-                            .shadow(color: Color.black.opacity(0.1), radius: 10)
-                    }
-                }
-                .padding()
-            }
-            .edgesIgnoringSafeArea(.all)
         
             GameSettingsDialog(
                 open: $showSettingsDialog,
@@ -129,7 +112,8 @@ struct GameBoard: View {
             )
         }
         .opacity(opacity)
-        .padding(10)
+        .padding(0)
+        .background(.black)
         .onAppear {
             // Prevent the system idle timer from putting the device's display
             // to sleep while the game board is active.

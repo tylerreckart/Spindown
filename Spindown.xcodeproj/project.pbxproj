@@ -42,7 +42,6 @@
 		DB8B8F572986E2CB0023A84B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F562986E2CB0023A84B /* Persistence.swift */; };
 		DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */; };
 		DB8B8F5C2986E2CB0023A84B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F5B2986E2CB0023A84B /* ContentView.swift */; };
-		DB8B8F5E2986E2CC0023A84B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB8B8F5D2986E2CC0023A84B /* Assets.xcassets */; };
 		DB8B8F622986E2CC0023A84B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB8B8F612986E2CC0023A84B /* Preview Assets.xcassets */; };
 		DB8B8F69298766BD0023A84B /* GameOverDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F68298766BD0023A84B /* GameOverDialog.swift */; };
 		DB8B8F6B298766DD0023A84B /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B8F6A298766DD0023A84B /* GameBoard.swift */; };
@@ -54,6 +53,7 @@
 		DBB64A3629B281C900438AAE /* OutOfTimeDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */; };
 		DBB64A3829B2853B00438AAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */; };
 		DBB64A3A29B2866300438AAE /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB64A3929B2866300438AAE /* Timer.swift */; };
+		DBE1671F29DA7C1C00A4159C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE1671E29DA7C1C00A4159C /* Assets.xcassets */; };
 		DBE2E0F529B94A720035B9BC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F429B94A720035B9BC /* WebView.swift */; };
 		DBE2E0F729B94C790035B9BC /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F629B94C790035B9BC /* About.swift */; };
 		DBE2E0F929B9530B0035B9BC /* SubscriptionTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F829B9530B0035B9BC /* SubscriptionTile.swift */; };
@@ -117,7 +117,6 @@
 		DB8B8F562986E2CB0023A84B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB8B8F592986E2CB0023A84B /* Spindown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spindown.xcdatamodel; sourceTree = "<group>"; };
 		DB8B8F5B2986E2CB0023A84B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		DB8B8F5D2986E2CC0023A84B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB8B8F5F2986E2CC0023A84B /* Spindown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spindown.entitlements; sourceTree = "<group>"; };
 		DB8B8F612986E2CC0023A84B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB8B8F68298766BD0023A84B /* GameOverDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDialog.swift; sourceTree = "<group>"; };
@@ -130,6 +129,7 @@
 		DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfTimeDialog.swift; sourceTree = "<group>"; };
 		DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB64A3929B2866300438AAE /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		DBE1671E29DA7C1C00A4159C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE2E0F429B94A720035B9BC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		DBE2E0F629B94C790035B9BC /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		DBE2E0F829B9530B0035B9BC /* SubscriptionTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTile.swift; sourceTree = "<group>"; };
@@ -309,11 +309,11 @@
 				DB2960C829A7DE5800852A5F /* Controllers */,
 				DB41B1A7298AF4A30000EC42 /* Components */,
 				DB8B8F542986E2CB0023A84B /* SpindownApp.swift */,
-				DB8B8F5D2986E2CC0023A84B /* Assets.xcassets */,
 				DB8B8F5F2986E2CC0023A84B /* Spindown.entitlements */,
 				DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */,
 				DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */,
 				DBF13070299BECBB00B9E19A /* Subscriptions.storekit */,
+				DBE1671E29DA7C1C00A4159C /* Assets.xcassets */,
 				DB69EC81299D1D4D00D4EB3F /* Terms.md */,
 				DB69EC82299D1D9E00D4EB3F /* Privacy.md */,
 				DB1F08F0299C1C6100A057CC /* Info.plist */,
@@ -440,6 +440,7 @@
 				DB38DDB229A92BCC000D8796 /* Terms.md in Resources */,
 				DB2960C529A7D9CD00852A5F /* 800.json in Resources */,
 				DB2960BD29A7D85C00852A5F /* 500.json in Resources */,
+				DBE1671F29DA7C1C00A4159C /* Assets.xcassets in Resources */,
 				DB2960BF29A7D86B00852A5F /* 600.json in Resources */,
 				DB2960B529A7D7D800852A5F /* 100.json in Resources */,
 				DB2960C729A7D9D800852A5F /* 900.json in Resources */,
@@ -449,7 +450,6 @@
 				DB2960BB29A7D85200852A5F /* 400.json in Resources */,
 				DBB64A3829B2853B00438AAE /* LaunchScreen.storyboard in Resources */,
 				DB2960B929A7D84B00852A5F /* 300.json in Resources */,
-				DB8B8F5E2986E2CC0023A84B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

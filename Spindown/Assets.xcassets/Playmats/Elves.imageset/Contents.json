@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "tylerreckart_elves_admiring_nature._tolkien._oil_painting._fant_30e7de66-43ea-41fc-b4cb-1a623f57f129.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
