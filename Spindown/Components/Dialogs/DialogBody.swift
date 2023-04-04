@@ -36,7 +36,7 @@ struct Dialog<Content: View>: View {
                     content
                         .frame(maxWidth: maxWidth)
                         .padding(30)
-                        .background(Color(UIColor(named: "DeepGray")!))
+                        .background(.regularMaterial)
                         .cornerRadius(16)
                         .shadow(color: Color.black.opacity(0.1), radius: 15)
                     

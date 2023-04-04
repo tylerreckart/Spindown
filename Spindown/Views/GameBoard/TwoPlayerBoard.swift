@@ -45,7 +45,7 @@ struct TwoPlayerGameBoard: View {
             ZStack {
                 VStack(spacing: 0) {
                     PlayerTile(
-                        player: players[0],
+                        player: players[1],
                         updateLifeTotal: updateLifeTotal,
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                         selectedPlayer: $selectedPlayer
@@ -56,7 +56,7 @@ struct TwoPlayerGameBoard: View {
                     Rectangle().fill(.black).frame(maxWidth: .infinity, maxHeight: 8)
                     
                     PlayerTile(
-                        player: players[1],
+                        player: players[0],
                         updateLifeTotal: updateLifeTotal,
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                         selectedPlayer: $selectedPlayer
@@ -71,21 +71,45 @@ struct TwoPlayerGameBoard: View {
                     
                 }) {
                     ZStack(alignment: .center) {
-                        Image(systemName: "circle.fill")
-                            .font(.system(size: 56, weight: .thin))
-                            .shadow(radius: 4, y: 2)
-                            .foregroundStyle(.white)
-                        
-                        Image(systemName: "circle.fill")
-                            .font(.system(size: 46, weight: .light))
-                            .foregroundStyle(
-                                .black
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color(hex: "EDC36E"),
+                                        Color(hex: "FBEBBE"),
+                                        Color(hex: "F6D795"),
+                                        Color(hex: "ECB158"),
+                                        Color(hex: "9F5F24"),
+                                        Color(hex: "E0A650")
+                                    ],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
                             )
+                            .frame(width: 64)
+                            .shadow(radius: 2)
                         
-                        Image(systemName: "gamecontroller.fill")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(.white)
-                            .shadow(color: .black.opacity(0.2), radius: 2, y: 1)
+                        Image(systemName: "circle.fill")
+                            .font(.system(size: 58, weight: .light))
+                            .foregroundStyle(Color(hex: "48121F"))
+                        
+                        LinearGradient(
+                            colors: [
+                                Color(hex: "EDC36E"),
+                                Color(hex: "FBEBBE"),
+                                Color(hex: "F6D795"),
+                                Color(hex: "ECB158"),
+                                Color(hex: "9F5F24"),
+                                Color(hex: "E0A650")
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .frame(maxWidth: 30)
+                        .mask(
+                            Image(systemName: "hexagon")
+                                .font(.system(size: 24, weight: .bold))
+                        )
                     }
                 }
             }

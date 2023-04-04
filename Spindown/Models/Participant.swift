@@ -9,6 +9,34 @@ import Foundation
 import UIKit
 import SwiftUI
 
+enum ThemeType {
+    case basic
+}
+
+struct Theme: Identifiable {
+    var id: UUID = UUID()
+    
+    var type: ThemeType
+    var background: String
+    
+    var tileBackground: some View {
+        return Image(background)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            .clipped()
+    }
+}
+
+let basicThemes = [
+    Theme(type: .basic, background: "Forest"),
+    Theme(type: .basic, background: "Island"),
+    Theme(type: .basic, background: "Mountain"),
+    Theme(type: .basic, background: "Plains"),
+    Theme(type: .basic, background: "Swamp")
+]
+
 class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     // Unique Identifier
     var uid: UUID = UUID()
@@ -24,6 +52,8 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     @Published var experience: Int = 0
     @Published var energy: Int = 0
     @Published var tickets: Int = 0
+    // Display theme.
+    var theme: Theme? = nil
     
     static func == (lhs: Participant, rhs: Participant) -> Bool {
         return lhs.uid == rhs.uid

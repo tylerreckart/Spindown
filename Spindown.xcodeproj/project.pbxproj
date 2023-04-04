@@ -32,7 +32,7 @@
 		DB41B1A6298ADA3C0000EC42 /* SixPlayerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A5298ADA3C0000EC42 /* SixPlayerBoard.swift */; };
 		DB41B1A9298AF4B00000EC42 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1A8298AF4B00000EC42 /* UIButton.swift */; };
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
-		DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* Dialog.swift */; };
+		DB41B1B2298C07CF0000EC42 /* DialogBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* DialogBody.swift */; };
 		DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */; };
 		DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */; };
 		DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8929A7087500D4EB3F /* DiceRoll.swift */; };
@@ -68,8 +68,6 @@
 		DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */; };
 		DBE49FBC29AD85BD008B0648 /* TileOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FBB29AD85BD008B0648 /* TileOrientation.swift */; };
 		DBE49FBE29AD85DC008B0648 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FBD29AD85DC008B0648 /* Counter.swift */; };
-		DBE49FC029AD861F008B0648 /* PlayerTileControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FBF29AD861F008B0648 /* PlayerTileControls.swift */; };
-		DBE49FC229AD87A5008B0648 /* PlayerTileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */; };
 		DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC329AD8A0D008B0648 /* RuleContext.swift */; };
 		DBE49FC629AD8A3E008B0648 /* SearchDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */; };
 		DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF130682996AAE100B9E19A /* GameTimer.swift */; };
@@ -104,7 +102,7 @@
 		DB41B1A8298AF4B00000EC42 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		DB41B1AA298BF3970000EC42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		DB41B1B0298C059D0000EC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		DB41B1B1298C07CF0000EC42 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		DB41B1B1298C07CF0000EC42 /* DialogBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBody.swift; sourceTree = "<group>"; };
 		DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDialog.swift; sourceTree = "<group>"; };
 		DB69EC81299D1D4D00D4EB3F /* Terms.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.md; sourceTree = "<group>"; };
 		DB69EC82299D1D9E00D4EB3F /* Privacy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Privacy.md; sourceTree = "<group>"; };
@@ -144,8 +142,6 @@
 		DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomizationDialog.swift; sourceTree = "<group>"; };
 		DBE49FBB29AD85BD008B0648 /* TileOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileOrientation.swift; sourceTree = "<group>"; };
 		DBE49FBD29AD85DC008B0648 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
-		DBE49FBF29AD861F008B0648 /* PlayerTileControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileControls.swift; sourceTree = "<group>"; };
-		DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileData.swift; sourceTree = "<group>"; };
 		DBE49FC329AD8A0D008B0648 /* RuleContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleContext.swift; sourceTree = "<group>"; };
 		DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDialog.swift; sourceTree = "<group>"; };
 		DBF130682996AAE100B9E19A /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
@@ -186,7 +182,7 @@
 				DB8B8F68298766BD0023A84B /* GameOverDialog.swift */,
 				DBE49FB929AD8585008B0648 /* PlayerCustomizationDialog.swift */,
 				DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */,
-				DB41B1B1298C07CF0000EC42 /* Dialog.swift */,
+				DB41B1B1298C07CF0000EC42 /* DialogBody.swift */,
 				DBB64A3529B281C900438AAE /* OutOfTimeDialog.swift */,
 			);
 			path = Dialogs;
@@ -236,8 +232,6 @@
 				DBE49FA829AD83F0008B0648 /* Buttons */,
 				DB1F08F3299C29B600A057CC /* Dialogs */,
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
-				DBE49FBF29AD861F008B0648 /* PlayerTileControls.swift */,
-				DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
 				DBE49FA329AB9260008B0648 /* Spinner.swift */,
 				DBE49FC329AD8A0D008B0648 /* RuleContext.swift */,
@@ -462,7 +456,7 @@
 			files = (
 				DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */,
 				DBF1306B299BE04100B9E19A /* SubscriptionSheet.swift in Sources */,
-				DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */,
+				DB41B1B2298C07CF0000EC42 /* DialogBody.swift in Sources */,
 				DB8B8F69298766BD0023A84B /* GameOverDialog.swift in Sources */,
 				DB8A3252298CB2DF00FB7658 /* ChangeLayout.swift in Sources */,
 				DB1D3A072991566400A741DC /* PlayerList.swift in Sources */,
@@ -474,8 +468,6 @@
 				DBF1306D299BE19100B9E19A /* Store.swift in Sources */,
 				DB41B1A2298AD8C60000EC42 /* FourPlayerBoard.swift in Sources */,
 				DB41B199298AC29E0000EC42 /* StartingPlayerDialog.swift in Sources */,
-				DBE49FC229AD87A5008B0648 /* PlayerTileData.swift in Sources */,
-				DBE49FC029AD861F008B0648 /* PlayerTileControls.swift in Sources */,
 				DB1D39FC298D60D400A741DC /* RulesSheet.swift in Sources */,
 				DB41B19E298AD7480000EC42 /* TwoPlayerBoard.swift in Sources */,
 				DB8B8F71298767670023A84B /* StartingLifeTotal.swift in Sources */,

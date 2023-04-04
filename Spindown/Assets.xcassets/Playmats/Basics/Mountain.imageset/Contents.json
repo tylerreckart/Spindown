@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "tylerreckart_a_red_sky_at_dawn_over_a_snow_covered_rocky_mounta_53e7b238-2bd3-43cb-92ce-1913ad9b8989.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

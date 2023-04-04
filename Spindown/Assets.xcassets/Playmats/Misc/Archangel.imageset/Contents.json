@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "tylerreckart_a_radient_female_archangel_with_outstretched_wings_7feff539-a6ac-4145-a45c-b2d532f83d99.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

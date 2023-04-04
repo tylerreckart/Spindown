@@ -41,10 +41,9 @@ extension Color {
 struct ForestTheme {
     var name = "forest"
     var shadow = false
-    var useBackground = false
     
-    var overlay: some View {
-        Image("WrathfulDragon")
+    var background: some View {
+        Image("Mountain")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -52,100 +51,88 @@ struct ForestTheme {
     }
 }
 
-struct SpellbookTheme {
-    var name = "spellbook"
-    var shadow = true
-    var useBackground = true
+struct LifeTotalControls: View {
+    @ObservedObject var player: Participant
+    var showLifeTotalCalculator: () -> Void
 
-    var background: some View {
-        Image("TableTexture")
-            .resizable()
-            .frame(maxHeight: .infinity)
-            .edgesIgnoringSafeArea(.all)
+    var body: some View {
+        HStack(spacing: 0) {
+            Spacer()
+            Button(action: { player.incrementLifeTotal() }) {
+                Image(systemName: "plus")
+                    .foregroundColor(.white.opacity(0.5))
+                    .font(.system(size: 32, weight: .regular, design: .rounded))
+                    .shadow(color: .black.opacity(0.2), radius: 2)
+            }
+            Spacer()
+            Button(action: { showLifeTotalCalculator() }) {
+                Text("\(player.lifeTotal)")
+                    .font(.system(size: 100, weight: .light, design: .rounded))
+                    .shadow(color: .black.opacity(0.2), radius: 4)
+                    .transition(.scale(scale: 0.4))
+            }
+            Spacer()
+            Button(action: { player.decrementLifeTotal() }) {
+                Image(systemName: "minus")
+                    .foregroundColor(.white.opacity(0.5))
+                    .font(.system(size: 32, weight: .regular, design: .rounded))
+                    .shadow(color: .black.opacity(0.2), radius: 2)
+            }
+            Spacer()
+        }
+        .foregroundColor(.white)
     }
+}
 
-    var overlay: some View {
+struct CommanderDamageControls: View {
+    @ObservedObject var player: Participant
+
+    var body: some View {
         ZStack {
-            Color.black
-            
-            GeometryReader { proxy in
-                ZStack {
-                    ZStack {
-                        Color.init(hex: "846524")
-                    
-                        Path { path in
-                            path.move(to: CGPoint(x: 0, y: 0))
-                            path.addLine(to: CGPoint(x: 0, y: proxy.size.height))
-                            path.addLine(to: CGPoint(x: proxy.size.width, y: proxy.size.height))
-                        }
-                        .fill(Color.init(hex: "2b200c"))
-                        .clipShape(Rectangle())
+            Rectangle()
+                .fill(.thinMaterial)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            VStack(spacing: 0) {
+                Text("Commander Damage")
+                    .font(.system(size: 16, weight: .black))
+                    .shadow(color: .black.opacity(0.1), radius: 1)
+
+                HStack {
+                    Spacer()
+                    Button(action: { player.incrementLifeTotal() }) {
+                        Image(systemName: "plus")
+                            .foregroundColor(.white.opacity(0.5))
+                            .font(.system(size: 32, weight: .regular, design: .rounded))
+                            .shadow(color: .black.opacity(0.2), radius: 2)
                     }
-                    .padding(20)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.init(hex: "493611"))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .padding(24)
-                            .overlay(
-                                Rectangle()
-                                    .fill(Color.init(hex: "211809"))
-                                    .padding(34)
-                                    .overlay(
-                                        Rectangle()
-                                            .fill(Color.init(hex: "634a19"))
-                                            .padding(36)
-                                            .overlay(
-                                                Rectangle()
-                                                    .fill(Color.init(hex: "493611"))
-                                                    .padding(38)
-                                            )
-                                    )
-                            )
-                        
-                        VStack {
-                            HStack {
-                                Circle()
-                                    .fill(.red)
-                                    .frame(width: 10)
-                                Spacer()
-                                Circle()
-                                    .fill(.red)
-                                    .frame(width: 10)
-                            }
-                            Spacer()
-                            HStack {
-                                Circle()
-                                    .fill(.red)
-                                    .frame(width: 10)
-                                Spacer()
-                                Circle()
-                                    .fill(.red)
-                                    .frame(width: 10)
-                            }
-                        }
-                        .padding(48)
-                        
-                        Ellipse()
-                            .fill(Color.init(hex: "211809"))
-                            .frame(maxWidth: proxy.size.width - 90, maxHeight: proxy.size.height - 90)
-                            .overlay(
-                                Ellipse()
-                                    .fill(Color.init(hex: "56688e"))
-                                    .padding(2)
-                                    .overlay(
-                                        Ellipse()
-                                            .fill(Color.init(hex: "8c562a"))
-                                            .padding(6)
-                                    )
-                            )
+                    Spacer()
+                    Text("\(player.lifeTotal)")
+                        .foregroundColor(.white)
+                        .font(.system(size: 100, weight: .light, design: .rounded))
+                        .shadow(color: .black.opacity(0.2), radius: 4)
+                        .transition(.scale(scale: 0.4))
+                        .padding(.vertical)
+                    Spacer()
+                    Button(action: { player.decrementLifeTotal() }) {
+                        Image(systemName: "minus")
+                            .foregroundColor(.white.opacity(0.5))
+                            .font(.system(size: 32, weight: .regular, design: .rounded))
+                            .shadow(color: .black.opacity(0.2), radius: 2)
                     }
+                    Spacer()
                 }
+                UIButton(text: "Return To Game", symbol: "arrow.counterclockwise", color: UIColor(named: "PrimaryRed")!, action: {})
+                    .frame(maxWidth: 240)
             }
         }
     }
+}
+
+enum PlayerTileView {
+    case lifeTotal
+    case commanderDamage
+    case settings
 }
 
 struct PlayerTile: View {
@@ -160,40 +147,40 @@ struct PlayerTile: View {
     @State private var activeSum: Counter = .lifeTotal
     @State private var selectedControlLayout: ControlLayout = .bumper
     
-    @State private var theme = ForestTheme()
+    @State private var theme: Theme?
     
-    public var fontSize: CGFloat {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return 64
-        } else {
-            return 48
-        }
-    }
-    
+    @State private var currentView: PlayerTileView = .lifeTotal
+
     var body: some View {
         ZStack {
-            if (self.selectedControlLayout == .bumper) {
-                PlayerTileControls(player: player, activeSum: $activeSum, orientation: orientation)
-            }
-
             VStack(spacing: 0) {
-                PlayerTileData(
-                    activeSum: $activeSum,
-                    value: player.lifeTotal,
-                    label: player.name,
-                    symbol: "heart.fill",
-                    nextTile: .poison
-                )
-                .rotationEffect(
-                    self.orientation == .landscapeReverse
-                        ? Angle(degrees: 90)
-                        : self.orientation == .landscape
-                            ? Angle(degrees: -90)
-                            : Angle(degrees: 0)
-                )
+                Spacer()
+                Text(player.name)
+                    .font(.system(size: 16, design: .rounded))
+                    .shadow(color: .black.opacity(0.1), radius: 1)
+                Spacer()
+                LifeTotalControls(player: player, showLifeTotalCalculator: showLifeTotalCalculator)
+                Spacer()
+                VStack {
+                    Image(systemName: "heart.fill")
+                        .font(.system(size: 18))
+                        .shadow(color: .black.opacity(0.2), radius: 4)
+                }
+                Spacer()
             }
-            .foregroundColor(.white)
+            
+//            CommanderDamageControls(player: player)
         }
-        .background(theme.overlay)
+        .background(theme?.tileBackground)
+        .rotationEffect(
+            self.orientation == .landscapeReverse
+            ? Angle(degrees: 90)
+            : self.orientation == .landscape
+                ? Angle(degrees: -90)
+                : Angle(degrees: 0)
+        )
+        .onAppear {
+            self.theme = player.theme
+        }
     }
 }

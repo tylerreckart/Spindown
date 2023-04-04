@@ -189,6 +189,7 @@ struct ContentView: View {
             player.name = "Player \(count)"
             player.lifeTotal = self.startingLifeTotal
             player.color = colors[count - 1]
+            player.theme = basicThemes[count - 1]
             self.players.append(player)
         }
         

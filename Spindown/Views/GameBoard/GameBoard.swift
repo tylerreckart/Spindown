@@ -19,8 +19,6 @@ var colors: [UIColor] = [
 struct GameBoard: View {
     @EnvironmentObject var timerModel: GameTimerModel
     var store: Store
-    
-    @State private var theme = SpellbookTheme()
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
