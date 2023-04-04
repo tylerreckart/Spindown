@@ -155,17 +155,7 @@ struct PlayerTile: View {
         ZStack {
             VStack(spacing: 0) {
                 Spacer()
-                Text(player.name)
-                    .font(.system(size: 16, design: .rounded))
-                    .shadow(color: .black.opacity(0.1), radius: 1)
-                Spacer()
                 LifeTotalControls(player: player, showLifeTotalCalculator: showLifeTotalCalculator)
-                Spacer()
-                VStack {
-                    Image(systemName: "heart.fill")
-                        .font(.system(size: 18))
-                        .shadow(color: .black.opacity(0.2), radius: 4)
-                }
                 Spacer()
             }
             

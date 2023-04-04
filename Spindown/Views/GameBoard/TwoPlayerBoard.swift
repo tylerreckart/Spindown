@@ -70,47 +70,12 @@ struct TwoPlayerGameBoard: View {
                     }
                     
                 }) {
-                    ZStack(alignment: .center) {
-                        Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color(hex: "EDC36E"),
-                                        Color(hex: "FBEBBE"),
-                                        Color(hex: "F6D795"),
-                                        Color(hex: "ECB158"),
-                                        Color(hex: "9F5F24"),
-                                        Color(hex: "E0A650")
-                                    ],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .frame(width: 64)
-                            .shadow(radius: 2)
-                        
-                        Image(systemName: "circle.fill")
-                            .font(.system(size: 58, weight: .light))
-                            .foregroundStyle(Color(hex: "48121F"))
-                        
-                        LinearGradient(
-                            colors: [
-                                Color(hex: "EDC36E"),
-                                Color(hex: "FBEBBE"),
-                                Color(hex: "F6D795"),
-                                Color(hex: "ECB158"),
-                                Color(hex: "9F5F24"),
-                                Color(hex: "E0A650")
-                            ],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                        .frame(maxWidth: 30)
-                        .mask(
-                            Image(systemName: "hexagon")
-                                .font(.system(size: 24, weight: .bold))
-                        )
-                    }
+                    Image("Pin")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 60)
+                        .rotationEffect(Angle(degrees: 10))
+                        .shadow(radius: 3)
                 }
             }
             .edgesIgnoringSafeArea(.all)
