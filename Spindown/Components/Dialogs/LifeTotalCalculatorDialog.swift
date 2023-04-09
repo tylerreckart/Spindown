@@ -90,7 +90,7 @@ struct LifeTotalCalculatorDialog: View {
                         color: UIColor(named: "PrimaryRed")!,
                         action: {
                             let delta = Int(self.lifeTotal) ?? 0
-                            let lifeTotal = self.selectedPlayer!.lifeTotal
+                            let lifeTotal = self.selectedPlayer!.lifeTotal ?? 0
         
                             if (self.activeSelection == .add) {
                                 updateLifeTotal(self.selectedPlayer!, lifeTotal + delta)

@@ -72,7 +72,8 @@ struct GameBoard: View {
                     selectedPlayer: $selectedPlayer,
                     selectedLayout: $selectedLayout,
                     updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
+                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer,
+                    showSettingsDialog: $showSettingsDialog
                 )
             } else if (players.count == 5) {
                 FivePlayerGameBoard(

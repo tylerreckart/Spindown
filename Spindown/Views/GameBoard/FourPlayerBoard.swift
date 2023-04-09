@@ -15,52 +15,23 @@ struct FourPlayerGameBoard: View {
     var updateLifeTotal: (Participant, Int) -> Void
     var showLifeTotalCalculatorForPlayer: () -> ()
     var screenHeight = UIScreen.main.bounds.height
+    @Binding var showSettingsDialog: Bool
 
     var body: some View {
         if (self.players.count == 4) {
-            if (self.selectedLayout == .tandem || self.selectedLayout == .facingPortrait) {
-                VStack(spacing: 20) {
-                    HStack(spacing: 20) {
+            ZStack {
+                VStack(spacing: 8) {
+                    HStack(spacing: 8) {
                         PlayerTile(
                             player: players[0],
                             updateLifeTotal: updateLifeTotal,
+                            orientation: .landscape,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
-                        PlayerTile(
-                            player: players[1],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
-                    }
-                    .rotationEffect(Angle(degrees: 180))
-                    HStack(spacing: 20) {
-                        PlayerTile(
-                            player: players[2],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
-                        PlayerTile(
-                            player: players[3],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
-                    }
-                }
-                .edgesIgnoringSafeArea(.all)
-            } else if (self.selectedLayout == .facingLandscape) {
-                VStack(spacing: 20) {
-                    PlayerTile(
-                        player: players[0],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
-                    .rotationEffect(Angle(degrees: 180))
-                    HStack(spacing: 20) {
+                        .cornerRadius(16, corners: [.bottomRight])
+                        .shadow(color: .black.opacity(0.8), radius: 4)
+
                         PlayerTile(
                             player: players[1],
                             updateLifeTotal: updateLifeTotal,
@@ -68,23 +39,63 @@ struct FourPlayerGameBoard: View {
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
                             selectedPlayer: $selectedPlayer
                         )
+                        .cornerRadius(16, corners: [.bottomLeft])
+                        .shadow(color: .black.opacity(0.8), radius: 4)
+                    }
+
+                    HStack(spacing: 8) {
                         PlayerTile(
                             player: players[2],
                             updateLifeTotal: updateLifeTotal,
                             orientation: .landscape,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            selectedPlayer: $selectedPlayer,
+                            top: true
                         )
+                        .cornerRadius(16, corners: [.topRight])
+                        .shadow(color: .black.opacity(0.8), radius: 4)
+                    
+                        PlayerTile(
+                            player: players[3],
+                            updateLifeTotal: updateLifeTotal,
+                            orientation: .landscapeReverse,
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                            selectedPlayer: $selectedPlayer,
+                            top: true
+                        )
+                        .cornerRadius(16, corners: [.topLeft])
+                        .shadow(color: .black.opacity(0.8), radius: 4)
                     }
-                    PlayerTile(
-                        player: players[3],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
-                    )
                 }
                 .edgesIgnoringSafeArea(.all)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                VStack {
+                    Button(action: {
+                        withAnimation(.spring(response: 0.55, dampingFraction: 0.5, blendDuration: 0)) {
+                            self.showSettingsDialog.toggle()
+                        }
+                        
+                    }) {
+                        Image("Pin")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxHeight: 60)
+                            .rotationEffect(Angle(degrees: 82))
+                            .shadow(radius: 4)
+                    }
+                    Spacer()
+                }
+                .padding(.top, 54)
             }
+            .edgesIgnoringSafeArea(.all)
+            .background(
+                Image("Table")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .rotationEffect(Angle(degrees: 90))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            )
         }
     }
 }

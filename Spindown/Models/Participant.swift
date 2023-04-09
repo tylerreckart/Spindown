@@ -27,14 +27,16 @@ struct Theme: Identifiable {
             .edgesIgnoringSafeArea(.all)
             .clipped()
     }
+    
+    var backgroundKey: String
 }
 
 let basicThemes = [
-    Theme(type: .basic, background: "Forest"),
-    Theme(type: .basic, background: "Island"),
-    Theme(type: .basic, background: "Mountain"),
-    Theme(type: .basic, background: "Plains"),
-    Theme(type: .basic, background: "Swamp")
+    Theme(type: .basic, background: "Forest", backgroundKey: "Forest"),
+    Theme(type: .basic, background: "Island", backgroundKey: "Island"),
+    Theme(type: .basic, background: "Mountain", backgroundKey: "Mountain"),
+    Theme(type: .basic, background: "Plains", backgroundKey: "Plains"),
+    Theme(type: .basic, background: "Swamp", backgroundKey: "Swamp")
 ]
 
 class Participant: ObservableObject, Equatable, Identifiable, Hashable {

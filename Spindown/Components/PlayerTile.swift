@@ -38,20 +38,83 @@ extension Color {
     }
 }
 
-struct ForestTheme {
-    var name = "forest"
-    var shadow = false
+struct VerticalLifeTotalControls: View {
+    @ObservedObject var player: Participant
+    var orientation: TileOrientation
+    var showLifeTotalCalculator: () -> Void
+    var top: Bool = false
     
-    var background: some View {
-        Image("Mountain")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .edgesIgnoringSafeArea(.all)
+    @State private var size: CGSize?
+    
+    var screenWidth = UIScreen.main.bounds.width
+    var screenHeight = UIScreen.main.bounds.height
+    
+    var plusButton: some View {
+        Button(action: { player.incrementLifeTotal() }) {
+            Image(systemName: "plus")
+                .foregroundColor(.white.opacity(0.5))
+                .font(.system(size: 32, weight: .regular, design: .rounded))
+                .shadow(color: .black.opacity(0.2), radius: 2)
+        }
+    }
+    
+    var minusButton: some View {
+        Button(action: { player.decrementLifeTotal() }) {
+            ZStack {
+                Circle()
+                    .fill(.clear)
+                    .frame(maxWidth: 32)
+                Image(systemName: "minus")
+                    .foregroundColor(.white.opacity(0.5))
+                    .font(.system(size: 32, weight: .regular, design: .rounded))
+                    .shadow(color: .black.opacity(0.2), radius: 2)
+                    .rotationEffect(Angle(degrees: 90))
+            }
+        }
+    }
+
+    var body: some View {
+        ZStack {
+            if (orientation == .landscape) {
+                VStack {
+                    plusButton
+                    Spacer()
+                    minusButton
+                }
+                .frame(maxHeight: 220)
+            } else {
+                VStack {
+                    minusButton
+                    Spacer()
+                    plusButton
+                }
+                .frame(maxHeight: 220)
+            }
+
+            Button(action: { showLifeTotalCalculator() }) {
+                Text("\(player.lifeTotal)")
+                    .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
+                    .font(.system(size: 48, weight: .regular, design: .rounded))
+                    .fixedSize()
+                    .frame(height: 160)
+                    .shadow(color: .black.opacity(0.2), radius: 4)
+            }
+            .zIndex(1)
+        }
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Image(player.theme?.backgroundKey ?? "")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
+                .padding(orientation == .landscape ? .trailing : .leading, 80)
+        )
+        .clipped()
     }
 }
 
-struct LifeTotalControls: View {
+struct HorizontalLifeTotalControls: View {
     @ObservedObject var player: Participant
     var showLifeTotalCalculator: () -> Void
 
@@ -80,52 +143,14 @@ struct LifeTotalControls: View {
             }
             Spacer()
         }
+        .frame(maxHeight: .infinity)
         .foregroundColor(.white)
-    }
-}
-
-struct CommanderDamageControls: View {
-    @ObservedObject var player: Participant
-
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(.thinMaterial)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-            VStack(spacing: 0) {
-                Text("Commander Damage")
-                    .font(.system(size: 16, weight: .black))
-                    .shadow(color: .black.opacity(0.1), radius: 1)
-
-                HStack {
-                    Spacer()
-                    Button(action: { player.incrementLifeTotal() }) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.white.opacity(0.5))
-                            .font(.system(size: 32, weight: .regular, design: .rounded))
-                            .shadow(color: .black.opacity(0.2), radius: 2)
-                    }
-                    Spacer()
-                    Text("\(player.lifeTotal)")
-                        .foregroundColor(.white)
-                        .font(.system(size: 100, weight: .light, design: .rounded))
-                        .shadow(color: .black.opacity(0.2), radius: 4)
-                        .transition(.scale(scale: 0.4))
-                        .padding(.vertical)
-                    Spacer()
-                    Button(action: { player.decrementLifeTotal() }) {
-                        Image(systemName: "minus")
-                            .foregroundColor(.white.opacity(0.5))
-                            .font(.system(size: 32, weight: .regular, design: .rounded))
-                            .shadow(color: .black.opacity(0.2), radius: 2)
-                    }
-                    Spacer()
-                }
-                UIButton(text: "Return To Game", symbol: "arrow.counterclockwise", color: UIColor(named: "PrimaryRed")!, action: {})
-                    .frame(maxWidth: 240)
-            }
-        }
+        .background(
+            Image(player.theme?.backgroundKey ?? "")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        )
+        .clipped()
     }
 }
 
@@ -141,8 +166,8 @@ struct PlayerTile: View {
     var updateLifeTotal: (Participant, Int) -> Void
     var orientation: TileOrientation = .portrait
     var showLifeTotalCalculator: () -> ()
-
     @Binding var selectedPlayer: Participant?
+    var top: Bool = false
     
     @State private var activeSum: Counter = .lifeTotal
     @State private var selectedControlLayout: ControlLayout = .bumper
@@ -152,25 +177,18 @@ struct PlayerTile: View {
     @State private var currentView: PlayerTileView = .lifeTotal
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                Spacer()
-                LifeTotalControls(player: player, showLifeTotalCalculator: showLifeTotalCalculator)
-                Spacer()
-            }
-            
-//            CommanderDamageControls(player: player)
-        }
-        .background(theme?.tileBackground)
-        .rotationEffect(
-            self.orientation == .landscapeReverse
-            ? Angle(degrees: 90)
-            : self.orientation == .landscape
-                ? Angle(degrees: -90)
-                : Angle(degrees: 0)
-        )
-        .onAppear {
-            self.theme = player.theme
+        if (orientation == .portrait) {
+            HorizontalLifeTotalControls(
+                player: player,
+                showLifeTotalCalculator: showLifeTotalCalculator
+            )
+        } else {
+            VerticalLifeTotalControls(
+                player: player,
+                orientation: orientation,
+                showLifeTotalCalculator: showLifeTotalCalculator,
+                top: top
+            )
         }
     }
 }
