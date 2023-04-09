@@ -93,8 +93,8 @@ struct FourPlayerGameBoard: View {
                 Image("Table")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .rotationEffect(Angle(degrees: 90))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
             )
         }
     }
