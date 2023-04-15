@@ -40,14 +40,14 @@ extension Color {
 
 struct VerticalLifeTotalControls: View {
     @ObservedObject var player: Participant
+    
     var orientation: TileOrientation
     var showLifeTotalCalculator: () -> Void
-    var top: Bool = false
-    
-    @State private var size: CGSize?
     
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
+    
+    @State private var size: CGSize?
     
     var plusButton: some View {
         Button(action: { player.incrementLifeTotal() }) {
@@ -72,34 +72,35 @@ struct VerticalLifeTotalControls: View {
             }
         }
     }
+    
+    var total: some View {
+        Button(action: { showLifeTotalCalculator() }) {
+            Text("\(player.lifeTotal)")
+                .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
+                .font(.system(size: 84, weight: .light, design: .rounded))
+                .shadow(color: .black.opacity(0.2), radius: 4)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+        }
+    }
 
     var body: some View {
-        ZStack {
+        VStack(spacing: 20) {
+            Spacer()
             if (orientation == .landscape) {
-                VStack {
-                    plusButton
-                    Spacer()
-                    minusButton
-                }
-                .frame(maxHeight: 220)
+                plusButton
             } else {
-                VStack {
-                    minusButton
-                    Spacer()
-                    plusButton
-                }
-                .frame(maxHeight: 220)
+                minusButton
             }
-
-            Button(action: { showLifeTotalCalculator() }) {
-                Text("\(player.lifeTotal)")
-                    .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
-                    .font(.system(size: 48, weight: .regular, design: .rounded))
-                    .fixedSize()
-                    .frame(height: 160)
-                    .shadow(color: .black.opacity(0.2), radius: 4)
+            Spacer()
+            total
+            Spacer()
+            if (orientation == .landscape) {
+                minusButton
+            } else {
+                plusButton
             }
-            .zIndex(1)
+            Spacer()
         }
         .foregroundColor(.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -167,7 +168,6 @@ struct PlayerTile: View {
     var orientation: TileOrientation = .portrait
     var showLifeTotalCalculator: () -> ()
     @Binding var selectedPlayer: Participant?
-    var top: Bool = false
     
     @State private var activeSum: Counter = .lifeTotal
     @State private var selectedControlLayout: ControlLayout = .bumper
@@ -186,8 +186,7 @@ struct PlayerTile: View {
             VerticalLifeTotalControls(
                 player: player,
                 orientation: orientation,
-                showLifeTotalCalculator: showLifeTotalCalculator,
-                top: top
+                showLifeTotalCalculator: showLifeTotalCalculator
             )
         }
     }

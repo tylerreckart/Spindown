@@ -13,7 +13,7 @@ struct SpindownApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.dark)
+                .preferredColorScheme(.light)
                 .background(.black)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
