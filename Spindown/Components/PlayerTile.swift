@@ -48,7 +48,9 @@ struct VerticalLifeTotalControls: View {
     var screenHeight = UIScreen.main.bounds.height
     
     @State private var showInteractionHandle: Bool = false
-    @State private var isDragging: Bool = false
+    @State private var overlayViewHeight: CGFloat = 0
+    @State private var overlayDragCompletionPercentage: CGFloat = 0
+    @State private var overlayIsFullHeight: Bool = false
     
     private func increment() -> Void {
         player.incrementLifeTotal()
@@ -123,26 +125,79 @@ struct VerticalLifeTotalControls: View {
                 Spacer()
             }
             
-            Image(systemName: "ellipsis")
-                .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
-                .font(.system(size: 24, weight: .regular))
-                .foregroundColor(.white.opacity(0.5))
-                .shadow(color: .black.opacity(0.2), radius: 2)
+            ZStack {
+                Circle().fill(.clear).frame(width: 24)
+                Image(systemName: "ellipsis")
+                    .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
+                    .font(.system(size: 24, weight: .regular))
+                    .foregroundColor(.white.opacity(0.5))
+                    .shadow(color: .black.opacity(0.2), radius: 2)
+            }
             
             if (orientation != .landscape) {
                 Spacer()
             }
         }
     }
-
-    var drag: some Gesture {
-        DragGesture()
-            .onChanged { _ in self.isDragging = true }
-            .onEnded { _ in self.isDragging = false }
-    }
+    
+    @State private var gest: DragGesture = DragGesture(minimumDistance: 20, coordinateSpace: .local)
 
     var body: some View {
         ZStack {
+            GeometryReader { geometry in
+                Color.clear
+                    .contentShape(Rectangle())
+                    .gesture(
+                        self.gest
+                            .onChanged({ gesture in
+                                let size = geometry.size
+                                
+                                withAnimation {
+                                    print(gesture.location.x)
+                                    if (gesture.location.x > 0) {
+                                        if (self.orientation == .landscape) {
+                                            let delta = size.width - gesture.location.x
+                                            
+                                            self.overlayDragCompletionPercentage = delta / size.width
+                                            print(self.overlayDragCompletionPercentage)
+                                            self.overlayViewHeight = delta
+                                        } else {
+                                            let delta = gesture.location.x
+                                            
+                                            self.overlayDragCompletionPercentage = delta / size.width
+                                            print(self.overlayDragCompletionPercentage)
+                                            self.overlayViewHeight = delta
+                                        }
+                                    } else {
+                                        self.overlayViewHeight = 0
+                                        self.overlayDragCompletionPercentage = 0
+                                    }
+                                }
+                            })
+                            .onEnded({ endGesture in
+                                let size = geometry.size
+                                
+                                withAnimation(.spring()) {
+                                    if (orientation != .landscape && endGesture.location.x >= size.width / 2) {
+                                        self.overlayViewHeight = size.width
+                                        
+                                        self.overlayIsFullHeight = true
+                                    } else {
+                                        self.overlayViewHeight = 0
+                                        self.overlayDragCompletionPercentage = 0
+                                        self.overlayIsFullHeight = false
+                                    }
+                                    
+                                    if (orientation == .landscape && endGesture.location.x <= size.width / 2) {
+                                        self.overlayViewHeight = size.width
+                                        
+                                        self.overlayIsFullHeight = true
+                                    }
+                                }
+                            })
+                    )
+            }
+
             VStack(spacing: 20) {
                 Spacer()
                 if (orientation == .landscape) {
@@ -151,8 +206,10 @@ struct VerticalLifeTotalControls: View {
                     minusButton
                 }
                 Spacer()
+                    .frame(maxHeight: 10)
                 total
                 Spacer()
+                    .frame(maxHeight: 10)
                 if (orientation == .landscape) {
                     minusButton
                 } else {
@@ -160,23 +217,26 @@ struct VerticalLifeTotalControls: View {
                 }
                 Spacer()
             }
+            .opacity(1 - overlayDragCompletionPercentage)
+            .scaleEffect(1 - (overlayDragCompletionPercentage / 5))
             
-            if (self.showInteractionHandle) {
+            
+            if (showInteractionHandle) {
                 interactionHandle
             }
             
-//            HStack {
-//                if (orientation == .landscape) {
-//                    Spacer()
-//                }
-//
-//                Rectangle().fill(.ultraThinMaterial).frame(width: 50)
-//                    .gesture(drag)
-//
-//                if (orientation != .landscape) {
-//                    Spacer()
-//                }
-//            }
+            HStack {
+                if (orientation == .landscape && !overlayIsFullHeight) {
+                    Spacer()
+                }
+                Rectangle().fill(.ultraThinMaterial)
+                    .frame(maxWidth: overlayViewHeight, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                
+                if (orientation != .landscape && !overlayIsFullHeight) {
+                    Spacer()
+                }
+            }
         }
         .foregroundColor(.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
