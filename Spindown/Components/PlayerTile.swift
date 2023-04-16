@@ -47,10 +47,43 @@ struct VerticalLifeTotalControls: View {
     var screenWidth = UIScreen.main.bounds.width
     var screenHeight = UIScreen.main.bounds.height
     
-    @State private var size: CGSize?
+    @State private var showInteractionHandle: Bool = false
+    @State private var isDragging: Bool = false
+    
+    private func increment() -> Void {
+        player.incrementLifeTotal()
+        
+        if (!showInteractionHandle) {
+            withAnimation {
+                self.showInteractionHandle = true
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation {
+                    self.showInteractionHandle = false
+                }
+            }
+        }
+    }
+
+    private func decrement() -> Void {
+        player.decrementLifeTotal()
+        
+        if (!showInteractionHandle) {
+            withAnimation {
+                self.showInteractionHandle = true
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation {
+                    self.showInteractionHandle = false
+                }
+            }
+        }
+    }
     
     var plusButton: some View {
-        Button(action: { player.incrementLifeTotal() }) {
+        Button(action: increment) {
             Image(systemName: "plus")
                 .foregroundColor(.white.opacity(0.5))
                 .font(.system(size: 32, weight: .regular, design: .rounded))
@@ -59,7 +92,7 @@ struct VerticalLifeTotalControls: View {
     }
     
     var minusButton: some View {
-        Button(action: { player.decrementLifeTotal() }) {
+        Button(action: decrement) {
             ZStack {
                 Circle()
                     .fill(.clear)
@@ -83,24 +116,67 @@ struct VerticalLifeTotalControls: View {
                 .minimumScaleFactor(0.5)
         }
     }
+    
+    var interactionHandle: some View {
+        HStack {
+            if (orientation == .landscape) {
+                Spacer()
+            }
+            
+            Image(systemName: "ellipsis")
+                .rotationEffect(Angle(degrees: orientation == .landscape ? 90 : -90))
+                .font(.system(size: 24, weight: .regular))
+                .foregroundColor(.white.opacity(0.5))
+                .shadow(color: .black.opacity(0.2), radius: 2)
+            
+            if (orientation != .landscape) {
+                Spacer()
+            }
+        }
+    }
+
+    var drag: some Gesture {
+        DragGesture()
+            .onChanged { _ in self.isDragging = true }
+            .onEnded { _ in self.isDragging = false }
+    }
 
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            if (orientation == .landscape) {
-                plusButton
-            } else {
-                minusButton
+        ZStack {
+            VStack(spacing: 20) {
+                Spacer()
+                if (orientation == .landscape) {
+                    plusButton
+                } else {
+                    minusButton
+                }
+                Spacer()
+                total
+                Spacer()
+                if (orientation == .landscape) {
+                    minusButton
+                } else {
+                    plusButton
+                }
+                Spacer()
             }
-            Spacer()
-            total
-            Spacer()
-            if (orientation == .landscape) {
-                minusButton
-            } else {
-                plusButton
+            
+            if (self.showInteractionHandle) {
+                interactionHandle
             }
-            Spacer()
+            
+//            HStack {
+//                if (orientation == .landscape) {
+//                    Spacer()
+//                }
+//
+//                Rectangle().fill(.ultraThinMaterial).frame(width: 50)
+//                    .gesture(drag)
+//
+//                if (orientation != .landscape) {
+//                    Spacer()
+//                }
+//            }
         }
         .foregroundColor(.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -112,6 +188,7 @@ struct VerticalLifeTotalControls: View {
                 .padding(orientation == .landscape ? .trailing : .leading, 80)
         )
         .clipped()
+        .cornerRadius(8)
     }
 }
 

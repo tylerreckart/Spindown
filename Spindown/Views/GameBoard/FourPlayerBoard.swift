@@ -20,8 +20,8 @@ struct FourPlayerGameBoard: View {
     var body: some View {
         if (self.players.count == 4) {
             ZStack {
-                VStack(spacing: 4) {
-                    HStack(spacing: 4) {
+                VStack(spacing: 8) {
+                    HStack(spacing: 8) {
                         PlayerTile(
                             player: players[0],
                             updateLifeTotal: updateLifeTotal,
@@ -39,7 +39,7 @@ struct FourPlayerGameBoard: View {
                         )
                     }
 
-                    HStack(spacing: 4) {
+                    HStack(spacing: 8) {
                         PlayerTile(
                             player: players[2],
                             updateLifeTotal: updateLifeTotal,
@@ -82,19 +82,20 @@ struct FourPlayerGameBoard: View {
                 .padding()
             }
             .edgesIgnoringSafeArea(.all)
-            .background(
-                LinearGradient(
-                    colors: [
-                        Color(hex: "DB3B5C"),
-                        Color(hex: "FFF067"),
-                        Color(hex: "B0DE8C"),
-                        Color(hex: "7362A5")
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .overlay(.thickMaterial)
-            )
+            .background(.black)
+//            .background(
+//                LinearGradient(
+//                    colors: [
+//                        Color(hex: "DB3B5C"),
+//                        Color(hex: "FFF067"),
+//                        Color(hex: "B0DE8C"),
+//                        Color(hex: "7362A5")
+//                    ],
+//                    startPoint: .top,
+//                    endPoint: .bottom
+//                )
+//                .overlay(.thickMaterial)
+//            )
         }
     }
 }
