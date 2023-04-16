@@ -44,8 +44,11 @@ struct OverlayDragGestureHandler: View {
     @Binding var height: CGFloat
     @Binding var isFullHeight: Bool
     @Binding var dragCompletionPercentage: CGFloat
+    @Binding var showOverlay: Bool
     
     @State private var gest: DragGesture = DragGesture(minimumDistance: 20, coordinateSpace: .local)
+    
+    @State private var greatestFiniteWidth: CGFloat = 0
 
     var body: some View {
         GeometryReader { geometry in
@@ -54,24 +57,36 @@ struct OverlayDragGestureHandler: View {
                 .gesture(
                     self.gest
                         .onChanged({ gesture in
-                            self.isFullHeight = false
+                            if (isFullHeight) {
+                                self.isFullHeight = false
+                            }
+                            
+                            if (!showOverlay) {
+                                self.showOverlay = true
+                            }
                             
                             let size = geometry.size
+                            
+                            print("CHANGE: size=\(size)")
+                            print("CHANGE: pos=\(gesture.location.x)")
+                            
+                            if (size.width > greatestFiniteWidth) {
+                                greatestFiniteWidth = size.width
+                            }
+                            
+                            print("greatestFiniteWidth=\(greatestFiniteWidth)")
                             
                             withAnimation {
                                 if (gesture.location.x > 0) {
                                     if (self.orientation == .landscape) {
-                                        let delta = size.width - gesture.location.x
-                                        self.dragCompletionPercentage = delta / size.width
+                                        let delta = greatestFiniteWidth - gesture.location.x
+                                        self.dragCompletionPercentage = delta / greatestFiniteWidth
                                         self.height = delta
                                     } else {
                                         let delta = gesture.location.x
-                                        self.dragCompletionPercentage = delta / size.width
+                                        self.dragCompletionPercentage = delta / greatestFiniteWidth
                                         self.height = delta
                                     }
-                                } else {
-                                    self.height = 0
-                                    self.dragCompletionPercentage = 0
                                 }
                             }
                         })
@@ -79,18 +94,44 @@ struct OverlayDragGestureHandler: View {
                             let size = geometry.size
                             
                             withAnimation(.spring()) {
-                                if (orientation != .landscape && endGesture.location.x >= size.width / 2) {
-                                    self.height = size.width
-                                    self.isFullHeight = true
-                                } else {
-                                    self.height = 0
-                                    self.isFullHeight = false
-                                    self.dragCompletionPercentage = 0
-                                }
+                                let pos = endGesture.location.x
                                 
-                                if (orientation == .landscape && endGesture.location.x <= size.width / 2) {
-                                    self.height = size.width
-                                    self.isFullHeight = true
+                                if (orientation == .landscape) {
+                                    if (pos <= greatestFiniteWidth / 2) {
+                                        self.height = greatestFiniteWidth
+                                        self.isFullHeight = true
+                                    } else {
+                                        self.height = 0.01
+                                        self.isFullHeight = false
+                                        self.dragCompletionPercentage = 0
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            self.height = 0
+                                            self.showOverlay = false
+                                        }
+                                    }
+                                } else {
+                                    let diff = greatestFiniteWidth - pos
+                                    print("greatestFiniteWidth=\(greatestFiniteWidth)")
+                                    
+                                    print("END: pos=\(pos)")
+                                    print("END: diff=\(diff)")
+                                    
+                                    if (diff <= greatestFiniteWidth / 2) {
+                                        print("END: should assume full height")
+                                        self.height = greatestFiniteWidth
+                                        self.isFullHeight = true
+                                    } else {
+                                        print("END: should reset")
+                                        self.height = 0.01
+                                        self.isFullHeight = false
+                                        self.dragCompletionPercentage = 0
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            self.height = 0
+                                            self.showOverlay = false
+                                        }
+                                    }
                                 }
                             }
                         })
@@ -109,6 +150,7 @@ struct VerticalLifeTotalControls: View {
     var screenHeight = UIScreen.main.bounds.height
     
     @State private var showInteractionHandle: Bool = false
+    @State private var showOverlay: Bool = false
     @State private var overlayViewHeight: CGFloat = 0
     @State private var overlayDragCompletionPercentage: CGFloat = 0
     @State private var overlayIsFullHeight: Bool = false
@@ -209,7 +251,8 @@ struct VerticalLifeTotalControls: View {
                 orientation: orientation,
                 height: $overlayViewHeight,
                 isFullHeight: $overlayIsFullHeight,
-                dragCompletionPercentage: $overlayDragCompletionPercentage
+                dragCompletionPercentage: $overlayDragCompletionPercentage,
+                showOverlay: $showOverlay
             )
 
             VStack(spacing: 20) {
@@ -239,7 +282,7 @@ struct VerticalLifeTotalControls: View {
                 interactionHandle
             }
             
-            if (overlayViewHeight > 0) {
+            if (overlayViewHeight > 0 && showOverlay) {
                 HStack {
                     if (orientation == .landscape && !overlayIsFullHeight) {
                         Spacer()
@@ -248,12 +291,14 @@ struct VerticalLifeTotalControls: View {
                     ZStack {
                         Rectangle().fill(.ultraThinMaterial)
                             .edgesIgnoringSafeArea(.all)
+                            .shadow(color: .black.opacity(0.1), radius: 3)
                         
                         OverlayDragGestureHandler(
                             orientation: orientation,
                             height: $overlayViewHeight,
                             isFullHeight: $overlayIsFullHeight,
-                            dragCompletionPercentage: $overlayDragCompletionPercentage
+                            dragCompletionPercentage: $overlayDragCompletionPercentage,
+                            showOverlay: $showOverlay
                         )
                         
                         if (overlayIsFullHeight) {
@@ -299,6 +344,9 @@ struct VerticalLifeTotalControls: View {
         )
         .clipped()
         .cornerRadius(8)
+        .onChange(of: overlayIsFullHeight) { newState in
+            print(newState)
+        }
     }
 }
 
