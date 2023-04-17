@@ -7,6 +7,46 @@
 
 import SwiftUI
 
+struct PlayerBadges: View {
+    var body: some View {
+        VStack {
+            HStack {
+                HStack(spacing: 10) {
+                    Image("XPCounterBadge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30)
+                        .shadow(radius: 2, x: 1, y: 1)
+                    
+                    Image("PoisonCounterBadge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30)
+                        .shadow(radius: 2, x: 1, y: 1)
+                    
+                    Image("EnergyCounterBadge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30)
+                        .shadow(radius: 2, x: 1, y: 1)
+                    
+                    Spacer()
+                    
+                    Image("CrownBadge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 30)
+                        .rotationEffect(Angle(degrees: 10))
+                        .shadow(radius: 3)
+                }
+                Spacer()
+            }
+            .padding()
+            Spacer()
+        }
+    }
+}
+
 struct FourPlayerGameBoard: View {
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
@@ -31,46 +71,50 @@ struct FourPlayerGameBoard: View {
                                 selectedPlayer: $selectedPlayer
                             )
                             
-                            VStack {
-                                HStack {
-                                    Spacer()
-                                    Image("Crown")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxHeight: 30)
-                                        .rotationEffect(Angle(degrees: 10))
-                                        .shadow(radius: 3)
-                                }
-                                Spacer()
-                            }
-                            .padding()
+                            PlayerBadges()
                         }
+                        .rotationEffect(Angle(degrees: 180))
 
-                        PlayerTile(
-                            player: players[1],
-                            updateLifeTotal: updateLifeTotal,
-                            orientation: .landscapeReverse,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
+                        ZStack {
+                            PlayerTile(
+                                player: players[1],
+                                updateLifeTotal: updateLifeTotal,
+                                orientation: .landscapeReverse,
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                                selectedPlayer: $selectedPlayer
+                            )
+                            
+                            PlayerBadges()
+                                .padding(.leading, 32)
+                        }
+                        .rotationEffect(Angle(degrees: 180))
                     }
 
                     HStack(spacing: 8) {
-                        PlayerTile(
-                            player: players[2],
-                            updateLifeTotal: updateLifeTotal,
-                            orientation: .landscape,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
+                        ZStack {
+                            PlayerTile(
+                                player: players[2],
+                                updateLifeTotal: updateLifeTotal,
+                                orientation: .landscape,
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                                selectedPlayer: $selectedPlayer
+                            )
+                            
+                            PlayerBadges()
+                        }
                     
-                        PlayerTile(
-                            player: players[3],
-                            updateLifeTotal: updateLifeTotal,
-                            orientation: .landscapeReverse,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
+                        ZStack {
+                            PlayerTile(
+                                player: players[3],
+                                updateLifeTotal: updateLifeTotal,
+                                orientation: .landscapeReverse,
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                                selectedPlayer: $selectedPlayer
+                            )
+                            
+                            PlayerBadges()
+                                .padding(.trailing, 28)
+                        }
                     }
                 }
                 .edgesIgnoringSafeArea(.all)
