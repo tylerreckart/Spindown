@@ -23,42 +23,30 @@ struct SixPlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[0],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[1],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[2],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
                     .rotationEffect(Angle(degrees: 180))
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[3],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[4],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[5],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
                 }
@@ -67,10 +55,7 @@ struct SixPlayerGameBoard: View {
                 HStack(spacing: 20) {
                     PlayerTile(
                         player: players[0],
-                        updateLifeTotal: updateLifeTotal,
-                        orientation: .landscape,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     .rotationEffect(Angle(degrees: 180))
                     .frame(maxWidth: screenWidth / 4)
@@ -78,39 +63,28 @@ struct SixPlayerGameBoard: View {
                         HStack(spacing: 20) {
                             PlayerTile(
                                 player: players[1],
-                                updateLifeTotal: updateLifeTotal,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                             PlayerTile(
                                 player: players[2],
-                                updateLifeTotal: updateLifeTotal,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
                         .rotationEffect(Angle(degrees: 180))
                         HStack(spacing: 20) {
                             PlayerTile(
                                 player: players[3],
-                                updateLifeTotal: updateLifeTotal,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                             PlayerTile(
                                 player: players[4],
-                                updateLifeTotal: updateLifeTotal,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
                     }
                     PlayerTile(
                         player: players[5],
-                        updateLifeTotal: updateLifeTotal,
-                        orientation: .landscape,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     .frame(maxWidth: screenWidth / 4)
                 }

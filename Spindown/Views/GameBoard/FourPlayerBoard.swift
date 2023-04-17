@@ -62,59 +62,29 @@ struct FourPlayerGameBoard: View {
             ZStack {
                 VStack(spacing: 8) {
                     HStack(spacing: 8) {
-                        ZStack {
-                            PlayerTile(
-                                player: players[0],
-                                updateLifeTotal: updateLifeTotal,
-                                orientation: .landscape,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
-                            )
-                            
-                            PlayerBadges()
-                        }
+                        PlayerTile(
+                            player: players[0],
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        )
                         .rotationEffect(Angle(degrees: 180))
 
-                        ZStack {
-                            PlayerTile(
-                                player: players[1],
-                                updateLifeTotal: updateLifeTotal,
-                                orientation: .landscapeReverse,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
-                            )
-                            
-                            PlayerBadges()
-                                .padding(.leading, 32)
-                        }
+                        PlayerTile(
+                            player: players[1],
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        )
                         .rotationEffect(Angle(degrees: 180))
                     }
 
                     HStack(spacing: 8) {
-                        ZStack {
-                            PlayerTile(
-                                player: players[2],
-                                updateLifeTotal: updateLifeTotal,
-                                orientation: .landscape,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
-                            )
-                            
-                            PlayerBadges()
-                        }
-                    
-                        ZStack {
-                            PlayerTile(
-                                player: players[3],
-                                updateLifeTotal: updateLifeTotal,
-                                orientation: .landscapeReverse,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
-                            )
-                            
-                            PlayerBadges()
-                                .padding(.trailing, 28)
-                        }
+                        PlayerTile(
+                            player: players[2],
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        )
+
+                        PlayerTile(
+                            player: players[3],
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                        )
                     }
                 }
                 .edgesIgnoringSafeArea(.all)
@@ -144,19 +114,6 @@ struct FourPlayerGameBoard: View {
             }
             .edgesIgnoringSafeArea(.all)
             .background(.black)
-//            .background(
-//                LinearGradient(
-//                    colors: [
-//                        Color(hex: "DB3B5C"),
-//                        Color(hex: "FFF067"),
-//                        Color(hex: "B0DE8C"),
-//                        Color(hex: "7362A5")
-//                    ],
-//                    startPoint: .top,
-//                    endPoint: .bottom
-//                )
-//                .overlay(.thickMaterial)
-//            )
         }
     }
 }

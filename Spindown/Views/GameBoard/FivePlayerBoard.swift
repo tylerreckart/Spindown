@@ -24,9 +24,7 @@ struct FivePlayerGameBoard: View {
                         ForEach(0..<2, id: \.self) { index in
                             PlayerTile(
                                 player: players[index],
-                                updateLifeTotal: updateLifeTotal,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
                     }
@@ -36,9 +34,7 @@ struct FivePlayerGameBoard: View {
                         ForEach(2..<5, id: \.self) { index in
                             PlayerTile(
                                 player: players[index],
-                                updateLifeTotal: updateLifeTotal,
-                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                selectedPlayer: $selectedPlayer
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
                     }
@@ -48,10 +44,7 @@ struct FivePlayerGameBoard: View {
                             ForEach(0..<2, id: \.self) { index in
                                 PlayerTile(
                                     player: players[index],
-                                    updateLifeTotal: updateLifeTotal,
-                                    orientation: index == 0 ? .landscapeReverse : .landscape,
-                                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                    selectedPlayer: $selectedPlayer
+                                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                                 )
                             }
                         }
@@ -60,19 +53,14 @@ struct FivePlayerGameBoard: View {
                             ForEach(2..<4, id: \.self) { index in
                                 PlayerTile(
                                     player: players[index],
-                                    updateLifeTotal: updateLifeTotal,
-                                    orientation: index == 2 ? .landscapeReverse : .landscape,
-                                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                                    selectedPlayer: $selectedPlayer
+                                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                                 )
                             }
                         }
                         
                         PlayerTile(
                             player: players[4],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
                 }

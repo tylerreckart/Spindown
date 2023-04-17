@@ -22,23 +22,17 @@ struct ThreePlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[0],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[1],
-                            updateLifeTotal: updateLifeTotal,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
+                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
                     .rotationEffect(Angle(degrees: 180))
                     PlayerTile(
                         player: players[2],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                 }
                 .edgesIgnoringSafeArea(.all)
@@ -46,21 +40,15 @@ struct ThreePlayerGameBoard: View {
                 HStack(spacing: 20) {
                     PlayerTile(
                         player: players[0],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     PlayerTile(
                         player: players[1],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     PlayerTile(
                         player: players[2],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                 }
                 .edgesIgnoringSafeArea(.all)

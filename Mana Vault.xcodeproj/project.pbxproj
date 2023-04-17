@@ -54,6 +54,8 @@
 		DBB64A3829B2853B00438AAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */; };
 		DBB64A3A29B2866300438AAE /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB64A3929B2866300438AAE /* Timer.swift */; };
 		DBE1671F29DA7C1C00A4159C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE1671E29DA7C1C00A4159C /* Assets.xcassets */; };
+		DBE1673C29EDE12900A4159C /* PlayerTileOptionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */; };
+		DBE1673E29EDE1C800A4159C /* OverlayDragGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */; };
 		DBE2E0F529B94A720035B9BC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F429B94A720035B9BC /* WebView.swift */; };
 		DBE2E0F729B94C790035B9BC /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F629B94C790035B9BC /* About.swift */; };
 		DBE2E0F929B9530B0035B9BC /* SubscriptionTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F829B9530B0035B9BC /* SubscriptionTile.swift */; };
@@ -128,6 +130,8 @@
 		DBB64A3729B2853B00438AAE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB64A3929B2866300438AAE /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		DBE1671E29DA7C1C00A4159C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileOptionsOverlay.swift; sourceTree = "<group>"; };
+		DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDragGestureHandler.swift; sourceTree = "<group>"; };
 		DBE2E0F429B94A720035B9BC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		DBE2E0F629B94C790035B9BC /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		DBE2E0F829B9530B0035B9BC /* SubscriptionTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTile.swift; sourceTree = "<group>"; };
@@ -228,10 +232,10 @@
 		DB41B1A7298AF4A30000EC42 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DBE1673F29EDE20300A4159C /* PlayerTile */,
 				DBE49FB129AD84D9008B0648 /* Forms */,
 				DBE49FA829AD83F0008B0648 /* Buttons */,
 				DB1F08F3299C29B600A057CC /* Dialogs */,
-				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
 				DB1D3A062991566400A741DC /* PlayerList.swift */,
 				DBE49FA329AB9260008B0648 /* Spinner.swift */,
 				DBE49FC329AD8A0D008B0648 /* RuleContext.swift */,
@@ -322,6 +326,16 @@
 				DB8B8F612986E2CC0023A84B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DBE1673F29EDE20300A4159C /* PlayerTile */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
+				DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */,
+				DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */,
+			);
+			path = PlayerTile;
 			sourceTree = "<group>";
 		};
 		DBE49FA729AD81CA008B0648 /* Onboarding */ = {
@@ -492,6 +506,7 @@
 				DBE49FC629AD8A3E008B0648 /* SearchDialog.swift in Sources */,
 				DB8B8F6D298767100023A84B /* PlayerTile.swift in Sources */,
 				DBE49FBC29AD85BD008B0648 /* TileOrientation.swift in Sources */,
+				DBE1673E29EDE1C800A4159C /* OverlayDragGestureHandler.swift in Sources */,
 				DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */,
 				DB8B8F6F298767390023A84B /* Participant.swift in Sources */,
 				DB8B8F5A2986E2CB0023A84B /* Spindown.xcdatamodeld in Sources */,
@@ -502,6 +517,7 @@
 				DBE49FAA29AD83FC008B0648 /* OnboardingBackButton.swift in Sources */,
 				DBE49FB629AD8531008B0648 /* FocusField.swift in Sources */,
 				DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */,
+				DBE1673C29EDE12900A4159C /* PlayerTileOptionsOverlay.swift in Sources */,
 				DBE2E0F729B94C790035B9BC /* About.swift in Sources */,
 				DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,

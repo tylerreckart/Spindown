@@ -46,9 +46,7 @@ struct TwoPlayerGameBoard: View {
                 VStack(spacing: 0) {
                     PlayerTile(
                         player: players[1],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     .cornerRadius(16, corners: [.topLeft, .topRight])
                     .rotationEffect(Angle(degrees: 180))
@@ -57,9 +55,7 @@ struct TwoPlayerGameBoard: View {
                     
                     PlayerTile(
                         player: players[0],
-                        updateLifeTotal: updateLifeTotal,
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                        selectedPlayer: $selectedPlayer
+                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     .cornerRadius(16, corners: [.topLeft, .topRight])
                 }
