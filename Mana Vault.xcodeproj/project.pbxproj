@@ -110,7 +110,7 @@
 		DB69EC8929A7087500D4EB3F /* DiceRoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRoll.swift; sourceTree = "<group>"; };
 		DB69EC8B29A7088300D4EB3F /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		DB8A3251298CB2DF00FB7658 /* ChangeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayout.swift; sourceTree = "<group>"; };
-		DB8B8F512986E2CB0023A84B /* Spindown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spindown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB8B8F512986E2CB0023A84B /* Mana Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mana Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8B8F542986E2CB0023A84B /* SpindownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpindownApp.swift; sourceTree = "<group>"; };
 		DB8B8F562986E2CB0023A84B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB8B8F592986E2CB0023A84B /* Spindown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spindown.xcdatamodel; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 		DB8B8F522986E2CB0023A84B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DB8B8F512986E2CB0023A84B /* Spindown.app */,
+				DB8B8F512986E2CB0023A84B /* Mana Vault.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -371,9 +371,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DB8B8F502986E2CB0023A84B /* Spindown */ = {
+		DB8B8F502986E2CB0023A84B /* Mana Vault */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Spindown" */;
+			buildConfigurationList = DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Mana Vault" */;
 			buildPhases = (
 				DB8B8F4D2986E2CB0023A84B /* Sources */,
 				DB8B8F4E2986E2CB0023A84B /* Frameworks */,
@@ -383,11 +383,11 @@
 			);
 			dependencies = (
 			);
-			name = Spindown;
+			name = "Mana Vault";
 			packageProductDependencies = (
 			);
 			productName = Spindown;
-			productReference = DB8B8F512986E2CB0023A84B /* Spindown.app */;
+			productReference = DB8B8F512986E2CB0023A84B /* Mana Vault.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -405,7 +405,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Spindown" */;
+			buildConfigurationList = DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Mana Vault" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -420,7 +420,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DB8B8F502986E2CB0023A84B /* Spindown */,
+				DB8B8F502986E2CB0023A84B /* Mana Vault */,
 			);
 		};
 /* End PBXProject section */
@@ -642,7 +642,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spindown/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Spindown;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mana Vault";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -654,7 +654,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -686,7 +686,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spindown/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Spindown;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mana Vault";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -698,7 +698,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -719,7 +719,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Spindown" */ = {
+		DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Mana Vault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB8B8F632986E2CC0023A84B /* Debug */,
@@ -728,7 +728,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Spindown" */ = {
+		DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Mana Vault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB8B8F662986E2CC0023A84B /* Debug */,

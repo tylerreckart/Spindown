@@ -22,13 +22,29 @@ struct FourPlayerGameBoard: View {
             ZStack {
                 VStack(spacing: 8) {
                     HStack(spacing: 8) {
-                        PlayerTile(
-                            player: players[0],
-                            updateLifeTotal: updateLifeTotal,
-                            orientation: .landscape,
-                            showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
-                            selectedPlayer: $selectedPlayer
-                        )
+                        ZStack {
+                            PlayerTile(
+                                player: players[0],
+                                updateLifeTotal: updateLifeTotal,
+                                orientation: .landscape,
+                                showLifeTotalCalculator: showLifeTotalCalculatorForPlayer,
+                                selectedPlayer: $selectedPlayer
+                            )
+                            
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    Image("Crown")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxHeight: 30)
+                                        .rotationEffect(Angle(degrees: 10))
+                                        .shadow(radius: 3)
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                        }
 
                         PlayerTile(
                             player: players[1],
@@ -61,6 +77,8 @@ struct FourPlayerGameBoard: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 HStack {
+                    Spacer()
+
                     VStack {
                         Spacer()
                         Button(action: {
@@ -73,11 +91,10 @@ struct FourPlayerGameBoard: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxHeight: 60)
-                                .rotationEffect(Angle(degrees: 82))
-                                .shadow(radius: 4)
+                                .rotationEffect(Angle(degrees: 10))
+                                .shadow(radius: 3)
                         }
                     }
-                    Spacer()
                 }
                 .padding()
             }
