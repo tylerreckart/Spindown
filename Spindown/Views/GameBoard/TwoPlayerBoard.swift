@@ -14,7 +14,6 @@ enum BoardLayout {
 }
 
 struct RoundedCorner: Shape {
-
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
 
@@ -35,46 +34,45 @@ struct TwoPlayerGameBoard: View {
     @Binding var numPlayersRemaining: Int
     @Binding var selectedPlayer: Participant?
     @Binding var selectedLayout: BoardLayout
-    var showLifeTotalCalculatorForPlayer: () -> ()
     
+    var showLifeTotalCalculatorForPlayer: () -> ()
     var updateLifeTotal: (Participant, Int) -> Void
+
     @Binding var showSettingsDialog: Bool
 
     var body: some View {
-        if (self.players.count == 2) {
-            ZStack {
-                VStack(spacing: 0) {
-                    PlayerTile(
-                        player: players[1],
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
-                    )
-                    .cornerRadius(16, corners: [.topLeft, .topRight])
-                    .rotationEffect(Angle(degrees: 180))
-                    
-                    Rectangle().fill(.black).frame(maxWidth: .infinity, maxHeight: 8)
-                    
-                    PlayerTile(
-                        player: players[0],
-                        showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
-                    )
-                    .cornerRadius(16, corners: [.topLeft, .topRight])
+        ZStack {
+            VStack(spacing: 0) {
+                PlayerTile(
+                    player: players[1],
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                )
+                .cornerRadius(16, corners: [.topLeft, .topRight])
+                .rotationEffect(Angle(degrees: 180))
+                
+                Rectangle().fill(.black).frame(maxWidth: .infinity, maxHeight: 8)
+                
+                PlayerTile(
+                    player: players[0],
+                    showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
+                )
+                .cornerRadius(16, corners: [.topLeft, .topRight])
+            }
+            
+            Button(action: {
+                withAnimation(.spring(response: 0.55, dampingFraction: 0.5, blendDuration: 0)) {
+                    self.showSettingsDialog.toggle()
                 }
                 
-                Button(action: {
-                    withAnimation(.spring(response: 0.55, dampingFraction: 0.5, blendDuration: 0)) {
-                        self.showSettingsDialog.toggle()
-                    }
-                    
-                }) {
-                    Image("Pin")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxHeight: 60)
-                        .rotationEffect(Angle(degrees: 10))
-                        .shadow(radius: 3)
-                }
+            }) {
+                Image("Pin")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxHeight: 60)
+                    .rotationEffect(Angle(degrees: 10))
+                    .shadow(radius: 3)
             }
-            .edgesIgnoringSafeArea(.all)
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }

@@ -34,6 +34,7 @@
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
 		DB41B1B2298C07CF0000EC42 /* DialogBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* DialogBody.swift */; };
 		DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */; };
+		DB68463E29EEE16500D70762 /* PlayerBadges.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB68463D29EEE16500D70762 /* PlayerBadges.swift */; };
 		DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */; };
 		DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8929A7087500D4EB3F /* DiceRoll.swift */; };
 		DB69EC8C29A7088300D4EB3F /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8B29A7088300D4EB3F /* Players.swift */; };
@@ -107,6 +108,7 @@
 		DB41B1B0298C059D0000EC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DB41B1B1298C07CF0000EC42 /* DialogBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBody.swift; sourceTree = "<group>"; };
 		DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDialog.swift; sourceTree = "<group>"; };
+		DB68463D29EEE16500D70762 /* PlayerBadges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBadges.swift; sourceTree = "<group>"; };
 		DB69EC81299D1D4D00D4EB3F /* Terms.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.md; sourceTree = "<group>"; };
 		DB69EC82299D1D9E00D4EB3F /* Privacy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Privacy.md; sourceTree = "<group>"; };
 		DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Spindown/Views/AppSettings.swift; sourceTree = SOURCE_ROOT; };
@@ -337,6 +339,7 @@
 				DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */,
 				DBE1674029EEC67B00A4159C /* PlayerTileCountersOverlay.swift */,
 				DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */,
+				DB68463D29EEE16500D70762 /* PlayerBadges.swift */,
 			);
 			path = PlayerTile;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */,
 				DBE1673C29EDE12900A4159C /* PlayerTileOptionsOverlay.swift in Sources */,
 				DBE1674129EEC67B00A4159C /* PlayerTileCountersOverlay.swift in Sources */,
+				DB68463E29EEE16500D70762 /* PlayerBadges.swift in Sources */,
 				DBE2E0F729B94C790035B9BC /* About.swift in Sources */,
 				DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,
@@ -662,7 +666,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spindown/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mana Vault";
+				INFOPLIST_KEY_CFBundleDisplayName = Spindown;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -706,7 +710,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spindown/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mana Vault";
+				INFOPLIST_KEY_CFBundleDisplayName = Spindown;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

@@ -11,22 +11,26 @@ struct PlayerTileOptionsOverlay: View {
     @Binding var height: CGFloat
     @Binding var completionPercentage: CGFloat
     @Binding var isFullHeight: Bool
+    @Binding var showOverlay: Bool
     
     var body: some View {
         ZStack {
             VStack {
                 Rectangle().fill(.ultraThinMaterial)
                     .edgesIgnoringSafeArea(.all)
-                    .shadow(color: .black.opacity(0.1), radius: 3)
                     .frame(maxWidth: .infinity, maxHeight: height)
-                    .zIndex(2)
                 
                 if (!isFullHeight) {
                     Spacer()
                 }
             }
             
-            OverlayDragGestureHandler(height: $height, isFullHeight: $isFullHeight, dragCompletionPercentage: $completionPercentage)
+            OverlayDragGestureHandler(
+                height: $height,
+                isFullHeight: $isFullHeight,
+                dragCompletionPercentage: $completionPercentage,
+                showOverlay: $showOverlay
+            )
             
             if (isFullHeight) {
                 VStack {
