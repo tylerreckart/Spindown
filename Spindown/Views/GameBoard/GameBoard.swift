@@ -39,9 +39,7 @@ struct GameBoard: View {
     
     var body: some View {
         ZStack {
-            if (players.count == 1) {
-                PlayerTile(player: players[0], showLifeTotalCalculator: showLifeTotalCalculatorForPlayer)
-            } else if (players.count == 2) {
+            if (players.count == 2) {
                 TwoPlayerGameBoard(
                     players: $players,
                     numPlayersRemaining: $numPlayersRemaining,

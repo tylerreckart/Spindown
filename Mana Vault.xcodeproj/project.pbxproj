@@ -56,6 +56,7 @@
 		DBE1671F29DA7C1C00A4159C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE1671E29DA7C1C00A4159C /* Assets.xcassets */; };
 		DBE1673C29EDE12900A4159C /* PlayerTileOptionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */; };
 		DBE1673E29EDE1C800A4159C /* OverlayDragGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */; };
+		DBE1674129EEC67B00A4159C /* PlayerTileCountersOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1674029EEC67B00A4159C /* PlayerTileCountersOverlay.swift */; };
 		DBE2E0F529B94A720035B9BC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F429B94A720035B9BC /* WebView.swift */; };
 		DBE2E0F729B94C790035B9BC /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F629B94C790035B9BC /* About.swift */; };
 		DBE2E0F929B9530B0035B9BC /* SubscriptionTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2E0F829B9530B0035B9BC /* SubscriptionTile.swift */; };
@@ -132,6 +133,7 @@
 		DBE1671E29DA7C1C00A4159C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileOptionsOverlay.swift; sourceTree = "<group>"; };
 		DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDragGestureHandler.swift; sourceTree = "<group>"; };
+		DBE1674029EEC67B00A4159C /* PlayerTileCountersOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTileCountersOverlay.swift; sourceTree = "<group>"; };
 		DBE2E0F429B94A720035B9BC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		DBE2E0F629B94C790035B9BC /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		DBE2E0F829B9530B0035B9BC /* SubscriptionTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTile.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				DB8B8F6C298767100023A84B /* PlayerTile.swift */,
 				DBE1673B29EDE12900A4159C /* PlayerTileOptionsOverlay.swift */,
+				DBE1674029EEC67B00A4159C /* PlayerTileCountersOverlay.swift */,
 				DBE1673D29EDE1C800A4159C /* OverlayDragGestureHandler.swift */,
 			);
 			path = PlayerTile;
@@ -518,6 +521,7 @@
 				DBE49FB629AD8531008B0648 /* FocusField.swift in Sources */,
 				DB38DDB529A95225000D8796 /* DialogPlacement.swift in Sources */,
 				DBE1673C29EDE12900A4159C /* PlayerTileOptionsOverlay.swift in Sources */,
+				DBE1674129EEC67B00A4159C /* PlayerTileCountersOverlay.swift in Sources */,
 				DBE2E0F729B94C790035B9BC /* About.swift in Sources */,
 				DBE49FBA29AD8585008B0648 /* PlayerCustomizationDialog.swift in Sources */,
 				DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */,

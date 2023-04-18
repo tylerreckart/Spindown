@@ -12,9 +12,13 @@ struct PlayerTile: View {
 
     var showLifeTotalCalculator: () -> Void
     
+    // Player options overlay.
     @State private var overlayHeight: CGFloat = 0
     @State private var overlayIsFullHeight: Bool = false
     @State private var dragCompletionPercentage: CGFloat = 0
+    
+    // Player counters overlay (only valid if player has existing active counters).
+    @State private var showCountersOverlay: Bool = false
 
     var body: some View {
         ZStack {
@@ -73,10 +77,14 @@ struct PlayerTile: View {
                     .aspectRatio(contentMode: .fill)
             )
             
-            PlayerBadges()
+            PlayerBadges(showOverlay: $showCountersOverlay)
             
             if (overlayHeight > 0) {
                 PlayerTileOptionsOverlay(height: $overlayHeight, completionPercentage: $dragCompletionPercentage, isFullHeight: $overlayIsFullHeight)
+            }
+            
+            if (showCountersOverlay) {
+                PlayerTileCountersOverlay(player: player)
             }
         }
         .clipped()

@@ -1,6 +1,6 @@
 //
 //  OverlayDragGestureHandler.swift
-//  Mana Vault
+//  Spindown
 //
 //  Created by Tyler Reckart on 4/17/23.
 //
@@ -28,18 +28,16 @@ struct OverlayDragGestureHandler: View {
                             }
                             
                             let size = geometry.size
+                            let pos = gesture.location.y
 
                             if (size.width > greatestFiniteHeight) {
                                 greatestFiniteHeight = size.height
                             }
                             
                             withAnimation {
-                                print("Y LOC")
-                                print(gesture.location.y)
-                                if (gesture.location.y > 0) {
-                                    let delta = gesture.location.y
-                                    self.dragCompletionPercentage = delta / greatestFiniteHeight
-                                    self.height = delta
+                                if (pos > 0) {
+                                    self.dragCompletionPercentage = pos / greatestFiniteHeight
+                                    self.height = pos
                                 }
                             }
                         })

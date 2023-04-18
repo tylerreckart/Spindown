@@ -8,27 +8,35 @@
 import SwiftUI
 
 struct PlayerBadges: View {
+    @Binding var showOverlay: Bool
+
     var body: some View {
         VStack {
             HStack {
                 HStack(spacing: 10) {
-                    Image("XPCounterBadge")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30)
-                        .shadow(radius: 2, x: 1, y: 1)
+                    Button(action: { self.showOverlay.toggle() }) {
+                        Image("XPCounterBadge")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30)
+                            .shadow(radius: 2, x: 1, y: 1)
+                    }
                     
-                    Image("PoisonCounterBadge")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30)
-                        .shadow(radius: 2, x: 1, y: 1)
+                    Button(action: { self.showOverlay.toggle() }) {
+                        Image("PoisonCounterBadge")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30)
+                            .shadow(radius: 2, x: 1, y: 1)
+                    }
                     
-                    Image("EnergyCounterBadge")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30)
-                        .shadow(radius: 2, x: 1, y: 1)
+                    Button(action: { self.showOverlay.toggle() }) {
+                        Image("EnergyCounterBadge")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30)
+                            .shadow(radius: 2, x: 1, y: 1)
+                    }
                     
                     Spacer()
                     

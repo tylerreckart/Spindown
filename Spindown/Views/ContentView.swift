@@ -43,73 +43,64 @@ func incrementReviewCounter() -> Void {
 
 struct ContentView: View {
     @AppStorage("isSubscribed") private var currentEntitlement: Bool = false
+
+    // Initialize store model.
     @StateObject var store: Store = Store()
-    
-    var pages: [Page] = [.home, .lifeTotal, .players, .gameBoard]
     
     // Initialize global timer.
     @StateObject var timerModel = GameTimerModel()
+    
     // Current board state.
-    @State private var currentPage: Page = .home
     @State private var playerCount: Int = 0
     @State private var players: [Participant] = []
     @State private var numPlayersRemaining: Int = 0
     @State private var activePlayer: Participant?
     @State private var startingLifeTotal: Int = 0
+
     // Display.
     @State private var showStartOverlay: Bool = false
     @State private var gameBoardOpacity: CGFloat = 0
-    // Sheets.
+    
+    // Information Sheets/Subviews.
     @State private var showOnboardingSheet: Bool = false
     
     init() { incrementReviewCounter() }
 
     var body: some View {
         ZStack {
-            switch (currentPage) {
-            case .home:
-                SplashScreen(showNextPage: showNextPage, store: store)
-            case .lifeTotal:
-                StartingLifeTotalSelector(currentPage: $currentPage, setStartingLifeTotal: setStartingLifeTotal)
-            case .players:
-                PlayersSelector(currentPage: $currentPage, setNumPlayers: setPlayerCount, setUsedSavedPlayers: setUsedSavedPlayers)
-            case .savedPlayers:
-                SavedPlayersSelector(
-                    currentPage: $currentPage,
-                    startingLifeTotal: $startingLifeTotal,
-                    players: $players,
-                    startGame: chooseAndAdvance
-                )
-            case .gameBoard:
-                if (players.count > 0) {
-                    ZStack {
-                        GameBoard(
-                            store: store,
-                            players: $players,
-                            numPlayersRemaining: $numPlayersRemaining,
-                            activePlayer: $activePlayer,
-                            endGame: endGame
-                        )
-                        .environmentObject(timerModel)
-                        
-                        StartingPlayerDialog(
-                            open: $showStartOverlay,
-                            activePlayer: $activePlayer,
-                            startGame: startGame,
-                            chooseStartingPlayer: chooseStartingPlayer
-                        )
-                        
-                        OutOfTimeDialog(
-                            open: $timerModel.showDialog,
-                            endGame: endGame,
-                            dismiss: timerModel.reset
-                        )
-                    }
+            if (players.count > 0) {
+                ZStack {
+                    GameBoard(
+                        store: store,
+                        players: $players,
+                        numPlayersRemaining: $numPlayersRemaining,
+                        activePlayer: $activePlayer,
+                        endGame: endGame
+                    )
+                    .environmentObject(timerModel)
+                    .transition(.scale)
+                    
+                    StartingPlayerDialog(
+                        open: $showStartOverlay,
+                        activePlayer: $activePlayer,
+                        startGame: startGame,
+                        chooseStartingPlayer: chooseStartingPlayer
+                    )
+                    
+                    OutOfTimeDialog(
+                        open: $timerModel.showDialog,
+                        endGame: endGame,
+                        dismiss: timerModel.reset
+                    )
                 }
             }
         }
         .sheet(isPresented: $showOnboardingSheet) {
             SubscriptionView(store: store)
+        }
+        .onAppear {
+            self.setStartingLifeTotal(20)
+            self.setPlayerCount(4)
         }
         .onChange(of: store.initialized) { _ in
             Task {
@@ -148,36 +139,10 @@ struct ContentView: View {
             }
         }
     }
-    
-    private func showNextPage() {
-        if (self.currentPage == .savedPlayers) {
-            withAnimation(.easeInOut(duration: 0.4)) {
-                currentPage = .gameBoard
-            }
-        } else {
-            guard let currentIndex = pages.firstIndex(of: currentPage), pages.count > currentIndex + 1 else {
-                return
-            }
-            withAnimation(.easeInOut(duration: 0.4)) {
-                currentPage = pages[currentIndex + 1]
-            }
-        }
-    }
-    
-    private func setUsedSavedPlayers() {
-        if (self.currentEntitlement) {
-            withAnimation(.easeInOut(duration: 0.4)) {
-                currentPage = .savedPlayers
-            }
-        } else {
-            self.showOnboardingSheet.toggle()
-        }
-    }
-    
+
     private func setStartingLifeTotal(_ total: Int) -> Void {
         print("set starting life total: \(total)")
         self.startingLifeTotal = total
-        showNextPage()
     }
     
     private func setPlayerCount(_ numPlayers: Int) {
@@ -199,8 +164,8 @@ struct ContentView: View {
     func chooseAndAdvance() {
         // Select the starting player.
         chooseStartingPlayer()
+    
         self.numPlayersRemaining = self.playerCount
-        showNextPage()
     }
     
     private func chooseStartingPlayer() {
@@ -231,8 +196,6 @@ struct ContentView: View {
         self.numPlayersRemaining = 0
 
         withAnimation(.easeInOut(duration: 0.4)) {
-            self.currentPage = .home
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.players = []
             }
