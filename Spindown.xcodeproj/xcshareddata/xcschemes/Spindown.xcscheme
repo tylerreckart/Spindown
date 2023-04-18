@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DB8B8F502986E2CB0023A84B"
-               BuildableName = "Mana Vault.app"
-               BlueprintName = "Mana Vault"
-               ReferencedContainer = "container:Mana Vault.xcodeproj">
+               BuildableName = "Spindown.app"
+               BlueprintName = "Spindown"
+               ReferencedContainer = "container:Spindown.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DB8B8F502986E2CB0023A84B"
-            BuildableName = "Mana Vault.app"
-            BlueprintName = "Mana Vault"
-            ReferencedContainer = "container:Mana Vault.xcodeproj">
+            BuildableName = "Spindown.app"
+            BlueprintName = "Spindown"
+            ReferencedContainer = "container:Spindown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DB8B8F502986E2CB0023A84B"
-            BuildableName = "Mana Vault.app"
-            BlueprintName = "Mana Vault"
-            ReferencedContainer = "container:Mana Vault.xcodeproj">
+            BuildableName = "Spindown.app"
+            BlueprintName = "Spindown"
+            ReferencedContainer = "container:Spindown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

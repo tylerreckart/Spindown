@@ -113,7 +113,7 @@
 		DB69EC8929A7087500D4EB3F /* DiceRoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRoll.swift; sourceTree = "<group>"; };
 		DB69EC8B29A7088300D4EB3F /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		DB8A3251298CB2DF00FB7658 /* ChangeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayout.swift; sourceTree = "<group>"; };
-		DB8B8F512986E2CB0023A84B /* Mana Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mana Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB8B8F512986E2CB0023A84B /* Spindown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spindown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8B8F542986E2CB0023A84B /* SpindownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpindownApp.swift; sourceTree = "<group>"; };
 		DB8B8F562986E2CB0023A84B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB8B8F592986E2CB0023A84B /* Spindown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spindown.xcdatamodel; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 		DB8B8F522986E2CB0023A84B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DB8B8F512986E2CB0023A84B /* Mana Vault.app */,
+				DB8B8F512986E2CB0023A84B /* Spindown.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -388,9 +388,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DB8B8F502986E2CB0023A84B /* Mana Vault */ = {
+		DB8B8F502986E2CB0023A84B /* Spindown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Mana Vault" */;
+			buildConfigurationList = DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Spindown" */;
 			buildPhases = (
 				DB8B8F4D2986E2CB0023A84B /* Sources */,
 				DB8B8F4E2986E2CB0023A84B /* Frameworks */,
@@ -400,11 +400,11 @@
 			);
 			dependencies = (
 			);
-			name = "Mana Vault";
+			name = Spindown;
 			packageProductDependencies = (
 			);
 			productName = Spindown;
-			productReference = DB8B8F512986E2CB0023A84B /* Mana Vault.app */;
+			productReference = DB8B8F512986E2CB0023A84B /* Spindown.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -422,7 +422,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Mana Vault" */;
+			buildConfigurationList = DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Spindown" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -437,7 +437,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DB8B8F502986E2CB0023A84B /* Mana Vault */,
+				DB8B8F502986E2CB0023A84B /* Spindown */,
 			);
 		};
 /* End PBXProject section */
@@ -739,7 +739,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Mana Vault" */ = {
+		DB8B8F4C2986E2CB0023A84B /* Build configuration list for PBXProject "Spindown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB8B8F632986E2CC0023A84B /* Debug */,
@@ -748,7 +748,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Mana Vault" */ = {
+		DB8B8F652986E2CC0023A84B /* Build configuration list for PBXNativeTarget "Spindown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB8B8F662986E2CC0023A84B /* Debug */,
