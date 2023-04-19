@@ -8,6 +8,7 @@
 import Foundation
 
 enum Counter {
+    case tax
     case lifeTotal
     case poison
     case energy

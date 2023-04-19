@@ -18,16 +18,17 @@ struct CounterTile: View {
     @State private var isActive: Bool = false
     
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 10) {
             if (self.isActive) {
                 Button(action: add) {
                     ZStack {
                         Circle()
                             .fill(.ultraThinMaterial)
-                            .frame(width: 28)
-                            .opacity(0)
+                            .frame(width: 26)
+                            .opacity(0.4)
+                            .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
                         Image(systemName: "plus")
-                            .font(.system(size: 20, weight: .semibold))
+                            .font(.system(size: 18, weight: .semibold))
                     }
                 }
                 .transition(
@@ -39,23 +40,17 @@ struct CounterTile: View {
             }
             
             Button(action: { self.activeCounter = target }) {
-                ZStack {
-                    Image("CounterTabletBackground")
+                VStack {
+                    Text("\(value)")
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        .frame(height: 17)
+                        .shadow(color: .black.opacity(0.2), radius: 3)
+                    Image(badge)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height: 70)
-                    
-                    VStack {
-                        Text("\(value)")
-                            .font(.system(size: 20, weight: .semibold, design: .rounded))
-                            .frame(height: 17)
-                            .shadow(color: .black.opacity(0.2), radius: 3)
-                        Image(badge)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 29)
-                    }
+                        .frame(width: 29)
                 }
+                .opacity(self.activeCounter == target ? 1 : 0.4)
             }
             
             if (self.isActive) {
@@ -63,10 +58,11 @@ struct CounterTile: View {
                     ZStack {
                         Circle()
                             .fill(.ultraThinMaterial)
-                            .frame(width: 28)
-                            .opacity(0)
+                            .frame(width: 26)
+                            .opacity(0.4)
+                            .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 2)
                         Image(systemName: "minus")
-                            .font(.system(size: 20, weight: .semibold))
+                            .font(.system(size: 18, weight: .semibold))
                     }
                 }
                 .transition(
@@ -123,6 +119,17 @@ struct PlayerTileCountersOverlay: View {
                 }
             }
             
+            VStack {
+                Spacer()
+                
+                Image(systemName: "chevron.compact.up")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.white.opacity(0.2))
+                    .padding(10)
+                    .shadow(color: .black.opacity(0.1), radius: 2)
+                    .transition(.push(from: .leading))
+            }
+            
             OverlayDragGestureHandler(
                 height: $height,
                 isFullHeight: $isFullHeight,
@@ -132,48 +139,73 @@ struct PlayerTileCountersOverlay: View {
             
             if (isFullHeight) {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20) {
-                        Spacer()
-                        
-                        CounterTile(
-                            target: .energy,
-                            value: player.poison,
-                            add: { player.addCounter(.poison) },
-                            remove: { player.removeCounter(.poison) },
-                            badge: "TaxBadge",
-                            activeCounter: $activeCounter
-                        )
-                        
-                        CounterTile(
-                            target: .poison,
-                            value: player.poison,
-                            add: { player.addCounter(.poison) },
-                            remove: { player.removeCounter(.poison) },
-                            badge: "PoisonCounterBadge",
-                            activeCounter: $activeCounter
-                        )
-                        
-                        CounterTile(
-                            target: .energy,
-                            value: player.energy,
-                            add: { player.addCounter(.energy) },
-                            remove: { player.removeCounter(.energy) },
-                            badge: "EnergyCounterBadge",
-                            activeCounter: $activeCounter
-                        )
-                        
-                        CounterTile(
-                            target: .experience,
-                            value: player.experience,
-                            add: { player.addCounter(.experience) },
-                            remove: { player.removeCounter(.experience) },
-                            badge: "XPCounterBadge",
-                            activeCounter: $activeCounter
-                        )
-                        
+                    ZStack {
+                        HStack(spacing: 20) {
+                            CounterTile(
+                                target: .tax,
+                                value: player.tax,
+                                add: { player.addCounter(.tax) },
+                                remove: { player.removeCounter(.tax) },
+                                badge: "TaxBadge",
+                                activeCounter: $activeCounter
+                            )
+                            
+                            CounterTile(
+                                target: .poison,
+                                value: player.poison,
+                                add: { player.addCounter(.poison) },
+                                remove: { player.removeCounter(.poison) },
+                                badge: "PoisonCounterBadge",
+                                activeCounter: $activeCounter
+                            )
+                            
+                            CounterTile(
+                                target: .energy,
+                                value: player.energy,
+                                add: { player.addCounter(.energy) },
+                                remove: { player.removeCounter(.energy) },
+                                badge: "EnergyCounterBadge",
+                                activeCounter: $activeCounter
+                            )
+                            
+                            CounterTile(
+                                target: .experience,
+                                value: player.experience,
+                                add: { player.addCounter(.experience) },
+                                remove: { player.removeCounter(.experience) },
+                                badge: "XPCounterBadge",
+                                activeCounter: $activeCounter
+                            )
+                            
+                            ContentDivider()
+                            
+                            Button(action: {
+                                withAnimation {
+                                    player.toggleMonarchy()
+                                }
+                            }) {
+                                VStack {
+                                    Image("CrownBadge")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 60)
+                                        .rotationEffect(Angle(degrees: 10))
+                                    Spacer()
+                                    
+                                    Text("Take The Crown")
+                                        .font(.system(size: 10, weight: .black, design: .rounded))
+                                        .textCase(.uppercase)
+                                        .foregroundColor(.white)
+                                }
+                                .frame(maxHeight: 60)
+                                .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
+                            }
+                            
+                            ContentDivider()
+                        }
+                        .padding(.horizontal)
                         Spacer()
                     }
-                    .padding(.horizontal)
                 }
             }
         }
@@ -181,6 +213,22 @@ struct PlayerTileCountersOverlay: View {
             if (self.selectedCounter != nil) {
                 self.activeCounter = self.selectedCounter!
             }
+        }
+    }
+    
+    struct ContentDivider: View {
+        var body: some View {
+            Rectangle()
+                .fill(
+                    LinearGradient(
+                        colors: [.white.opacity(0.2), .white.opacity(0.15)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .frame(width: 4, height: 100)
+                .cornerRadius(2)
+                .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
         }
     }
 }

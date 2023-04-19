@@ -103,7 +103,7 @@ struct PlayerTile: View {
                         .aspectRatio(contentMode: .fill)
                 )
                 
-                PlayerBadges(showOverlay: $showCountersOverlay, selectedCounter: $selectedCounter)
+                PlayerBadges(player: player, showOverlay: $showCountersOverlay, selectedCounter: $selectedCounter)
                 
                 if (showOptionsOverlay && overlayHeight > 0) {
                     PlayerTileOptionsOverlay(

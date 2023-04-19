@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlayerBadges: View {
+    @ObservedObject var player: Participant
+
     @Binding var showOverlay: Bool
     @Binding var selectedCounter: Counter?
 
@@ -54,12 +56,15 @@ struct PlayerBadges: View {
                     
                     Spacer()
                     
-                    Image("CrownBadge")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxHeight: 30)
-                        .rotationEffect(Angle(degrees: 10))
-                        .shadow(radius: 3)
+                    if (player.monarch) {
+                        Image("CrownBadge")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxHeight: 30)
+                            .rotationEffect(Angle(degrees: 10))
+                            .shadow(radius: 3)
+                            .transition(.opacity)
+                    }
                 }
                 Spacer()
             }

@@ -65,7 +65,7 @@ struct TwoPlayerGameBoard: View {
                 }
                 
             }) {
-                Image("Pin")
+                Image("D20")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: 60)

@@ -50,10 +50,12 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     // @Published sends updates to any views watching this value.
     @Published var lifeTotal: Int = 0
     // Counters
+    @Published var monarch: Bool = false
     @Published var poison: Int = 0
     @Published var experience: Int = 0
     @Published var energy: Int = 0
     @Published var tickets: Int = 0
+    @Published var tax: Int = 0
     // Display theme.
     var theme: Theme? = nil
     
@@ -77,8 +79,14 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
         self.lifeTotal = newLifeTotal
     }
     
+    public func toggleMonarchy() {
+        self.monarch.toggle()
+    }
+    
     public func addCounter(_ counter: Counter) {
         switch (counter) {
+            case .tax:
+                self.tax += 2
             case .poison:
                 self.poison += 1
             case .energy:
@@ -94,6 +102,8 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     
     public func removeCounter(_ counter: Counter) {
         switch (counter) {
+            case .tax:
+                self.tax -= 2
             case .poison:
                 self.poison -= 1
             case .energy:
