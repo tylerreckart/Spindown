@@ -24,8 +24,21 @@ struct PlayerTileOptionsOverlay: View {
                     .edgesIgnoringSafeArea(.all)
                     .frame(maxWidth: .infinity, maxHeight: height)
                 
-                if (!isFullHeight) {
+                if (!isFullHeight || self.completionPercentage > 0.9) {
                     Spacer()
+                }
+            }
+            
+            if (isFullHeight) {
+                VStack {
+                    Spacer()
+                    
+                    Image(systemName: "chevron.compact.up")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.white.opacity(0.2))
+                        .padding(10)
+                        .shadow(color: .black.opacity(0.1), radius: 2)
+                        .transition(.push(from: .bottom))
                 }
             }
             
@@ -36,8 +49,12 @@ struct PlayerTileOptionsOverlay: View {
                 showOverlay: $showOverlay
             )
             
-            if (isFullHeight) {
-                CounterOptionsStack(player: player, activeCounter: $activeCounter)
+            if (self.completionPercentage > 0.9) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    CounterOptionsStack(player: player, activeCounter: $activeCounter)
+                        .zIndex(10)
+                        .transition(.scale(scale: 0.9).combined(with: .opacity))
+                }
             }
         }
     }

@@ -90,6 +90,45 @@ struct CounterOptionsStack: View {
                 .frame(width: 110, height: 110)
                 
                 ContentDivider()
+                
+                HStack(spacing: 20) {
+                    CounterTile(
+                        target: .tax,
+                        value: player.tax,
+                        add: { player.addCounter(.tax) },
+                        remove: { player.removeCounter(.tax) },
+                        badge: "TaxBadge",
+                        activeCounter: $activeCounter
+                    )
+                    
+                    CounterTile(
+                        target: .poison,
+                        value: player.poison,
+                        add: { player.addCounter(.poison) },
+                        remove: { player.removeCounter(.poison) },
+                        badge: "PoisonCounterBadge",
+                        activeCounter: $activeCounter
+                    )
+                    
+                    CounterTile(
+                        target: .energy,
+                        value: player.energy,
+                        add: { player.addCounter(.energy) },
+                        remove: { player.removeCounter(.energy) },
+                        badge: "EnergyCounterBadge",
+                        activeCounter: $activeCounter
+                    )
+                    
+                    CounterTile(
+                        target: .experience,
+                        value: player.experience,
+                        add: { player.addCounter(.experience) },
+                        remove: { player.removeCounter(.experience) },
+                        badge: "XPCounterBadge",
+                        activeCounter: $activeCounter
+                    )
+                }
+                .padding(.trailing)
             }
             .padding(.horizontal)
             Spacer()

@@ -13,7 +13,7 @@ struct OverlayDragGestureHandler: View {
     @Binding var dragCompletionPercentage: CGFloat
     @Binding var showOverlay: Bool
     
-    @State private var gest: DragGesture = DragGesture(minimumDistance: 20, coordinateSpace: .local)
+    @State private var gest: DragGesture = DragGesture(minimumDistance: 5, coordinateSpace: .local)
     
     @State private var greatestFiniteHeight: CGFloat = 0
 
@@ -26,12 +26,6 @@ struct OverlayDragGestureHandler: View {
                         .onChanged({ gesture in
                             self.showOverlay = true
                             
-                            if (isFullHeight) {
-                                withAnimation {
-                                    self.isFullHeight = false
-                                }
-                            }
-                            
                             let size = geometry.size
                             let pos = gesture.location.y
 
@@ -41,7 +35,13 @@ struct OverlayDragGestureHandler: View {
                             
                             withAnimation {
                                 if (pos > 0) {
-                                    self.dragCompletionPercentage = pos / greatestFiniteHeight
+                                    let percent =  pos / greatestFiniteHeight
+                                    
+                                    if (percent < 0.9) {
+                                        self.isFullHeight = false
+                                    }
+                                    
+                                    self.dragCompletionPercentage = percent
                                     self.height = pos
                                 }
                             }
