@@ -18,7 +18,7 @@ struct CounterBadge: View {
             self.showOverlay.toggle()
             self.activeCounter = counter
         }) {
-            Image("\(counter.rawValue)Badge")
+            Image("\(counter.rawValue.prefix(1).uppercased() + counter.rawValue.lowercased().dropFirst())Badge")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 30)

@@ -31,7 +31,7 @@ struct CounterOptionsStack: View {
                     value: player.poison,
                     add: { player.addCounter(.poison) },
                     remove: { player.removeCounter(.poison) },
-                    badge: "PoisonCounterBadge",
+                    badge: "PoisonBadge",
                     activeCounter: $activeCounter
                 )
                 
@@ -40,7 +40,7 @@ struct CounterOptionsStack: View {
                     value: player.energy,
                     add: { player.addCounter(.energy) },
                     remove: { player.removeCounter(.energy) },
-                    badge: "EnergyCounterBadge",
+                    badge: "EnergyBadge",
                     activeCounter: $activeCounter
                 )
                 
@@ -49,7 +49,7 @@ struct CounterOptionsStack: View {
                     value: player.experience,
                     add: { player.addCounter(.experience) },
                     remove: { player.removeCounter(.experience) },
-                    badge: "XPCounterBadge",
+                    badge: "XpBadge",
                     activeCounter: $activeCounter
                 )
                 
@@ -82,7 +82,6 @@ struct CounterOptionsStack: View {
                             .font(.system(size: 10, weight: .black, design: .rounded))
                             .textCase(.uppercase)
                             .foregroundColor(.white)
-                            .frame(width: 110)
                         Spacer()
                     }
                     .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
@@ -93,38 +92,56 @@ struct CounterOptionsStack: View {
                 
                 HStack(spacing: 20) {
                     CounterTile(
-                        target: .tax,
-                        value: player.tax,
-                        add: { player.addCounter(.tax) },
-                        remove: { player.removeCounter(.tax) },
-                        badge: "TaxBadge",
+                        target: .red,
+                        value: player.red,
+                        add: { player.addCounter(.red) },
+                        remove: { player.removeCounter(.red) },
+                        badge: "RedBadge",
                         activeCounter: $activeCounter
                     )
                     
                     CounterTile(
-                        target: .poison,
-                        value: player.poison,
-                        add: { player.addCounter(.poison) },
-                        remove: { player.removeCounter(.poison) },
-                        badge: "PoisonCounterBadge",
+                        target: .green,
+                        value: player.green,
+                        add: { player.addCounter(.green) },
+                        remove: { player.removeCounter(.green) },
+                        badge: "GreenBadge",
                         activeCounter: $activeCounter
                     )
                     
                     CounterTile(
-                        target: .energy,
-                        value: player.energy,
-                        add: { player.addCounter(.energy) },
-                        remove: { player.removeCounter(.energy) },
-                        badge: "EnergyCounterBadge",
+                        target: .blue,
+                        value: player.blue,
+                        add: { player.addCounter(.blue) },
+                        remove: { player.removeCounter(.blue) },
+                        badge: "BlueBadge",
                         activeCounter: $activeCounter
                     )
                     
                     CounterTile(
-                        target: .experience,
-                        value: player.experience,
-                        add: { player.addCounter(.experience) },
-                        remove: { player.removeCounter(.experience) },
-                        badge: "XPCounterBadge",
+                        target: .white,
+                        value: player.white,
+                        add: { player.addCounter(.white) },
+                        remove: { player.removeCounter(.white) },
+                        badge: "WhiteBadge",
+                        activeCounter: $activeCounter
+                    )
+                    
+                    CounterTile(
+                        target: .black,
+                        value: player.black,
+                        add: { player.addCounter(.black) },
+                        remove: { player.removeCounter(.black) },
+                        badge: "BlackBadge",
+                        activeCounter: $activeCounter
+                    )
+                    
+                    CounterTile(
+                        target: .colorless,
+                        value: player.colorless,
+                        add: { player.addCounter(.colorless) },
+                        remove: { player.removeCounter(.colorless) },
+                        badge: "ColorlessBadge",
                         activeCounter: $activeCounter
                     )
                 }

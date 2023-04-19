@@ -17,7 +17,7 @@ struct ContentDivider: View {
                     endPoint: .bottom
                 )
             )
-            .frame(width: 4, height: 120)
+            .frame(width: 4, height: 80)
             .cornerRadius(2)
             .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
     }

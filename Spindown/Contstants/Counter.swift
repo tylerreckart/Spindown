@@ -8,10 +8,18 @@
 import Foundation
 
 enum Counter: String {
-    case tax = "Tax"
-    case lifeTotal = "LifeTotal"
-    case poison = "PoisonCounter"
-    case energy = "EnergyCounter"
-    case experience = "XPCounter"
-    case tickets = "TicketsCounter"
+    case lifeTotal
+    // Player Counters.
+    case tax
+    case poison
+    case energy
+    case experience = "xp"
+    case tickets
+    // Floating Mana Values.
+    case red
+    case blue
+    case green
+    case white
+    case black
+    case colorless
 }

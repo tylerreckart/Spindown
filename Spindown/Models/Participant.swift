@@ -57,6 +57,13 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     @Published var tickets: Int = 0
     @Published var tax: Int = 0
     @Published var activeCounters: [Counter] = []
+    // Floating Mana.
+    @Published var red: Int = 0
+    @Published var blue: Int = 0
+    @Published var green: Int = 0
+    @Published var white: Int = 0
+    @Published var black: Int = 0
+    @Published var colorless: Int = 0
     // Display theme.
     var theme: Theme? = nil
     
@@ -98,6 +105,18 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
                 self.tickets += 1
             case .lifeTotal:
                 return
+            case .red:
+                self.red += 1
+            case .blue:
+                self.blue += 1
+            case .green:
+                self.green += 1
+            case .white:
+                self.white += 1
+            case .black:
+                self.black += 1
+            case .colorless:
+                self.colorless += 1
         }
         
         trackActiveCounters()
@@ -137,6 +156,42 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
                 }
             case .lifeTotal:
                 return
+            case .red:
+                if (self.red - 1 >= 0) {
+                    self.red -= 1
+                } else {
+                    self.red = 0
+                }
+            case .green:
+                if (self.green - 1 >= 0) {
+                    self.green -= 1
+                } else {
+                    self.green = 0
+                }
+            case .blue:
+                if (self.blue - 1 >= 0) {
+                    self.blue -= 1
+                } else {
+                    self.blue = 0
+                }
+            case .white:
+                if (self.white - 1 >= 0) {
+                    self.white -= 1
+                } else {
+                    self.white = 0
+                }
+            case .black:
+                if (self.black - 1 >= 0) {
+                    self.black -= 1
+                } else {
+                    self.black = 0
+                }
+            case .colorless:
+                if (self.colorless - 1 >= 0) {
+                    self.colorless -= 1
+                } else {
+                    self.colorless = 0
+                }
         }
         
         trackActiveCounters()
@@ -212,6 +267,96 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
             }
         } else if (self.tickets == 0) {
             let index = self.activeCounters.firstIndex(of: .tickets)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Red
+        if (self.red > 0) {
+            let index = self.activeCounters.firstIndex(of: .red)
+            
+            if (index == nil) {
+                self.activeCounters.append(.red)
+            }
+        } else if (self.red == 0) {
+            let index = self.activeCounters.firstIndex(of: .red)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Green
+        if (self.green > 0) {
+            let index = self.activeCounters.firstIndex(of: .green)
+            
+            if (index == nil) {
+                self.activeCounters.append(.green)
+            }
+        } else if (self.green == 0) {
+            let index = self.activeCounters.firstIndex(of: .green)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Blue
+        if (self.blue > 0) {
+            let index = self.activeCounters.firstIndex(of: .blue)
+            
+            if (index == nil) {
+                self.activeCounters.append(.blue)
+            }
+        } else if (self.blue == 0) {
+            let index = self.activeCounters.firstIndex(of: .blue)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // White
+        if (self.white > 0) {
+            let index = self.activeCounters.firstIndex(of: .white)
+            
+            if (index == nil) {
+                self.activeCounters.append(.white)
+            }
+        } else if (self.white == 0) {
+            let index = self.activeCounters.firstIndex(of: .white)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Black
+        if (self.black > 0) {
+            let index = self.activeCounters.firstIndex(of: .black)
+            
+            if (index == nil) {
+                self.activeCounters.append(.black)
+            }
+        } else if (self.black == 0) {
+            let index = self.activeCounters.firstIndex(of: .black)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Colorless
+        if (self.colorless > 0) {
+            let index = self.activeCounters.firstIndex(of: .colorless)
+            
+            if (index == nil) {
+                self.activeCounters.append(.colorless)
+            }
+        } else if (self.colorless == 0) {
+            let index = self.activeCounters.firstIndex(of: .colorless)
             
             if (index != nil) {
                 self.activeCounters.remove(at: index!)

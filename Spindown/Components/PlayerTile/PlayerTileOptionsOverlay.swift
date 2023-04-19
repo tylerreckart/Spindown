@@ -31,8 +31,12 @@ struct PlayerTileOptionsOverlay: View {
             
             if (isFullHeight) {
                 VStack {
+                    Text("Player Options")
+                        .font(.system(size: 10, weight: .black, design: .rounded))
+                        .textCase(.uppercase)
+                        .foregroundColor(.white)
+                        .padding(20)
                     Spacer()
-                    
                     Image(systemName: "chevron.compact.up")
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.white.opacity(0.2))

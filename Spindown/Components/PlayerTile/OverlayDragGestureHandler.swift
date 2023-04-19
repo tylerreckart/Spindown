@@ -37,7 +37,7 @@ struct OverlayDragGestureHandler: View {
                                 if (pos > 0) {
                                     let percent =  pos / greatestFiniteHeight
                                     
-                                    if (percent < 0.9) {
+                                    if (percent < 0.8) {
                                         self.isFullHeight = false
                                     }
                                     

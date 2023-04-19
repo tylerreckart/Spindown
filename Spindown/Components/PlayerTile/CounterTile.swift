@@ -25,13 +25,13 @@ struct CounterTile: View {
                     ZStack {
                         Circle()
                             .fill(.ultraThinMaterial)
-                            .frame(width: 26)
-                            .opacity(0.4)
+                            .frame(width: 32)
                             .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
                         Image(systemName: "plus")
                             .font(.system(size: 18, weight: .semibold))
                     }
                 }
+                .frame(width: 32, height: 32)
                 .transition(
                     .asymmetric(
                         insertion: .push(from: .bottom).combined(with: .opacity),
@@ -40,7 +40,13 @@ struct CounterTile: View {
                 )
             }
             
-            Button(action: { self.activeCounter = target }) {
+            Button(action: {
+                if (self.activeCounter != target) {
+                    self.activeCounter = target
+                } else {
+                    self.activeCounter = nil
+                }
+            }) {
                 VStack {
                     Text("\(value)")
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
@@ -49,7 +55,7 @@ struct CounterTile: View {
                     Image(badge)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 29)
+                        .frame(width: 32)
                 }
                 .opacity(self.activeCounter == target ? 1 : 0.4)
             }
@@ -59,13 +65,13 @@ struct CounterTile: View {
                     ZStack {
                         Circle()
                             .fill(.ultraThinMaterial)
-                            .frame(width: 26)
-                            .opacity(0.4)
+                            .frame(width: 32)
                             .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 2)
                         Image(systemName: "minus")
                             .font(.system(size: 18, weight: .semibold))
                     }
                 }
+                .frame(width: 32, height: 32)
                 .transition(
                     .asymmetric(
                         insertion: .push(from: .top).combined(with: .opacity),
