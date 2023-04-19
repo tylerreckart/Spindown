@@ -21,7 +21,6 @@ struct PlayerTile: View {
     @State private var showOptionsOverlay: Bool = false
     
     // Player counters overlay (only valid if player has existing active counters).
-    @State private var showCountersOverlay: Bool = false
     @State private var selectedCounter: Counter?
     
     @State private var autoAnimate: Bool = false
@@ -103,30 +102,20 @@ struct PlayerTile: View {
                         .aspectRatio(contentMode: .fill)
                 )
                 
-                PlayerBadges(player: player, showOverlay: $showCountersOverlay, selectedCounter: $selectedCounter)
+                PlayerBadges(player: player, showOverlay: $showOptionsOverlay, selectedCounter: $selectedCounter)
                 
                 if (showOptionsOverlay && overlayHeight > 0) {
                     PlayerTileOptionsOverlay(
+                        player: player,
                         height: $overlayHeight,
                         completionPercentage: $dragCompletionPercentage,
                         isFullHeight: $overlayIsFullHeight,
                         showOverlay: $showOptionsOverlay
                     )
                 }
-                
-                if (showCountersOverlay && overlayHeight > 0) {
-                    PlayerTileCountersOverlay(
-                        player: player,
-                        height: $overlayHeight,
-                        completionPercentage: $dragCompletionPercentage,
-                        isFullHeight: $overlayIsFullHeight,
-                        showOverlay: $showCountersOverlay,
-                        selectedCounter: $selectedCounter
-                    )
-                }
             }
         }
-        .onChange(of: showCountersOverlay) { newState in
+        .onChange(of: showOptionsOverlay) { newState in
             if (newState == true) {
                 self.timer = Timer.publish(every: 0.01, on: .main, in: .common)
                 timer.connect()

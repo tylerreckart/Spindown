@@ -56,6 +56,7 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     @Published var energy: Int = 0
     @Published var tickets: Int = 0
     @Published var tax: Int = 0
+    @Published var activeCounters: [Counter] = []
     // Display theme.
     var theme: Theme? = nil
     
@@ -98,22 +99,124 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
             case .lifeTotal:
                 return
         }
+        
+        trackActiveCounters()
     }
     
     public func removeCounter(_ counter: Counter) {
         switch (counter) {
             case .tax:
-                self.tax -= 2
+                if (self.tax - 2 >= 0) {
+                    self.tax -= 2
+                } else {
+                    self.tax = 0
+                }
             case .poison:
-                self.poison -= 1
+                if (self.poison - 1 >= 0) {
+                    self.poison -= 1
+                } else {
+                    self.poison = 0
+                }
             case .energy:
-                self.energy -= 1
+                if (self.energy - 1 >= 0) {
+                    self.energy -= 1
+                } else {
+                    self.energy = 0
+                }
             case .experience:
-                self.experience -= 1
+                if (self.experience - 1 >= 0) {
+                    self.experience -= 1
+                } else {
+                    self.experience = 0
+                }
             case .tickets:
-                self.tickets -= 1
+                if (self.tickets - 1 >= 0) {
+                    self.tickets -= 1
+                } else {
+                    self.tickets = 0
+                }
             case .lifeTotal:
                 return
         }
+        
+        trackActiveCounters()
     }
+    
+    private func trackActiveCounters() -> Void {
+        // Commander Tax
+        if (self.tax > 0) {
+            let index = self.activeCounters.firstIndex(of: .tax)
+            
+            if (index == nil) {
+                self.activeCounters.append(.tax)
+            }
+        } else if (self.tax == 0) {
+            let index = self.activeCounters.firstIndex(of: .tax)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Poison
+        if (self.poison > 0) {
+            let index = self.activeCounters.firstIndex(of: .poison)
+            
+            if (index == nil) {
+                self.activeCounters.append(.poison)
+            }
+        } else if (self.poison == 0) {
+            let index = self.activeCounters.firstIndex(of: .poison)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Energy
+        if (self.energy > 0) {
+            let index = self.activeCounters.firstIndex(of: .energy)
+            
+            if (index == nil) {
+                self.activeCounters.append(.energy)
+            }
+        } else if (self.energy == 0) {
+            let index = self.activeCounters.firstIndex(of: .energy)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Experience
+        if (self.experience > 0) {
+            let index = self.activeCounters.firstIndex(of: .experience)
+            
+            if (index == nil) {
+                self.activeCounters.append(.experience)
+            }
+        } else if (self.experience == 0) {
+            let index = self.activeCounters.firstIndex(of: .experience)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+        
+        // Tickets
+        if (self.tickets > 0) {
+            let index = self.activeCounters.firstIndex(of: .tickets)
+            
+            if (index == nil) {
+                self.activeCounters.append(.tickets)
+            }
+        } else if (self.tickets == 0) {
+            let index = self.activeCounters.firstIndex(of: .tickets)
+            
+            if (index != nil) {
+                self.activeCounters.remove(at: index!)
+            }
+        }
+    }
+    
 }

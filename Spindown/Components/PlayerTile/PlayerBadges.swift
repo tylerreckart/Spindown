@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+struct CounterBadge: View {
+    var counter: Counter
+
+    @Binding var showOverlay: Bool
+    @Binding var activeCounter: Counter?
+
+    var body: some View {
+        Button(action: {
+            self.showOverlay.toggle()
+            self.activeCounter = counter
+        }) {
+            Image("\(counter.rawValue)Badge")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30)
+                .shadow(radius: 2, x: 1, y: 1)
+        }
+    }
+}
+
 struct PlayerBadges: View {
     @ObservedObject var player: Participant
 
@@ -16,60 +36,27 @@ struct PlayerBadges: View {
     var body: some View {
         VStack {
             HStack {
-                HStack {
-                    ZStack {
-                        Button(action: {
-                            self.showOverlay.toggle()
-                            self.selectedCounter = .experience
-                        }) {
-                            Image("XPCounterBadge")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30)
-                                .shadow(radius: 2, x: 1, y: 1)
-                        }
-                        
-                        Button(action: {
-                            self.showOverlay.toggle()
-                            self.selectedCounter = .poison
-                        }) {
-                            Image("PoisonCounterBadge")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30)
-                                .shadow(radius: 2, x: 1, y: 1)
-                        }
-                        .offset(x: 38, y: 8)
-                        
-                        Button(action: {
-                            self.showOverlay.toggle()
-                            self.selectedCounter = .energy
-                        }) {
-                            Image("EnergyCounterBadge")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30)
-                                .shadow(radius: 2, x: 1, y: 1)
-                        }
-                        .offset(x: 8, y: 38)
-                    }
-                    
-                    Spacer()
-                    
-                    if (player.monarch) {
-                        Image("CrownBadge")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxHeight: 30)
-                            .rotationEffect(Angle(degrees: 10))
-                            .shadow(radius: 3)
-                            .transition(.opacity)
-                    }
+                ForEach(Array(player.activeCounters), id: \.self) { counter in
+                    CounterBadge(counter: counter, showOverlay: $showOverlay, activeCounter: $selectedCounter)
+                        .transition(.opacity)
                 }
+                
                 Spacer()
+                
+                if (player.monarch) {
+                    Image("CrownBadge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 30)
+                        .rotationEffect(Angle(degrees: 10))
+                        .shadow(radius: 3)
+                        .transition(.opacity)
+                }
             }
             .padding()
+            
             Spacer()
         }
     }
 }
+

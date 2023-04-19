@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum Counter {
-    case tax
-    case lifeTotal
-    case poison
-    case energy
-    case experience
-    case tickets
+enum Counter: String {
+    case tax = "Tax"
+    case lifeTotal = "LifeTotal"
+    case poison = "PoisonCounter"
+    case energy = "EnergyCounter"
+    case experience = "XPCounter"
+    case tickets = "TicketsCounter"
 }
