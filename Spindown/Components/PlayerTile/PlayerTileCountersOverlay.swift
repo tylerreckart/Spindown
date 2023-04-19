@@ -141,6 +141,8 @@ struct PlayerTileCountersOverlay: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     ZStack {
                         HStack(spacing: 20) {
+                            ContentDivider()
+
                             CounterTile(
                                 target: .tax,
                                 value: player.tax,
@@ -184,22 +186,34 @@ struct PlayerTileCountersOverlay: View {
                                     player.toggleMonarchy()
                                 }
                             }) {
-                                VStack {
-                                    Image("CrownBadge")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 60)
-                                        .rotationEffect(Angle(degrees: 10))
+                                VStack(spacing: 15) {
                                     Spacer()
                                     
-                                    Text("Take The Crown")
+                                    VStack {
+                                        if(!player.monarch) {
+                                            Image("CrownBadge")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 60)
+                                                .rotationEffect(Angle(degrees: 10))
+                                        } else {
+                                            Image("CrownBadgeBroken")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 60)
+                                        }
+                                    }
+                                    
+                                    Text("\(!player.monarch ? "Take" : "Yield") The Crown")
                                         .font(.system(size: 10, weight: .black, design: .rounded))
                                         .textCase(.uppercase)
                                         .foregroundColor(.white)
+                                        .frame(width: 110)
+                                    Spacer()
                                 }
-                                .frame(maxHeight: 60)
                                 .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
                             }
+                            .frame(width: 110, height: 110)
                             
                             ContentDivider()
                         }
@@ -226,7 +240,7 @@ struct PlayerTileCountersOverlay: View {
                         endPoint: .bottom
                     )
                 )
-                .frame(width: 4, height: 100)
+                .frame(width: 4, height: 120)
                 .cornerRadius(2)
                 .shadow(color: .black.opacity(0.1), radius: 2, x: 1, y: 1)
         }
