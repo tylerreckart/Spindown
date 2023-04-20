@@ -45,6 +45,7 @@ struct TwoPlayerGameBoard: View {
             VStack(spacing: 0) {
                 PlayerTile(
                     player: players[1],
+                    selectedPlayer: $selectedPlayer,
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 .cornerRadius(16, corners: [.topLeft, .topRight])
@@ -54,6 +55,7 @@ struct TwoPlayerGameBoard: View {
                 
                 PlayerTile(
                     player: players[0],
+                    selectedPlayer: $selectedPlayer,
                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                 )
                 .cornerRadius(16, corners: [.topLeft, .topRight])

@@ -24,6 +24,7 @@ struct FivePlayerGameBoard: View {
                         ForEach(0..<2, id: \.self) { index in
                             PlayerTile(
                                 player: players[index],
+                                selectedPlayer: $selectedPlayer,
                                 showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
@@ -34,6 +35,7 @@ struct FivePlayerGameBoard: View {
                         ForEach(2..<5, id: \.self) { index in
                             PlayerTile(
                                 player: players[index],
+                                selectedPlayer: $selectedPlayer,
                                 showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
@@ -44,6 +46,7 @@ struct FivePlayerGameBoard: View {
                             ForEach(0..<2, id: \.self) { index in
                                 PlayerTile(
                                     player: players[index],
+                                    selectedPlayer: $selectedPlayer,
                                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                                 )
                             }
@@ -53,6 +56,7 @@ struct FivePlayerGameBoard: View {
                             ForEach(2..<4, id: \.self) { index in
                                 PlayerTile(
                                     player: players[index],
+                                    selectedPlayer: $selectedPlayer,
                                     showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                                 )
                             }
@@ -60,6 +64,7 @@ struct FivePlayerGameBoard: View {
                         
                         PlayerTile(
                             player: players[4],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }

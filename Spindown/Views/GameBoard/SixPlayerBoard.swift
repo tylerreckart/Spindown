@@ -23,14 +23,17 @@ struct SixPlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[0],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[1],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[2],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
@@ -38,14 +41,17 @@ struct SixPlayerGameBoard: View {
                     HStack(spacing: 20) {
                         PlayerTile(
                             player: players[3],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[4],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                         PlayerTile(
                             player: players[5],
+                            selectedPlayer: $selectedPlayer,
                             showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                         )
                     }
@@ -55,6 +61,7 @@ struct SixPlayerGameBoard: View {
                 HStack(spacing: 20) {
                     PlayerTile(
                         player: players[0],
+                        selectedPlayer: $selectedPlayer,
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     .rotationEffect(Angle(degrees: 180))
@@ -63,10 +70,12 @@ struct SixPlayerGameBoard: View {
                         HStack(spacing: 20) {
                             PlayerTile(
                                 player: players[1],
+                                selectedPlayer: $selectedPlayer,
                                 showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                             PlayerTile(
                                 player: players[2],
+                                selectedPlayer: $selectedPlayer,
                                 showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
@@ -74,16 +83,19 @@ struct SixPlayerGameBoard: View {
                         HStack(spacing: 20) {
                             PlayerTile(
                                 player: players[3],
+                                selectedPlayer: $selectedPlayer,
                                 showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                             PlayerTile(
                                 player: players[4],
+                                selectedPlayer: $selectedPlayer,
                                 showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                             )
                         }
                     }
                     PlayerTile(
                         player: players[5],
+                        selectedPlayer: $selectedPlayer,
                         showLifeTotalCalculator: showLifeTotalCalculatorForPlayer
                     )
                     .frame(maxWidth: screenWidth / 4)

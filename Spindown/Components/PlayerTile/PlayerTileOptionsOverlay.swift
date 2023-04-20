@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayerTileOptionsOverlay: View {
     @ObservedObject var player: Participant
-
+    @Binding var selectedPlayer: Participant?
     @Binding var height: CGFloat
     @Binding var completionPercentage: CGFloat
     @Binding var isFullHeight: Bool
@@ -55,9 +55,35 @@ struct PlayerTileOptionsOverlay: View {
             
             if (self.completionPercentage > 0.9) {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    CounterOptionsStack(player: player, activeCounter: $activeCounter)
-                        .zIndex(10)
-                        .transition(.scale(scale: 0.9).combined(with: .opacity))
+                    HStack(spacing: 20) {
+                        HStack {
+                            Button(action: {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    if (self.showOverlay) {
+                                        self.height = 0
+                                        self.isFullHeight = false
+                                        self.showOverlay = false
+                                        self.completionPercentage = 0
+                                    }
+                                }
+                                
+                                withAnimation {
+                                    self.selectedPlayer = player
+                                }
+                            }) {
+                                Text("Commander\nDamage")
+                                    .font(.system(size: 10, weight: .black, design: .rounded))
+                                    .textCase(.uppercase)
+                                    .foregroundColor(.white)
+                                    .padding(20)
+                            }
+                        }
+
+                        CounterOptionsStack(player: player, activeCounter: $activeCounter)
+                            .zIndex(10)
+                            .transition(.scale(scale: 0.9).combined(with: .opacity))
+                        
+                    }
                 }
             }
         }

@@ -39,6 +39,11 @@ let basicThemes = [
     Theme(type: .basic, background: "Swamp", backgroundKey: "Swamp")
 ]
 
+struct CommanderDamageDealt {
+    var player: Participant
+    var total: Int = 0
+}
+
 class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     // Unique Identifier
     var uid: UUID = UUID()
@@ -49,6 +54,11 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     // Life total given current board state.
     // @Published sends updates to any views watching this value.
     @Published var lifeTotal: Int = 0
+    // Commander Damage Recieved.
+    @Published var cmdrDamage: Int = 0
+    @Published var cmdrDamageDealt: [CommanderDamageDealt] = []
+    // Has this player lost the game?
+    @Published var isLoser: Bool = false
     // Counters
     @Published var monarch: Bool = false
     @Published var poison: Int = 0
@@ -80,11 +90,33 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
     }
     
     public func decrementLifeTotal() -> Void {
-        self.lifeTotal = self.lifeTotal - 1
+        let nextLifeTotal = self.lifeTotal - 1
+        
+        self.lifeTotal = nextLifeTotal
+        
+        if (nextLifeTotal <= 0) {
+            self.isLoser = true
+        }
     }
     
     public func setLifeTotal(_ newLifeTotal: Int) {
         self.lifeTotal = newLifeTotal
+    }
+    
+    public func incrementCmdrDamage() -> Void {
+        self.cmdrDamage = self.cmdrDamage + 1
+        
+        decrementLifeTotal()
+    }
+    
+    public func decrementCmdrDamage() -> Void {
+        let nextDamageTotal = self.cmdrDamage - 1
+        
+        if (nextDamageTotal >= 0) {
+            self.cmdrDamage = nextDamageTotal
+            
+            incrementLifeTotal()
+        }
     }
     
     public func toggleMonarchy() {
