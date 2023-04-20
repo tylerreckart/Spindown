@@ -117,6 +117,12 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
             
             incrementLifeTotal()
         }
+        
+        if (nextDamageTotal <= 0) {
+            withAnimation {
+                self.isLoser = true
+            }
+        }
     }
     
     public func toggleMonarchy() {

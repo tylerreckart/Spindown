@@ -7,6 +7,35 @@
 
 import SwiftUI
 
+struct LostPlayerOverlay: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack(spacing: 5) {
+                Text("You Died")
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                Text("Try Again Next Time")
+                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                    .tracking(0.5)
+            }
+            .textCase(.uppercase)
+            .shadow(color: .black.opacity(0.2), radius: 4)
+            .transition(.scale(scale: 0.4))
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .overlay(LinearGradient(
+                    colors: [.black.opacity(0.8), .black.opacity(0.4)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                ))
+        )
+    }
+}
+
 struct CommanderDamageTargetOverlay: View {
     @Binding var selectedPlayer: Participant?
 
@@ -160,8 +189,10 @@ struct CommanderDamageCounterOverlay: View {
             player.cmdrDamageDealt[index!].total = player.cmdrDamageDealt[index!].total + 1
             target.incrementCmdrDamage()
         } else {
+            self.index = 0
             var entry = CommanderDamageDealt(player: target, total: 1)
             player.cmdrDamageDealt.append(entry)
+            target.incrementCmdrDamage()
         }
     }
     
@@ -175,6 +206,7 @@ struct CommanderDamageCounterOverlay: View {
 
             target.decrementCmdrDamage()
         } else {
+            self.index = 0
             var entry = CommanderDamageDealt(player: target, total: 0)
             player.cmdrDamageDealt.append(entry)
         }
@@ -300,12 +332,18 @@ struct PlayerTile: View {
                             .transition(.opacity)
                     }
                 }
+                
+                if (player.isLoser) {
+                    LostPlayerOverlay()
+                        .transition(.opacity)
+                }
             }
         }
         .onChange(of: showOptionsOverlay) { newState in
             if (newState == true) {
                 self.timer = Timer.publish(every: 0.01, on: .main, in: .common)
-                timer.connect()
+                
+                _ = timer.connect()
             } else {
                 if (self.overlayIsFullHeight || self.overlayHeight > 0) {
                     self.overlayHeight = 0

@@ -55,8 +55,8 @@ struct PlayerTileOptionsOverlay: View {
             
             if (self.completionPercentage > 0.9) {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20) {
-                        HStack {
+                    HStack(spacing: 0) {
+                        HStack(spacing: 0) {
                             Button(action: {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     if (self.showOverlay) {
@@ -78,6 +78,7 @@ struct PlayerTileOptionsOverlay: View {
                                     .padding(20)
                             }
                         }
+                        .padding(.leading)
 
                         CounterOptionsStack(player: player, activeCounter: $activeCounter)
                             .zIndex(10)
