@@ -76,15 +76,18 @@ struct GameBoard: View {
         var body: some View {
             ZStack {
                 VStack(spacing: 8) {
-                    HStack(spacing: 8) {
-                        ForEach(0..<2, id: \.self) { index in
-                            PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: orientation)
+                    if (players.count == 4) {
+                        HStack(spacing: 8) {
+                            ForEach(0..<2, id: \.self) { index in
+                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer)
+                                    .rotationEffect(Angle(degrees: 180))
+                            }
                         }
-                    }
-                    
-                    HStack(spacing: 8) {
-                        ForEach(2..<4, id: \.self) { index in
-                            PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: orientation)
+                        
+                        HStack(spacing: 8) {
+                            ForEach(2..<4, id: \.self) { index in
+                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer)
+                            }
                         }
                     }
                 }

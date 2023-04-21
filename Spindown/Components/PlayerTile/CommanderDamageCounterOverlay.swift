@@ -45,7 +45,7 @@ struct CommanderDamageCounterOverlay: View {
                             Circle()
                                 .fill(.ultraThinMaterial)
                                 .frame(width: 50)
-                                .opacity(0)
+//                                .opacity(0)
                             
                             Image(systemName: "plus")
                                 .foregroundColor(.white.opacity(0.5))
@@ -59,7 +59,7 @@ struct CommanderDamageCounterOverlay: View {
                             Circle()
                                 .fill(.ultraThinMaterial)
                                 .frame(width: 50)
-                                .opacity(0)
+//                                .opacity(0)
                             
                             Image(systemName: "minus")
                                 .foregroundColor(.white.opacity(0.5))

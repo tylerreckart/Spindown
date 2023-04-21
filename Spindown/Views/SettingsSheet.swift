@@ -11,7 +11,7 @@ struct SettingsOverlayView: View {
     @Binding var open: Bool
 
     var body: some View {
-        OrientationListener(content: {
+        OrientationOverlay(content: {
             VStack {
                 Button(action: { self.open.toggle() }) {
                     Text("Close")

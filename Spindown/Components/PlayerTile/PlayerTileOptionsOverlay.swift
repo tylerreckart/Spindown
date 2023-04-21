@@ -24,28 +24,29 @@ struct PlayerTileOptionsOverlay: View {
                     .edgesIgnoringSafeArea(.all)
                     .frame(maxWidth: .infinity, maxHeight: height)
                 
-                if (!isFullHeight || self.completionPercentage > 0.9) {
-                    Spacer()
+                if (self.completionPercentage != 1) {
+                    Rectangle().fill(.clear)
+                        .edgesIgnoringSafeArea(.all)
+                        .frame(maxWidth: .infinity, maxHeight: (height / completionPercentage) - height)
                 }
             }
             
-            if (isFullHeight) {
-                VStack {
-                    Text("Player Options")
-                        .font(.system(size: 10, weight: .black, design: .rounded))
-                        .textCase(.uppercase)
-                        .foregroundColor(.white)
-                        .padding(20)
-                    Spacer()
-                    Image(systemName: "chevron.compact.up")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.white.opacity(0.2))
-                        .padding(10)
-                        .shadow(color: .black.opacity(0.1), radius: 2)
-                        .transition(.push(from: .bottom))
-                }
-                .frame(maxHeight: 300)
+            VStack {
+                Text("Player Options")
+                    .font(.system(size: 10, weight: .black, design: .rounded))
+                    .textCase(.uppercase)
+                    .foregroundColor(.white)
+                    .padding(20)
+                Spacer()
+                Image(systemName: "chevron.compact.up")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.white.opacity(0.2))
+                    .padding(10)
+                    .shadow(color: .black.opacity(0.1), radius: 2)
+                    .transition(.push(from: .bottom))
             }
+            .frame(maxHeight: 300)
+            .opacity(self.completionPercentage)
             
             OverlayDragGestureHandler(
                 height: $height,
@@ -54,39 +55,38 @@ struct PlayerTileOptionsOverlay: View {
                 showOverlay: $showOverlay
             )
             
-            if (self.completionPercentage > 0.9) {
-                ScrollView(.horizontal, showsIndicators: false) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
                     HStack(spacing: 0) {
-                        HStack(spacing: 0) {
-                            Button(action: {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    if (self.showOverlay) {
-                                        self.height = 0
-                                        self.isFullHeight = false
-                                        self.showOverlay = false
-                                        self.completionPercentage = 0
-                                    }
+                        Button(action: {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                if (self.showOverlay) {
+                                    self.height = 0
+                                    self.isFullHeight = false
+                                    self.showOverlay = false
+                                    self.completionPercentage = 0
                                 }
-                                
-                                withAnimation {
-                                    self.selectedPlayer = player
-                                }
-                            }) {
-                                Text("Commander\nDamage")
-                                    .font(.system(size: 10, weight: .black, design: .rounded))
-                                    .textCase(.uppercase)
-                                    .foregroundColor(.white)
-                                    .padding(20)
                             }
+                            
+                            withAnimation {
+                                self.selectedPlayer = player
+                            }
+                        }) {
+                            Text("Commander\nDamage")
+                                .font(.system(size: 10, weight: .black, design: .rounded))
+                                .textCase(.uppercase)
+                                .foregroundColor(.white)
+                                .padding(20)
                         }
-                        .padding(.leading)
-
-                        CounterOptionsStack(player: player, activeCounter: $activeCounter)
-                            .zIndex(10)
-                            .transition(.scale(scale: 0.9).combined(with: .opacity))
-                        
                     }
+                    .padding(.leading)
+
+                    CounterOptionsStack(player: player, activeCounter: $activeCounter)
+                        .zIndex(10)
+                        .transition(.scale(scale: 0.9).combined(with: .opacity))
+                    
                 }
+                .opacity(self.completionPercentage)
             }
         }
     }

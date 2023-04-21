@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OrientationListener<Content: View>: View {
+struct OrientationOverlay<Content: View>: View {
     @ViewBuilder var content: Content
     
     var targetOrientation: UIDeviceOrientation? = .portrait

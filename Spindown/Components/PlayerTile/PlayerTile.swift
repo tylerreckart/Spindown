@@ -12,8 +12,6 @@ struct PlayerTile: View {
     
     @Binding var selectedPlayer: Participant?
     
-    var orientation: UIInterfaceOrientation
-    
     // Overlay display parameters.
     @State private var overlayHeight: CGFloat = 0
     @State private var overlayIsFullHeight: Bool = false
@@ -32,6 +30,12 @@ struct PlayerTile: View {
     @State private var greatestFiniteWidth: CGFloat = 0
     
     @State private var timer = Timer.publish(every: 0.01, on: .main, in: .common)
+    
+    let orientationListener = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
+    
+    @State private var orientation: UIDeviceOrientation?
     
     struct LifeCount: View {
         var lifeTotal: Int
@@ -108,10 +112,11 @@ struct PlayerTile: View {
                 LifeCount(lifeTotal: player.lifeTotal, orientation: orientation, visibility: dragCompletionPercentage)
                 
                 HStack(spacing: 0) {
-                    LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage, showBackground: false)
+                    LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage)
                     Spacer()
-                    LifeCounterButton(action: { player.decrementLifeTotal() }, symbol: "minus", visibility: dragCompletionPercentage, showBackground: false)
+                    LifeCounterButton(action: { player.decrementLifeTotal() }, symbol: "minus", visibility: dragCompletionPercentage)
                 }
+                .frame(maxWidth: 340)
             }
         }
     }
@@ -137,11 +142,19 @@ struct PlayerTile: View {
                         showOverlay: $showOptionsOverlay
                     )
                     
-                    PortraitPlayerControls(
-                        player: player,
-                        orientation: orientation,
-                        dragCompletionPercentage: $dragCompletionPercentage
-                    )
+                    if (self.orientation == .portrait) {
+                        PortraitPlayerControls(
+                            player: player,
+                            orientation: .portrait,
+                            dragCompletionPercentage: $dragCompletionPercentage
+                        )
+                    } else {
+                        LandscapePlayerControls(
+                            player: player,
+                            orientation: .landscapeLeft,
+                            dragCompletionPercentage: $dragCompletionPercentage
+                        )
+                    }
                 }
                 .foregroundColor(.white)
 //                .frame(maxWidth: .infinity, maxHeight: greatestFiniteHeight)
@@ -182,6 +195,16 @@ struct PlayerTile: View {
                 }
             }
         }
+        .onAppear {
+            if (UIDevice.current.orientation.isLandscape) {
+                self.orientation = .landscapeLeft
+            } else {
+                self.orientation = .portrait
+            }
+        }
+        .onReceive(orientationListener) { _ in
+            self.orientation = UIDevice.current.orientation
+        }
         .onChange(of: showOptionsOverlay) { newState in
             if (newState == true) {
                 self.timer = Timer.publish(every: 0.01, on: .main, in: .common)
@@ -210,7 +233,6 @@ struct PlayerTile: View {
                 }
             }
         }
-        .clipped()
         .cornerRadius(8)
     }
 }

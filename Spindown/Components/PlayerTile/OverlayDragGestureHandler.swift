@@ -46,10 +46,10 @@ struct OverlayDragGestureHandler: View {
                         .onEnded({ endGesture in
                             withAnimation(.spring()) {
                                 let pos = endGesture.location.y
-                                
                                 if (pos >= greatestFiniteHeight / 2) {
                                     self.height = greatestFiniteHeight
                                     self.isFullHeight = true
+                                    self.dragCompletionPercentage = 1
                                 } else {
                                     self.height = 0.01
                                     self.isFullHeight = false
