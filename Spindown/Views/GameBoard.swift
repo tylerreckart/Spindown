@@ -26,74 +26,95 @@ struct GameBoard: View {
     @Binding var numPlayersRemaining: Int
     @Binding var activePlayer: Participant?
     
-    @State private var opacity: CGFloat = 0
-    @State private var scale: CGFloat = 0.75
-    
     var endGame: () -> ()
     
     @State private var showSettingsDialog: Bool = false
     @State private var showLifeTotalCalculator: Bool = false
     
     @State private var selectedPlayer: Participant?
-    @State private var selectedLayout: BoardLayout = .tandem
+    
+    @State private var showSettingsSheet: Bool = false
+    
+    @State private var orientation: UIInterfaceOrientation = .landscapeLeft
+    
+    struct Pin: View {
+        @Binding var showSettingsDialog: Bool
+
+        var body: some View {
+            HStack {
+                Spacer()
+                
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation(.spring(response: 0.55, dampingFraction: 0.5, blendDuration: 0)) {
+                            self.showSettingsDialog.toggle()
+                        }
+                        
+                    }) {
+                        Image("D20")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxHeight: 60)
+                            .rotationEffect(Angle(degrees: 10))
+                            .shadow(radius: 2, x: 1, y: 1)
+                    }
+                }
+            }
+            .padding()
+        }
+    }
+    
+    struct PlayArea: View {
+        var players: [Participant]
+
+        @Binding var selectedPlayer: Participant?
+        @Binding var showSettingsDialog: Bool
+        
+        var orientation: UIInterfaceOrientation
+        
+        var body: some View {
+            ZStack {
+                VStack(spacing: 8) {
+                    HStack(spacing: 8) {
+                        ForEach(0..<2, id: \.self) { index in
+                            PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: orientation)
+                        }
+                    }
+                    
+                    HStack(spacing: 8) {
+                        ForEach(2..<4, id: \.self) { index in
+                            PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: orientation)
+                        }
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                Pin(showSettingsDialog: $showSettingsDialog)
+            }
+            .edgesIgnoringSafeArea(.all)
+            .background(.black)
+        }
+    }
     
     var body: some View {
         ZStack {
-            if (players.count == 2) {
-                TwoPlayerGameBoard(
-                    players: $players,
-                    numPlayersRemaining: $numPlayersRemaining,
+            if (players.count > 0) {
+                PlayArea(
+                    players: players,
                     selectedPlayer: $selectedPlayer,
-                    selectedLayout: $selectedLayout,
-                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer,
-                    updateLifeTotal: updateLifeTotal,
-                    showSettingsDialog: $showSettingsDialog
-                )
-            } else if (players.count == 3) {
-                ThreePlayerGameBoard(
-                    players: $players,
-                    numPlayersRemaining: $numPlayersRemaining,
-                    selectedPlayer: $selectedPlayer,
-                    selectedLayout: $selectedLayout,
-                    updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
-                )
-            } else if (players.count == 4) {
-                FourPlayerGameBoard(
-                    players: $players,
-                    numPlayersRemaining: $numPlayersRemaining,
-                    selectedPlayer: $selectedPlayer,
-                    selectedLayout: $selectedLayout,
-                    updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer,
-                    showSettingsDialog: $showSettingsDialog
-                )
-            } else if (players.count == 5) {
-                FivePlayerGameBoard(
-                    players: $players,
-                    numPlayersRemaining: $numPlayersRemaining,
-                    selectedPlayer: $selectedPlayer,
-                    selectedLayout: $selectedLayout,
-                    updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
-                )
-            } else if (players.count == 6) {
-                SixPlayerGameBoard(
-                    players: $players,
-                    numPlayersRemaining: $numPlayersRemaining,
-                    selectedPlayer: $selectedPlayer,
-                    selectedLayout: $selectedLayout,
-                    updateLifeTotal: updateLifeTotal,
-                    showLifeTotalCalculatorForPlayer: showLifeTotalCalculatorForPlayer
+                    showSettingsDialog: $showSettingsDialog,
+                    orientation: orientation
                 )
             }
         
             GameSettingsDialog(
                 open: $showSettingsDialog,
-                selectedLayout: $selectedLayout,
                 players: $players,
                 endGame: endGame,
-                store: store
+                store: store,
+                openSettings: { self.showSettingsSheet.toggle() }
             )
             
             LifeTotalCalculatorDialog(
@@ -102,21 +123,22 @@ struct GameBoard: View {
                 toggleCalculator: { self.showLifeTotalCalculator.toggle() },
                 updateLifeTotal: updateLifeTotal
             )
+            
+            if (self.showSettingsSheet) {
+                SettingsOverlayView(open: $showSettingsSheet)
+            }
         }
-        .opacity(opacity)
         .padding(0)
         .background(.black)
         .onAppear {
             // Prevent the system idle timer from putting the device's display
             // to sleep while the game board is active.
             UIApplication.shared.isIdleTimerDisabled = true
-            // Custom start layout conditions.
-            if (players.count == 2 || players.count == 3 || players.count == 5) {
-                self.selectedLayout = .facingPortrait
-            }
-            // Display the game board.
-            withAnimation(.easeIn(duration: 0.5)) {
-                self.opacity = 1
+            
+            if (UIDevice.current.orientation.isLandscape) {
+                self.orientation = .landscapeLeft
+            } else {
+                self.orientation = .portrait
             }
         }
         .onDisappear {

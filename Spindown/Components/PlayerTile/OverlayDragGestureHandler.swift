@@ -25,6 +25,7 @@ struct OverlayDragGestureHandler: View {
                     self.gest
                         .onChanged({ gesture in
                             self.showOverlay = true
+                            self.isFullHeight = false
                             
                             let size = geometry.size
                             let pos = gesture.location.y
@@ -36,10 +37,6 @@ struct OverlayDragGestureHandler: View {
                             withAnimation {
                                 if (pos > 0) {
                                     let percent =  pos / greatestFiniteHeight
-                                    
-                                    if (percent < 0.8) {
-                                        self.isFullHeight = false
-                                    }
                                     
                                     self.dragCompletionPercentage = percent
                                     self.height = pos

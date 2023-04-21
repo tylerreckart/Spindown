@@ -44,6 +44,7 @@ struct PlayerTileOptionsOverlay: View {
                         .shadow(color: .black.opacity(0.1), radius: 2)
                         .transition(.push(from: .bottom))
                 }
+                .frame(maxHeight: 300)
             }
             
             OverlayDragGestureHandler(

@@ -7,218 +7,12 @@
 
 import SwiftUI
 
-struct LostPlayerOverlay: View {
-    var body: some View {
-        VStack {
-            Spacer()
-            VStack(spacing: 5) {
-                Text("You Died")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
-                Text("Try Again Next Time")
-                    .font(.system(size: 14, weight: .bold, design: .rounded))
-                    .tracking(0.5)
-            }
-            .textCase(.uppercase)
-            .shadow(color: .black.opacity(0.2), radius: 4)
-            .transition(.scale(scale: 0.4))
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .overlay(LinearGradient(
-                    colors: [.black.opacity(0.8), .black.opacity(0.4)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ))
-        )
-    }
-}
-
-struct CommanderDamageTargetOverlay: View {
-    @Binding var selectedPlayer: Participant?
-
-    var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                HStack {
-                    Image(systemName: "chevron.compact.left")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.white.opacity(0.2))
-                        .padding(10)
-                        .shadow(color: .black.opacity(0.1), radius: 2)
-                        .transition(.push(from: .bottom))
-                    Spacer()
-                    Image(systemName: "chevron.compact.right")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.white.opacity(0.2))
-                        .padding(10)
-                        .shadow(color: .black.opacity(0.1), radius: 2)
-                        .transition(.push(from: .bottom))
-                }
-                Spacer()
-            }
-        
-            VStack {
-                Spacer()
-                VStack {
-                    Text("Commander")
-                        .font(.system(size: 34, weight: .bold, design: .rounded))
-                    Text("Damage Received")
-                        .font(.system(size: 23.75, weight: .bold, design: .rounded))
-                }
-                .textCase(.uppercase)
-                .shadow(color: .black.opacity(0.2), radius: 4)
-                .transition(.scale(scale: 0.4))
-                
-                Button(action: {
-                    withAnimation(.spring()) {
-                        self.selectedPlayer = nil
-                    }
-                }) {
-                    Image(systemName: "arrow.counterclockwise")
-                        .font(.system(size: 12, weight: .black, design: .rounded))
-                    Text("Back To The Game")
-                        .font(.system(size: 12, weight: .black, design: .rounded))
-                }
-                .frame(width: 160)
-                .padding()
-                .background(Color(UIColor(named: "PrimaryRed")!))
-                .cornerRadius(.infinity)
-                .shadow(radius: 3, y: 2)
-                Spacer()
-            }
-        }
-        .foregroundColor(.white)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .overlay(LinearGradient(
-                    colors: [.black.opacity(1), .black.opacity(0.8)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ))
-        )
-    }
-}
-
-struct CommanderDamageCounterOverlay: View {
-    @ObservedObject var player: Participant
-    
-    var target: Participant
-    
-    @State private var index: Int?
-
-    var body: some View {
-        ZStack {
-            VStack {
-                Text("Damage Dealt")
-                    .font(.system(size: 10, weight: .black, design: .rounded))
-                    .textCase(.uppercase)
-                    .foregroundColor(.white)
-                    .padding(20)
-                Spacer()
-            }
-            
-            ZStack {
-                if (index != nil) {
-                    Text("\(player.cmdrDamageDealt[index!].total)")
-                        .font(.system(size: 100, weight: .light, design: .rounded))
-                        .shadow(color: .black.opacity(0.2), radius: 4)
-                        .transition(.scale(scale: 0.4))
-                } else {
-                    Text("0")
-                        .font(.system(size: 100, weight: .light, design: .rounded))
-                        .shadow(color: .black.opacity(0.2), radius: 4)
-                        .transition(.scale(scale: 0.4))
-                }
-                
-                HStack {
-                    Button(action: incrementDamage) {
-                        ZStack {
-                            Circle()
-                                .fill(.ultraThinMaterial)
-                                .frame(width: 50)
-                                .opacity(0)
-                            
-                            Image(systemName: "plus")
-                                .foregroundColor(.white.opacity(0.5))
-                                .font(.system(size: 32, weight: .regular, design: .rounded))
-                                .shadow(color: .black.opacity(0.2), radius: 2)
-                        }
-                    }
-                    Spacer()
-                    Button(action: decrementDamage) {
-                        ZStack {
-                            Circle()
-                                .fill(.ultraThinMaterial)
-                                .frame(width: 50)
-                                .opacity(0)
-                            
-                            Image(systemName: "minus")
-                                .foregroundColor(.white.opacity(0.5))
-                                .font(.system(size: 32, weight: .regular, design: .rounded))
-                                .shadow(color: .black.opacity(0.2), radius: 2)
-                        }
-                    }
-                }
-                .frame(maxWidth: 220)
-            }
-        }
-        .foregroundColor(.white)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .overlay(LinearGradient(
-                    colors: [.black.opacity(0.8), .black.opacity(0.2)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ))
-        )
-        .onAppear {
-            self.index = player.cmdrDamageDealt.firstIndex(where: { target.id == $0.player.id })
-        }
-    }
-    
-    func incrementDamage() -> Void {
-        if (index != nil) {
-            player.cmdrDamageDealt[index!].total = player.cmdrDamageDealt[index!].total + 1
-            target.incrementCmdrDamage()
-        } else {
-            self.index = 0
-            var entry = CommanderDamageDealt(player: target, total: 1)
-            player.cmdrDamageDealt.append(entry)
-            target.incrementCmdrDamage()
-        }
-    }
-    
-    func decrementDamage() -> Void {
-        if (index != nil) {
-            let nextTotal = player.cmdrDamageDealt[index!].total - 1
-            
-            if (nextTotal >= 0) {
-                player.cmdrDamageDealt[index!].total = player.cmdrDamageDealt[index!].total - 1
-            }
-
-            target.decrementCmdrDamage()
-        } else {
-            self.index = 0
-            var entry = CommanderDamageDealt(player: target, total: 0)
-            player.cmdrDamageDealt.append(entry)
-        }
-    }
-}
-
 struct PlayerTile: View {
     @ObservedObject var player: Participant
     
     @Binding var selectedPlayer: Participant?
-
-    var showLifeTotalCalculator: () -> Void
+    
+    var orientation: UIInterfaceOrientation
     
     // Overlay display parameters.
     @State private var overlayHeight: CGFloat = 0
@@ -235,8 +29,92 @@ struct PlayerTile: View {
     
     @State private var size: CGSize?
     @State private var greatestFiniteHeight: CGFloat = 0
+    @State private var greatestFiniteWidth: CGFloat = 0
     
     @State private var timer = Timer.publish(every: 0.01, on: .main, in: .common)
+    
+    struct LifeCount: View {
+        var lifeTotal: Int
+        var orientation: UIInterfaceOrientation
+        var visibility: CGFloat
+        
+        var body: some View {
+            Text("\(lifeTotal)")
+                .font(
+                    .system(
+                        size: orientation == .portrait ? 48 : 100,
+                        weight: orientation == .portrait ? .regular : .light,
+                        design: .rounded
+                    )
+                )
+                .shadow(color: .black.opacity(0.2), radius: 4)
+                .transition(.scale(scale: 0.4))
+                .opacity(1 - visibility)
+                .scaleEffect(1 - (visibility / 5))
+        }
+    }
+    
+    struct LifeCounterButton: View {
+        var action: () -> ()
+        var symbol: String
+        var visibility: CGFloat
+        var showBackground: Bool = true
+
+        var body: some View {
+            Button(action: action) {
+                ZStack {
+                    Circle()
+                        .fill(.ultraThinMaterial)
+                        .frame(width: 40)
+                        .shadow(color: .black.opacity(0.2), radius: 2, x: 1, y: 1)
+                        .opacity(showBackground ? 1 : 0)
+                    
+                    Image(systemName: symbol)
+                        .foregroundColor(.white.opacity(0.5))
+                        .font(.system(size: 28, weight: .regular, design: .rounded))
+                }
+            }
+            .frame(maxWidth: 120)
+            .opacity(1 - visibility)
+            .scaleEffect(1 - (visibility / 5))
+        }
+    }
+    
+    struct PortraitPlayerControls: View {
+        @ObservedObject var player: Participant
+        
+        var orientation: UIInterfaceOrientation
+    
+        @Binding var dragCompletionPercentage: CGFloat
+    
+        var body: some View {
+            VStack(spacing: 20) {
+                LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage)
+                LifeCount(lifeTotal: player.lifeTotal, orientation: orientation, visibility: dragCompletionPercentage)
+                LifeCounterButton(action: { player.decrementLifeTotal() }, symbol: "minus", visibility: dragCompletionPercentage)
+            }
+        }
+    }
+    
+    struct LandscapePlayerControls: View {
+        @ObservedObject var player: Participant
+        
+        var orientation: UIInterfaceOrientation
+    
+        @Binding var dragCompletionPercentage: CGFloat
+    
+        var body: some View {
+            ZStack {
+                LifeCount(lifeTotal: player.lifeTotal, orientation: orientation, visibility: dragCompletionPercentage)
+                
+                HStack(spacing: 0) {
+                    LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage, showBackground: false)
+                    Spacer()
+                    LifeCounterButton(action: { player.decrementLifeTotal() }, symbol: "minus", visibility: dragCompletionPercentage, showBackground: false)
+                }
+            }
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -245,6 +123,7 @@ struct PlayerTile: View {
                     .contentShape(Rectangle())
                     .onAppear {
                         self.greatestFiniteHeight = geometry.size.height
+                        self.greatestFiniteWidth = geometry.size.width
                     }
                     .zIndex(-1)
             }
@@ -258,57 +137,21 @@ struct PlayerTile: View {
                         showOverlay: $showOptionsOverlay
                     )
                     
-                    ZStack {
-                        Button(action: { showLifeTotalCalculator() }) {
-                            Text("\(player.lifeTotal)")
-                                .font(.system(size: 100, weight: .light, design: .rounded))
-                                .shadow(color: .black.opacity(0.2), radius: 4)
-                                .transition(.scale(scale: 0.4))
-                        }
-                        .opacity(1 - dragCompletionPercentage)
-                        .scaleEffect(1 - (dragCompletionPercentage / 5))
-                        
-                        HStack {
-                            Button(action: { player.incrementLifeTotal() }) {
-                                ZStack {
-                                    Circle()
-                                        .fill(.ultraThinMaterial)
-                                        .frame(width: 50)
-                                        .opacity(0)
-                                    
-                                    Image(systemName: "plus")
-                                        .foregroundColor(.white.opacity(0.5))
-                                        .font(.system(size: 32, weight: .regular, design: .rounded))
-                                        .shadow(color: .black.opacity(0.2), radius: 2)
-                                }
-                            }
-                            Spacer()
-                            Button(action: { player.decrementLifeTotal() }) {
-                                ZStack {
-                                    Circle()
-                                        .fill(.ultraThinMaterial)
-                                        .frame(width: 50)
-                                        .opacity(0)
-                                    
-                                    Image(systemName: "minus")
-                                        .foregroundColor(.white.opacity(0.5))
-                                        .font(.system(size: 32, weight: .regular, design: .rounded))
-                                        .shadow(color: .black.opacity(0.2), radius: 2)
-                                }
-                            }
-                        }
-                        .frame(maxWidth: 260)
-                        .opacity(1 - dragCompletionPercentage)
-                        .scaleEffect(1 - (dragCompletionPercentage / 5))
-                    }
+                    PortraitPlayerControls(
+                        player: player,
+                        orientation: orientation,
+                        dragCompletionPercentage: $dragCompletionPercentage
+                    )
                 }
                 .foregroundColor(.white)
-                .frame(maxWidth: .infinity, maxHeight: greatestFiniteHeight)
-                .background(
-                    Image(player.theme?.backgroundKey ?? "")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                )
+//                .frame(maxWidth: .infinity, maxHeight: greatestFiniteHeight)
+//                .background(
+//                    Image(player.theme?.backgroundKey ?? "")
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .frame(width: greatestFiniteWidth)
+//                )
+                .background(Color(.systemGray6))
                 
                 PlayerBadges(player: player, showOverlay: $showOptionsOverlay, selectedCounter: $selectedCounter)
                 
@@ -323,6 +166,11 @@ struct PlayerTile: View {
                     )
                 }
                 
+                if (player.isLoser) {
+                    LostPlayerOverlay()
+                        .transition(.opacity)
+                }
+                
                 if (self.selectedPlayer != nil) {
                     if (player != selectedPlayer!) {
                         CommanderDamageCounterOverlay(player: player, target: selectedPlayer!)
@@ -331,11 +179,6 @@ struct PlayerTile: View {
                         CommanderDamageTargetOverlay(selectedPlayer: $selectedPlayer)
                             .transition(.opacity)
                     }
-                }
-                
-                if (player.isLoser) {
-                    LostPlayerOverlay()
-                        .transition(.opacity)
                 }
             }
         }

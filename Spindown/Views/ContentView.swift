@@ -68,38 +68,18 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            if (players.count > 0) {
-                ZStack {
-                    GameBoard(
-                        store: store,
-                        players: $players,
-                        numPlayersRemaining: $numPlayersRemaining,
-                        activePlayer: $activePlayer,
-                        endGame: endGame
-                    )
-                    .environmentObject(timerModel)
-                    .transition(.scale)
-                    
-                    StartingPlayerDialog(
-                        open: $showStartOverlay,
-                        activePlayer: $activePlayer,
-                        startGame: startGame,
-                        chooseStartingPlayer: chooseStartingPlayer
-                    )
-                    
-                    OutOfTimeDialog(
-                        open: $timerModel.showDialog,
-                        endGame: endGame,
-                        dismiss: timerModel.reset
-                    )
-                }
-            }
+            GameBoard(
+                store: store,
+                players: $players,
+                numPlayersRemaining: $numPlayersRemaining,
+                activePlayer: $activePlayer,
+                endGame: endGame
+            )
         }
-        .sheet(isPresented: $showOnboardingSheet) {
-            SubscriptionView(store: store)
-        }
+        .environmentObject(timerModel)
+        .sheet(isPresented: $showOnboardingSheet) { SubscriptionView(store: store) }
         .onAppear {
-            self.setStartingLifeTotal(20)
+            self.setStartingLifeTotal(40)
             self.setPlayerCount(4)
         }
         .onChange(of: store.initialized) { _ in
@@ -191,14 +171,6 @@ struct ContentView: View {
     }
     
     private func endGame() {
-        self.startingLifeTotal = 0
-        self.playerCount = 0
-        self.numPlayersRemaining = 0
-
-        withAnimation(.easeInOut(duration: 0.4)) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.players = []
-            }
-        }
+        resetBoard()
     }
 }

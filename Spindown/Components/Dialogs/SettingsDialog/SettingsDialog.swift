@@ -126,11 +126,11 @@ struct GameSettingsHomeView: View {
 
 struct GameSettingsDialog: View {
     @Binding var open: Bool
-    @Binding var selectedLayout: BoardLayout
     @Binding var players: [Participant]
     
     var endGame: () -> ()
     var store: Store
+    var openSettings: () -> ()
 
     @State private var overlayOpacity: CGFloat = 0
     @State private var dialogOpacity: CGFloat = 0
@@ -142,43 +142,9 @@ struct GameSettingsDialog: View {
     var body: some View {
         Dialog(content: {
             VStack {
-                switch (activeView) {
-                    case .home:
-                        GameSettingsHomeView(
-                            endGame: endGame,
-                            store: store,
-                            activeView: $activeView,
-                            playerCount: self.players.count
-                        )
-                    case .roll:
-                        DiceRollView(activeView: $activeView)
-                    case .timer:
-                        GameTimer(activeView: $activeView)
-                    case .layout:
-                        LayoutSelectorView(
-                            activeView: $activeView,
-                            selectedLayout: $selectedLayout,
-                            playerCount: self.players.count
-                        )
-                    case .player:
-                        PlayerSelectorView(
-                            activeView: $activeView,
-                            players: $players,
-                            selectedPlayer: $selectedPlayer,
-                            store: store
-                        )
-                case .playerCustomization:
-                        PlayerCustomizationContext(
-                            customize: true,
-                            savePlayer: savePlayer,
-                            dismiss: dismissPlayerCustomizer,
-                            stateful: true,
-                            selectedPlayer: selectedPlayer
-                        )
+                Button(action: openSettings) {
+                    Text("Show Settings")
                 }
-            }
-            .onDisappear {
-                self.activeView = .home
             }
         }, maxWidth: 300, open: $open)
     }

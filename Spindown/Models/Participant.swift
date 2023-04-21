@@ -107,6 +107,10 @@ class Participant: ObservableObject, Equatable, Identifiable, Hashable {
         self.cmdrDamage = self.cmdrDamage + 1
         
         decrementLifeTotal()
+        
+        if (self.cmdrDamage >= 21) {
+            self.isLoser = true
+        }
     }
     
     public func decrementCmdrDamage() -> Void {
