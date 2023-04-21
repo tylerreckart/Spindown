@@ -33,6 +33,10 @@ struct PlayerTile: View {
     
     @Binding var orientation: UIDeviceOrientation?
     
+    let orientationListener = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
+    
     struct LifeCount: View {
         var lifeTotal: Int
         var orientation: UIDeviceOrientation
@@ -126,8 +130,12 @@ struct PlayerTile: View {
                         self.greatestFiniteHeight = geometry.size.height
                         self.greatestFiniteWidth = geometry.size.width
                     }
+                    .onChange(of: orientation) { _ in
+                        self.greatestFiniteHeight = geometry.size.height
+                        self.greatestFiniteWidth = geometry.size.width
+                    }
             }
-    
+
             ZStack {
                 ZStack {
                     OverlayDragGestureHandler(
@@ -137,31 +145,28 @@ struct PlayerTile: View {
                         showOverlay: $showOptionsOverlay
                     )
                     
-                    if (self.orientation == .portrait || self.orientation == .portraitUpsideDown) {
-                        PortraitPlayerControls(
-                            player: player,
-                            orientation: orientation!,
-                            dragCompletionPercentage: $dragCompletionPercentage
-                        )
-                    } else if (self.orientation == .landscapeLeft || self.orientation == .landscapeRight){
+                    if ((self.orientation == .landscapeLeft || self.orientation == .landscapeRight) || greatestFiniteWidth > 300){
                         LandscapePlayerControls(
                             player: player,
-                            orientation: orientation!,
+                            orientation: .landscapeLeft,
+                            dragCompletionPercentage: $dragCompletionPercentage
+                        )
+                    } else {
+                        PortraitPlayerControls(
+                            player: player,
+                            orientation: .portrait,
                             dragCompletionPercentage: $dragCompletionPercentage
                         )
                     }
                 }
                 .foregroundColor(.white)
-//                .frame(maxWidth: .infinity, maxHeight: greatestFiniteHeight)
-//                .background(
-//                    Image(player.theme?.backgroundKey ?? "")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(width: greatestFiniteWidth)
-//                )
-                .background(Color(.systemGray6))
-                
-                PlayerBadges(player: player, showOverlay: $showOptionsOverlay, selectedCounter: $selectedCounter, orientation: $orientation)
+
+                PlayerBadges(
+                    player: player,
+                    showOverlay: $showOptionsOverlay,
+                    selectedCounter: $selectedCounter,
+                    orientation: $orientation
+                )
                 
                 if (showOptionsOverlay && overlayHeight > 0) {
                     PlayerTileOptionsOverlay(
@@ -189,6 +194,10 @@ struct PlayerTile: View {
                     }
                 }
             }
+            .background(
+                Image(player.theme?.backgroundKey ?? "")
+                    .resizable()
+                    .frame(width: greatestFiniteWidth + 30, height: greatestFiniteHeight + 30)            )
         }
         .onChange(of: showOptionsOverlay) { newState in
             if (newState == true) {
@@ -219,5 +228,8 @@ struct PlayerTile: View {
             }
         }
         .cornerRadius(8)
+        .onAppear {
+            print(self.orientation?.rawValue)
+        }
     }
 }

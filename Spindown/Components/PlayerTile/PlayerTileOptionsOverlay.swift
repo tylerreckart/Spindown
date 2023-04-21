@@ -22,28 +22,25 @@ struct PlayerTileOptionsOverlay: View {
             VStack {
                 Rectangle().fill(.ultraThinMaterial)
                     .edgesIgnoringSafeArea(.all)
-                    .frame(maxWidth: .infinity, maxHeight: height)
-                
-                if (self.completionPercentage != 1) {
-                    Rectangle().fill(.clear)
-                        .edgesIgnoringSafeArea(.all)
-                        .frame(maxWidth: .infinity, maxHeight: (height / completionPercentage) - height)
-                }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .opacity(completionPercentage)
             }
             
             VStack {
                 Text("Player Options")
-                    .font(.system(size: 10, weight: .black, design: .rounded))
+                    .font(.system(size: 12, weight: .black, design: .rounded))
                     .textCase(.uppercase)
                     .foregroundColor(.white)
                     .padding(20)
+                    .offset(y: -10 + (self.completionPercentage * 10))
                 Spacer()
                 Image(systemName: "chevron.compact.up")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white.opacity(0.2))
                     .padding(10)
-                    .shadow(color: .black.opacity(0.1), radius: 2)
+                    .shadow(color: .black.opacity(0.1), radius: 1, y: 0)
                     .transition(.push(from: .bottom))
+                    .offset(y: 10 - (self.completionPercentage * 10))
             }
             .frame(maxHeight: 300)
             .opacity(self.completionPercentage)

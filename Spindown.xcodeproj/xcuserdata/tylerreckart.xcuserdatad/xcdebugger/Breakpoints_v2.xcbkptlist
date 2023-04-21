@@ -711,16 +711,48 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "50317B87-AAC5-45BB-A000-124E54A59598"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Spindown/Components/PlayerTile/PlayerTile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "50317B87-AAC5-45BB-A000-124E54A59598 - 5e5fd74b50b57649"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Spindown.OverlayDragGestureHandler, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;Spindown.PlayerTile.PortraitPlayerControls, Spindown.PlayerTile.LandscapePlayerControls&gt;&gt;)&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, Spindown.PlayerBadges, Swift.Optional&lt;Spindown.PlayerTileOptionsOverlay&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.GeometryReader&lt;&lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, Spindown.PlayerBadges, Swift.Optional&lt;Spindown.PlayerTileOptionsOverlay&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;)&gt; in Spindown.PlayerTile.body.getter : some"
+                  moduleName = "Spindown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tylerreckart/Dev/Spindown/Spindown/Components/PlayerTile/PlayerTile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "908">
+               </Location>
+               <Location
+                  uuid = "50317B87-AAC5-45BB-A000-124E54A59598 - cd68da67cd3e5477"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Spindown.OverlayDragGestureHandler, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;Spindown.PlayerTile.PortraitPlayerControls, Spindown.PlayerTile.LandscapePlayerControls&gt;&gt;)&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, Spindown.PlayerBadges, Swift.Optional&lt;Spindown.PlayerTileOptionsOverlay&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.transition(SwiftUI.AnyTransition) -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.GeometryReader&lt;&lt;&lt;opaque return type of SwiftUI.View.onChange&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Equatable&gt;(of: &#x3c4;_1_0, perform: (&#x3c4;_1_0) -&gt; ()) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in Spindown.PlayerTile.body.getter : some"
+                  moduleName = "Spindown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tylerreckart/Dev/Spindown/Spindown/Components/PlayerTile/PlayerTile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "980">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
