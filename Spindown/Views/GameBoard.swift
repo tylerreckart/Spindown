@@ -25,6 +25,7 @@ struct GameBoard: View {
     @Binding var players: [Participant]
     @Binding var numPlayersRemaining: Int
     @Binding var activePlayer: Participant?
+    @Binding var orientation: UIDeviceOrientation?
     
     var endGame: () -> ()
     
@@ -34,8 +35,6 @@ struct GameBoard: View {
     @State private var selectedPlayer: Participant?
     
     @State private var showSettingsSheet: Bool = false
-    
-    @State private var orientation: UIInterfaceOrientation = .landscapeLeft
     
     struct Pin: View {
         @Binding var showSettingsDialog: Bool
@@ -70,8 +69,7 @@ struct GameBoard: View {
 
         @Binding var selectedPlayer: Participant?
         @Binding var showSettingsDialog: Bool
-        
-        var orientation: UIInterfaceOrientation
+        @Binding var orientation: UIDeviceOrientation?
         
         var body: some View {
             ZStack {
@@ -79,14 +77,14 @@ struct GameBoard: View {
                     if (players.count == 4) {
                         HStack(spacing: 8) {
                             ForEach(0..<2, id: \.self) { index in
-                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer)
+                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
                                     .rotationEffect(Angle(degrees: 180))
                             }
                         }
                         
                         HStack(spacing: 8) {
                             ForEach(2..<4, id: \.self) { index in
-                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer)
+                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
                             }
                         }
                     }
@@ -108,7 +106,7 @@ struct GameBoard: View {
                     players: players,
                     selectedPlayer: $selectedPlayer,
                     showSettingsDialog: $showSettingsDialog,
-                    orientation: orientation
+                    orientation: $orientation
                 )
             }
         
@@ -137,12 +135,6 @@ struct GameBoard: View {
             // Prevent the system idle timer from putting the device's display
             // to sleep while the game board is active.
             UIApplication.shared.isIdleTimerDisabled = true
-            
-            if (UIDevice.current.orientation.isLandscape) {
-                self.orientation = .landscapeLeft
-            } else {
-                self.orientation = .portrait
-            }
         }
         .onDisappear {
             // Re-enable the system idle timer when this view unmounts.

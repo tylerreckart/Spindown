@@ -31,23 +31,19 @@ struct PlayerTile: View {
     
     @State private var timer = Timer.publish(every: 0.01, on: .main, in: .common)
     
-    let orientationListener = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
-        .makeConnectable()
-        .autoconnect()
-    
-    @State private var orientation: UIDeviceOrientation?
+    @Binding var orientation: UIDeviceOrientation?
     
     struct LifeCount: View {
         var lifeTotal: Int
-        var orientation: UIInterfaceOrientation
+        var orientation: UIDeviceOrientation
         var visibility: CGFloat
         
         var body: some View {
             Text("\(lifeTotal)")
                 .font(
                     .system(
-                        size: orientation == .portrait ? 48 : 100,
-                        weight: orientation == .portrait ? .regular : .light,
+                        size: orientation != .landscapeLeft && orientation != .landscapeRight ? 48 : 100,
+                        weight: orientation != .landscapeLeft && orientation != .landscapeRight ? .regular : .light,
                         design: .rounded
                     )
                 )
@@ -87,7 +83,7 @@ struct PlayerTile: View {
     struct PortraitPlayerControls: View {
         @ObservedObject var player: Participant
         
-        var orientation: UIInterfaceOrientation
+        var orientation: UIDeviceOrientation
     
         @Binding var dragCompletionPercentage: CGFloat
     
@@ -103,7 +99,7 @@ struct PlayerTile: View {
     struct LandscapePlayerControls: View {
         @ObservedObject var player: Participant
         
-        var orientation: UIInterfaceOrientation
+        var orientation: UIDeviceOrientation
     
         @Binding var dragCompletionPercentage: CGFloat
     
@@ -130,7 +126,6 @@ struct PlayerTile: View {
                         self.greatestFiniteHeight = geometry.size.height
                         self.greatestFiniteWidth = geometry.size.width
                     }
-                    .zIndex(-1)
             }
     
             ZStack {
@@ -142,16 +137,16 @@ struct PlayerTile: View {
                         showOverlay: $showOptionsOverlay
                     )
                     
-                    if (self.orientation == .portrait) {
+                    if (self.orientation == .portrait || self.orientation == .portraitUpsideDown) {
                         PortraitPlayerControls(
                             player: player,
-                            orientation: .portrait,
+                            orientation: orientation!,
                             dragCompletionPercentage: $dragCompletionPercentage
                         )
-                    } else {
+                    } else if (self.orientation == .landscapeLeft || self.orientation == .landscapeRight){
                         LandscapePlayerControls(
                             player: player,
-                            orientation: .landscapeLeft,
+                            orientation: orientation!,
                             dragCompletionPercentage: $dragCompletionPercentage
                         )
                     }
@@ -166,7 +161,7 @@ struct PlayerTile: View {
 //                )
                 .background(Color(.systemGray6))
                 
-                PlayerBadges(player: player, showOverlay: $showOptionsOverlay, selectedCounter: $selectedCounter)
+                PlayerBadges(player: player, showOverlay: $showOptionsOverlay, selectedCounter: $selectedCounter, orientation: $orientation)
                 
                 if (showOptionsOverlay && overlayHeight > 0) {
                     PlayerTileOptionsOverlay(
@@ -194,16 +189,6 @@ struct PlayerTile: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            if (UIDevice.current.orientation.isLandscape) {
-                self.orientation = .landscapeLeft
-            } else {
-                self.orientation = .portrait
-            }
-        }
-        .onReceive(orientationListener) { _ in
-            self.orientation = UIDevice.current.orientation
         }
         .onChange(of: showOptionsOverlay) { newState in
             if (newState == true) {

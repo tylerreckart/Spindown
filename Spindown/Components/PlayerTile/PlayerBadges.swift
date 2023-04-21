@@ -32,13 +32,21 @@ struct PlayerBadges: View {
 
     @Binding var showOverlay: Bool
     @Binding var selectedCounter: Counter?
+    @Binding var orientation: UIDeviceOrientation?
 
     var body: some View {
         VStack {
-            HStack {
-                ForEach(Array(player.activeCounters), id: \.self) { counter in
-                    CounterBadge(counter: counter, showOverlay: $showOverlay, activeCounter: $selectedCounter)
-                        .transition(.opacity)
+            HStack(spacing: 0) {
+                if (orientation == .landscapeLeft) {
+                    Rectangle().fill(.clear)
+                        .frame(maxWidth: 34, maxHeight: 0)
+                }
+                
+                HStack {
+                    ForEach(Array(player.activeCounters), id: \.self) { counter in
+                        CounterBadge(counter: counter, showOverlay: $showOverlay, activeCounter: $selectedCounter)
+                            .transition(.opacity)
+                    }
                 }
                 
                 Spacer()
@@ -51,6 +59,11 @@ struct PlayerBadges: View {
                         .rotationEffect(Angle(degrees: 10))
                         .shadow(radius: 3)
                         .transition(.opacity)
+                }
+                
+                if (orientation == .landscapeRight) {
+                    Rectangle().fill(.clear)
+                        .frame(maxWidth: 34, maxHeight: 0)
                 }
             }
             .padding()

@@ -558,8 +558,8 @@
             filePath = "Spindown/Views/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "checkPlayerEntitlements()"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,8 +574,8 @@
             filePath = "Spindown/Views/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "checkPlayerEntitlements()"
             landmarkType = "7">
          </BreakpointContent>
@@ -710,78 +710,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "08E28306-D460-4AC5-8AFB-1BA72A9CC21A"
-            shouldBeEnabled = "No"
+            uuid = "50317B87-AAC5-45BB-A000-124E54A59598"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Spindown/Views/GameBoard.swift"
+            filePath = "Spindown/Components/PlayerTile/PlayerTile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "08E28306-D460-4AC5-8AFB-1BA72A9CC21A - 4ba666c68d0b5d06"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in Spindown.GameBoard.body.getter : some"
-                  moduleName = "Spindown"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tylerreckart/Dev/Spindown/Spindown/Views/GameBoard.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "08E28306-D460-4AC5-8AFB-1BA72A9CC21A - 4ba666c68d0b5e6b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in Spindown.GameBoard.body.getter : some"
-                  moduleName = "Spindown"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tylerreckart/Dev/Spindown/Spindown/Views/GameBoard.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "08E28306-D460-4AC5-8AFB-1BA72A9CC21A - 4ba666c68d0b5d40"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in Spindown.GameBoard.body.getter : some"
-                  moduleName = "Spindown"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tylerreckart/Dev/Spindown/Spindown/Views/GameBoard.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "138"
-                  endingLineNumber = "138"
-                  offsetFromSymbolStart = "108">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "03997010-1297-4171-81DE-08E3B5BD49D9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Spindown/Views/GameBoard.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

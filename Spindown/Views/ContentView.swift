@@ -64,17 +64,27 @@ struct ContentView: View {
     // Information Sheets/Subviews.
     @State private var showOnboardingSheet: Bool = false
     
+    @State private var orientation: UIDeviceOrientation?
+    
+    let orientationListener = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
+    
     init() { incrementReviewCounter() }
 
     var body: some View {
         ZStack {
-            GameBoard(
-                store: store,
-                players: $players,
-                numPlayersRemaining: $numPlayersRemaining,
-                activePlayer: $activePlayer,
-                endGame: endGame
-            )
+            if (orientation != nil) {
+                GameBoard(
+                    store: store,
+                    players: $players,
+                    numPlayersRemaining: $numPlayersRemaining,
+                    activePlayer: $activePlayer,
+                    orientation: $orientation,
+                    endGame: endGame
+                )
+                .transition(.opacity)
+            }
         }
         .environmentObject(timerModel)
         .sheet(isPresented: $showOnboardingSheet) { SubscriptionView(store: store) }
@@ -85,6 +95,21 @@ struct ContentView: View {
         .onChange(of: store.initialized) { _ in
             Task {
                 await checkPlayerEntitlements()
+            }
+        }
+        .onAppear {
+            withAnimation {
+                self.orientation = UIDevice.current.orientation
+            }
+        }
+        .onReceive(orientationListener) { event in
+            let device = event.object.unsafelyUnwrapped.self as! UIDevice
+            let current = device.orientation
+            
+            if (current != .unknown) {
+                withAnimation {
+                    self.orientation = UIDevice.current.orientation
+                }
             }
         }
     }

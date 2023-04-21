@@ -87,6 +87,7 @@ struct PlayerTileOptionsOverlay: View {
                     
                 }
                 .opacity(self.completionPercentage)
+                .scaleEffect(self.completionPercentage)
             }
         }
     }
