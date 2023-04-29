@@ -93,15 +93,50 @@ struct GameBoard: View {
                     
                     if (players.count == 4) {
                         HStack(spacing: 8) {
-                            ForEach(0..<2, id: \.self) { index in
-                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
-                                    .rotationEffect(Angle(degrees: 180))
+                            ForEach(0..<2, id: \.self) { row in
+                                let startIndex: Int = row == 0 ? 0 : 2
+                                let stopIndex:  Int = row == 0 ? 2 : 4
+                                
+                                VStack(spacing: 8) {
+                                    ForEach(startIndex..<stopIndex, id: \.self) { index in
+                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                                            .rotationEffect(Angle(degrees: index % 2 == 0 ? 180 : 0))
+                                    }
+                                }
                             }
                         }
-                        
+                    }
+                    
+                    if (players.count == 5) {
                         HStack(spacing: 8) {
-                            ForEach(2..<4, id: \.self) { index in
-                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                            ForEach(0..<2, id: \.self) { row in
+                                let startIndex: Int = row == 0 ? 0 : 2
+                                let stopIndex:  Int = row == 0 ? 2 : 4
+                                
+                                VStack(spacing: 8) {
+                                    ForEach(startIndex..<stopIndex, id: \.self) { index in
+                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                                            .rotationEffect(Angle(degrees: index % 2 == 0 ? 180 : 0))
+                                    }
+                                }
+                            }
+                            
+                            PlayerTile(player: players[4], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                        }
+                    }
+                    
+                    if (players.count == 6) {
+                        HStack(spacing: 8) {
+                            ForEach(0..<3, id: \.self) { row in
+                                let startIndex: Int = row == 1 ? 2 : row == 2 ? 4 : 0
+                                let stopIndex:  Int = row == 0 ? 2 : row == 1 ? 4 : 6
+                                
+                                VStack(spacing: 8) {
+                                    ForEach(startIndex..<stopIndex, id: \.self) { index in
+                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                                            .rotationEffect(Angle(degrees: index % 2 == 0 ? 180 : 0))
+                                    }
+                                }
                             }
                         }
                     }

@@ -145,6 +145,14 @@ struct GameSettingsDialog: View {
                 Button(action: openSettings) {
                     Text("Show Settings")
                 }
+                
+                Button(action: addPlayer) {
+                    Text("Add Player")
+                }
+                
+                Button(action: removePlayer) {
+                    Text("Remove Player")
+                }
             }
         }, maxWidth: 300, open: $open)
     }
@@ -163,6 +171,33 @@ struct GameSettingsDialog: View {
         
         withAnimation {
             self.activeView = .player
+        }
+    }
+    
+    func addPlayer() -> Void {
+        let playerCount = players.count
+        
+        if (playerCount < 6) {
+            let player = Participant()
+            player.name = "Player \(playerCount)"
+            player.lifeTotal = 40
+            player.color = colors[playerCount - 1]
+            player.theme = basicThemes[playerCount]
+
+            withAnimation {
+                self.players.append(player)
+            }
+        }
+    }
+    
+    func removePlayer() -> Void {
+        let playerCount = players.count
+        let lastIndex = playerCount - 1
+        
+        if (playerCount > 2) {
+            withAnimation {
+                self.players.remove(at: lastIndex)
+            }
         }
     }
 

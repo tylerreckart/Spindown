@@ -90,7 +90,7 @@ struct ContentView: View {
         .sheet(isPresented: $showOnboardingSheet) { SubscriptionView(store: store) }
         .onAppear {
             self.setStartingLifeTotal(40)
-            self.setPlayerCount(4)
+            self.setPlayerCount(2)
         }
         .onChange(of: store.initialized) { _ in
             Task {
