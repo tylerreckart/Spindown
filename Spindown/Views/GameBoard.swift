@@ -38,32 +38,47 @@ struct GameBoard: View {
     
     struct Pin: View {
         @Binding var showSettingsDialog: Bool
+        var orientation: Orientation
+        
+        var trigger: some View {
+            Button(action: {
+                withAnimation(.spring(response: 0.55, dampingFraction: 0.5, blendDuration: 0)) {
+                    self.showSettingsDialog.toggle()
+                }
+                
+            }) {
+                Image("D20")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxHeight: 64)
+                    .shadow(radius: 2, x: 1, y: 1)
+            }
+        }
 
         var body: some View {
-            HStack {
-                Spacer()
-                
+            if orientation == .portrait {
                 VStack {
                     Spacer()
-                    Button(action: {
-                        withAnimation(.spring(response: 0.55, dampingFraction: 0.5, blendDuration: 0)) {
-                            self.showSettingsDialog.toggle()
-                        }
-                        
-                    }) {
-                        Image("D20")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxHeight: 60)
-                            .rotationEffect(Angle(degrees: 10))
-                            .shadow(radius: 2, x: 1, y: 1)
-                    }
+                    trigger
+                    Spacer()
                 }
+                .padding()
+            } else {
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        trigger
+                            .rotationEffect(Angle(degrees: -90))
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                .padding()
             }
-            .padding()
         }
     }
-    
+
     struct PlayArea: View {
         var players: [Participant]
 
@@ -75,33 +90,47 @@ struct GameBoard: View {
             ZStack {
                 VStack(spacing: 8) {
                     if (players.count == 2) {
-                        PlayerTile(player: players[0], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                        PlayerTile(player: players[0], selectedPlayer: $selectedPlayer, orientation: .portrait)
                             .rotationEffect(Angle(degrees: 180))
-                        PlayerTile(player: players[1], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                        PlayerTile(player: players[1], selectedPlayer: $selectedPlayer, orientation: .portrait)
                     }
                     
                     if (players.count == 3) {
                         HStack(spacing: 8) {
                             ForEach(0..<2, id: \.self) { index in
-                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                                PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: .portrait)
                                     .rotationEffect(Angle(degrees: 180))
                             }
                         }
                         
-                        PlayerTile(player: players[2], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                        PlayerTile(player: players[2], selectedPlayer: $selectedPlayer, orientation: .portrait)
                     }
                     
                     if (players.count == 4) {
-                        HStack(spacing: 8) {
-                            ForEach(0..<2, id: \.self) { row in
-                                let startIndex: Int = row == 0 ? 0 : 2
-                                let stopIndex:  Int = row == 0 ? 2 : 4
+                        if orientation == .landscapeLeft || orientation == .landscapeRight {
+                            HStack(spacing: 8) {
+                                VStack(spacing: 8) {
+                                    PlayerTile(player: players[0], selectedPlayer: $selectedPlayer, orientation: .landscape)
+                                    PlayerTile(player: players[1], selectedPlayer: $selectedPlayer, orientation: .landscape)
+                                }
+                                .rotationEffect(Angle(degrees: 180))
                                 
                                 VStack(spacing: 8) {
-                                    ForEach(startIndex..<stopIndex, id: \.self) { index in
-                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
-                                            .rotationEffect(Angle(degrees: index % 2 == 0 ? 180 : 0))
-                                    }
+                                    PlayerTile(player: players[2], selectedPlayer: $selectedPlayer, orientation: .landscape)
+                                    PlayerTile(player: players[3], selectedPlayer: $selectedPlayer, orientation: .landscape)
+                                }
+                            }
+                        } else {
+                            VStack(spacing: 8) {
+                                HStack(spacing: 8) {
+                                    PlayerTile(player: players[0], selectedPlayer: $selectedPlayer, orientation: .portrait)
+                                    PlayerTile(player: players[1], selectedPlayer: $selectedPlayer, orientation: .portrait)
+                                }
+                                .rotationEffect(Angle(degrees: 180))
+                                
+                                HStack(spacing: 8) {
+                                    PlayerTile(player: players[2], selectedPlayer: $selectedPlayer, orientation: .portrait)
+                                    PlayerTile(player: players[3], selectedPlayer: $selectedPlayer, orientation: .portrait)
                                 }
                             }
                         }
@@ -115,13 +144,13 @@ struct GameBoard: View {
                                 
                                 VStack(spacing: 8) {
                                     ForEach(startIndex..<stopIndex, id: \.self) { index in
-                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: .portrait)
                                             .rotationEffect(Angle(degrees: index % 2 == 0 ? 180 : 0))
                                     }
                                 }
                             }
                             
-                            PlayerTile(player: players[4], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                            PlayerTile(player: players[4], selectedPlayer: $selectedPlayer, orientation: .portrait)
                         }
                     }
                     
@@ -133,7 +162,7 @@ struct GameBoard: View {
                                 
                                 VStack(spacing: 8) {
                                     ForEach(startIndex..<stopIndex, id: \.self) { index in
-                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: $orientation)
+                                        PlayerTile(player: players[index], selectedPlayer: $selectedPlayer, orientation: .portrait)
                                             .rotationEffect(Angle(degrees: index % 2 == 0 ? 180 : 0))
                                     }
                                 }
@@ -144,7 +173,10 @@ struct GameBoard: View {
                 .edgesIgnoringSafeArea(.all)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                Pin(showSettingsDialog: $showSettingsDialog)
+                Pin(
+                    showSettingsDialog: $showSettingsDialog,
+                    orientation: orientation == .landscapeLeft || orientation == .landscapeRight ? .landscape : .portrait
+                )
             }
             .edgesIgnoringSafeArea(.all)
             .background(.black)
@@ -160,25 +192,6 @@ struct GameBoard: View {
                     showSettingsDialog: $showSettingsDialog,
                     orientation: $orientation
                 )
-            }
-        
-            GameSettingsDialog(
-                open: $showSettingsDialog,
-                players: $players,
-                endGame: endGame,
-                store: store,
-                openSettings: { self.showSettingsSheet.toggle() }
-            )
-            
-            LifeTotalCalculatorDialog(
-                open: $showLifeTotalCalculator,
-                selectedPlayer: $selectedPlayer,
-                toggleCalculator: { self.showLifeTotalCalculator.toggle() },
-                updateLifeTotal: updateLifeTotal
-            )
-            
-            if (self.showSettingsSheet) {
-                SettingsOverlayView(open: $showSettingsSheet)
             }
         }
         .padding(0)

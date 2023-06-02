@@ -87,10 +87,9 @@ struct ContentView: View {
             }
         }
         .environmentObject(timerModel)
-        .sheet(isPresented: $showOnboardingSheet) { SubscriptionView(store: store) }
         .onAppear {
             self.setStartingLifeTotal(40)
-            self.setPlayerCount(2)
+            self.setPlayerCount(4)
         }
         .onChange(of: store.initialized) { _ in
             Task {

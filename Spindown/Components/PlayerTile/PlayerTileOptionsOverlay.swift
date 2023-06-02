@@ -14,6 +14,7 @@ struct PlayerTileOptionsOverlay: View {
     @Binding var completionPercentage: CGFloat
     @Binding var isFullHeight: Bool
     @Binding var showOverlay: Bool
+    var orientation: Orientation
     
     @State private var activeCounter: Counter?
     
@@ -42,7 +43,6 @@ struct PlayerTileOptionsOverlay: View {
                     .transition(.push(from: .bottom))
                     .offset(y: 10 - (self.completionPercentage * 10))
             }
-            .frame(maxHeight: 300)
             .opacity(self.completionPercentage)
             
             OverlayDragGestureHandler(
@@ -87,5 +87,6 @@ struct PlayerTileOptionsOverlay: View {
                 .scaleEffect(self.completionPercentage)
             }
         }
+        .rotationEffect(Angle(degrees: orientation == .landscape ? -90 : 0))
     }
 }

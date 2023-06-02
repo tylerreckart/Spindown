@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+enum Orientation {
+    case landscape
+    case portrait
+}
+
 struct PlayerTile: View {
     @ObservedObject var player: Participant
-    
+
     @Binding var selectedPlayer: Participant?
+    
+    var orientation: Orientation = .portrait
     
     // Overlay display parameters.
     @State private var overlayHeight: CGFloat = 0
@@ -31,27 +38,14 @@ struct PlayerTile: View {
     
     @State private var timer = Timer.publish(every: 0.01, on: .main, in: .common)
     
-    @Binding var orientation: UIDeviceOrientation?
-    
-    let orientationListener = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
-        .makeConnectable()
-        .autoconnect()
-    
     struct LifeCount: View {
         var lifeTotal: Int
-        var orientation: UIDeviceOrientation
         var visibility: CGFloat
         
         var body: some View {
             Text("\(lifeTotal)")
-                .font(
-                    .system(
-                        size: orientation != .landscapeLeft && orientation != .landscapeRight ? 48 : 100,
-                        weight: orientation != .landscapeLeft && orientation != .landscapeRight ? .regular : .light,
-                        design: .rounded
-                    )
-                )
-                .shadow(color: .black.opacity(0.2), radius: 4)
+                .font(.system(size: 84, weight: .light, design: .rounded))
+                .shadow(color: .black.opacity(0.15), radius: 4, y: 2)
                 .transition(.scale(scale: 0.4))
                 .opacity(1 - visibility)
                 .scaleEffect(1 - (visibility / 5))
@@ -94,7 +88,7 @@ struct PlayerTile: View {
         var body: some View {
             VStack(spacing: 20) {
                 LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage)
-                LifeCount(lifeTotal: player.lifeTotal, orientation: orientation, visibility: dragCompletionPercentage)
+                LifeCount(lifeTotal: player.lifeTotal, visibility: dragCompletionPercentage)
                 LifeCounterButton(action: { player.decrementLifeTotal() }, symbol: "minus", visibility: dragCompletionPercentage)
             }
         }
@@ -102,21 +96,21 @@ struct PlayerTile: View {
     
     struct LandscapePlayerControls: View {
         @ObservedObject var player: Participant
-        
-        var orientation: UIDeviceOrientation
-    
+
         @Binding var dragCompletionPercentage: CGFloat
     
         var body: some View {
             ZStack {
-                LifeCount(lifeTotal: player.lifeTotal, orientation: orientation, visibility: dragCompletionPercentage)
+                LifeCount(lifeTotal: player.lifeTotal, visibility: dragCompletionPercentage)
+                    .rotationEffect(Angle(degrees: -90))
                 
-                HStack(spacing: 0) {
-                    LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage)
-                    Spacer()
+                VStack(spacing: 0) {
                     LifeCounterButton(action: { player.decrementLifeTotal() }, symbol: "minus", visibility: dragCompletionPercentage)
+                        .rotationEffect(Angle(degrees: 90))
+                    Spacer()
+                    LifeCounterButton(action: { player.incrementLifeTotal() }, symbol: "plus", visibility: dragCompletionPercentage)
                 }
-                .frame(maxWidth: 340)
+                .frame(maxHeight: 240)
             }
         }
     }
@@ -145,12 +139,8 @@ struct PlayerTile: View {
                         showOverlay: $showOptionsOverlay
                     )
                     
-                    if ((self.orientation == .landscapeLeft || self.orientation == .landscapeRight) || greatestFiniteWidth > 300){
-                        LandscapePlayerControls(
-                            player: player,
-                            orientation: .landscapeLeft,
-                            dragCompletionPercentage: $dragCompletionPercentage
-                        )
+                    if orientation == .landscape {
+                        LandscapePlayerControls(player: player, dragCompletionPercentage: $dragCompletionPercentage)
                     } else {
                         PortraitPlayerControls(
                             player: player,
@@ -161,12 +151,7 @@ struct PlayerTile: View {
                 }
                 .foregroundColor(.white)
 
-                PlayerBadges(
-                    player: player,
-                    showOverlay: $showOptionsOverlay,
-                    selectedCounter: $selectedCounter,
-                    orientation: $orientation
-                )
+                PlayerBadges(player: player, showOverlay: $showOptionsOverlay, selectedCounter: $selectedCounter)
                 
                 if (showOptionsOverlay && overlayHeight > 0) {
                     PlayerTileOptionsOverlay(
@@ -175,7 +160,8 @@ struct PlayerTile: View {
                         height: $overlayHeight,
                         completionPercentage: $dragCompletionPercentage,
                         isFullHeight: $overlayIsFullHeight,
-                        showOverlay: $showOptionsOverlay
+                        showOverlay: $showOptionsOverlay,
+                        orientation: orientation
                     )
                 }
                 
@@ -194,10 +180,7 @@ struct PlayerTile: View {
                     }
                 }
             }
-            .background(
-                Image(player.theme?.backgroundKey ?? "")
-                    .resizable()
-                    .frame(width: greatestFiniteWidth + 30, height: greatestFiniteHeight + 30)            )
+            .background(Color(player.color))
         }
         .onChange(of: showOptionsOverlay) { newState in
             if (newState == true) {
@@ -228,8 +211,6 @@ struct PlayerTile: View {
             }
         }
         .cornerRadius(8)
-        .onAppear {
-            print(self.orientation?.rawValue)
-        }
+        .statusBar(hidden: true)
     }
 }
