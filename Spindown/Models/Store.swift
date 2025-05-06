@@ -80,12 +80,14 @@ class Store: ObservableObject {
     func requestProducts() async {
         do {
             let keys = ["com.spindown.plus.yearly"]
-
+            print("--> Requesting products for IDs: \(keys)")
             let products = try await Product.products(for: keys)
-
+            print("--> Fetched \(products.count) products from App Store.")
             subscriptions = products
         } catch {
-            print("Failed product request from the App Store server: \(error)")
+            // Print the actual error
+            print("!!! Failed product request from App Store: \(error.localizedDescription)")
+            print("!!! Error details: \(error)")
         }
     }
     

@@ -41,35 +41,12 @@ struct AboutView: View {
                                         .frame(width: 30, height: 30)
                                     Image("HapticLogo")
                                         .resizable()
-                                        .frame(width: 18, height: 18)
+                                        .frame(width: 18, height: 14.73)
                                 }
                                 
                                 VStack(alignment: .leading) {
                                     Text("Haptic")
                                     Text("Company News and Updates")
-                                        .font(.caption)
-                                }
-                            }
-                            .frame(height: 40)
-                        }
-                        
-                                
-                        Button(action: {
-                            self.showSpindownSheet.toggle()
-                        }) {
-                            HStack(alignment: .center) {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .fill(Color(UIColor(named: "PrimaryRed")!))
-                                        .frame(width: 30, height: 30)
-                                    Image("SpindownIcon")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Spindown")
-                                    Text("App Updates and Feedback")
                                         .font(.caption)
                                 }
                             }
@@ -118,13 +95,10 @@ struct AboutView: View {
         .edgesIgnoringSafeArea(.all)
         .background(Color(UIColor(named: "DeepGray")!))
         .sheet(isPresented: $showHapticSheet) {
-            WebView(url: URL(string: "https://mastodon.social/@haptic")!)
-        }
-        .sheet(isPresented: $showSpindownSheet) {
-            WebView(url: URL(string: "https://mastodon.social/@spindown")!)
+            WebView(url: URL(string: "https://haptic.software")!)
         }
         .sheet(isPresented: $showDeveloperSheet) {
-            WebView(url: URL(string: "https://mastodon.social/@tyler")!)
+            WebView(url: URL(string: "https://tylers.world")!)
         }
     }
 }

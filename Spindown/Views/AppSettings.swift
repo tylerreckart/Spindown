@@ -79,7 +79,7 @@ struct AppSettingsView: View {
                                         .frame(width: 30, height: 30)
                                     Image("HapticLogo")
                                         .resizable()
-                                        .frame(width: 18, height: 18)
+                                        .frame(width: 18, height: 14.73)
                                 }
                                 Text("Haptic Software")
                             }
@@ -93,7 +93,7 @@ struct AppSettingsView: View {
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)
                 
-                Text("© 2023 Haptic Software LLC. Spindown \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+                Text("© 2025 Haptic Software LLC. Spindown \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
                     .font(.system(size: 12))
                     .foregroundColor(Color(UIColor(named: "AccentGray")!))
                     .padding(.bottom)
@@ -113,10 +113,10 @@ struct AppSettingsView: View {
                 }
             }
             .sheet(isPresented: $showTermsWebView) {
-                WebView(url: URL(string: "https://haptic.software/terms")!)
+                WebView(url: URL(string: "https://haptic.software/terms.html")!)
             }
             .sheet(isPresented: $showPrivacyWebView) {
-                WebView(url: URL(string: "https://haptic.software/privacy")!)
+                WebView(url: URL(string: "https://haptic.software/privacy.html")!)
             }
         }
     }
