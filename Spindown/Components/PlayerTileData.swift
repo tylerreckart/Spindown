@@ -15,6 +15,7 @@ struct PlayerTileData: View {
     var symbol: String
     var useCustomSymbol: Bool = false
     var nextTile: Counter
+    var showLifeTotalCalculator: () -> Void
     
     public var fontSize: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -30,9 +31,15 @@ struct PlayerTileData: View {
             VStack(spacing: 0) {
                 Text(label)
                     .font(.system(size: 20, weight: .regular))
-                Text("\(value)")
-                    .font(.system(size: fontSize, weight: .black))
                 Button(action: {
+                    showLifeTotalCalculator()
+                }) {
+                    Text("\(value)")
+                        .font(.system(size: fontSize, weight: .black))
+                    
+                }
+                Button(action: {
+                    HapticsManager.shared.selectionChanged()
                     withAnimation(.linear(duration: 0.2)) {
                         self.activeSum = nextTile
                     }

@@ -40,7 +40,8 @@ struct PlayerTile: View {
                                 value: player.lifeTotal,
                                 label: player.name,
                                 symbol: "heart.fill",
-                                nextTile: .poison
+                                nextTile: .poison,
+                                showLifeTotalCalculator: showLifeTotalCalculator
                             )
                         case .poison:
                             PlayerTileData(
@@ -49,7 +50,8 @@ struct PlayerTile: View {
                                 label: "Poison",
                                 symbol: "ToxicSymbol",
                                 useCustomSymbol: true,
-                                nextTile: .energy
+                                nextTile: .energy,
+                                showLifeTotalCalculator: showLifeTotalCalculator
                             )
                         case .energy:
                             PlayerTileData(
@@ -57,7 +59,8 @@ struct PlayerTile: View {
                                 value: player.energy,
                                 label: "Energy",
                                 symbol: "bolt.fill",
-                                nextTile: .experience
+                                nextTile: .experience,
+                                showLifeTotalCalculator: showLifeTotalCalculator
                             )
                         case .experience:
                             PlayerTileData(
@@ -65,7 +68,8 @@ struct PlayerTile: View {
                                 value: player.experience,
                                 label: "Experience",
                                 symbol: "magazine.fill",
-                                nextTile: .tickets
+                                nextTile: .tickets,
+                                showLifeTotalCalculator: showLifeTotalCalculator
                             )
                         case .tickets:
                             PlayerTileData(
@@ -73,7 +77,8 @@ struct PlayerTile: View {
                                 value: player.tickets,
                                 label: "Tickets",
                                 symbol: "ticket.fill",
-                                nextTile: .lifeTotal
+                                nextTile: .lifeTotal,
+                                showLifeTotalCalculator: showLifeTotalCalculator
                             )
                         }
                     }

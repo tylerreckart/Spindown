@@ -47,6 +47,8 @@ struct PlayerTileControls: View {
     }
     
     func increment() -> Void {
+        HapticsManager.shared.impact(.light)
+
         if (self.activeSum == .lifeTotal) {
             player.incrementLifeTotal()
         } else {
@@ -55,6 +57,8 @@ struct PlayerTileControls: View {
     }
     
     func decrement() -> Void {
+        HapticsManager.shared.impact(.light)
+
         if (self.activeSum == .lifeTotal) {
             player.decrementLifeTotal()
         } else {

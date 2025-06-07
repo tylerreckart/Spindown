@@ -19,87 +19,87 @@ struct AppSettingsView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                List {
-                    Section(header: Text("About")) {
+                VStack {
+                    Section {
                         Button(action: { self.showManageSubscriptions.toggle() }) {
                             HStack {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "PrimaryPurple")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                    Rectangle().fill(Color(.systemBlue)).frame(width: 32, height: 32).cornerRadius(10)
                                     Image(systemName: "creditcard.fill")
                                         .foregroundColor(.white)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                        .fontWeight(.semibold)
+                                        .symbolRenderingMode(.hierarchical)
                                 }
                                 Text("Manage Subscription")
                                     .foregroundColor(.white)
+                                Spacer()
                             }
                             .padding([.top, .bottom], 2)
                         }
+                        Divider().padding(.vertical, 5)
                         Button(action: {
                             self.showTermsWebView.toggle()
                         }) {
                             HStack {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "AccentGray")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    Image(systemName: "doc.plaintext.fill")
+                                    Rectangle().fill(Color(.systemYellow)).frame(width: 32, height: 32).cornerRadius(10)
+                                    Image(systemName: "richtext.page.fill")
                                         .foregroundColor(.white)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                        .fontWeight(.semibold)
+                                        .symbolRenderingMode(.hierarchical)
                                 }
-                                Text("Terms Of Use")
+                                Link("Terms of Service", destination: URL(string: "https://www.haptic.software/terms.html")!)
+                                    .foregroundColor(.white)
+                                Spacer()
                             }
-                            .padding([.top, .bottom], 2)
                         }
+                        Divider().padding(.vertical, 5)
                         Button(action: {
                             self.showPrivacyWebView.toggle()
                         }) {
                             HStack {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "AccentGray")!))
-                                        .frame(width: 30, height: 30)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
-                                    Image(systemName: "lock.fill")
+                                    Rectangle().fill(Color(.systemBlue)).frame(width: 32, height: 32).cornerRadius(10)
+                                    Image(systemName: "richtext.page.fill")
                                         .foregroundColor(.white)
-                                        .shadow(color: Color.black.opacity(0.1), radius: 3)
+                                        .fontWeight(.semibold)
+                                        .symbolRenderingMode(.hierarchical)
                                 }
-                                Text("Privacy Policy")
+                                Link("Privacy Policy", destination: URL(string: "https://www.haptic.software/privacy.html")!)
+                                    .foregroundColor(.white)
+                                Spacer()
                             }
-                            .padding([.top, .bottom], 2)
                         }
+                        Divider().padding(.vertical, 5)
                         NavigationLink(destination: AboutView()) {
                             HStack {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(UIColor(named: "AlmostBlack")!))
-                                        .frame(width: 30, height: 30)
-                                    Image("HapticLogo")
-                                        .resizable()
-                                        .frame(width: 18, height: 14.73)
+                                    Rectangle().fill(Color(.systemRed)).frame(width: 32, height: 32).cornerRadius(10)
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.semibold)
+                                        .symbolRenderingMode(.hierarchical)
                                 }
-                                Text("Haptic Software")
+                                Text("About")
+                                Spacer()
                             }
-                            .padding([.top, .bottom], 2)
                         }
                     }
                     .listRowBackground(Color(UIColor(named:"NotAsDeepGray")!))
                 }
-                .frame(height: 225)
-                .background(Color(UIColor(named: "DeepGray")!))
-                .scrollContentBackground(.hidden)
-                .scrollDisabled(true)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(16)
+                .padding(.horizontal)
                 
                 Text("© 2025 Haptic Software LLC. Spindown \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
                     .font(.system(size: 12))
-                    .foregroundColor(Color(UIColor(named: "AccentGray")!))
-                    .padding(.bottom)
+                    .foregroundColor(.gray)
+                    .padding(.vertical)
             }
             .foregroundColor(.white)
-            .background(Color(UIColor(named: "DeepGray")!))
+            .background(.black)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -111,12 +111,6 @@ struct AppSettingsView: View {
                             .foregroundColor(Color(UIColor(named: "PrimaryRed")!))
                     }
                 }
-            }
-            .sheet(isPresented: $showTermsWebView) {
-                WebView(url: URL(string: "https://haptic.software/terms.html")!)
-            }
-            .sheet(isPresented: $showPrivacyWebView) {
-                WebView(url: URL(string: "https://haptic.software/privacy.html")!)
             }
         }
     }

@@ -106,41 +106,23 @@ struct SubscriptionView: View {
 
                 // --- Footer text and buttons remain the same ---
                 VStack {
-                     // ... Footer text ...
-                    Text("Payment for your subscription will be charged to your Apple ID account at the confirmation of purchase. Subscription automatically renews unless cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.")
+                    Text("Payment for your subscription will be charged to your Apple ID account at the confirmation of purchase. Subscription automatically renews unless cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.\n\nYou can manage and cancel your subscriptions by got to your account settings in the App Store after purchase.")
                         .font(.system(size: 12))
                         .foregroundColor(Color(.systemGray))
-                        .padding(.horizontal)
-                        .padding(.bottom, 5)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Text("You can manage and cancel your subscriptions by got to your account settings in the App Store after purchase.")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(.systemGray))
-                        .padding(.horizontal)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal)
 
-                VStack(spacing: 20) {
-                    // ... Terms/Privacy buttons ...
-                    UIButtonOutlined(
-                        text: "Terms of Use",
-                        fill: UIColor(named: "DeepGray")!,
-                        color: UIColor(named: "AccentGrayDarker")!,
-                        action: {
-                            self.showTermsWebView.toggle()
-                        }
-                    )
-                    UIButtonOutlined(
-                        text: "Privacy Policy",
-                        fill: UIColor(named: "DeepGray")!,
-                        color: UIColor(named: "AccentGrayDarker")!,
-                        action: {
-                            self.showPrivacyWebView.toggle()
-                        }
-                    )
+                HStack {
+                    Link("Privacy Policy", destination: URL(string: "https://www.haptic.software/privacy.html")!)
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.white)
+                    Spacer()
+                    Link("Terms of Use", destination: URL(string: "https://www.haptic.software/terms.html")!)
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.white)
                 }
-                .padding()
+                .padding([.horizontal, .top])
             }
 
             if (self.isPurchasing) {

@@ -32,6 +32,7 @@
 		DB41B1AB298BF3970000EC42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1AA298BF3970000EC42 /* SplashScreen.swift */; };
 		DB41B1B2298C07CF0000EC42 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B1298C07CF0000EC42 /* Dialog.swift */; };
 		DB41B1B4298C18D00000EC42 /* SettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */; };
+		DB5D462C2DDE6693006C5D01 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D462B2DDE6691006C5D01 /* HapticsManager.swift */; };
 		DB69EC88299D7D6B00D4EB3F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */; };
 		DB69EC8A29A7087500D4EB3F /* DiceRoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8929A7087500D4EB3F /* DiceRoll.swift */; };
 		DB69EC8C29A7088300D4EB3F /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69EC8B29A7088300D4EB3F /* Players.swift */; };
@@ -70,6 +71,7 @@
 		DBE49FC229AD87A5008B0648 /* PlayerTileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC129AD87A5008B0648 /* PlayerTileData.swift */; };
 		DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC329AD8A0D008B0648 /* RuleContext.swift */; };
 		DBE49FC629AD8A3E008B0648 /* SearchDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE49FC529AD8A3E008B0648 /* SearchDialog.swift */; };
+		DBEB941E2DF46F8B00B3A2AC /* HappyPath in Frameworks */ = {isa = PBXBuildFile; productRef = DBEB941D2DF46F8B00B3A2AC /* HappyPath */; };
 		DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF130682996AAE100B9E19A /* GameTimer.swift */; };
 		DBF1306B299BE04100B9E19A /* SubscriptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306A299BE04100B9E19A /* SubscriptionSheet.swift */; };
 		DBF1306D299BE19100B9E19A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1306C299BE19100B9E19A /* Store.swift */; };
@@ -104,6 +106,7 @@
 		DB41B1B0298C059D0000EC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DB41B1B1298C07CF0000EC42 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		DB41B1B3298C18D00000EC42 /* SettingsDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDialog.swift; sourceTree = "<group>"; };
+		DB5D462B2DDE6691006C5D01 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		DB69EC87299D7D6B00D4EB3F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Spindown/Views/AppSettings.swift; sourceTree = SOURCE_ROOT; };
 		DB69EC8929A7087500D4EB3F /* DiceRoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRoll.swift; sourceTree = "<group>"; };
 		DB69EC8B29A7088300D4EB3F /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBEB941E2DF46F8B00B3A2AC /* HappyPath in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +251,7 @@
 		DB41B1AC298C01810000EC42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DB5D462B2DDE6691006C5D01 /* HapticsManager.swift */,
 				DBF1306C299BE19100B9E19A /* Store.swift */,
 				DB8B8F6E298767390023A84B /* Participant.swift */,
 				DBF1306E299BE1F100B9E19A /* Error.swift */,
@@ -385,6 +390,7 @@
 			);
 			name = Spindown;
 			packageProductDependencies = (
+				DBEB941D2DF46F8B00B3A2AC /* HappyPath */,
 			);
 			productName = Spindown;
 			productReference = DB8B8F512986E2CB0023A84B /* Spindown.app */;
@@ -415,6 +421,7 @@
 			);
 			mainGroup = DB8B8F482986E2CB0023A84B;
 			packageReferences = (
+				DBEB941C2DF46F8B00B3A2AC /* XCRemoteSwiftPackageReference "HappyPath" */,
 			);
 			productRefGroup = DB8B8F522986E2CB0023A84B /* Products */;
 			projectDirPath = "";
@@ -482,6 +489,7 @@
 				DBE49FC429AD8A0D008B0648 /* RuleContext.swift in Sources */,
 				DBB64A3629B281C900438AAE /* OutOfTimeDialog.swift in Sources */,
 				DBE49FA629ACF597008B0648 /* StyledTextField.swift in Sources */,
+				DB5D462C2DDE6693006C5D01 /* HapticsManager.swift in Sources */,
 				DB41B1A4298AD9770000EC42 /* FivePlayerBoard.swift in Sources */,
 				DBF130692996AAE100B9E19A /* GameTimer.swift in Sources */,
 				DBE49FAE29AD8499008B0648 /* UIButtonStacked.swift in Sources */,
@@ -635,7 +643,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Spindown/Spindown.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Spindown/Preview Content\"";
 				DEVELOPMENT_TEAM = 78FCYG6ZD9;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -659,7 +667,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Haptic-Software-LLC.Spindown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -679,7 +687,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Spindown/Spindown.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Spindown/Preview Content\"";
 				DEVELOPMENT_TEAM = 78FCYG6ZD9;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -703,7 +711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Haptic-Software-LLC.Spindown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -738,6 +746,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DBEB941C2DF46F8B00B3A2AC /* XCRemoteSwiftPackageReference "HappyPath" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tylerreckart/HappyPath.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DBEB941D2DF46F8B00B3A2AC /* HappyPath */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBEB941C2DF46F8B00B3A2AC /* XCRemoteSwiftPackageReference "HappyPath" */;
+			productName = HappyPath;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DB8B8F582986E2CB0023A84B /* Spindown.xcdatamodeld */ = {
